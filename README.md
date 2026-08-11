@@ -1,7 +1,6 @@
 # ScanPDF
 
-[![Deploy to GitHub Pages](https://github.com/scanpdf-io/scanpdf/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/scanpdf-io/scanpdf/actions/workflows/deploy-pages.yml)
-[![CI](https://github.com/scanpdf-io/scanpdf/actions/workflows/ci.yml/badge.svg)](https://github.com/scanpdf-io/scanpdf/actions/workflows/ci.yml)
+[![CI & Deploy](https://github.com/scanpdf-io/scanpdf/actions/workflows/ci.yml/badge.svg)](https://github.com/scanpdf-io/scanpdf/actions/workflows/ci.yml)
 [![Container image](https://img.shields.io/badge/ghcr.io-scanpdf-2496ed?logo=docker&logoColor=white)](https://github.com/scanpdf-io/scanpdf/pkgs/container/scanpdf)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -138,17 +137,18 @@ site/                 The whole app (static files)
 Dockerfile            Two-stage build: fetch+verify libs, then nginx
 nginx.conf            Static serving, gzip, strict CSP
 tools/vendor.sh       Fetch libs locally for no-Docker development
-.github/workflows/    GitHub Pages deploy + container smoke-test CI
+.github/workflows/    Smoke-test → Pages deploy, plus tagged releases
 ```
 
 ## Deployment
 
 Every push to `main` triggers the
-[Pages workflow](.github/workflows/deploy-pages.yml): it downloads the pinned
-vendor libraries, verifies their checksums, and publishes `site/` to GitHub
-Pages, served at [scanpdf.io](https://scanpdf.io) (`site/CNAME` pins the
-custom domain). The [CI workflow](.github/workflows/ci.yml) builds the
-container and smoke-tests every endpoint plus the CSP header.
+[CI & Deploy workflow](.github/workflows/ci.yml). It first builds the container
+and smoke-tests every endpoint plus the CSP header (`make test`); only if that
+passes does it download the pinned vendor libraries, verify their checksums,
+and publish `site/` to GitHub Pages, served at [scanpdf.io](https://scanpdf.io)
+(`site/CNAME` pins the custom domain). Pull requests run the smoke test only —
+a broken build can never reach the live site.
 
 Self-hosted deployments are unaffected by the domain: every asset reference in
 the app is relative, so it works from any origin and any sub-path.
