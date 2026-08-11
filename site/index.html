@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ScanPDF — Local Document Scanner</title>
+<meta name="description" content="Turn photos of paper documents into clean multi-page PDFs, entirely in your browser. Automatic corner detection, perspective correction, scan-style filters — nothing is uploaded.">
+<meta name="theme-color" content="#12151b">
+<meta property="og:title" content="ScanPDF — Local Document Scanner">
+<meta property="og:description" content="Turn photos of paper documents into clean multi-page PDFs, entirely in your browser. Nothing is uploaded.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-logo">▤</div>
+    <div class="brand-text">
+      <h1>ScanPDF</h1>
+      <p class="tagline">Local document scanner — nothing leaves your computer</p>
+    </div>
+  </div>
+  <div class="topbar-controls">
+    <span id="engine-status" class="engine-status">Loading scan engine…</span>
+    <label class="field">
+      <span>Page size</span>
+      <select id="page-format">
+        <option value="a4" selected>A4</option>
+        <option value="letter">Letter</option>
+        <option value="auto">Auto (fit sheet)</option>
+      </select>
+    </label>
+    <button id="save-btn" class="btn primary" disabled>Save PDF</button>
+    <a class="github-link" href="https://github.com/scanpdf-io/scanpdf" target="_blank" rel="noopener" title="View source on GitHub">
+      <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span>GitHub</span>
+    </a>
+  </div>
+</header>
+
+<main class="layout">
+  <aside class="sidebar">
+    <div class="add-buttons">
+      <button id="add-btn" class="btn add-btn"><span class="btn-icon">＋</span><span class="btn-label">Add photos</span></button>
+      <button id="camera-btn" class="btn add-btn camera-btn">
+        <span class="btn-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
+        <span class="btn-label">Take photo</span>
+      </button>
+    </div>
+    <div id="pages-list" class="pages-list"></div>
+  </aside>
+
+  <div id="view-toggle" class="view-toggle" hidden>
+    <button id="view-editor-btn" class="seg active" type="button">Editor</button>
+    <button id="view-preview-btn" class="seg" type="button">Preview</button>
+  </div>
+
+  <section class="editor-pane">
+    <div class="toolbar" id="page-toolbar" hidden>
+      <button id="rotate-ccw" class="btn icon" title="Rotate left 90°">⟲</button>
+      <button id="rotate-cw" class="btn icon" title="Rotate right 90°">⟳</button>
+      <span class="sep"></span>
+      <label class="field">
+        <span>Filter</span>
+        <select id="filter-select">
+          <option value="color">Color</option>
+          <option value="gray">Grayscale</option>
+          <option value="bw">Black &amp; white</option>
+        </select>
+      </label>
+      <button id="filter-all" class="btn" title="Apply this filter to all pages">Apply to all</button>
+      <span class="sep"></span>
+      <button id="redetect-btn" class="btn" title="Run automatic corner detection again">Re-detect</button>
+      <button id="reset-corners-btn" class="btn" title="Reset corners to the full frame">Reset corners</button>
+    </div>
+    <div class="editor-wrap" id="editor-wrap">
+      <div id="dropzone" class="dropzone">
+        <div class="dropzone-inner">
+          <div class="dz-icon">⤓</div>
+          <p class="dz-title">Drop photos of paper documents here</p>
+          <p class="dz-sub">or click “Add photos”. Corners are detected automatically;
+            drag them to adjust. Everything is processed locally in your browser.</p>
+        </div>
+      </div>
+      <canvas id="editor-canvas" hidden></canvas>
+    </div>
+    <p class="editor-hint" id="editor-hint" hidden>Drag the corner handles to match the sheet edges — a loupe helps with precision.</p>
+  </section>
+
+  <aside class="preview-pane">
+    <h2>Scan preview</h2>
+    <div class="preview-wrap"><canvas id="preview-canvas"></canvas></div>
+    <p class="preview-hint">Live result for the selected page</p>
+  </aside>
+</main>
+
+<footer class="footer">
+  <span class="footer-privacy">All processing happens locally in your browser — your documents are never uploaded.</span>
+  <nav class="footer-links">
+    <a href="https://github.com/scanpdf-io/scanpdf" target="_blank" rel="noopener">Source code</a>
+    <a href="https://github.com/scanpdf-io/scanpdf/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+    <a href="https://github.com/scanpdf-io/scanpdf/issues" target="_blank" rel="noopener">Report an issue</a>
+  </nav>
+</footer>
+
+<div id="export-overlay" class="overlay" hidden>
+  <div class="overlay-card">
+    <p id="export-status">Exporting…</p>
+    <div class="progress"><div id="export-bar" class="progress-bar"></div></div>
+  </div>
+</div>
+
+<input type="file" id="file-input" accept="image/*" multiple hidden>
+<input type="file" id="camera-input" accept="image/*" capture="environment" hidden>
+
+<script src="vendor/pdf-lib.min.js" defer></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
