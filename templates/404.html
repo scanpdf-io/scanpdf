@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+{{{head}}}
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="{{base}}css/tokens.css">
+<link rel="stylesheet" href="{{base}}css/content.css">
+</head>
+<body class="doc">
+<header class="site-header">
+  <a class="brand" href="{{homeHref}}">
+    <span class="brand-logo" aria-hidden="true">&#9636;</span>
+    <span class="brand-name">ScanPDF</span>
+  </a>
+  <nav class="site-nav" aria-label="{{navSectionsLabel}}">{{{navLinks}}}</nav>
+  <a class="btn primary header-cta" href="{{homeHref}}">{{navOpenScanner}}</a>
+</header>
+
+<main id="content" class="doc-main">
+  <article class="prose">
+    <h1>{{heading}}</h1>
+    <p class="lead">{{body}}</p>
+    <p><a class="btn primary" href="{{homeHref}}">{{cta}}</a></p>
+  </article>
+</main>
+
+{{{footer}}}
+</body>
+</html>

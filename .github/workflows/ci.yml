@@ -14,6 +14,11 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+      - name: Verify the generated pages in site/ are up to date
+        run: |
+          ./tools/build-i18n.py
+          git diff --exit-code -- site \
+            || { echo "::error::site/ is stale - run 'make i18n' and commit the result"; exit 1; }
       - name: Build image and run smoke tests
         run: make test
       - name: Stop container

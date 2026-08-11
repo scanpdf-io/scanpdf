@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+{{{head}}}
+<link rel="stylesheet" href="{{base}}css/tokens.css">
+<link rel="stylesheet" href="{{base}}css/content.css">
+{{{jsonld}}}
+</head>
+<body class="doc">
+<a class="skip-link" href="#content">{{navSkipToContent}}</a>
+
+<header class="site-header">
+  <a class="brand" href="{{homeHref}}">
+    <span class="brand-logo" aria-hidden="true">&#9636;</span>
+    <span class="brand-name">ScanPDF</span>
+  </a>
+  <nav class="site-nav" aria-label="{{navSectionsLabel}}">{{{navLinks}}}</nav>
+  <a class="btn primary header-cta" href="{{homeHref}}">{{navOpenScanner}}</a>
+</header>
+
+<main id="content" class="doc-main">
+  <nav class="breadcrumb" aria-label="Breadcrumb">{{{breadcrumb}}}</nav>
+  <article class="prose">
+    <h1>{{h1}}</h1>
+    <p class="lead">{{{lead}}}</p>
+{{{sections}}}
+    <aside class="cta-card">
+      <p>{{ctaText}}</p>
+      <a class="btn primary" href="{{homeHref}}">{{navOpenScanner}}</a>
+    </aside>
+  </article>
+</main>
+
+{{{footer}}}
+</body>
+</html>

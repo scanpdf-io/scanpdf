@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ScanPDF - Kostenloser Dokumentenscanner online (Foto zu PDF, ohne Upload)</title>
+<meta name="description" content="Verwandelt Handyfotos von Papierdokumenten in saubere, gerade PDF-Dateien mit mehreren Seiten. Kantenerkennung, Perspektivkorrektur und Scan-Filter laufen vollständig im Browser: ohne Upload, ohne Konto, ohne Limit.">
+<link rel="canonical" href="https://scanpdf.io/de/">
+<link rel="alternate" hreflang="en" href="https://scanpdf.io/">
+<link rel="alternate" hreflang="es" href="https://scanpdf.io/es/">
+<link rel="alternate" hreflang="de" href="https://scanpdf.io/de/">
+<link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/">
+<link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/">
+<link rel="alternate" hreflang="x-default" href="https://scanpdf.io/">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#12151b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ScanPDF">
+<meta property="og:url" content="https://scanpdf.io/de/">
+<meta property="og:title" content="ScanPDF - Kostenloser Dokumentenscanner online">
+<meta property="og:description" content="Papierfotos werden im Browser zu sauberen, mehrseitigen PDFs. Nichts wird hochgeladen.">
+<meta property="og:image" content="https://scanpdf.io/og/social-preview.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="ScanPDF: das Foto eines Papierdokuments wird zu einer sauberen, geraden PDF-Seite">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ScanPDF - Kostenloser Dokumentenscanner online">
+<meta name="twitter:description" content="Papierfotos werden im Browser zu sauberen, mehrseitigen PDFs. Nichts wird hochgeladen.">
+<meta name="twitter:image" content="https://scanpdf.io/og/social-preview.png">
+<meta name="twitter:image:alt" content="ScanPDF: das Foto eines Papierdokuments wird zu einer sauberen, geraden PDF-Seite">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../icons/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="../icons/icon-180.png">
+<link rel="manifest" href="../de/manifest.webmanifest">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/app.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://scanpdf.io/#website",
+      "url": "https://scanpdf.io/",
+      "name": "ScanPDF",
+      "description": "Verwandelt Handyfotos von Papierdokumenten in saubere, gerade PDF-Dateien mit mehreren Seiten. Kantenerkennung, Perspektivkorrektur und Scan-Filter laufen vollständig im Browser: ohne Upload, ohne Konto, ohne Limit.",
+      "inLanguage": "de"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://scanpdf.io/#app",
+      "name": "ScanPDF",
+      "url": "https://scanpdf.io/de/",
+      "description": "Verwandelt Handyfotos von Papierdokumenten in saubere, gerade PDF-Dateien mit mehreren Seiten. Kantenerkennung, Perspektivkorrektur und Scan-Filter laufen vollständig im Browser: ohne Upload, ohne Konto, ohne Limit.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any (web browser)",
+      "browserRequirements": "Requires JavaScript and WebAssembly",
+      "inLanguage": "de",
+      "image": "https://scanpdf.io/og/social-preview.png",
+      "license": "https://opensource.org/licenses/MIT",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Automatische Erkennung der Dokumentkanten im Foto",
+        "Perspektiv- und Größenkorrektur auf A4, Letter oder das Originalblatt",
+        "Farb-, Graustufen- und Schwarzweißfilter im Scan-Look",
+        "Export als mehrseitiges PDF mit frei sortierbaren Seiten",
+        "Vollständig lokale Verarbeitung: ohne Upload und ohne Konto"
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-logo" aria-hidden="true">&#9636;</div>
+    <div class="brand-text">
+      <h1>ScanPDF</h1>
+      <p class="tagline">Lokaler Dokumentenscanner - nichts verlässt Ihren Rechner</p>
+    </div>
+  </div>
+  <div class="topbar-controls">
+    <span id="engine-status" class="engine-status" hidden></span>
+    <label class="field">
+      <span>Seitenformat</span>
+      <select id="page-format">
+        <option value="a4" selected>A4</option>
+        <option value="letter">Letter</option>
+        <option value="auto">Automatisch (an Blatt anpassen)</option>
+      </select>
+    </label>
+    <button id="save-btn" class="btn primary" disabled>PDF speichern</button>
+    <a class="github-link" href="https://github.com/scanpdf-io/scanpdf" target="_blank" rel="noopener" title="Quellcode auf GitHub ansehen">
+      <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span>GitHub</span>
+    </a>
+  </div>
+</header>
+
+<main class="layout">
+  <aside class="sidebar">
+    <div class="add-buttons">
+      <button id="add-btn" class="btn add-btn"><span class="btn-icon" aria-hidden="true">&#65291;</span><span class="btn-label">Fotos hinzufügen</span></button>
+      <button id="camera-btn" class="btn add-btn camera-btn">
+        <span class="btn-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
+        <span class="btn-label">Foto aufnehmen</span>
+      </button>
+    </div>
+    <div id="pages-list" class="pages-list"></div>
+  </aside>
+
+  <div id="view-toggle" class="view-toggle" hidden>
+    <button id="view-editor-btn" class="seg active" type="button">Editor</button>
+    <button id="view-preview-btn" class="seg" type="button">Vorschau</button>
+  </div>
+
+  <section class="editor-pane">
+    <div class="toolbar" id="page-toolbar" hidden>
+      <button id="rotate-ccw" class="btn icon" title="Um 90 Grad nach links drehen" aria-label="Um 90 Grad nach links drehen">&#10226;</button>
+      <button id="rotate-cw" class="btn icon" title="Um 90 Grad nach rechts drehen" aria-label="Um 90 Grad nach rechts drehen">&#10227;</button>
+      <span class="sep"></span>
+      <label class="field">
+        <span>Filter</span>
+        <select id="filter-select">
+          <option value="color">Farbe</option>
+          <option value="gray">Graustufen</option>
+          <option value="bw">Schwarzweiß</option>
+        </select>
+      </label>
+      <button id="filter-all" class="btn" title="Diesen Filter auf jede Seite anwenden">Auf alle anwenden</button>
+      <span class="sep"></span>
+      <button id="redetect-btn" class="btn" title="Automatische Eckenerkennung erneut ausführen">Neu erkennen</button>
+      <button id="reset-corners-btn" class="btn" title="Die Ecken auf den vollen Bildausschnitt zurücksetzen">Ecken zurücksetzen</button>
+    </div>
+    <div class="editor-wrap" id="editor-wrap">
+      <div id="dropzone" class="dropzone">
+        <div class="dropzone-inner">
+          <div class="dz-icon" aria-hidden="true">&#10515;</div>
+          <p class="dz-title">Fotos von Papierdokumenten hier ablegen</p>
+          <p class="dz-sub">oder auf „Fotos hinzufügen“ klicken. Die Blattkanten werden automatisch gefunden; ziehen Sie die Ecken zum Nachjustieren. Alles wird lokal in Ihrem Browser verarbeitet.</p>
+        </div>
+      </div>
+      <canvas id="editor-canvas" hidden></canvas>
+    </div>
+    <p class="editor-hint" id="editor-hint" hidden>Ziehen Sie die Eckpunkte auf die Blattkanten - eine Lupe hilft beim genauen Treffen.</p>
+  </section>
+
+  <aside class="preview-pane">
+    <h2>Scan-Vorschau</h2>
+    <div class="preview-wrap"><canvas id="preview-canvas"></canvas></div>
+    <p class="preview-hint">Live-Ergebnis der ausgewählten Seite</p>
+  </aside>
+</main>
+
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Bereiche"><a href="../de/" aria-current="page">Scanner</a><a href="../de/dokumente-scannen/">Anleitung</a><a href="../de/haeufige-fragen/">Häufige Fragen</a><a href="../de/scannen-ohne-hochladen/">Datenschutz</a></nav>
+  <nav class="footer-langs" aria-label="Sprache"><a href="../" hreflang="en" lang="en">English</a><a href="../es/" hreflang="es" lang="es">Español</a><a href="../de/" hreflang="de" lang="de" aria-current="true" class="current">Deutsch</a><a href="../pt/" hreflang="pt" lang="pt">Português</a><a href="../fr/" hreflang="fr" lang="fr">Français</a></nav>
+  <span class="footer-privacy">Die gesamte Verarbeitung findet lokal in Ihrem Browser statt - Ihre Dokumente werden nie hochgeladen.</span>
+  <nav class="footer-meta" aria-label="Projekt">
+    <a href="https://github.com/scanpdf-io/scanpdf" target="_blank" rel="noopener">Quellcode</a>
+    <a href="https://github.com/scanpdf-io/scanpdf/blob/main/LICENSE" target="_blank" rel="noopener">MIT-Lizenz</a>
+    <a href="https://github.com/scanpdf-io/scanpdf/issues" target="_blank" rel="noopener">Problem melden</a>
+  </nav>
+</footer>
+
+<div id="export-overlay" class="overlay" hidden>
+  <div class="overlay-card">
+    <p id="export-status">Wird exportiert...</p>
+    <div class="progress"><div id="export-bar" class="progress-bar"></div></div>
+  </div>
+</div>
+
+<input type="file" id="file-input" accept="image/*" multiple hidden>
+<input type="file" id="camera-input" accept="image/*" capture="environment" hidden>
+
+<!-- Strings needed by the JS modules. An inline <script> would be blocked by
+     the container's script-src 'self' CSP, so they travel as data attributes. -->
+<div id="i18n" hidden data-engine-loading="Scan-Engine wird geladen..." data-engine-ready="Engine bereit" data-engine-failed="Engine konnte nicht geladen werden" data-detecting="Ecken werden erkannt..." data-adjust-corners="Ecken anpassen" data-adjust-corners-title="Automatische Erkennung fehlgeschlagen - Ecken bitte von Hand ziehen" data-move-up="Nach oben" data-move-down="Nach unten" data-move-left="Nach links" data-move-right="Nach rechts" data-delete-page="Seite löschen" data-exporting-page="Seite {i} von {n} wird exportiert..." data-export-failed="Export fehlgeschlagen: {message}" data-pdf-title="Gescanntes Dokument"></div>
+
+<script src="../vendor/pdf-lib.min.js" defer></script>
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>

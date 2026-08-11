@@ -3,26 +3,95 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ScanPDF — Local Document Scanner</title>
-<meta name="description" content="Turn photos of paper documents into clean multi-page PDFs, entirely in your browser. Automatic corner detection, perspective correction, scan-style filters — nothing is uploaded.">
+<title>ScanPDF - Free Online Document Scanner (Photo to PDF, No Upload)</title>
+<meta name="description" content="Turn phone photos of paper documents into clean, straightened multi-page PDFs. Automatic edge detection, perspective correction and scan-style filters run entirely in your browser - no upload, no account, no limits.">
+<link rel="canonical" href="https://scanpdf.io/">
+<link rel="alternate" hreflang="en" href="https://scanpdf.io/">
+<link rel="alternate" hreflang="es" href="https://scanpdf.io/es/">
+<link rel="alternate" hreflang="de" href="https://scanpdf.io/de/">
+<link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/">
+<link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/">
+<link rel="alternate" hreflang="x-default" href="https://scanpdf.io/">
+<meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#12151b">
-<meta property="og:title" content="ScanPDF — Local Document Scanner">
-<meta property="og:description" content="Turn photos of paper documents into clean multi-page PDFs, entirely in your browser. Nothing is uploaded.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="ScanPDF">
+<meta property="og:url" content="https://scanpdf.io/">
+<meta property="og:title" content="ScanPDF - Free Online Document Scanner">
+<meta property="og:description" content="Photos of paper into clean multi-page PDFs, entirely in your browser. Nothing is uploaded.">
+<meta property="og:image" content="https://scanpdf.io/og/social-preview.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="ScanPDF: a photo of a paper document being straightened into a clean PDF page">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ScanPDF - Free Online Document Scanner">
+<meta name="twitter:description" content="Photos of paper into clean multi-page PDFs, entirely in your browser. Nothing is uploaded.">
+<meta name="twitter:image" content="https://scanpdf.io/og/social-preview.png">
+<meta name="twitter:image:alt" content="ScanPDF: a photo of a paper document being straightened into a clean PDF page">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/app.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://scanpdf.io/#website",
+      "url": "https://scanpdf.io/",
+      "name": "ScanPDF",
+      "description": "Turn phone photos of paper documents into clean, straightened multi-page PDFs. Automatic edge detection, perspective correction and scan-style filters run entirely in your browser - no upload, no account, no limits.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://scanpdf.io/#app",
+      "name": "ScanPDF",
+      "url": "https://scanpdf.io/",
+      "description": "Turn phone photos of paper documents into clean, straightened multi-page PDFs. Automatic edge detection, perspective correction and scan-style filters run entirely in your browser - no upload, no account, no limits.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any (web browser)",
+      "browserRequirements": "Requires JavaScript and WebAssembly",
+      "inLanguage": "en",
+      "image": "https://scanpdf.io/og/social-preview.png",
+      "license": "https://opensource.org/licenses/MIT",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Automatic detection of the document edges in a photo",
+        "Perspective and scale correction to A4, Letter or the original sheet",
+        "Color, grayscale and scan-style black & white filters",
+        "Multi-page PDF export with page reordering",
+        "Fully client-side processing: no upload and no account"
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header class="topbar">
   <div class="brand">
-    <div class="brand-logo">▤</div>
+    <div class="brand-logo" aria-hidden="true">&#9636;</div>
     <div class="brand-text">
       <h1>ScanPDF</h1>
-      <p class="tagline">Local document scanner — nothing leaves your computer</p>
+      <p class="tagline">Local document scanner - nothing leaves your computer</p>
     </div>
   </div>
   <div class="topbar-controls">
-    <span id="engine-status" class="engine-status">Loading scan engine…</span>
+    <span id="engine-status" class="engine-status" hidden></span>
     <label class="field">
       <span>Page size</span>
       <select id="page-format">
@@ -42,7 +111,7 @@
 <main class="layout">
   <aside class="sidebar">
     <div class="add-buttons">
-      <button id="add-btn" class="btn add-btn"><span class="btn-icon">＋</span><span class="btn-label">Add photos</span></button>
+      <button id="add-btn" class="btn add-btn"><span class="btn-icon" aria-hidden="true">&#65291;</span><span class="btn-label">Add photos</span></button>
       <button id="camera-btn" class="btn add-btn camera-btn">
         <span class="btn-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
         <span class="btn-label">Take photo</span>
@@ -58,8 +127,8 @@
 
   <section class="editor-pane">
     <div class="toolbar" id="page-toolbar" hidden>
-      <button id="rotate-ccw" class="btn icon" title="Rotate left 90°">⟲</button>
-      <button id="rotate-cw" class="btn icon" title="Rotate right 90°">⟳</button>
+      <button id="rotate-ccw" class="btn icon" title="Rotate left 90 degrees" aria-label="Rotate left 90 degrees">&#10226;</button>
+      <button id="rotate-cw" class="btn icon" title="Rotate right 90 degrees" aria-label="Rotate right 90 degrees">&#10227;</button>
       <span class="sep"></span>
       <label class="field">
         <span>Filter</span>
@@ -69,23 +138,22 @@
           <option value="bw">Black &amp; white</option>
         </select>
       </label>
-      <button id="filter-all" class="btn" title="Apply this filter to all pages">Apply to all</button>
+      <button id="filter-all" class="btn" title="Apply this filter to every page">Apply to all</button>
       <span class="sep"></span>
       <button id="redetect-btn" class="btn" title="Run automatic corner detection again">Re-detect</button>
-      <button id="reset-corners-btn" class="btn" title="Reset corners to the full frame">Reset corners</button>
+      <button id="reset-corners-btn" class="btn" title="Reset the corners to the full frame">Reset corners</button>
     </div>
     <div class="editor-wrap" id="editor-wrap">
       <div id="dropzone" class="dropzone">
         <div class="dropzone-inner">
-          <div class="dz-icon">⤓</div>
+          <div class="dz-icon" aria-hidden="true">&#10515;</div>
           <p class="dz-title">Drop photos of paper documents here</p>
-          <p class="dz-sub">or click “Add photos”. Corners are detected automatically;
-            drag them to adjust. Everything is processed locally in your browser.</p>
+          <p class="dz-sub">or click &quot;Add photos&quot;. The edges of the sheet are found automatically; drag the corners to adjust. Everything is processed locally in your browser.</p>
         </div>
       </div>
       <canvas id="editor-canvas" hidden></canvas>
     </div>
-    <p class="editor-hint" id="editor-hint" hidden>Drag the corner handles to match the sheet edges — a loupe helps with precision.</p>
+    <p class="editor-hint" id="editor-hint" hidden>Drag the corner handles to match the edges of the sheet - a loupe helps with precision.</p>
   </section>
 
   <aside class="preview-pane">
@@ -96,8 +164,10 @@
 </main>
 
 <footer class="footer">
-  <span class="footer-privacy">All processing happens locally in your browser — your documents are never uploaded.</span>
-  <nav class="footer-links">
+  <nav class="footer-nav" aria-label="Sections"><a href="./" aria-current="page">Scanner</a><a href="how-to-scan-documents/">How to scan</a><a href="faq/">FAQ</a><a href="scan-without-uploading/">Privacy</a></nav>
+  <nav class="footer-langs" aria-label="Language"><a href="./" hreflang="en" lang="en" aria-current="true" class="current">English</a><a href="es/" hreflang="es" lang="es">Español</a><a href="de/" hreflang="de" lang="de">Deutsch</a><a href="pt/" hreflang="pt" lang="pt">Português</a><a href="fr/" hreflang="fr" lang="fr">Français</a></nav>
+  <span class="footer-privacy">All processing happens locally in your browser - your documents are never uploaded.</span>
+  <nav class="footer-meta" aria-label="Project">
     <a href="https://github.com/scanpdf-io/scanpdf" target="_blank" rel="noopener">Source code</a>
     <a href="https://github.com/scanpdf-io/scanpdf/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
     <a href="https://github.com/scanpdf-io/scanpdf/issues" target="_blank" rel="noopener">Report an issue</a>
@@ -106,13 +176,17 @@
 
 <div id="export-overlay" class="overlay" hidden>
   <div class="overlay-card">
-    <p id="export-status">Exporting…</p>
+    <p id="export-status">Exporting...</p>
     <div class="progress"><div id="export-bar" class="progress-bar"></div></div>
   </div>
 </div>
 
 <input type="file" id="file-input" accept="image/*" multiple hidden>
 <input type="file" id="camera-input" accept="image/*" capture="environment" hidden>
+
+<!-- Strings needed by the JS modules. An inline <script> would be blocked by
+     the container's script-src 'self' CSP, so they travel as data attributes. -->
+<div id="i18n" hidden data-engine-loading="Loading scan engine..." data-engine-ready="Engine ready" data-engine-failed="Engine failed to load" data-detecting="Detecting corners..." data-adjust-corners="adjust corners" data-adjust-corners-title="Automatic detection failed - drag the corners manually" data-move-up="Move up" data-move-down="Move down" data-move-left="Move left" data-move-right="Move right" data-delete-page="Delete page" data-exporting-page="Exporting page {i} of {n}..." data-export-failed="Export failed: {message}" data-pdf-title="Scanned document"></div>
 
 <script src="vendor/pdf-lib.min.js" defer></script>
 <script type="module" src="js/main.js"></script>

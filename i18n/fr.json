@@ -1,0 +1,314 @@
+{
+  "lang": "fr",
+  "name": "Français",
+  "ogLocale": "fr_FR",
+  "slugs": {
+    "guide": "comment-numeriser-un-document",
+    "faq": "questions-frequentes",
+    "privacy": "numeriser-sans-envoi"
+  },
+  "app": {
+    "title": "ScanPDF - Scanner de documents en ligne et gratuit (photo vers PDF, sans envoi)",
+    "description": "Transformez les photos de vos documents papier en PDF multipages propres et redressés. Détection des bords, correction de perspective et filtres de numérisation s'exécutent entièrement dans votre navigateur : sans envoi, sans compte et sans limite.",
+    "ogTitle": "ScanPDF - Scanner de documents en ligne et gratuit",
+    "ogDescription": "Vos photos de papier deviennent des PDF multipages propres, dans votre navigateur. Rien n'est envoyé.",
+    "ogImageAlt": "ScanPDF : la photo d'un document papier redressée jusqu'à devenir une page PDF propre",
+    "tagline": "Scanner de documents local - rien ne quitte votre ordinateur",
+    "pageSizeLabel": "Format de page",
+    "pageSizeAuto": "Automatique (ajuster à la feuille)",
+    "savePdf": "Enregistrer le PDF",
+    "githubTitle": "Voir le code source sur GitHub",
+    "addPhotos": "Ajouter des photos",
+    "takePhoto": "Prendre une photo",
+    "viewEditor": "Éditeur",
+    "viewPreview": "Aperçu",
+    "rotateLeftTitle": "Pivoter de 90 degrés vers la gauche",
+    "rotateRightTitle": "Pivoter de 90 degrés vers la droite",
+    "filterLabel": "Filtre",
+    "filterColor": "Couleur",
+    "filterGray": "Niveaux de gris",
+    "filterBw": "Noir et blanc",
+    "applyToAll": "Appliquer à tout",
+    "applyToAllTitle": "Appliquer ce filtre à toutes les pages",
+    "redetect": "Détecter à nouveau",
+    "redetectTitle": "Relancer la détection automatique des coins",
+    "resetCorners": "Réinitialiser les coins",
+    "resetCornersTitle": "Ramener les coins au cadre complet",
+    "dropTitle": "Déposez ici les photos de vos documents papier",
+    "dropSub": "ou cliquez sur « Ajouter des photos ». Les bords de la feuille sont trouvés automatiquement ; faites glisser les coins pour ajuster. Tout est traité localement dans votre navigateur.",
+    "editorHint": "Faites glisser les poignées jusqu'aux bords de la feuille - une loupe vous aide à viser juste.",
+    "previewTitle": "Aperçu de la numérisation",
+    "previewHint": "Résultat en direct de la page sélectionnée",
+    "exporting": "Exportation..."
+  },
+  "ui": {
+    "engineLoading": "Chargement du moteur de numérisation...",
+    "engineReady": "Moteur prêt",
+    "engineFailed": "Le moteur n'a pas pu être chargé",
+    "detecting": "Détection des coins...",
+    "adjustCorners": "ajuster les coins",
+    "adjustCornersTitle": "La détection automatique a échoué - faites glisser les coins à la main",
+    "moveUp": "Monter",
+    "moveDown": "Descendre",
+    "moveLeft": "Déplacer à gauche",
+    "moveRight": "Déplacer à droite",
+    "deletePage": "Supprimer la page",
+    "exportingPage": "Exportation de la page {i} sur {n}...",
+    "exportFailed": "Échec de l'exportation : {message}",
+    "pdfTitle": "Document numérisé"
+  },
+  "nav": {
+    "home": "Scanner",
+    "guide": "Comment numériser",
+    "faq": "Questions fréquentes",
+    "privacy": "Confidentialité",
+    "sectionsLabel": "Sections",
+    "projectLabel": "Projet",
+    "languageLabel": "Langue",
+    "openScanner": "Ouvrir le scanner",
+    "skipToContent": "Aller au contenu",
+    "ctaText": "Quelque chose à numériser ? ScanPDF fonctionne dans le navigateur que vous avez déjà ouvert. Aucune installation, aucun compte, aucun envoi."
+  },
+  "featureList": [
+    "Détection automatique des bords du document sur la photo",
+    "Correction de perspective et mise à l'échelle en A4, Letter ou au format de la feuille",
+    "Filtres couleur, niveaux de gris et noir et blanc façon numérisation",
+    "Export en PDF multipage avec réorganisation des pages",
+    "Traitement entièrement local : sans envoi et sans compte"
+  ],
+  "footer": {
+    "privacy": "Tout le traitement se fait localement dans votre navigateur - vos documents ne sont jamais envoyés nulle part.",
+    "source": "Code source",
+    "license": "Licence MIT",
+    "issues": "Signaler un problème"
+  },
+  "manifest": {
+    "name": "ScanPDF - Scanner de documents",
+    "shortName": "ScanPDF",
+    "description": "Transforme les photos de documents papier en PDF multipages propres, dans votre navigateur."
+  },
+  "notFound": {
+    "title": "Page introuvable - ScanPDF",
+    "heading": "Page introuvable",
+    "body": "Cette adresse n'existe pas. Le scanner, lui, reste toujours à un clic.",
+    "cta": "Aller au scanner"
+  },
+  "pages": {
+    "guide": {
+      "title": "Comment numériser un document avec son téléphone, sans application | ScanPDF",
+      "description": "Guide pratique pour numériser du papier avec l'appareil photo d'un téléphone : éclairage et cadrage, correction des coins, choix du filtre et export d'un PDF multipage redressé, gratuitement.",
+      "ogImageAlt": "Un téléphone photographiant une feuille de papier, à côté du résultat PDF redressé",
+      "h1": "Comment numériser un document avec son téléphone",
+      "lead": "Vous n'avez besoin ni d'un scanner à plat ni d'installer quoi que ce soit. L'appareil photo d'un téléphone plus une correction de perspective suffisent à produire un PDF qui a l'air numérisé et non photographié. Cette page explique comment prendre la photo, puis quoi en faire dans [ScanPDF](~home).",
+      "sections": [
+        {
+          "h": "Pourquoi une photo n'est pas une numérisation",
+          "body": [
+            "La photo d'une page est prise de biais : la feuille sort en trapèze plutôt qu'en rectangle. Elle emporte aussi la couleur de la lumière dans laquelle vous vous teniez, l'ombre de votre propre main ou de votre tête, et tout ce qui traînait sur la table autour.",
+            "En faire une numérisation demande quatre corrections distinctes : trouver où se trouve réellement la feuille, la redresser en rectangle, la mettre à l'échelle d'un vrai format de papier et égaliser l'éclairage pour que le papier apparaisse blanc. ScanPDF effectue les quatre, et c'est pourquoi le résultat se rapproche davantage d'un scanner à plat que d'une photo recadrée."
+          ]
+        },
+        {
+          "h": "Prendre une photo facile à redresser",
+          "body": [
+            "La détection automatique cherche une forme à quatre côtés qui tranche avec ce qui l'entoure. Quelques habitudes suffisent pour que cela réussisse presque à tous les coups :",
+            {
+              "ul": [
+                "**Posez la feuille sur une surface contrastée.** Du papier blanc sur un bureau sombre, c'est le cas facile. Du papier blanc sur une table blanche, c'est le cas difficile : il n'y a aucun bord à trouver.",
+                "**Faites entrer les quatre coins dans le cadre,** avec une petite marge autour de la feuille. Un coin coupé par le bord de l'image ne peut être ni détecté ni rattrapé ensuite.",
+                "**Photographiez d'au-dessus plutôt que de côté.** N'importe quel angle est corrigeable, mais un angle très rasant étire l'extrémité éloignée de la page et lui fait perdre en netteté.",
+                "**Utilisez une lumière douce et indirecte.** Coupez le flash. Une fenêtre sur le côté vaut mieux qu'un plafonnier juste derrière vous, qui projette votre propre ombre sur la page.",
+                "**Aplatissez la page.** Une ondulation près de la reliure courbe le bord, et un bord courbe s'approche moins bien par une droite."
+              ]
+            },
+            "Rien de tout cela n'a besoin d'être parfait. Une détection ratée se corrige en cinq secondes, et le guide ci-dessous explique comment."
+          ]
+        },
+        {
+          "h": "Étape par étape",
+          "body": [
+            {
+              "ol": [
+                "**Ajoutez les photos.** Déposez-les sur la page, cliquez sur « Ajouter des photos », ou utilisez « Prendre une photo » sur téléphone pour photographier directement dans l'application. Vous pouvez ajouter toute une pile d'un coup : chaque photo devient une page.",
+                "**Vérifiez les coins détectés.** Chaque vignette montre le cadre trouvé. Les pages pour lesquelles la détection n'était pas sûre portent la mention « ajuster les coins » : vous n'avez donc à regarder que celles qui le demandent.",
+                "**Faites glisser les coins jusqu'aux bords de la feuille.** Une loupe suit la poignée pour vous permettre de viser précisément. « Détecter à nouveau » relance la passe automatique, et « Réinitialiser les coins » les replace sur le cadre complet si vous préférez repartir de zéro.",
+                "**Pivotez si nécessaire.** Les photos de téléphone portent leur orientation dans les métadonnées EXIF et sont remises à l'endroit automatiquement, mais les boutons à 90 degrés sont là pour les pages photographiées de travers.",
+                "**Choisissez un filtre,** puis utilisez « Appliquer à tout » si toute la série a été prise sous la même lumière.",
+                "**Ordonnez les pages.** La bande latérale monte et descend les pages et supprime celles qui n'ont rien donné. L'ordre de la bande est l'ordre du PDF.",
+                "**Choisissez un format de page et enregistrez.** A4, Letter ou automatique, puis « Enregistrer le PDF ». Le fichier est assemblé dans le navigateur et atterrit dans votre dossier de téléchargements."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Choisir le bon filtre",
+          "body": [
+            "Le filtre décide de l'aspect final de la page, et le bon choix dépend de ce qui figure sur le papier.",
+            {
+              "ul": [
+                "**Couleur** conserve tout tel que photographié. À utiliser dès que la couleur porte du sens : texte surligné, tampons, signatures à l'encre bleue, tickets de caisse, photographies imprimées sur la page.",
+                "**Niveaux de gris** supprime la dominante de couleur de l'éclairage de la pièce sans toucher au contraste. C'est le compromis sûr pour les pages mixtes et pour tout ce qui contient une photographie à garder douce.",
+                "**Noir et blanc** est celui qui donne vraiment l'air numérisé à un document. Ce n'est pas un seuillage brutal : l'image est divisée par une estimation du fond, ce qui aplanit les ombres et l'éclairage inégal, rend le papier réellement blanc et laisse le texte lissé au lieu de crénelé. Pour du texte imprimé ou manuscrit, c'est le résultat le plus propre et le fichier le plus léger. À éviter sur les photographies, qu'il écrase."
+              ]
+            },
+            "Essayer ne coûte rien : changez de filtre et regardez l'aperçu en direct, puisque le choix est mémorisé page par page et n'est appliqué qu'à l'export."
+          ]
+        },
+        {
+          "h": "Format de page et qualité de sortie",
+          "body": [
+            "**A4** et **Letter** forcent chaque page à ce format exact, ce que vous voulez pour tout ce qui sera imprimé ou classé avec d'autres documents. **Automatique** ajuste chaque page aux proportions de la feuille réellement photographiée : le bon choix pour les reçus, billets, cartes d'identité et autres formats inhabituels, qui sinon flotteraient au milieu d'une page A4.",
+            "La détection travaille sur une copie réduite, par rapidité, mais l'export redresse toujours l'original en pleine résolution, plafonné à 3500 px sur le grand côté et écrit à environ 220 ppp en A4. Largement de quoi lire, imprimer, et passer une reconnaissance de texte plus tard si besoin."
+          ]
+        },
+        {
+          "h": "Quand la détection ne trouve pas la page",
+          "body": [
+            "La détection automatique échoue lorsqu'il n'y a aucun bord à trouver, et la cause est presque toujours l'une des trois suivantes : la feuille est posée sur une surface de la même couleur, un coin sort du cadre, ou une ombre dure traverse la page et se lit comme un faux bord.",
+            "Les deux premiers cas demandent une nouvelle photo. Le troisième, généralement non : placez les quatre coins à la main et la correction de perspective fonctionne exactement comme elle l'aurait fait autrement. La détection est un confort, pas une condition."
+          ]
+        },
+        {
+          "h": "Rien n'est envoyé",
+          "body": [
+            "Toutes les étapes ci-dessus se déroulent sur votre propre machine. Les images sont décodées, analysées, redressées et empaquetées en PDF par du code qui s'exécute dans l'onglet de votre navigateur ; il n'existe aucun serveur où les envoyer. Cela compte pour des contrats, des comptes rendus médicaux, des relevés bancaires et des pièces d'identité, et la [page confidentialité](~privacy) l'explique plus en détail.",
+            "[Ouvrez le scanner](~home) et essayez avec ce qui traîne sur votre bureau."
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "title": "Questions fréquentes sur ScanPDF - Numériser des photos en PDF dans le navigateur",
+      "description": "Réponses sur ScanPDF : formats acceptés, limite de pages, prise en charge iPhone et Android, usage hors ligne, résolution de sortie, tarif et auto-hébergement.",
+      "ogImageAlt": "Questions fréquentes sur ScanPDF",
+      "h1": "Questions fréquentes",
+      "lead": "Tout ce que l'on demande d'ordinaire avant de confier ses papiers à un scanner de documents.",
+      "faq": [
+        {
+          "q": "ScanPDF est-il gratuit ?",
+          "a": [
+            "Oui, et sans condition. Pas de compte, pas d'inscription, pas de limite de pages, pas de filigrane, pas d'offre payante et pas de période d'essai. L'ensemble du projet est un logiciel libre sous licence MIT, et il n'y a aucun serveur à vous facturer."
+          ]
+        },
+        {
+          "q": "Mes documents sont-ils envoyés quelque part ?",
+          "a": [
+            "Non. Le traitement de l'image et l'assemblage du PDF ont lieu tous les deux dans votre navigateur, et l'application n'a aucun serveur auquel envoyer quoi que ce soit. Vos photos sont lues sur le disque par la page elle-même, gardées en mémoire, puis ressortent sous forme de PDF téléchargé. La [page confidentialité](~privacy) explique comment cela est garanti plutôt que simplement promis."
+          ]
+        },
+        {
+          "q": "Quels formats d'image puis-je utiliser ?",
+          "a": [
+            "Tout ce que votre navigateur sait décoder comme image : JPEG et HEIC issus d'un appareil photo de téléphone, PNG, WebP, AVIF, GIF, BMP. Les photos sorties telles quelles d'un iPhone ou d'un appareil Android fonctionnent sans conversion, et leur orientation EXIF est appliquée automatiquement."
+          ]
+        },
+        {
+          "q": "Y a-t-il une limite de pages ?",
+          "a": [
+            "Aucune limite fixe. Les pages sont exportées les unes après les autres plutôt que toutes en même temps : la consommation de mémoire reste stable et les documents longs ne posent pas de problème. Le plafond réel est la mémoire vive de votre appareil avec des photos sources très grandes, pas une règle de l'application."
+          ]
+        },
+        {
+          "q": "Cela fonctionne-t-il sur iPhone et Android ?",
+          "a": [
+            "Oui, dans n'importe quel navigateur mobile actuel. Sur téléphone, l'interface passe à un panneau unique avec bascule entre éditeur et aperçu, et le bouton « Prendre une photo » ouvre directement la caméra arrière : vous pouvez donc photographier et numériser un document sans l'enregistrer d'abord dans votre galerie."
+          ]
+        },
+        {
+          "q": "Cela fonctionne-t-il hors ligne ?",
+          "a": [
+            "Une fois la page et le moteur de numérisation chargés, tout le traitement est local : le réseau n'intervient pas dans la manipulation de vos documents. Pour une installation réellement isolée, faites tourner le conteneur décrit ci-dessous : il sert l'application entière, y compris la compilation d'OpenCV, depuis votre propre machine."
+          ]
+        },
+        {
+          "q": "Quelle est la qualité du résultat ?",
+          "a": [
+            "L'export redresse l'original en pleine résolution, et non la copie réduite utilisée pour la détection, avec un plafond de 3500 px sur le grand côté et une sortie à environ 220 ppp sur une page A4. De quoi imprimer ou lancer une reconnaissance de texte. Le filtre noir et blanc procède par division du fond plutôt que par seuillage brutal : les ombres s'aplanissent et le texte reste lissé au lieu de devenir crénelé."
+          ]
+        },
+        {
+          "q": "Puis-je réorganiser ou supprimer des pages ?",
+          "a": [
+            "Oui. La bande de pages les monte, les descend et les supprime, et cet ordre est celui du PDF exporté. La rotation, l'ajustement des coins et le filtre valent page par page : une mauvaise photo dans une série ne vous oblige donc jamais à refaire le reste."
+          ]
+        },
+        {
+          "q": "Pourquoi la détection automatique des coins a-t-elle échoué ?",
+          "a": [
+            "Presque toujours parce qu'il n'y avait aucun bord à trouver : du papier blanc sur une table blanche, un coin hors cadre, ou une ombre dure en travers de la page lue comme un faux bord. Placez les coins à la main et tout le reste fonctionne à l'identique : la détection est un confort, pas une condition. Le [guide de numérisation](~guide) explique comment l'éviter."
+          ]
+        },
+        {
+          "q": "Puis-je l'exécuter sur ma propre machine ?",
+          "a": [
+            "Oui. Une image de conteneur prête à l'emploi est publiée sur le GitHub Container Registry, et chaque version fournit également une archive zip de fichiers statiques pour n'importe quel serveur web. L'auto-hébergement ajoute en prime la Content-Security-Policy stricte qui fait bloquer les requêtes sortantes par le navigateur lui-même. Les instructions figurent dans le [README](https://github.com/scanpdf-io/scanpdf#running-it-yourself)."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Numériser des documents en PDF sans les envoyer nulle part | ScanPDF",
+      "description": "La plupart des scanners PDF en ligne envoient vos documents sur un serveur. Pas ScanPDF : détection, correction de perspective et assemblage du PDF se font dans votre navigateur, et une CSP stricte peut l'imposer.",
+      "ogImageAlt": "Un document numérisé localement, sans connexion à un quelconque serveur",
+      "h1": "Numériser des documents sans les envoyer",
+      "lead": "Passeports, contrats, bulletins de paie, courriers médicaux. Les documents qui méritent le plus d'être numérisés sont précisément ceux qui méritent le moins d'être confiés au serveur d'un inconnu. ScanPDF a été conçu pour que cette remise ne fasse pas partie du marché.",
+      "sections": [
+        {
+          "h": "Ce que fait un convertisseur en ligne classique",
+          "body": [
+            "Le site « photo vers PDF » habituel est un formulaire web devant un serveur. Votre fichier est envoyé, converti quelque part que vous ne voyez pas, puis restitué en téléchargement. Quelque part dans les conditions figure une promesse de le supprimer au bout d'une heure ou d'une journée.",
+            "Cette promesse est peut-être tenue. Mais c'est une promesse, pas un mécanisme, et elle ne couvre pas ce dont on ne vous a jamais parlé : par combien de machines le fichier est passé, ce qui a été journalisé, quel sous-traitant a conservé la sauvegarde, ou ce qu'exposera une future fuite. Pour une pièce d'identité ou un contrat signé, l'évaluation honnête du risque est la suivante : une fois l'envoi terminé, l'issue ne vous appartient plus."
+          ]
+        },
+        {
+          "h": "Ce que fait ScanPDF à la place",
+          "body": [
+            "Il n'y a pas d'étape d'envoi, parce qu'il n'y a nulle part où envoyer. ScanPDF est une page statique. Votre navigateur lit la photo sur le disque, et tout ce qui suit se passe dans l'onglet :",
+            {
+              "ul": [
+                "**La détection des bords** s'exécute sur une compilation WebAssembly d'OpenCV, sur votre propre processeur.",
+                "**La correction de perspective et les filtres** sont appliqués en mémoire à l'image en pleine résolution.",
+                "**Le PDF est assemblé localement** avec pdf-lib puis remis au navigateur comme un téléchargement ordinaire."
+              ]
+            },
+            "Aucune requête ne transporte les données de vos images, parce qu'une telle requête n'existe pas dans le code. L'ensemble fonctionne câble réseau débranché, une fois la page chargée."
+          ]
+        },
+        {
+          "h": "Vérifiable, et pas seulement affirmé",
+          "body": [
+            "Une promesse de confidentialité que l'on ne peut pas contrôler ne vaut pas grand-chose ; celle-ci est donc organisée pour être contrôlable de trois façons.",
+            {
+              "ul": [
+                "**Constatez-le vous-même.** Ouvrez les outils de développement de votre navigateur, passez à l'onglet réseau et numérisez un document. Une fois les fichiers de l'application chargés, plus rien n'est émis.",
+                "**Lisez le code.** L'application entière est sous licence MIT et vit sur [GitHub](https://github.com/scanpdf-io/scanpdf) : quelques centaines de lignes de modules JavaScript ordinaires, sans étape de compilation pour les masquer, et deux dépendances figées par URL et SHA-256.",
+                "**Laissez le navigateur l'imposer.** Le conteneur auto-hébergé embarque une `Content-Security-Policy` stricte qui limite les connexions à sa propre origine. Sous ce régime, une requête accidentelle vers un hôte externe est bloquée par le navigateur, et pas seulement absente du code."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "La démo hébergée face à l'auto-hébergement",
+          "body": [
+            "Cette différence mérite d'être énoncée précisément, car la plupart des sites ne le font pas.",
+            "La démo sur scanpdf.io est le même code, servi depuis GitHub Pages. Le traitement y est lui aussi entièrement côté client, et vos documents ne quittent toujours pas votre machine. Ce qui change, c'est qui contrôle les en-têtes de réponse : sur GitHub Pages, c'est GitHub, si bien que la CSP stricte de la configuration nginx du projet ne s'y applique pas. GitHub voit également la requête web ordinaire portant sur la page elle-même, comme le ferait n'importe quel hébergeur.",
+            "Si vous voulez que la garantie soit imposée par le navigateur plutôt que fondée sur le fait que le code est bien ce qu'il prétend être, faites-le tourner vous-même. Une seule commande démarre le conteneur, et il n'a besoin d'aucun accès réseau à l'exécution."
+          ]
+        },
+        {
+          "h": "Aucun compte, aucune télémétrie, aucun cookie",
+          "body": [
+            "Il n'y a rien à quoi s'inscrire, donc aucune adresse e-mail n'est conservée. Il n'y a pas de script d'analyse d'audience, pas de pixel de suivi, pas de service de remontée d'erreurs et pas de dispositif de test A/B. L'application ne pose aucun cookie et n'écrit rien dans le stockage local ; rechargez la page et il ne reste aucune trace de la session.",
+            "C'est moins une politique qu'une architecture. Une page statique sans serveur n'a nulle part où ranger les données dont elle aurait besoin pour en faire mauvais usage."
+          ]
+        },
+        {
+          "h": "Essayez",
+          "body": [
+            "[Ouvrez le scanner](~home) et déposez-y un document que vous n'auriez envoyé nulle part. C'est précisément l'intérêt. Si vous photographiez du papier pour la première fois, le [guide de numérisation](~guide) explique comment obtenir un résultat propre dès le premier essai."
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,205 @@
+/* Styles for the reading pages (guide, FAQ, privacy, 404). Unlike the
+   scanner itself these are ordinary scrolling documents, so nothing here
+   locks the viewport. Colour tokens come from tokens.css. */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body.doc {
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.65 var(--font);
+  -webkit-text-size-adjust: 100%;
+}
+
+::selection { background: var(--accent-soft); }
+
+/* ---------- Skip link ---------- */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--bg-raised);
+  color: var(--text);
+  border-radius: 0 0 var(--radius) 0;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------- Header ---------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 10px max(18px, env(safe-area-inset-left)) 10px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+}
+.brand-logo {
+  width: 32px; height: 32px;
+  display: grid; place-items: center;
+  font-size: 17px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 9px;
+}
+.brand-name { font-size: 17px; font-weight: 600; letter-spacing: 0.2px; }
+
+.site-nav {
+  display: flex;
+  gap: 18px;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+.site-nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.site-nav a:hover { color: var(--text); }
+.site-nav a[aria-current="page"] { color: var(--text); border-bottom-color: var(--accent); }
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-block;
+  padding: 9px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-raised);
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn:hover { border-color: var(--accent); }
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #08101c;
+  font-weight: 600;
+}
+.btn.primary:hover { filter: brightness(1.08); }
+.header-cta { flex: 0 0 auto; padding: 7px 14px; font-size: 14px; }
+
+/* ---------- Document ---------- */
+
+.doc-main {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 28px max(18px, env(safe-area-inset-left)) 56px;
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 22px;
+}
+.breadcrumb a { color: var(--text-dim); }
+
+.prose h1 {
+  font-size: clamp(28px, 5vw, 38px);
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  margin-bottom: 18px;
+}
+.prose .lead {
+  font-size: 18px;
+  color: var(--text-dim);
+  margin-bottom: 34px;
+}
+.prose h2 {
+  font-size: 23px;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  margin: 42px 0 14px;
+}
+.prose p { margin-bottom: 16px; }
+.prose ul, .prose ol { margin: 0 0 18px 1.35em; }
+.prose li { margin-bottom: 10px; }
+.prose li::marker { color: var(--text-dim); }
+.prose strong { color: #fff; font-weight: 600; }
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+.prose a:hover { text-decoration-thickness: 2px; }
+
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+}
+
+.faq-item { border-top: 1px solid var(--border); padding-top: 6px; }
+.faq-item h2 { font-size: 20px; margin-top: 26px; }
+
+.cta-card {
+  margin-top: 48px;
+  padding: 24px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.cta-card p { margin: 0; color: var(--text-dim); flex: 1 1 16rem; }
+
+/* ---------- Footer ---------- */
+
+body.doc .footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 18px;
+  padding: 18px max(18px, env(safe-area-inset-left)) calc(18px + env(safe-area-inset-bottom));
+  background: var(--bg-panel);
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+}
+body.doc .footer nav { display: flex; gap: 14px; flex-wrap: wrap; }
+body.doc .footer a { color: var(--text-dim); text-decoration: none; }
+body.doc .footer a:hover { color: var(--accent); }
+body.doc .footer-nav a[aria-current="page"],
+body.doc .footer-langs a.current { color: var(--text); }
+body.doc .footer-privacy { flex: 1 1 100%; order: 3; }
+body.doc .footer-meta { order: 4; }
+
+@media (max-width: 640px) {
+  .site-header { gap: 10px 14px; padding-top: calc(10px + env(safe-area-inset-top)); }
+  .site-nav { order: 3; flex-basis: 100%; gap: 14px; font-size: 13px; }
+  .header-cta { margin-left: auto; }
+  .doc-main { padding-top: 22px; }
+  .prose .lead { font-size: 17px; }
+}

@@ -1,0 +1,16 @@
+/* Design tokens shared by the scanner app (app.css) and the content pages
+   (content.css). Kept in one file so the two stay visually identical. */
+
+:root {
+  --bg: #12151b;
+  --bg-panel: #1a1f27;
+  --bg-raised: #232a35;
+  --border: #2e3745;
+  --text: #e8ecf1;
+  --text-dim: #93a0b0;
+  --accent: #4da3ff;
+  --accent-soft: rgba(77, 163, 255, 0.18);
+  --warn: #ffaa3c;
+  --radius: 10px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}

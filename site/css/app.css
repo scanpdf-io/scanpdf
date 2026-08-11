@@ -1,17 +1,6 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* Colour tokens live in tokens.css, which every page loads first. */
 
-:root {
-  --bg: #12151b;
-  --bg-panel: #1a1f27;
-  --bg-raised: #232a35;
-  --border: #2e3745;
-  --text: #e8ecf1;
-  --text-dim: #93a0b0;
-  --accent: #4da3ff;
-  --accent-soft: rgba(77, 163, 255, 0.18);
-  --warn: #ffaa3c;
-  --radius: 10px;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body { height: 100%; }
 
@@ -23,7 +12,7 @@ html, body { height: 100%; }
 body {
   background: var(--bg);
   color: var(--text);
-  font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font: 14px/1.45 var(--font);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -335,13 +324,17 @@ select {
   color: var(--text-dim);
 }
 
-.footer-links { display: flex; gap: 16px; }
-.footer-links a {
+.footer nav { display: flex; gap: 14px; flex-wrap: wrap; }
+.footer a {
   color: var(--text-dim);
   text-decoration: none;
   transition: color 0.15s;
 }
-.footer-links a:hover { color: var(--accent); }
+.footer a:hover { color: var(--accent); }
+.footer-nav a[aria-current="page"],
+.footer-langs a.current { color: var(--text); }
+.footer-langs { gap: 10px; }
+.footer-privacy { flex: 1 1 auto; }
 
 /* ---------- Export overlay ---------- */
 
@@ -410,7 +403,19 @@ select {
   .github-link { padding: 6px; }
   .github-link span { display: none; }
 
-  .footer { display: none; }
+  /* One compact line: the links to the content pages have to stay reachable
+     (and crawlable) on phones, but they may not eat editor height. */
+  .footer {
+    padding: 4px 10px calc(4px + env(safe-area-inset-bottom));
+    gap: 12px;
+    font-size: 11px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .footer::-webkit-scrollbar { display: none; }
+  .footer nav { flex-wrap: nowrap; white-space: nowrap; }
+  .footer-privacy, .footer-meta { display: none; }
 
   .layout { display: flex; flex-direction: column; }
 

@@ -1,0 +1,314 @@
+{
+  "lang": "en",
+  "name": "English",
+  "ogLocale": "en_US",
+  "slugs": {
+    "guide": "how-to-scan-documents",
+    "faq": "faq",
+    "privacy": "scan-without-uploading"
+  },
+  "app": {
+    "title": "ScanPDF - Free Online Document Scanner (Photo to PDF, No Upload)",
+    "description": "Turn phone photos of paper documents into clean, straightened multi-page PDFs. Automatic edge detection, perspective correction and scan-style filters run entirely in your browser - no upload, no account, no limits.",
+    "ogTitle": "ScanPDF - Free Online Document Scanner",
+    "ogDescription": "Photos of paper into clean multi-page PDFs, entirely in your browser. Nothing is uploaded.",
+    "ogImageAlt": "ScanPDF: a photo of a paper document being straightened into a clean PDF page",
+    "tagline": "Local document scanner - nothing leaves your computer",
+    "pageSizeLabel": "Page size",
+    "pageSizeAuto": "Auto (fit sheet)",
+    "savePdf": "Save PDF",
+    "githubTitle": "View source on GitHub",
+    "addPhotos": "Add photos",
+    "takePhoto": "Take photo",
+    "viewEditor": "Editor",
+    "viewPreview": "Preview",
+    "rotateLeftTitle": "Rotate left 90 degrees",
+    "rotateRightTitle": "Rotate right 90 degrees",
+    "filterLabel": "Filter",
+    "filterColor": "Color",
+    "filterGray": "Grayscale",
+    "filterBw": "Black & white",
+    "applyToAll": "Apply to all",
+    "applyToAllTitle": "Apply this filter to every page",
+    "redetect": "Re-detect",
+    "redetectTitle": "Run automatic corner detection again",
+    "resetCorners": "Reset corners",
+    "resetCornersTitle": "Reset the corners to the full frame",
+    "dropTitle": "Drop photos of paper documents here",
+    "dropSub": "or click \"Add photos\". The edges of the sheet are found automatically; drag the corners to adjust. Everything is processed locally in your browser.",
+    "editorHint": "Drag the corner handles to match the edges of the sheet - a loupe helps with precision.",
+    "previewTitle": "Scan preview",
+    "previewHint": "Live result for the selected page",
+    "exporting": "Exporting..."
+  },
+  "ui": {
+    "engineLoading": "Loading scan engine...",
+    "engineReady": "Engine ready",
+    "engineFailed": "Engine failed to load",
+    "detecting": "Detecting corners...",
+    "adjustCorners": "adjust corners",
+    "adjustCornersTitle": "Automatic detection failed - drag the corners manually",
+    "moveUp": "Move up",
+    "moveDown": "Move down",
+    "moveLeft": "Move left",
+    "moveRight": "Move right",
+    "deletePage": "Delete page",
+    "exportingPage": "Exporting page {i} of {n}...",
+    "exportFailed": "Export failed: {message}",
+    "pdfTitle": "Scanned document"
+  },
+  "nav": {
+    "home": "Scanner",
+    "guide": "How to scan",
+    "faq": "FAQ",
+    "privacy": "Privacy",
+    "sectionsLabel": "Sections",
+    "projectLabel": "Project",
+    "languageLabel": "Language",
+    "openScanner": "Open the scanner",
+    "skipToContent": "Skip to content",
+    "ctaText": "Ready to scan something? ScanPDF runs in the browser you already have open. No install, no account, nothing uploaded."
+  },
+  "featureList": [
+    "Automatic detection of the document edges in a photo",
+    "Perspective and scale correction to A4, Letter or the original sheet",
+    "Color, grayscale and scan-style black & white filters",
+    "Multi-page PDF export with page reordering",
+    "Fully client-side processing: no upload and no account"
+  ],
+  "footer": {
+    "privacy": "All processing happens locally in your browser - your documents are never uploaded.",
+    "source": "Source code",
+    "license": "MIT License",
+    "issues": "Report an issue"
+  },
+  "manifest": {
+    "name": "ScanPDF - Document Scanner",
+    "shortName": "ScanPDF",
+    "description": "Turn photos of paper documents into clean multi-page PDFs, entirely in your browser."
+  },
+  "notFound": {
+    "title": "Page not found - ScanPDF",
+    "heading": "Page not found",
+    "body": "That address does not exist. The scanner itself is always one click away.",
+    "cta": "Go to the scanner"
+  },
+  "pages": {
+    "guide": {
+      "title": "How to Scan a Document With Your Phone - No App Needed | ScanPDF",
+      "description": "A practical guide to scanning paper with a phone camera: how to light and frame the page, fix the corners, pick the right filter, and export a straightened multi-page PDF for free.",
+      "ogImageAlt": "A phone photographing a sheet of paper, next to the straightened PDF result",
+      "h1": "How to scan a document with your phone",
+      "lead": "You do not need a flatbed scanner, and you do not need to install anything. A phone camera plus perspective correction gets you a PDF that looks scanned rather than photographed. This page explains how to take the photo, and what to do with it in [ScanPDF](~home).",
+      "sections": [
+        {
+          "h": "Why a photo is not a scan",
+          "body": [
+            "A photograph of a page is taken at an angle, so the sheet comes out as a trapezoid rather than a rectangle. It carries the colour of whatever light you were standing in, the shadow of your own hand or head, and whatever happened to be on the table around it.",
+            "Turning that into a scan means four separate corrections: find where the sheet actually is, warp it back to a rectangle, scale it to a real paper size, and even out the lighting so the paper reads as white. ScanPDF does all four, which is why the output is closer to a flatbed scan than to a cropped photo."
+          ]
+        },
+        {
+          "h": "Taking a photo that is easy to straighten",
+          "body": [
+            "Automatic edge detection works by looking for a four-sided shape that contrasts with its surroundings. A few habits make that almost always succeed:",
+            {
+              "ul": [
+                "**Put the page on a contrasting surface.** White paper on a dark desk is the easy case. White paper on a white table is the hard one, because there is no edge to find.",
+                "**Get all four corners in the frame,** with a small margin around the sheet. A corner cut off by the frame edge cannot be detected, and cannot be dragged back later.",
+                "**Shoot from above rather than from the side.** Any angle is correctable, but a steep one stretches the far end of the page and costs you sharpness there.",
+                "**Use even, indirect light.** Turn the flash off. A window to the side beats an overhead lamp directly behind you, which puts your own shadow on the page.",
+                "**Flatten the page.** A curl near the spine bends the edge, and a bent edge is harder to fit a straight line to."
+              ]
+            },
+            "None of this has to be perfect. Detection that misses is a five-second fix, and the guide below covers it."
+          ]
+        },
+        {
+          "h": "Step by step",
+          "body": [
+            {
+              "ol": [
+                "**Add the photos.** Drop them onto the page, click \"Add photos\", or use \"Take photo\" on a phone to shoot straight into the app. You can add a whole stack at once - each becomes one page.",
+                "**Check the detected corners.** Each thumbnail shows the frame that was found. Any page where detection was not confident is flagged with an \"adjust corners\" badge, so you only need to look at the ones that need you.",
+                "**Drag the corners to the edges of the sheet.** A magnifying loupe follows the handle so you can land precisely on the corner. \"Re-detect\" runs the automatic pass again, and \"Reset corners\" puts them back at the full frame if you want to start over.",
+                "**Rotate if needed.** Phone photos carry their orientation in EXIF metadata and are turned the right way up automatically, but the 90-degree buttons are there for pages photographed sideways.",
+                "**Pick a filter,** then use \"Apply to all\" if the whole batch was shot in the same light.",
+                "**Order the pages.** The strip on the left moves pages up and down and deletes the ones that did not work out. The order in the strip is the order in the PDF.",
+                "**Choose a page size and save.** A4, Letter, or Auto, then \"Save PDF\". The file is assembled in the browser and lands in your downloads folder."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Choosing the right filter",
+          "body": [
+            "The filter decides what the finished page looks like, and the right choice depends on what is on the paper.",
+            {
+              "ul": [
+                "**Color** keeps everything as photographed. Use it for anything where colour carries meaning: highlighted text, stamps, signatures in blue ink, receipts, photographs on the page.",
+                "**Grayscale** drops the colour cast from the room light without touching contrast. It is the safe middle option for mixed pages, and for anything containing a photograph you want to keep smooth.",
+                "**Black & white** is the one that makes a document look properly scanned. It is not a hard threshold - it divides the image by an estimate of the background, which flattens shadows and uneven lighting, turns the paper genuinely white, and leaves the text anti-aliased instead of jagged. For plain printed or handwritten text it produces the cleanest, smallest file. Avoid it for photographs, which it will crush."
+              ]
+            },
+            "It costs nothing to try: switch filters and watch the live preview, since the choice is stored per page and only applied at export."
+          ]
+        },
+        {
+          "h": "Page size and output quality",
+          "body": [
+            "**A4** and **Letter** force every page to that exact size, which is what you want for anything that will be printed or filed alongside other documents. **Auto** sizes each page to the aspect ratio of the sheet you actually photographed - the right choice for receipts, tickets, ID cards and other odd shapes that would otherwise sit stranded in the middle of an A4 page.",
+            "Detection runs on a downscaled copy for speed, but the export always warps the full-resolution original, capped at 3500 px on the long side and written at roughly 220 DPI on A4. That is comfortably enough for reading, printing, and for OCR later if you want it."
+          ]
+        },
+        {
+          "h": "When detection cannot find the page",
+          "body": [
+            "Automatic detection fails when there is no edge to find, and the cause is almost always one of three things: the sheet is on a surface of the same colour, a corner is outside the frame, or a hard shadow is cutting across the page and reading as a false edge.",
+            "The first two need a new photo. The third usually does not - drag the four corners in manually and the perspective correction works exactly as it would have otherwise. Detection is a convenience, not a requirement."
+          ]
+        },
+        {
+          "h": "Nothing is uploaded",
+          "body": [
+            "Every step above happens on your own machine. The images are decoded, analysed, warped and packed into a PDF by code running in your browser tab; there is no server to send them to. That matters for contracts, medical records, bank statements and ID documents, and it is explained in more detail on the [privacy page](~privacy).",
+            "[Open the scanner](~home) and try it with whatever is on your desk."
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "title": "ScanPDF FAQ - Scanning Photos to PDF in the Browser",
+      "description": "Answers about ScanPDF: supported formats, page limits, iPhone and Android support, offline use, output resolution, cost, and how to run it yourself.",
+      "ogImageAlt": "ScanPDF frequently asked questions",
+      "h1": "Frequently asked questions",
+      "lead": "Everything people usually ask before trusting a document scanner with their paperwork.",
+      "faq": [
+        {
+          "q": "Is ScanPDF free?",
+          "a": [
+            "Yes, and unconditionally so. There is no account, no sign-up, no page limit, no watermark, no paid tier and no trial. The whole thing is MIT-licensed open source, and there is no server to charge you for."
+          ]
+        },
+        {
+          "q": "Are my documents uploaded anywhere?",
+          "a": [
+            "No. Image processing and PDF assembly both run in your browser, and the app has no backend to send anything to. Your photos are read from disk by the page, held in memory, and written back out as a PDF download. See the [privacy page](~privacy) for how that is enforced rather than merely promised."
+          ]
+        },
+        {
+          "q": "Which image formats can I use?",
+          "a": [
+            "Anything your browser can decode as an image: JPEG and HEIC from a phone camera, PNG, WebP, AVIF, GIF, BMP. Photos straight off an iPhone or Android device work without conversion, and their EXIF orientation is handled automatically."
+          ]
+        },
+        {
+          "q": "Is there a page limit?",
+          "a": [
+            "No fixed one. Pages are exported sequentially rather than all at once, so memory use stays flat and long documents are fine. The practical ceiling is your device's RAM with very large source photos, not a rule in the app."
+          ]
+        },
+        {
+          "q": "Does it work on iPhone and Android?",
+          "a": [
+            "Yes, in any current mobile browser. On a phone the layout switches to a single panel with an editor and preview toggle, and a \"Take photo\" button opens the rear camera directly, so you can photograph and scan a document without saving it to your camera roll first."
+          ]
+        },
+        {
+          "q": "Does it work offline?",
+          "a": [
+            "Once the page and the scan engine have loaded, all processing is local, so the network is not involved in handling your documents. If you want a genuinely airgapped setup, run the container described below - it serves the whole app, including the OpenCV build, from your own machine."
+          ]
+        },
+        {
+          "q": "How good is the output?",
+          "a": [
+            "Export warps the full-resolution original, not the downscaled copy used for detection, capped at 3500 px on the long side and written at roughly 220 DPI on an A4 page. That is enough to print or to run OCR over. The black and white filter uses background division rather than a hard threshold, so shadows flatten out and text stays anti-aliased instead of turning jagged."
+          ]
+        },
+        {
+          "q": "Can I reorder or delete pages?",
+          "a": [
+            "Yes. The page strip moves pages up and down and deletes them, and the order there is the order in the exported PDF. Rotation, corner adjustments and the filter are all per-page, so one bad photo in a batch never forces you to redo the rest."
+          ]
+        },
+        {
+          "q": "Why did automatic corner detection miss?",
+          "a": [
+            "Almost always because there was no edge to find: white paper on a white table, a corner outside the frame, or a hard shadow across the page reading as a false edge. Drag the corners in manually and everything downstream works identically - detection is a convenience, not a requirement. The [scanning guide](~guide) covers how to avoid it."
+          ]
+        },
+        {
+          "q": "Can I run it on my own machine?",
+          "a": [
+            "Yes. A prebuilt container image is published to GitHub Container Registry, and each release also ships a plain zip of static files for any web server. Self-hosting additionally gives you the strict Content-Security-Policy that makes the browser itself block outbound requests. Instructions are in the [README](https://github.com/scanpdf-io/scanpdf#running-it-yourself)."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Scan Documents to PDF Without Uploading Them Anywhere | ScanPDF",
+      "description": "Most online PDF scanners upload your documents to a server. ScanPDF does not: detection, perspective correction and PDF assembly all run in your browser, and a strict CSP can enforce it.",
+      "ogImageAlt": "A document being scanned locally, with no connection to any server",
+      "h1": "Scan documents without uploading them",
+      "lead": "Passports, contracts, payslips, medical letters. The documents most worth scanning are the ones least worth handing to a stranger's server. ScanPDF was built so that handing them over is not part of the deal.",
+      "sections": [
+        {
+          "h": "What a typical online converter does",
+          "body": [
+            "The usual \"photo to PDF\" site is a web form in front of a server. Your file is uploaded, converted somewhere you cannot see, and offered back as a download. Somewhere in the terms there is a promise to delete it after an hour or a day.",
+            "That promise may well be kept. But it is a promise, not a mechanism, and it does not cover the parts you were never told about: how many machines the file passed through, what was logged, which subprocessor stored the backup, or what a future breach exposes. For an ID document or a signed contract, the honest risk assessment is that once the upload completes, the outcome is no longer yours to control."
+          ]
+        },
+        {
+          "h": "What ScanPDF does instead",
+          "body": [
+            "There is no upload step, because there is nothing to upload to. ScanPDF is a static page. Your browser reads the photo from disk, and everything after that happens in the tab:",
+            {
+              "ul": [
+                "**Edge detection** runs on a WebAssembly build of OpenCV, executing on your CPU.",
+                "**Perspective correction and filtering** are applied to the full-resolution image in memory.",
+                "**The PDF is assembled locally** with pdf-lib and handed to the browser as a normal download."
+              ]
+            },
+            "No request carries your image data, because no such request exists in the code. The whole thing works with the network cable pulled out once the page has loaded."
+          ]
+        },
+        {
+          "h": "Verifiable, not just stated",
+          "body": [
+            "A privacy claim you cannot check is worth very little, so this one is arranged to be checkable three ways.",
+            {
+              "ul": [
+                "**Watch it yourself.** Open your browser's developer tools, switch to the Network tab, and scan a document. After the app's own files have loaded, nothing further is sent.",
+                "**Read the source.** The whole app is MIT-licensed and lives on [GitHub](https://github.com/scanpdf-io/scanpdf) - a few hundred lines of plain JavaScript modules with no build step to obscure them, and two dependencies pinned by URL and SHA-256.",
+                "**Let the browser enforce it.** The self-hosted container ships a strict `Content-Security-Policy` limiting connections to its own origin. Under it, an accidental request to any external host is blocked by the browser rather than merely absent from the code."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "The hosted demo versus self-hosting",
+          "body": [
+            "It is worth being precise about the difference, because most sites are not.",
+            "The demo at scanpdf.io is the same code, served from GitHub Pages. Processing is fully client-side there too, and your documents still never leave the machine. What differs is who controls the response headers: on GitHub Pages that is GitHub, so the strict CSP from the project's own nginx config is not applied. GitHub also sees the ordinary web-server request for the page itself, as any host would.",
+            "If you want the guarantee enforced by the browser rather than resting on the code being what it says it is, run it yourself. One command starts the container, and it needs no network access at run time at all."
+          ]
+        },
+        {
+          "h": "No account, no telemetry, no cookies",
+          "body": [
+            "There is nothing to sign up for, so there is no email address on file. There is no analytics script, no tracking pixel, no error reporting service and no A/B testing framework. The app sets no cookies and writes nothing to local storage; reload the page and every trace of the session is gone.",
+            "This is less a policy than an architecture. A static page with no backend has nowhere to put the data it would need to misuse."
+          ]
+        },
+        {
+          "h": "Try it",
+          "body": [
+            "[Open the scanner](~home) and drop in a document you would not have uploaded anywhere. That is rather the point. If you are new to photographing paper, the [scanning guide](~guide) covers getting a clean result on the first try."
+          ]
+        }
+      ]
+    }
+  }
+}

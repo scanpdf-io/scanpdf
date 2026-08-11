@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://scanpdf.io/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/de/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/pt/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/how-to-scan-documents/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/como-escanear-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/es/como-escanear-documentos/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/como-escanear-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/de/dokumente-scannen/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/como-escanear-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/pt/como-digitalizar-documentos/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/como-escanear-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/fr/comment-numeriser-un-document/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/como-escanear-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/faq/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/preguntas-frecuentes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/es/preguntas-frecuentes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/preguntas-frecuentes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/de/haeufige-fragen/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/preguntas-frecuentes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/pt/perguntas-frequentes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/preguntas-frecuentes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/fr/questions-frequentes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/preguntas-frecuentes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/scan-without-uploading/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/scan-without-uploading/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/escanear-sin-subir-archivos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/es/escanear-sin-subir-archivos/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/scan-without-uploading/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/escanear-sin-subir-archivos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/de/scannen-ohne-hochladen/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/scan-without-uploading/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/escanear-sin-subir-archivos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/pt/digitalizar-sem-enviar/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/scan-without-uploading/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/escanear-sin-subir-archivos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/fr/numeriser-sans-envoi/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/scan-without-uploading/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/escanear-sin-subir-archivos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
+    <priority>0.8</priority>
+  </url>
+</urlset>

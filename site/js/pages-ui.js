@@ -1,6 +1,7 @@
 // Thumbnail strip: select, reorder (▲/▼), delete, detection status badges.
 
 import { state, subscribe, emit } from './state.js';
+import { t } from './i18n.js';
 
 const THUMB_W = 164;
 
@@ -61,13 +62,13 @@ function buildItem(page, i) {
   if (page.detecting) {
     const spin = document.createElement('span');
     spin.className = 'spinner';
-    spin.title = 'Detecting corners…';
+    spin.title = t('detecting');
     meta.appendChild(spin);
   } else if (!page.detectOk) {
     const badge = document.createElement('span');
     badge.className = 'badge';
-    badge.textContent = 'adjust corners';
-    badge.title = 'Automatic detection failed — drag the corners manually';
+    badge.textContent = t('adjustCorners');
+    badge.title = t('adjustCornersTitle');
     meta.appendChild(badge);
   }
   const name = document.createElement('span');
@@ -79,9 +80,9 @@ function buildItem(page, i) {
   const actions = document.createElement('div');
   actions.className = 'page-actions';
   const horiz = mqMobile.matches;
-  actions.appendChild(actionBtn(horiz ? '◀' : '▲', horiz ? 'Move left' : 'Move up', i === 0, () => move(i, -1)));
-  actions.appendChild(actionBtn(horiz ? '▶' : '▼', horiz ? 'Move right' : 'Move down', i === state.pages.length - 1, () => move(i, 1)));
-  const del = actionBtn('✕', 'Delete page', false, () => remove(i));
+  actions.appendChild(actionBtn(horiz ? '◀' : '▲', t(horiz ? 'moveLeft' : 'moveUp'), i === 0, () => move(i, -1)));
+  actions.appendChild(actionBtn(horiz ? '▶' : '▼', t(horiz ? 'moveRight' : 'moveDown'), i === state.pages.length - 1, () => move(i, 1)));
+  const del = actionBtn('✕', t('deletePage'), false, () => remove(i));
   del.classList.add('del');
   actions.appendChild(del);
   item.appendChild(actions);

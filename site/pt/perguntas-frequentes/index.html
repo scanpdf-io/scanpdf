@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Perguntas frequentes do ScanPDF - Digitalizar fotos em PDF no navegador</title>
+<meta name="description" content="Respostas sobre o ScanPDF: formatos aceitos, limite de páginas, suporte a iPhone e Android, uso offline, resolução de saída, preço e como hospedar você mesmo.">
+<link rel="canonical" href="https://scanpdf.io/pt/perguntas-frequentes/">
+<link rel="alternate" hreflang="en" href="https://scanpdf.io/faq/">
+<link rel="alternate" hreflang="es" href="https://scanpdf.io/es/preguntas-frecuentes/">
+<link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/">
+<link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/">
+<link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/">
+<link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#12151b">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ScanPDF">
+<meta property="og:url" content="https://scanpdf.io/pt/perguntas-frequentes/">
+<meta property="og:title" content="Perguntas frequentes">
+<meta property="og:description" content="Respostas sobre o ScanPDF: formatos aceitos, limite de páginas, suporte a iPhone e Android, uso offline, resolução de saída, preço e como hospedar você mesmo.">
+<meta property="og:image" content="https://scanpdf.io/og/social-preview.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="Perguntas frequentes do ScanPDF">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Perguntas frequentes">
+<meta name="twitter:description" content="Respostas sobre o ScanPDF: formatos aceitos, limite de páginas, suporte a iPhone e Android, uso offline, resolução de saída, preço e como hospedar você mesmo.">
+<meta name="twitter:image" content="https://scanpdf.io/og/social-preview.png">
+<meta name="twitter:image:alt" content="Perguntas frequentes do ScanPDF">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../icons/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="../../icons/icon-180.png">
+<link rel="manifest" href="../../pt/manifest.webmanifest">
+<link rel="stylesheet" href="../../css/tokens.css">
+<link rel="stylesheet" href="../../css/content.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "name": "Perguntas frequentes",
+      "description": "Respostas sobre o ScanPDF: formatos aceitos, limite de páginas, suporte a iPhone e Android, uso offline, resolução de saída, preço e como hospedar você mesmo.",
+      "inLanguage": "pt",
+      "url": "https://scanpdf.io/pt/perguntas-frequentes/",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O ScanPDF é gratuito?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, e sem condições. Não há conta, cadastro, limite de páginas, marca d'água, plano pago nem período de teste. O projeto inteiro é código aberto sob licença MIT, e não existe servidor algum para cobrar de você."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Meus documentos são enviados para algum lugar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. O processamento de imagem e a montagem do PDF acontecem os dois no seu navegador, e o aplicativo não tem backend para onde mandar nada. Suas fotos são lidas do disco pela própria página, ficam na memória e voltam como um download em PDF. A página de privacidade mostra como isso é garantido, e não apenas prometido."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais formatos de imagem posso usar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Qualquer um que o seu navegador consiga decodificar: JPEG e HEIC da câmera do celular, PNG, WebP, AVIF, GIF e BMP. Fotos direto de um iPhone ou de um Android funcionam sem conversão, e a orientação EXIF delas é aplicada automaticamente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Existe limite de páginas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nenhum fixo. As páginas são exportadas uma de cada vez, e não todas de uma só vez, então o uso de memória se mantém estável e documentos longos não são problema. O teto real é a RAM do seu aparelho com fotos de origem muito grandes, não uma regra do aplicativo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funciona em iPhone e Android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, em qualquer navegador móvel atual. No celular a interface passa a um painel único com alternância entre editor e prévia, e o botão “Tirar foto” abre direto a câmera traseira, então dá para fotografar e digitalizar um documento sem salvá-lo antes na galeria."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funciona offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depois que a página e o motor de digitalização carregam, todo o processamento é local, ou seja, a rede não participa do tratamento dos seus documentos. Se você quer um arranjo realmente isolado, rode o contêiner descrito mais abaixo: ele serve o aplicativo inteiro, incluindo a compilação do OpenCV, a partir da sua própria máquina."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual é a qualidade do resultado?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A exportação deforma o original em resolução completa, não a cópia reduzida usada na detecção, com limite de 3500 px no lado maior e saída de cerca de 220 DPI em uma página A4. É suficiente para imprimir ou para rodar um OCR. O filtro de preto e branco usa divisão pelo fundo em vez de um limiar duro, então as sombras se achatam e o texto continua suavizado em vez de serrilhado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso reordenar ou excluir páginas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pode. A faixa de páginas move as páginas para cima e para baixo e as exclui, e essa ordem é a do PDF exportado. Rotação, ajuste de cantos e filtro são independentes em cada página, então uma foto ruim no meio de um lote nunca obriga a refazer o resto."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Por que a detecção automática de cantos errou?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quase sempre porque não havia borda alguma para encontrar: papel branco sobre mesa branca, um canto fora do enquadramento, ou uma sombra dura atravessando a página e sendo lida como borda falsa. Arraste os cantos manualmente e todo o resto funciona igual - detectar é uma conveniência, não um requisito. O guia de digitalização explica como evitar isso."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso rodar na minha própria máquina?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pode. Há uma imagem de contêiner publicada no GitHub Container Registry, e cada versão também traz um zip de arquivos estáticos para qualquer servidor web. Hospedar você mesmo acrescenta ainda a Content-Security-Policy estrita, que faz o próprio navegador bloquear requisições de saída. As instruções estão no README."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Scanner",
+          "item": "https://scanpdf.io/pt/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Perguntas frequentes",
+          "item": "https://scanpdf.io/pt/perguntas-frequentes/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="doc">
+<a class="skip-link" href="#content">Ir para o conteúdo</a>
+
+<header class="site-header">
+  <a class="brand" href="../../pt/">
+    <span class="brand-logo" aria-hidden="true">&#9636;</span>
+    <span class="brand-name">ScanPDF</span>
+  </a>
+  <nav class="site-nav" aria-label="Seções"><a href="../../pt/">Scanner</a><a href="../../pt/como-digitalizar-documentos/">Como digitalizar</a><a href="../../pt/perguntas-frequentes/" aria-current="page">Perguntas frequentes</a><a href="../../pt/digitalizar-sem-enviar/">Privacidade</a></nav>
+  <a class="btn primary header-cta" href="../../pt/">Abrir o scanner</a>
+</header>
+
+<main id="content" class="doc-main">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../pt/">Scanner</a><span aria-hidden="true">/</span><span>Perguntas frequentes</span></nav>
+  <article class="prose">
+    <h1>Perguntas frequentes</h1>
+    <p class="lead">Tudo o que costumam perguntar antes de confiar a papelada a um scanner de documentos.</p>
+    <section class="faq-item" id="o-scanpdf-e-gratuito">
+      <h2>O ScanPDF é gratuito?</h2>
+      <p>Sim, e sem condições. Não há conta, cadastro, limite de páginas, marca d&#x27;água, plano pago nem período de teste. O projeto inteiro é código aberto sob licença MIT, e não existe servidor algum para cobrar de você.</p>
+    </section>
+    <section class="faq-item" id="meus-documentos-sao-enviados-para-algum-lugar">
+      <h2>Meus documentos são enviados para algum lugar?</h2>
+      <p>Não. O processamento de imagem e a montagem do PDF acontecem os dois no seu navegador, e o aplicativo não tem backend para onde mandar nada. Suas fotos são lidas do disco pela própria página, ficam na memória e voltam como um download em PDF. A <a href="../../pt/digitalizar-sem-enviar/">página de privacidade</a> mostra como isso é garantido, e não apenas prometido.</p>
+    </section>
+    <section class="faq-item" id="quais-formatos-de-imagem-posso-usar">
+      <h2>Quais formatos de imagem posso usar?</h2>
+      <p>Qualquer um que o seu navegador consiga decodificar: JPEG e HEIC da câmera do celular, PNG, WebP, AVIF, GIF e BMP. Fotos direto de um iPhone ou de um Android funcionam sem conversão, e a orientação EXIF delas é aplicada automaticamente.</p>
+    </section>
+    <section class="faq-item" id="existe-limite-de-paginas">
+      <h2>Existe limite de páginas?</h2>
+      <p>Nenhum fixo. As páginas são exportadas uma de cada vez, e não todas de uma só vez, então o uso de memória se mantém estável e documentos longos não são problema. O teto real é a RAM do seu aparelho com fotos de origem muito grandes, não uma regra do aplicativo.</p>
+    </section>
+    <section class="faq-item" id="funciona-em-iphone-e-android">
+      <h2>Funciona em iPhone e Android?</h2>
+      <p>Sim, em qualquer navegador móvel atual. No celular a interface passa a um painel único com alternância entre editor e prévia, e o botão “Tirar foto” abre direto a câmera traseira, então dá para fotografar e digitalizar um documento sem salvá-lo antes na galeria.</p>
+    </section>
+    <section class="faq-item" id="funciona-offline">
+      <h2>Funciona offline?</h2>
+      <p>Depois que a página e o motor de digitalização carregam, todo o processamento é local, ou seja, a rede não participa do tratamento dos seus documentos. Se você quer um arranjo realmente isolado, rode o contêiner descrito mais abaixo: ele serve o aplicativo inteiro, incluindo a compilação do OpenCV, a partir da sua própria máquina.</p>
+    </section>
+    <section class="faq-item" id="qual-e-a-qualidade-do-resultado">
+      <h2>Qual é a qualidade do resultado?</h2>
+      <p>A exportação deforma o original em resolução completa, não a cópia reduzida usada na detecção, com limite de 3500 px no lado maior e saída de cerca de 220 DPI em uma página A4. É suficiente para imprimir ou para rodar um OCR. O filtro de preto e branco usa divisão pelo fundo em vez de um limiar duro, então as sombras se achatam e o texto continua suavizado em vez de serrilhado.</p>
+    </section>
+    <section class="faq-item" id="posso-reordenar-ou-excluir-paginas">
+      <h2>Posso reordenar ou excluir páginas?</h2>
+      <p>Pode. A faixa de páginas move as páginas para cima e para baixo e as exclui, e essa ordem é a do PDF exportado. Rotação, ajuste de cantos e filtro são independentes em cada página, então uma foto ruim no meio de um lote nunca obriga a refazer o resto.</p>
+    </section>
+    <section class="faq-item" id="por-que-a-deteccao-automatica-de-cantos-errou">
+      <h2>Por que a detecção automática de cantos errou?</h2>
+      <p>Quase sempre porque não havia borda alguma para encontrar: papel branco sobre mesa branca, um canto fora do enquadramento, ou uma sombra dura atravessando a página e sendo lida como borda falsa. Arraste os cantos manualmente e todo o resto funciona igual - detectar é uma conveniência, não um requisito. O <a href="../../pt/como-digitalizar-documentos/">guia de digitalização</a> explica como evitar isso.</p>
+    </section>
+    <section class="faq-item" id="posso-rodar-na-minha-propria-maquina">
+      <h2>Posso rodar na minha própria máquina?</h2>
+      <p>Pode. Há uma imagem de contêiner publicada no GitHub Container Registry, e cada versão também traz um zip de arquivos estáticos para qualquer servidor web. Hospedar você mesmo acrescenta ainda a Content-Security-Policy estrita, que faz o próprio navegador bloquear requisições de saída. As instruções estão no <a href="https://github.com/scanpdf-io/scanpdf#running-it-yourself" target="_blank" rel="noopener">README</a>.</p>
+    </section>
+    <aside class="cta-card">
+      <p>Tem algo para digitalizar? O ScanPDF funciona no navegador que você já tem aberto. Sem instalar nada, sem conta e sem enviar arquivos.</p>
+      <a class="btn primary" href="../../pt/">Abrir o scanner</a>
+    </aside>
+  </article>
+</main>
+
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Seções"><a href="../../pt/">Scanner</a><a href="../../pt/como-digitalizar-documentos/">Como digitalizar</a><a href="../../pt/perguntas-frequentes/" aria-current="page">Perguntas frequentes</a><a href="../../pt/digitalizar-sem-enviar/">Privacidade</a></nav>
+  <nav class="footer-langs" aria-label="Idioma"><a href="../../faq/" hreflang="en" lang="en">English</a><a href="../../es/preguntas-frecuentes/" hreflang="es" lang="es">Español</a><a href="../../de/haeufige-fragen/" hreflang="de" lang="de">Deutsch</a><a href="../../pt/perguntas-frequentes/" hreflang="pt" lang="pt" aria-current="true" class="current">Português</a><a href="../../fr/questions-frequentes/" hreflang="fr" lang="fr">Français</a></nav>
+  <span class="footer-privacy">Todo o processamento acontece localmente no seu navegador - seus documentos nunca são enviados para lugar nenhum.</span>
+  <nav class="footer-meta" aria-label="Projeto">
+    <a href="https://github.com/scanpdf-io/scanpdf" target="_blank" rel="noopener">Código-fonte</a>
+    <a href="https://github.com/scanpdf-io/scanpdf/blob/main/LICENSE" target="_blank" rel="noopener">Licença MIT</a>
+    <a href="https://github.com/scanpdf-io/scanpdf/issues" target="_blank" rel="noopener">Relatar um problema</a>
+  </nav>
+</footer>
+</body>
+</html>

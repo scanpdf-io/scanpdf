@@ -2,6 +2,7 @@
 // to bound peak memory and drive the progress bar.
 
 import { state } from './state.js';
+import { t } from './i18n.js';
 import { cvReady } from './cv-loader.js';
 import { computeOutputSize, warpToCanvas } from './warp.js';
 import { applyFilter, rotateCanvas } from './filters.js';
@@ -19,7 +20,7 @@ export async function exportPdf(onProgress) {
   const cv = await cvReady();
 
   const doc = await PDFDocument.create();
-  doc.setTitle('Scanned document');
+  doc.setTitle(t('pdfTitle'));
   doc.setProducer('ScanPDF (local)');
   doc.setCreator('ScanPDF (local)');
 

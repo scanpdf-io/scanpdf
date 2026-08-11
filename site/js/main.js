@@ -7,6 +7,7 @@ import { detectCorners, fallbackCorners } from './detect.js';
 import { initEditor, schedulePreview } from './editor.js';
 import { initPagesUI } from './pages-ui.js';
 import { exportPdf } from './export.js';
+import { t } from './i18n.js';
 
 const MAX_FULL_SIDE = 3500;
 const MAX_PROC_SIDE = 1000;
@@ -30,19 +31,7 @@ init();
 function init() {
   initEditor();
   initPagesUI();
-
-  // Warm up the OpenCV engine right away — it is ~10MB of WASM.
-  cvReady().then(
-    () => {
-      engineStatus.textContent = 'Engine ready';
-      engineStatus.classList.add('ready');
-      setTimeout(() => (engineStatus.hidden = true), 2500);
-    },
-    (err) => {
-      engineStatus.textContent = 'Engine failed to load';
-      console.error(err);
-    },
-  );
+  setupEngineWarmUp();
 
   $('add-btn').addEventListener('click', () => fileInput.click());
   fileInput.addEventListener('change', () => {
@@ -61,6 +50,46 @@ function init() {
   setupViewToggle();
   subscribe(syncControls);
   syncControls();
+}
+
+/* ---------- Engine warm-up ---------- */
+
+// The OpenCV build is ~10MB, so it is not fetched on page load: visitors who
+// arrive from search and only read would pay for it without ever scanning.
+// The first sign of intent starts it instead. Hovering a button or dragging a
+// file over the window happens seconds before a file is actually chosen, so
+// the download still overlaps the file picker and nothing feels slower.
+function setupEngineWarmUp() {
+  let started = false;
+
+  const warmUp = () => {
+    if (started) return;
+    started = true;
+    engineStatus.hidden = false;
+    engineStatus.textContent = t('engineLoading');
+    cvReady().then(
+      () => {
+        engineStatus.textContent = t('engineReady');
+        engineStatus.classList.add('ready');
+        setTimeout(() => (engineStatus.hidden = true), 2500);
+      },
+      (err) => {
+        engineStatus.textContent = t('engineFailed');
+        console.error(err);
+      },
+    );
+  };
+
+  for (const id of ['add-btn', 'camera-btn', 'dropzone']) {
+    const el = $(id);
+    el.addEventListener('pointerenter', warmUp, { once: true });
+    el.addEventListener('pointerdown', warmUp, { once: true });
+    el.addEventListener('focus', warmUp, { once: true });
+  }
+  window.addEventListener('dragover', warmUp, { once: true });
+  window.addEventListener('paste', warmUp, { once: true });
+  fileInput.addEventListener('change', warmUp, { once: true });
+  cameraInput.addEventListener('change', warmUp, { once: true });
 }
 
 /* ---------- File intake ---------- */
@@ -273,13 +302,13 @@ async function onSave() {
   exportBar.style.width = '0%';
   try {
     await exportPdf((i, n) => {
-      exportStatus.textContent = `Exporting page ${i} of ${n}…`;
+      exportStatus.textContent = t('exportingPage', { i, n });
       exportBar.style.width = `${Math.round(((i - 1) / n) * 100)}%`;
     });
     exportBar.style.width = '100%';
   } catch (err) {
     console.error('Export failed', err);
-    alert(`Export failed: ${err.message}`);
+    alert(t('exportFailed', { message: err.message }));
   } finally {
     exportOverlay.hidden = true;
   }

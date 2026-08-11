@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ScanPDF FAQ - Scanning Photos to PDF in the Browser</title>
+<meta name="description" content="Answers about ScanPDF: supported formats, page limits, iPhone and Android support, offline use, output resolution, cost, and how to run it yourself.">
+<link rel="canonical" href="https://scanpdf.io/faq/">
+<link rel="alternate" hreflang="en" href="https://scanpdf.io/faq/">
+<link rel="alternate" hreflang="es" href="https://scanpdf.io/es/preguntas-frecuentes/">
+<link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/">
+<link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/">
+<link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/">
+<link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#12151b">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ScanPDF">
+<meta property="og:url" content="https://scanpdf.io/faq/">
+<meta property="og:title" content="Frequently asked questions">
+<meta property="og:description" content="Answers about ScanPDF: supported formats, page limits, iPhone and Android support, offline use, output resolution, cost, and how to run it yourself.">
+<meta property="og:image" content="https://scanpdf.io/og/social-preview.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="ScanPDF frequently asked questions">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Frequently asked questions">
+<meta name="twitter:description" content="Answers about ScanPDF: supported formats, page limits, iPhone and Android support, offline use, output resolution, cost, and how to run it yourself.">
+<meta name="twitter:image" content="https://scanpdf.io/og/social-preview.png">
+<meta name="twitter:image:alt" content="ScanPDF frequently asked questions">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../icons/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="../icons/icon-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/content.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "name": "Frequently asked questions",
+      "description": "Answers about ScanPDF: supported formats, page limits, iPhone and Android support, offline use, output resolution, cost, and how to run it yourself.",
+      "inLanguage": "en",
+      "url": "https://scanpdf.io/faq/",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is ScanPDF free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and unconditionally so. There is no account, no sign-up, no page limit, no watermark, no paid tier and no trial. The whole thing is MIT-licensed open source, and there is no server to charge you for."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my documents uploaded anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Image processing and PDF assembly both run in your browser, and the app has no backend to send anything to. Your photos are read from disk by the page, held in memory, and written back out as a PDF download. See the privacy page for how that is enforced rather than merely promised."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which image formats can I use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Anything your browser can decode as an image: JPEG and HEIC from a phone camera, PNG, WebP, AVIF, GIF, BMP. Photos straight off an iPhone or Android device work without conversion, and their EXIF orientation is handled automatically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a page limit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No fixed one. Pages are exported sequentially rather than all at once, so memory use stays flat and long documents are fine. The practical ceiling is your device's RAM with very large source photos, not a rule in the app."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work on iPhone and Android?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, in any current mobile browser. On a phone the layout switches to a single panel with an editor and preview toggle, and a \"Take photo\" button opens the rear camera directly, so you can photograph and scan a document without saving it to your camera roll first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Once the page and the scan engine have loaded, all processing is local, so the network is not involved in handling your documents. If you want a genuinely airgapped setup, run the container described below - it serves the whole app, including the OpenCV build, from your own machine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How good is the output?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Export warps the full-resolution original, not the downscaled copy used for detection, capped at 3500 px on the long side and written at roughly 220 DPI on an A4 page. That is enough to print or to run OCR over. The black and white filter uses background division rather than a hard threshold, so shadows flatten out and text stays anti-aliased instead of turning jagged."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I reorder or delete pages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The page strip moves pages up and down and deletes them, and the order there is the order in the exported PDF. Rotation, corner adjustments and the filter are all per-page, so one bad photo in a batch never forces you to redo the rest."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why did automatic corner detection miss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Almost always because there was no edge to find: white paper on a white table, a corner outside the frame, or a hard shadow across the page reading as a false edge. Drag the corners in manually and everything downstream works identically - detection is a convenience, not a requirement. The scanning guide covers how to avoid it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I run it on my own machine?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A prebuilt container image is published to GitHub Container Registry, and each release also ships a plain zip of static files for any web server. Self-hosting additionally gives you the strict Content-Security-Policy that makes the browser itself block outbound requests. Instructions are in the README."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Scanner",
+          "item": "https://scanpdf.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "FAQ",
+          "item": "https://scanpdf.io/faq/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="doc">
+<a class="skip-link" href="#content">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" href="../">
+    <span class="brand-logo" aria-hidden="true">&#9636;</span>
+    <span class="brand-name">ScanPDF</span>
+  </a>
+  <nav class="site-nav" aria-label="Sections"><a href="../">Scanner</a><a href="../how-to-scan-documents/">How to scan</a><a href="../faq/" aria-current="page">FAQ</a><a href="../scan-without-uploading/">Privacy</a></nav>
+  <a class="btn primary header-cta" href="../">Open the scanner</a>
+</header>
+
+<main id="content" class="doc-main">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../">Scanner</a><span aria-hidden="true">/</span><span>FAQ</span></nav>
+  <article class="prose">
+    <h1>Frequently asked questions</h1>
+    <p class="lead">Everything people usually ask before trusting a document scanner with their paperwork.</p>
+    <section class="faq-item" id="is-scanpdf-free">
+      <h2>Is ScanPDF free?</h2>
+      <p>Yes, and unconditionally so. There is no account, no sign-up, no page limit, no watermark, no paid tier and no trial. The whole thing is MIT-licensed open source, and there is no server to charge you for.</p>
+    </section>
+    <section class="faq-item" id="are-my-documents-uploaded-anywhere">
+      <h2>Are my documents uploaded anywhere?</h2>
+      <p>No. Image processing and PDF assembly both run in your browser, and the app has no backend to send anything to. Your photos are read from disk by the page, held in memory, and written back out as a PDF download. See the <a href="../scan-without-uploading/">privacy page</a> for how that is enforced rather than merely promised.</p>
+    </section>
+    <section class="faq-item" id="which-image-formats-can-i-use">
+      <h2>Which image formats can I use?</h2>
+      <p>Anything your browser can decode as an image: JPEG and HEIC from a phone camera, PNG, WebP, AVIF, GIF, BMP. Photos straight off an iPhone or Android device work without conversion, and their EXIF orientation is handled automatically.</p>
+    </section>
+    <section class="faq-item" id="is-there-a-page-limit">
+      <h2>Is there a page limit?</h2>
+      <p>No fixed one. Pages are exported sequentially rather than all at once, so memory use stays flat and long documents are fine. The practical ceiling is your device&#x27;s RAM with very large source photos, not a rule in the app.</p>
+    </section>
+    <section class="faq-item" id="does-it-work-on-iphone-and-android">
+      <h2>Does it work on iPhone and Android?</h2>
+      <p>Yes, in any current mobile browser. On a phone the layout switches to a single panel with an editor and preview toggle, and a &quot;Take photo&quot; button opens the rear camera directly, so you can photograph and scan a document without saving it to your camera roll first.</p>
+    </section>
+    <section class="faq-item" id="does-it-work-offline">
+      <h2>Does it work offline?</h2>
+      <p>Once the page and the scan engine have loaded, all processing is local, so the network is not involved in handling your documents. If you want a genuinely airgapped setup, run the container described below - it serves the whole app, including the OpenCV build, from your own machine.</p>
+    </section>
+    <section class="faq-item" id="how-good-is-the-output">
+      <h2>How good is the output?</h2>
+      <p>Export warps the full-resolution original, not the downscaled copy used for detection, capped at 3500 px on the long side and written at roughly 220 DPI on an A4 page. That is enough to print or to run OCR over. The black and white filter uses background division rather than a hard threshold, so shadows flatten out and text stays anti-aliased instead of turning jagged.</p>
+    </section>
+    <section class="faq-item" id="can-i-reorder-or-delete-pages">
+      <h2>Can I reorder or delete pages?</h2>
+      <p>Yes. The page strip moves pages up and down and deletes them, and the order there is the order in the exported PDF. Rotation, corner adjustments and the filter are all per-page, so one bad photo in a batch never forces you to redo the rest.</p>
+    </section>
+    <section class="faq-item" id="why-did-automatic-corner-detection-miss">
+      <h2>Why did automatic corner detection miss?</h2>
+      <p>Almost always because there was no edge to find: white paper on a white table, a corner outside the frame, or a hard shadow across the page reading as a false edge. Drag the corners in manually and everything downstream works identically - detection is a convenience, not a requirement. The <a href="../how-to-scan-documents/">scanning guide</a> covers how to avoid it.</p>
+    </section>
+    <section class="faq-item" id="can-i-run-it-on-my-own-machine">
+      <h2>Can I run it on my own machine?</h2>
+      <p>Yes. A prebuilt container image is published to GitHub Container Registry, and each release also ships a plain zip of static files for any web server. Self-hosting additionally gives you the strict Content-Security-Policy that makes the browser itself block outbound requests. Instructions are in the <a href="https://github.com/scanpdf-io/scanpdf#running-it-yourself" target="_blank" rel="noopener">README</a>.</p>
+    </section>
+    <aside class="cta-card">
+      <p>Ready to scan something? ScanPDF runs in the browser you already have open. No install, no account, nothing uploaded.</p>
+      <a class="btn primary" href="../">Open the scanner</a>
+    </aside>
+  </article>
+</main>
+
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Sections"><a href="../">Scanner</a><a href="../how-to-scan-documents/">How to scan</a><a href="../faq/" aria-current="page">FAQ</a><a href="../scan-without-uploading/">Privacy</a></nav>
+  <nav class="footer-langs" aria-label="Language"><a href="../faq/" hreflang="en" lang="en" aria-current="true" class="current">English</a><a href="../es/preguntas-frecuentes/" hreflang="es" lang="es">Español</a><a href="../de/haeufige-fragen/" hreflang="de" lang="de">Deutsch</a><a href="../pt/perguntas-frequentes/" hreflang="pt" lang="pt">Português</a><a href="../fr/questions-frequentes/" hreflang="fr" lang="fr">Français</a></nav>
+  <span class="footer-privacy">All processing happens locally in your browser - your documents are never uploaded.</span>
+  <nav class="footer-meta" aria-label="Project">
+    <a href="https://github.com/scanpdf-io/scanpdf" target="_blank" rel="noopener">Source code</a>
+    <a href="https://github.com/scanpdf-io/scanpdf/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+    <a href="https://github.com/scanpdf-io/scanpdf/issues" target="_blank" rel="noopener">Report an issue</a>
+  </nav>
+</footer>
+</body>
+</html>
