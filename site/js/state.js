@@ -15,7 +15,7 @@
 export const state = {
   pages: [],
   selectedId: null,
-  pageFormat: 'a4', // 'a4' | 'letter' | 'auto'
+  pageFormat: 'auto', // 'auto' or a key of FORMATS (formats.js)
   jpegQuality: 0.85,
   targetBytes: 0, // maximum PDF size in bytes; 0 = no limit
 };

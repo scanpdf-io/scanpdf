@@ -15,6 +15,19 @@
     "ogImageAlt": "ScanPDF: a foto de um documento em papel sendo alinhada até virar uma página PDF limpa",
     "pageSizeLabel": "Tamanho da página",
     "pageSizeAuto": "Auto",
+    "formatGroupIso": "Papel (ISO)",
+    "formatGroupUs": "Papel (EUA)",
+    "formatGroupCards": "Cartões e documentos",
+    "formatGroupPhoto": "Fotos",
+    "formatGroupOther": "Outros",
+    "formatIdCard": "Cartão bancário / ID",
+    "formatPassport": "Passaporte",
+    "formatBusinessCard": "Cartão de visita",
+    "formatPhoto": "Foto",
+    "formatEnvelopeDl": "Envelope DL",
+    "formatIndexCard": "Ficha",
+    "formatSheetMusic": "Partitura",
+    "formatSquare": "Quadrado",
     "targetSizeLabel": "Tamanho máximo do arquivo",
     "targetSizeNone": "Sem limite",
     "savePdf": "Salvar PDF",
@@ -91,7 +104,7 @@
   },
   "featureList": [
     "Detecção automática das bordas do documento na foto",
-    "Correção de perspectiva e escala para A4, Carta ou o tamanho original da folha",
+    "Correção de perspectiva e escala para o tamanho original da folha, A4, Carta, cartão, foto e outros formatos",
     "Filtros de cor, tons de cinza e preto e branco com aparência de digitalização",
     "Exportação em PDF de várias páginas com reordenação",
     "Processamento totalmente local: sem upload e sem conta"
@@ -154,7 +167,7 @@
                 "**Gire se precisar.** As fotos do celular trazem a orientação nos metadados EXIF e são viradas corretamente de forma automática, mas os botões de 90 graus estão ali para as páginas fotografadas de lado.",
                 "**Escolha um filtro** e use “Aplicar a todas” se o lote inteiro foi fotografado sob a mesma luz.",
                 "**Ordene as páginas.** Arraste uma miniatura para mover a página e apague as que não ficaram boas. A ordem das miniaturas é a ordem do PDF.",
-                "**Escolha o tamanho da página e salve.** A4, Carta ou automático, e depois “Salvar PDF”. O arquivo é montado no navegador e cai na sua pasta de downloads."
+                "**Escolha o tamanho da página e salve.** Automático, A4, Carta, cartão bancário, foto ou outro formato, e depois “Salvar PDF”. O arquivo é montado no navegador e cai na sua pasta de downloads."
               ]
             }
           ]
@@ -176,7 +189,7 @@
         {
           "h": "Tamanho da página e qualidade do resultado",
           "body": [
-            "**A4** e **Carta** forçam todas as páginas a esse tamanho exato, que é o que você quer para qualquer coisa que vá ser impressa ou arquivada junto de outros documentos. **Automático** ajusta cada página à proporção da folha que você realmente fotografou - a escolha certa para recibos, ingressos, carteirinhas e outros formatos fora do padrão, que de outro modo ficariam perdidos no meio de uma página A4.",
+            "**A4** e **Carta** forçam todas as páginas a esse tamanho exato, que é o que você quer para qualquer coisa que vá ser impressa ou arquivada junto de outros documentos. **Automático** ajusta cada página à proporção da folha que você realmente fotografou - a escolha certa para recibos, ingressos, carteirinhas e outros formatos fora do padrão, que de outro modo ficariam perdidos no meio de uma página A4. Automático é o padrão. A lista traz ainda formatos exatos para cartões bancários e de identidade, passaportes, cartões de visita, fotos, envelopes e outros - escolha um quando a página do PDF precisar ter o tamanho do objeto real.",
             "A detecção roda sobre uma cópia reduzida por questão de velocidade, mas a exportação sempre deforma o original em resolução completa, limitado a 3500 px no lado maior e gravado a cerca de 220 DPI em A4. É folgadamente suficiente para ler, imprimir e passar um OCR depois, se você quiser.",
             "Se o arquivo precisa ficar abaixo de um limite - um anexo de e-mail, um formulário que recusa qualquer coisa acima de 2 MB - escolha um **tamanho máximo do arquivo** ao lado do tamanho da página. O ScanPDF reduz primeiro a qualidade do JPEG e, só se for preciso, a resolução, e para antes que o texto fique ilegível. Se nem assim o limite for atingido, a menor versão legível é salva e você é avisado do tamanho real."
           ]

@@ -82,7 +82,7 @@
       },
       "featureList": [
         "फ़ोटो में दस्तावेज़ के किनारों की ऑटोमैटिक पहचान",
-        "A4, Letter या पन्ने के असली साइज़ के हिसाब से पर्सपेक्टिव और स्केल करेक्शन",
+        "पन्ने के असली साइज़, A4, Letter, कार्ड, फ़ोटो और दूसरे फ़ॉर्मैट के हिसाब से पर्सपेक्टिव और स्केल करेक्शन",
         "रंगीन, ग्रेस्केल और स्कैन जैसे ब्लैक एंड व्हाइट फ़िल्टर",
         "कई पेज वाली PDF का एक्सपोर्ट, पेजों का क्रम बदलने की सुविधा के साथ",
         "पूरी प्रोसेसिंग आपके डिवाइस पर: न अपलोड, न अकाउंट"
@@ -135,9 +135,36 @@
     <!-- On phones this same group is pinned to the bottom edge as the action bar. -->
     <div class="export-group">
       <select id="page-format" aria-label="पेज साइज़" title="पेज साइज़">
-        <option value="a4" selected>A4</option>
-        <option value="letter">Letter</option>
-        <option value="auto">ऑटो</option>
+        <option value="auto" selected>ऑटो</option>
+        <optgroup label="काग़ज़ (ISO)">
+          <option value="a3">A3</option>
+          <option value="a4">A4</option>
+          <option value="a5">A5</option>
+          <option value="a6">A6</option>
+          <option value="b5">B5</option>
+        </optgroup>
+        <optgroup label="काग़ज़ (US)">
+          <option value="letter">Letter</option>
+          <option value="legal">Legal</option>
+          <option value="tabloid">Tabloid</option>
+        </optgroup>
+        <optgroup label="कार्ड और आईडी">
+          <option value="id-card">बैंक / आईडी कार्ड</option>
+          <option value="passport">पासपोर्ट</option>
+          <option value="business-card">बिज़नेस कार्ड 85 &times; 55 mm</option>
+          <option value="business-card-us">बिज़नेस कार्ड 3.5 &times; 2&Prime;</option>
+        </optgroup>
+        <optgroup label="फ़ोटो">
+          <option value="photo-10x15">फ़ोटो 10 &times; 15 cm / 4 &times; 6&Prime;</option>
+          <option value="photo-13x18">फ़ोटो 13 &times; 18 cm / 5 &times; 7&Prime;</option>
+          <option value="photo-20x25">फ़ोटो 20 &times; 25 cm / 8 &times; 10&Prime;</option>
+        </optgroup>
+        <optgroup label="अन्य">
+          <option value="envelope-dl">DL लिफ़ाफ़ा</option>
+          <option value="index-card">इंडेक्स कार्ड 3 &times; 5&Prime;</option>
+          <option value="sheet-music">शीट म्यूज़िक 9 &times; 12&Prime;</option>
+          <option value="square">वर्गाकार</option>
+        </optgroup>
       </select>
       <select id="target-size" aria-label="फ़ाइल का अधिकतम साइज़" title="फ़ाइल का अधिकतम साइज़">
         <option value="0" selected>कोई सीमा नहीं</option>

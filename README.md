@@ -19,7 +19,9 @@ processing: your documents never leave your machine.
 - **Precise manual adjustment** — drag corner handles with a magnifier loupe;
   live preview of the corrected result.
 - **Perspective and scale correction** — pages come out flat and straight,
-  sized to A4, Letter, or auto-fit at ~220 DPI.
+  auto-fitted to the photographed sheet by default, or sized to an exact
+  format: ISO and US paper, bank/ID cards, passports, business cards, photo
+  prints, envelopes and more.
 - **Scan-style filters** — Color, Grayscale, and a Black & White mode that
   uses background division (not hard thresholding), so shadows are flattened,
   paper turns white, and text stays anti-aliased.
@@ -44,7 +46,8 @@ processing: your documents never leave your machine.
 3. In the editor, drag the corner handles (a loupe appears for precision),
    rotate pages and pick a filter. Drag the thumbnails to reorder pages
    (or Alt + arrow keys), and delete the ones you do not need.
-4. Choose the page size (A4 / Letter / Auto) and, if the file has to stay
+4. Choose the page size (Auto, or an exact format such as A4, Letter or a
+   bank card) and, if the file has to stay
    under a limit, a maximum file size, then click **Save PDF**.
 
 ## Running it yourself
@@ -184,6 +187,7 @@ site/                 The whole site (static files, served as-is)
 │   ├── detect.js     Multi-strategy corner detection
 │   ├── editor.js     Corner editor with loupe and live preview
 │   ├── warp.js       Perspective warp and page sizing
+│   ├── formats.js    Page formats (paper, cards, photos…) in millimetres
 │   ├── filters.js    Color / grayscale / B&W filters, rotation
 │   ├── export.js     Multi-page PDF assembly
 │   ├── pages-ui.js   Page thumbnails: select, delete, keyboard reorder

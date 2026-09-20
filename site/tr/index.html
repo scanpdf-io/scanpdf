@@ -82,7 +82,7 @@
       },
       "featureList": [
         "Fotoğraftaki belgenin kenarlarını otomatik algılama",
-        "A4, Letter veya kâğıdın özgün boyutuna göre perspektif ve ölçek düzeltme",
+        "Kâğıdın özgün boyutuna, A4, Letter, kart, fotoğraf ve diğer biçimlere göre perspektif ve ölçek düzeltme",
         "Renkli, gri tonlama ve tarama görünümlü siyah beyaz filtreler",
         "Sayfaları yeniden sıralayarak çok sayfalı PDF dışa aktarma",
         "Tamamen istemci tarafında işleme: yükleme yok, hesap yok"
@@ -135,9 +135,36 @@
     <!-- On phones this same group is pinned to the bottom edge as the action bar. -->
     <div class="export-group">
       <select id="page-format" aria-label="Sayfa boyutu" title="Sayfa boyutu">
-        <option value="a4" selected>A4</option>
-        <option value="letter">Letter</option>
-        <option value="auto">Otomatik</option>
+        <option value="auto" selected>Otomatik</option>
+        <optgroup label="Kâğıt (ISO)">
+          <option value="a3">A3</option>
+          <option value="a4">A4</option>
+          <option value="a5">A5</option>
+          <option value="a6">A6</option>
+          <option value="b5">B5</option>
+        </optgroup>
+        <optgroup label="Kâğıt (ABD)">
+          <option value="letter">Letter</option>
+          <option value="legal">Legal</option>
+          <option value="tabloid">Tabloid</option>
+        </optgroup>
+        <optgroup label="Kartlar ve kimlikler">
+          <option value="id-card">Banka / kimlik kartı</option>
+          <option value="passport">Pasaport</option>
+          <option value="business-card">Kartvizit 85 &times; 55 mm</option>
+          <option value="business-card-us">Kartvizit 3.5 &times; 2&Prime;</option>
+        </optgroup>
+        <optgroup label="Fotoğraflar">
+          <option value="photo-10x15">Fotoğraf 10 &times; 15 cm / 4 &times; 6&Prime;</option>
+          <option value="photo-13x18">Fotoğraf 13 &times; 18 cm / 5 &times; 7&Prime;</option>
+          <option value="photo-20x25">Fotoğraf 20 &times; 25 cm / 8 &times; 10&Prime;</option>
+        </optgroup>
+        <optgroup label="Diğer">
+          <option value="envelope-dl">DL zarf</option>
+          <option value="index-card">İndeks kartı 3 &times; 5&Prime;</option>
+          <option value="sheet-music">Nota kâğıdı 9 &times; 12&Prime;</option>
+          <option value="square">Kare</option>
+        </optgroup>
       </select>
       <select id="target-size" aria-label="En büyük dosya boyutu" title="En büyük dosya boyutu">
         <option value="0" selected>Sınırsız</option>

@@ -15,6 +15,19 @@
     "ogImageAlt": "ScanPDF : la photo d'un document papier redressée jusqu'à devenir une page PDF propre",
     "pageSizeLabel": "Format de page",
     "pageSizeAuto": "Auto",
+    "formatGroupIso": "Papier (ISO)",
+    "formatGroupUs": "Papier (US)",
+    "formatGroupCards": "Cartes et pièces d'identité",
+    "formatGroupPhoto": "Photos",
+    "formatGroupOther": "Autres",
+    "formatIdCard": "Carte bancaire / d'identité",
+    "formatPassport": "Passeport",
+    "formatBusinessCard": "Carte de visite",
+    "formatPhoto": "Photo",
+    "formatEnvelopeDl": "Enveloppe DL",
+    "formatIndexCard": "Fiche bristol",
+    "formatSheetMusic": "Partition",
+    "formatSquare": "Carré",
     "targetSizeLabel": "Taille maximale du fichier",
     "targetSizeNone": "Sans limite",
     "savePdf": "Enregistrer le PDF",
@@ -91,7 +104,7 @@
   },
   "featureList": [
     "Détection automatique des bords du document sur la photo",
-    "Correction de perspective et mise à l'échelle en A4, Letter ou au format de la feuille",
+    "Correction de perspective et mise à l'échelle au format de la feuille, A4, Letter, carte, photo et autres formats",
     "Filtres couleur, niveaux de gris et noir et blanc façon numérisation",
     "Export en PDF multipage avec réorganisation des pages",
     "Traitement entièrement local : sans envoi et sans compte"
@@ -154,7 +167,7 @@
                 "**Pivotez si nécessaire.** Les photos de téléphone portent leur orientation dans les métadonnées EXIF et sont remises à l'endroit automatiquement, mais les boutons à 90 degrés sont là pour les pages photographiées de travers.",
                 "**Choisissez un filtre,** puis utilisez « Appliquer à tout » si toute la série a été prise sous la même lumière.",
                 "**Ordonnez les pages.** Faites glisser une vignette pour déplacer la page et supprimez celles qui n'ont rien donné. L'ordre des vignettes est l'ordre du PDF.",
-                "**Choisissez un format de page et enregistrez.** A4, Letter ou automatique, puis « Enregistrer le PDF ». Le fichier est assemblé dans le navigateur et atterrit dans votre dossier de téléchargements."
+                "**Choisissez un format de page et enregistrez.** Automatique, A4, Letter, carte bancaire, photo ou un autre format, puis « Enregistrer le PDF ». Le fichier est assemblé dans le navigateur et atterrit dans votre dossier de téléchargements."
               ]
             }
           ]
@@ -176,7 +189,7 @@
         {
           "h": "Format de page et qualité de sortie",
           "body": [
-            "**A4** et **Letter** forcent chaque page à ce format exact, ce que vous voulez pour tout ce qui sera imprimé ou classé avec d'autres documents. **Automatique** ajuste chaque page aux proportions de la feuille réellement photographiée : le bon choix pour les reçus, billets, cartes d'identité et autres formats inhabituels, qui sinon flotteraient au milieu d'une page A4.",
+            "**A4** et **Letter** forcent chaque page à ce format exact, ce que vous voulez pour tout ce qui sera imprimé ou classé avec d'autres documents. **Automatique** ajuste chaque page aux proportions de la feuille réellement photographiée : le bon choix pour les reçus, billets, cartes d'identité et autres formats inhabituels, qui sinon flotteraient au milieu d'une page A4. Automatique est le réglage par défaut. La liste propose aussi des formats exacts pour les cartes bancaires et d'identité, les passeports, les cartes de visite, les tirages photo, les enveloppes et d'autres encore : choisissez-en un quand la page du PDF doit avoir la taille de l'objet réel.",
             "La détection travaille sur une copie réduite, par rapidité, mais l'export redresse toujours l'original en pleine résolution, plafonné à 3500 px sur le grand côté et écrit à environ 220 ppp en A4. Largement de quoi lire, imprimer, et passer une reconnaissance de texte plus tard si besoin.",
             "Si le fichier doit rester sous une limite (une pièce jointe, un formulaire qui refuse tout ce qui dépasse 2 Mo), choisissez une **taille maximale du fichier** à côté du format de page. ScanPDF réduit d'abord la qualité JPEG puis, seulement si nécessaire, la résolution, et s'arrête avant que le texte ne devienne illisible. Si la limite ne peut pas être atteinte ainsi, la plus petite version lisible est enregistrée et sa taille réelle vous est indiquée."
           ]

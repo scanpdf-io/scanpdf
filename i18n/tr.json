@@ -15,6 +15,19 @@
     "ogImageAlt": "ScanPDF: bir kâğıt belgenin fotoğrafı düzeltilerek temiz bir PDF sayfasına dönüşüyor",
     "pageSizeLabel": "Sayfa boyutu",
     "pageSizeAuto": "Otomatik",
+    "formatGroupIso": "Kâğıt (ISO)",
+    "formatGroupUs": "Kâğıt (ABD)",
+    "formatGroupCards": "Kartlar ve kimlikler",
+    "formatGroupPhoto": "Fotoğraflar",
+    "formatGroupOther": "Diğer",
+    "formatIdCard": "Banka / kimlik kartı",
+    "formatPassport": "Pasaport",
+    "formatBusinessCard": "Kartvizit",
+    "formatPhoto": "Fotoğraf",
+    "formatEnvelopeDl": "DL zarf",
+    "formatIndexCard": "İndeks kartı",
+    "formatSheetMusic": "Nota kâğıdı",
+    "formatSquare": "Kare",
     "targetSizeLabel": "En büyük dosya boyutu",
     "targetSizeNone": "Sınırsız",
     "savePdf": "PDF olarak kaydet",
@@ -91,7 +104,7 @@
   },
   "featureList": [
     "Fotoğraftaki belgenin kenarlarını otomatik algılama",
-    "A4, Letter veya kâğıdın özgün boyutuna göre perspektif ve ölçek düzeltme",
+    "Kâğıdın özgün boyutuna, A4, Letter, kart, fotoğraf ve diğer biçimlere göre perspektif ve ölçek düzeltme",
     "Renkli, gri tonlama ve tarama görünümlü siyah beyaz filtreler",
     "Sayfaları yeniden sıralayarak çok sayfalı PDF dışa aktarma",
     "Tamamen istemci tarafında işleme: yükleme yok, hesap yok"
@@ -154,7 +167,7 @@
                 "**Gerekirse döndürün.** Telefon fotoğrafları yön bilgisini EXIF meta verisinde taşır ve otomatik olarak doğru yöne çevrilir; yan çekilmiş sayfalar için de 90 derecelik döndürme düğmeleri var.",
                 "**Bir filtre seçin,** bütün fotoğraflar aynı ışıkta çekildiyse \"Tümüne uygula\" düğmesini kullanın.",
                 "**Sayfaları sıralayın.** Bir sayfayı taşımak için küçük resmini sürükleyin, olmamış olanları silin. Küçük resimlerin sırası, PDF'deki sıradır.",
-                "**Sayfa boyutunu seçip kaydedin.** A4, Letter ya da Otomatik; ardından \"PDF olarak kaydet\". Dosya tarayıcıda oluşturulur ve indirilenler klasörünüze düşer."
+                "**Sayfa boyutunu seçip kaydedin.** Otomatik, A4, Letter, banka kartı, fotoğraf ya da başka bir biçim; ardından \"PDF olarak kaydet\". Dosya tarayıcıda oluşturulur ve indirilenler klasörünüze düşer."
               ]
             }
           ]
@@ -176,7 +189,7 @@
         {
           "h": "Sayfa boyutu ve çıktı kalitesi",
           "body": [
-            "**A4** ve **Letter** her sayfayı tam o boyuta getirir; yazdırılacak ya da başka belgelerle birlikte dosyalanacak her şey için istediğiniz budur. **Otomatik** ise her sayfayı, fotoğrafını çektiğiniz kâğıdın en boy oranına göre boyutlandırır - fişler, biletler, kimlik kartları ve aksi halde A4 sayfanın ortasında kaybolup kalacak diğer alışılmadık biçimler için doğru seçimdir.",
+            "**A4** ve **Letter** her sayfayı tam o boyuta getirir; yazdırılacak ya da başka belgelerle birlikte dosyalanacak her şey için istediğiniz budur. **Otomatik** ise her sayfayı, fotoğrafını çektiğiniz kâğıdın en boy oranına göre boyutlandırır - fişler, biletler, kimlik kartları ve aksi halde A4 sayfanın ortasında kaybolup kalacak diğer alışılmadık biçimler için doğru seçimdir. Varsayılan seçenek Otomatik'tir. Listede ayrıca banka ve kimlik kartları, pasaportlar, kartvizitler, fotoğraf baskıları, zarflar ve daha fazlası için tam ölçülü biçimler bulunur - PDF sayfasının gerçek nesneyle aynı boyutta olması gerektiğinde bunlardan birini seçin.",
             "Algılama, hız için küçültülmüş bir kopya üzerinde çalışır; dışa aktarma ise her zaman tam çözünürlüklü orijinali işler. Uzun kenar 3500 px ile sınırlanır ve A4'te yaklaşık 220 DPI ile yazılır. Bu, okumak, yazdırmak ve isterseniz sonradan OCR uygulamak için fazlasıyla yeterlidir.",
             "Dosyanın bir sınırın altında kalması gerekiyorsa - bir e-posta eki ya da 2 MB üzerini reddeden bir yükleme formu - sayfa boyutunun yanından bir **en büyük dosya boyutu** seçin. ScanPDF önce JPEG kalitesini, yalnızca gerekirse çözünürlüğü düşürür ve metin okunmaz hale gelmeden durur. Sınıra bu şekilde ulaşılamıyorsa okunabilir en küçük sürüm kaydedilir ve gerçek boyutu size bildirilir."
           ]

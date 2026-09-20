@@ -15,6 +15,19 @@
     "ogImageAlt": "ScanPDF: la foto de un documento en papel enderezada hasta convertirse en una página PDF limpia",
     "pageSizeLabel": "Tamaño de página",
     "pageSizeAuto": "Auto",
+    "formatGroupIso": "Papel (ISO)",
+    "formatGroupUs": "Papel (EE. UU.)",
+    "formatGroupCards": "Tarjetas y documentos",
+    "formatGroupPhoto": "Fotos",
+    "formatGroupOther": "Otros",
+    "formatIdCard": "Tarjeta bancaria / ID",
+    "formatPassport": "Pasaporte",
+    "formatBusinessCard": "Tarjeta de visita",
+    "formatPhoto": "Foto",
+    "formatEnvelopeDl": "Sobre DL",
+    "formatIndexCard": "Ficha",
+    "formatSheetMusic": "Partitura",
+    "formatSquare": "Cuadrado",
     "targetSizeLabel": "Tamaño máximo del archivo",
     "targetSizeNone": "Sin límite",
     "savePdf": "Guardar PDF",
@@ -91,7 +104,7 @@
   },
   "featureList": [
     "Detección automática de los bordes del documento en la foto",
-    "Corrección de perspectiva y escala a A4, Carta o el tamaño original de la hoja",
+    "Corrección de perspectiva y escala al tamaño original de la hoja, A4, Carta, tarjeta, foto y otros formatos",
     "Filtros de color, escala de grises y blanco y negro con aspecto de escaneo",
     "Exportación a PDF de varias páginas con reordenación",
     "Procesamiento totalmente local: sin subir archivos ni crear cuenta"
@@ -154,7 +167,7 @@
                 "**Gira si hace falta.** Las fotos del móvil llevan su orientación en los metadatos EXIF y se colocan bien automáticamente, pero los botones de 90 grados están ahí para las páginas fotografiadas de lado.",
                 "**Elige un filtro** y usa «Aplicar a todas» si disparaste todo el lote con la misma luz.",
                 "**Ordena las páginas.** Arrastra una miniatura para mover la página y borra las que no hayan salido bien. El orden de las miniaturas es el orden del PDF.",
-                "**Elige el tamaño de página y guarda.** A4, Carta o automático, y después «Guardar PDF». El archivo se monta en el navegador y aparece en tu carpeta de descargas."
+                "**Elige el tamaño de página y guarda.** Automático, A4, Carta, tarjeta bancaria, foto u otro formato, y después «Guardar PDF». El archivo se monta en el navegador y aparece en tu carpeta de descargas."
               ]
             }
           ]
@@ -176,7 +189,7 @@
         {
           "h": "Tamaño de página y calidad de salida",
           "body": [
-            "**A4** y **Carta** fuerzan todas las páginas a ese tamaño exacto, que es lo que quieres para cualquier cosa que vaya a imprimirse o a archivarse junto a otros documentos. **Automático** ajusta cada página a la proporción de la hoja que fotografiaste: la opción correcta para tickets, entradas, carnés y demás formatos raros que si no quedarían perdidos en medio de un A4.",
+            "**A4** y **Carta** fuerzan todas las páginas a ese tamaño exacto, que es lo que quieres para cualquier cosa que vaya a imprimirse o a archivarse junto a otros documentos. **Automático** ajusta cada página a la proporción de la hoja que fotografiaste: la opción correcta para tickets, entradas, carnés y demás formatos raros que si no quedarían perdidos en medio de un A4. Automático es la opción predeterminada. La lista incluye además formatos exactos para tarjetas bancarias y de identidad, pasaportes, tarjetas de visita, fotos, sobres y más: elige uno cuando la página del PDF tenga que coincidir con el tamaño del objeto real.",
             "La detección se ejecuta sobre una copia reducida por rapidez, pero la exportación siempre deforma el original a resolución completa, con un tope de 3500 px en el lado largo y una salida de unos 220 ppp en A4. Es de sobra suficiente para leer, imprimir y pasar un OCR después si te hace falta.",
             "Si el archivo no puede superar un límite (un adjunto de correo, un formulario que rechaza todo lo que pase de 2 MB), elige un **tamaño máximo del archivo** junto al tamaño de página. ScanPDF reduce primero la calidad JPEG y, solo si hace falta, la resolución, y se detiene antes de que el texto deje de leerse. Si así no se alcanza el límite, se guarda la versión legible más pequeña y se te indica su tamaño real."
           ]

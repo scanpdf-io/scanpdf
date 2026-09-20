@@ -41,9 +41,36 @@
     <!-- On phones this same group is pinned to the bottom edge as the action bar. -->
     <div class="export-group">
       <select id="page-format" aria-label="{{appPageSizeLabel}}" title="{{appPageSizeLabel}}">
-        <option value="a4" selected>A4</option>
-        <option value="letter">Letter</option>
-        <option value="auto">{{appPageSizeAuto}}</option>
+        <option value="auto" selected>{{appPageSizeAuto}}</option>
+        <optgroup label="{{appFormatGroupIso}}">
+          <option value="a3">A3</option>
+          <option value="a4">A4</option>
+          <option value="a5">A5</option>
+          <option value="a6">A6</option>
+          <option value="b5">B5</option>
+        </optgroup>
+        <optgroup label="{{appFormatGroupUs}}">
+          <option value="letter">Letter</option>
+          <option value="legal">Legal</option>
+          <option value="tabloid">Tabloid</option>
+        </optgroup>
+        <optgroup label="{{appFormatGroupCards}}">
+          <option value="id-card">{{appFormatIdCard}}</option>
+          <option value="passport">{{appFormatPassport}}</option>
+          <option value="business-card">{{appFormatBusinessCard}} 85 &times; 55 mm</option>
+          <option value="business-card-us">{{appFormatBusinessCard}} 3.5 &times; 2&Prime;</option>
+        </optgroup>
+        <optgroup label="{{appFormatGroupPhoto}}">
+          <option value="photo-10x15">{{appFormatPhoto}} 10 &times; 15 cm / 4 &times; 6&Prime;</option>
+          <option value="photo-13x18">{{appFormatPhoto}} 13 &times; 18 cm / 5 &times; 7&Prime;</option>
+          <option value="photo-20x25">{{appFormatPhoto}} 20 &times; 25 cm / 8 &times; 10&Prime;</option>
+        </optgroup>
+        <optgroup label="{{appFormatGroupOther}}">
+          <option value="envelope-dl">{{appFormatEnvelopeDl}}</option>
+          <option value="index-card">{{appFormatIndexCard}} 3 &times; 5&Prime;</option>
+          <option value="sheet-music">{{appFormatSheetMusic}} 9 &times; 12&Prime;</option>
+          <option value="square">{{appFormatSquare}}</option>
+        </optgroup>
       </select>
       <select id="target-size" aria-label="{{appTargetSizeLabel}}" title="{{appTargetSizeLabel}}">
         <option value="0" selected>{{appTargetSizeNone}}</option>

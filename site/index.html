@@ -82,7 +82,7 @@
       },
       "featureList": [
         "Automatic detection of the document edges in a photo",
-        "Perspective and scale correction to A4, Letter or the original sheet",
+        "Perspective and scale correction to the original sheet, A4, Letter, ID card, photo and other formats",
         "Color, grayscale and scan-style black & white filters",
         "Multi-page PDF export with page reordering",
         "Fully client-side processing: no upload and no account"
@@ -135,9 +135,36 @@
     <!-- On phones this same group is pinned to the bottom edge as the action bar. -->
     <div class="export-group">
       <select id="page-format" aria-label="Page size" title="Page size">
-        <option value="a4" selected>A4</option>
-        <option value="letter">Letter</option>
-        <option value="auto">Auto</option>
+        <option value="auto" selected>Auto</option>
+        <optgroup label="Paper (ISO)">
+          <option value="a3">A3</option>
+          <option value="a4">A4</option>
+          <option value="a5">A5</option>
+          <option value="a6">A6</option>
+          <option value="b5">B5</option>
+        </optgroup>
+        <optgroup label="Paper (US)">
+          <option value="letter">Letter</option>
+          <option value="legal">Legal</option>
+          <option value="tabloid">Tabloid</option>
+        </optgroup>
+        <optgroup label="Cards and IDs">
+          <option value="id-card">Bank / ID card</option>
+          <option value="passport">Passport</option>
+          <option value="business-card">Business card 85 &times; 55 mm</option>
+          <option value="business-card-us">Business card 3.5 &times; 2&Prime;</option>
+        </optgroup>
+        <optgroup label="Photos">
+          <option value="photo-10x15">Photo 10 &times; 15 cm / 4 &times; 6&Prime;</option>
+          <option value="photo-13x18">Photo 13 &times; 18 cm / 5 &times; 7&Prime;</option>
+          <option value="photo-20x25">Photo 20 &times; 25 cm / 8 &times; 10&Prime;</option>
+        </optgroup>
+        <optgroup label="Other">
+          <option value="envelope-dl">DL envelope</option>
+          <option value="index-card">Index card 3 &times; 5&Prime;</option>
+          <option value="sheet-music">Sheet music 9 &times; 12&Prime;</option>
+          <option value="square">Square</option>
+        </optgroup>
       </select>
       <select id="target-size" aria-label="Maximum file size" title="Maximum file size">
         <option value="0" selected>No limit</option>

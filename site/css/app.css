@@ -607,17 +607,21 @@ h1.brand { font-size: inherit; font-weight: inherit; }
     padding: var(--sp-2) max(var(--sp-3), env(safe-area-inset-right)) calc(var(--sp-2) + env(safe-area-inset-bottom)) max(var(--sp-3), env(safe-area-inset-left));
     background: var(--bg);
   }
-  /* The pill and Save share a narrow bar: without field-sizing support the
-     selects are as wide as their longest option and give way with an
-     ellipsis. The button never shrinks. */
-  .export-group select { flex: 0 1 auto; min-width: 0; padding: 0 26px 0 16px; background-position: right 8px center; text-overflow: ellipsis; min-height: var(--tap); font-size: 16px; }
-  .export-group select + select { padding: 0 28px 0 32px; background-position: right 10px center, left 10px center; }
-  .export-group .btn { flex: 1 0 auto; min-height: var(--tap); font-size: 16px; }
-  @media (max-width: 379px) {
-    /* Longer locales ("PDF olarak kaydet") need the room: drop both glyphs. */
+  /* The pill and Save share a narrow bar, and a format name can be long
+     ("Bank / ID card"). A grid gives the strict order flexbox cannot: Save
+     always keeps its label and takes the spare room, the size limit gets its
+     full width next, and the format name lives on what is left, down to a
+     few letters and an ellipsis. */
+  .export-group { display: grid; grid-template-columns: fit-content(100%) auto minmax(max-content, 1fr); }
+  .export-group select { min-width: 48px; padding: 0 26px 0 16px; background-position: right 8px center; text-overflow: ellipsis; min-height: var(--tap); font-size: 16px; }
+  .export-group select + select { min-width: auto; padding: 0 28px 0 32px; background-position: right 10px center, left 10px center; }
+  .export-group .btn { min-height: var(--tap); font-size: 16px; white-space: nowrap; }
+  @media (max-width: 399px) {
+    /* Longer locales ("Enregistrer le PDF") need the room: drop both glyphs. */
+    .export-group { padding-left: max(var(--sp-2), env(safe-area-inset-left)); padding-right: max(var(--sp-2), env(safe-area-inset-right)); }
     .export-group select { padding-left: 14px; }
-    .export-group select + select { padding: 0 26px 0 12px; background-size: 14px, 0; }
-    .export-group .btn { padding: 0 12px; font-size: 15px; }
+    .export-group select + select { padding: 0 24px 0 10px; background-position: right 8px center, left 10px center; background-size: 14px, 0; }
+    .export-group .btn { padding: 0 10px; font-size: 15px; }
     .export-group .btn .ico { display: none; }
   }
 

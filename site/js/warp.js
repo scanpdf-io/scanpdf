@@ -2,22 +2,18 @@
 // (procCanvas resolution) and the PDF export (full resolution).
 
 import { withMats } from './detect.js';
-
-const RATIOS = {
-  a4: 210 / 297,
-  letter: 8.5 / 11,
-};
+import { formatRatio } from './formats.js';
 
 // Output pixel size for a detected quad. Side lengths of the quad recover the
-// true sheet aspect for near-frontal shots; 'a4'/'letter' snap the ratio to
-// the paper format (portrait vs landscape chosen by the measured ratio).
+// true sheet aspect for near-frontal shots; a named format snaps the ratio to
+// that format (portrait vs landscape chosen by the measured ratio).
 export function computeOutputSize(corners, format, maxSide = 2600) {
   const [tl, tr, br, bl] = corners;
   const d = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
   let w = Math.max(d(tl, tr), d(bl, br), 8);
   let h = Math.max(d(tl, bl), d(tr, br), 8);
 
-  const r = RATIOS[format];
+  const r = formatRatio(format);
   if (r) {
     const long = Math.max(w, h);
     const measured = w / h;

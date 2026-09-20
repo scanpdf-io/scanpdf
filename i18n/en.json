@@ -15,6 +15,19 @@
     "ogImageAlt": "ScanPDF: a photo of a paper document being straightened into a clean PDF page",
     "pageSizeLabel": "Page size",
     "pageSizeAuto": "Auto",
+    "formatGroupIso": "Paper (ISO)",
+    "formatGroupUs": "Paper (US)",
+    "formatGroupCards": "Cards and IDs",
+    "formatGroupPhoto": "Photos",
+    "formatGroupOther": "Other",
+    "formatIdCard": "Bank / ID card",
+    "formatPassport": "Passport",
+    "formatBusinessCard": "Business card",
+    "formatPhoto": "Photo",
+    "formatEnvelopeDl": "DL envelope",
+    "formatIndexCard": "Index card",
+    "formatSheetMusic": "Sheet music",
+    "formatSquare": "Square",
     "targetSizeLabel": "Maximum file size",
     "targetSizeNone": "No limit",
     "savePdf": "Save PDF",
@@ -91,7 +104,7 @@
   },
   "featureList": [
     "Automatic detection of the document edges in a photo",
-    "Perspective and scale correction to A4, Letter or the original sheet",
+    "Perspective and scale correction to the original sheet, A4, Letter, ID card, photo and other formats",
     "Color, grayscale and scan-style black & white filters",
     "Multi-page PDF export with page reordering",
     "Fully client-side processing: no upload and no account"
@@ -154,7 +167,7 @@
                 "**Rotate if needed.** Phone photos carry their orientation in EXIF metadata and are turned the right way up automatically, but the 90-degree buttons are there for pages photographed sideways.",
                 "**Pick a filter,** then use \"Apply to all\" if the whole batch was shot in the same light.",
                 "**Order the pages.** Drag a thumbnail to move a page, and delete the ones that did not work out. The order of the thumbnails is the order in the PDF.",
-                "**Choose a page size and save.** A4, Letter, or Auto, then \"Save PDF\". The file is assembled in the browser and lands in your downloads folder."
+                "**Choose a page size and save.** Auto, A4, Letter, a bank card, a photo print or another format, then \"Save PDF\". The file is assembled in the browser and lands in your downloads folder."
               ]
             }
           ]
@@ -176,7 +189,7 @@
         {
           "h": "Page size and output quality",
           "body": [
-            "**A4** and **Letter** force every page to that exact size, which is what you want for anything that will be printed or filed alongside other documents. **Auto** sizes each page to the aspect ratio of the sheet you actually photographed - the right choice for receipts, tickets, ID cards and other odd shapes that would otherwise sit stranded in the middle of an A4 page.",
+            "**A4** and **Letter** force every page to that exact size, which is what you want for anything that will be printed or filed alongside other documents. **Auto** sizes each page to the aspect ratio of the sheet you actually photographed - the right choice for receipts, tickets, ID cards and other odd shapes that would otherwise sit stranded in the middle of an A4 page. Auto is the default. The list also has exact formats for bank and ID cards, passports, business cards, photo prints, envelopes and more - pick one when the PDF page has to match the size of the real thing.",
             "Detection runs on a downscaled copy for speed, but the export always warps the full-resolution original, capped at 3500 px on the long side and written at roughly 220 DPI on A4. That is comfortably enough for reading, printing, and for OCR later if you want it.",
             "If the file has to stay under a limit - an email attachment, an upload form that rejects anything over 2 MB - pick a **maximum file size** next to the page size. ScanPDF first lowers the JPEG quality and then, only if it has to, the resolution, and it stops before text becomes unreadable. If the limit cannot be met that way, the smallest readable version is saved and you are told its actual size."
           ]

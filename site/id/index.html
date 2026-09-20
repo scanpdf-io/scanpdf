@@ -82,7 +82,7 @@
       },
       "featureList": [
         "Deteksi otomatis tepi dokumen di dalam foto",
-        "Koreksi perspektif dan skala ke A4, Letter, atau ukuran asli lembaran",
+        "Koreksi perspektif dan skala ke ukuran asli lembaran, A4, Letter, kartu, foto, dan format lainnya",
         "Filter warna, skala abu-abu, dan hitam putih ala pemindai",
         "Ekspor PDF multihalaman dengan pengurutan ulang halaman",
         "Pemrosesan sepenuhnya di sisi klien: tanpa unggah dan tanpa akun"
@@ -135,9 +135,36 @@
     <!-- On phones this same group is pinned to the bottom edge as the action bar. -->
     <div class="export-group">
       <select id="page-format" aria-label="Ukuran halaman" title="Ukuran halaman">
-        <option value="a4" selected>A4</option>
-        <option value="letter">Letter</option>
-        <option value="auto">Otomatis</option>
+        <option value="auto" selected>Otomatis</option>
+        <optgroup label="Kertas (ISO)">
+          <option value="a3">A3</option>
+          <option value="a4">A4</option>
+          <option value="a5">A5</option>
+          <option value="a6">A6</option>
+          <option value="b5">B5</option>
+        </optgroup>
+        <optgroup label="Kertas (AS)">
+          <option value="letter">Letter</option>
+          <option value="legal">Legal</option>
+          <option value="tabloid">Tabloid</option>
+        </optgroup>
+        <optgroup label="Kartu dan identitas">
+          <option value="id-card">Kartu bank / identitas</option>
+          <option value="passport">Paspor</option>
+          <option value="business-card">Kartu nama 85 &times; 55 mm</option>
+          <option value="business-card-us">Kartu nama 3.5 &times; 2&Prime;</option>
+        </optgroup>
+        <optgroup label="Foto">
+          <option value="photo-10x15">Foto 10 &times; 15 cm / 4 &times; 6&Prime;</option>
+          <option value="photo-13x18">Foto 13 &times; 18 cm / 5 &times; 7&Prime;</option>
+          <option value="photo-20x25">Foto 20 &times; 25 cm / 8 &times; 10&Prime;</option>
+        </optgroup>
+        <optgroup label="Lainnya">
+          <option value="envelope-dl">Amplop DL</option>
+          <option value="index-card">Kartu indeks 3 &times; 5&Prime;</option>
+          <option value="sheet-music">Partitur 9 &times; 12&Prime;</option>
+          <option value="square">Persegi</option>
+        </optgroup>
       </select>
       <select id="target-size" aria-label="Ukuran file maksimum" title="Ukuran file maksimum">
         <option value="0" selected>Tanpa batas</option>

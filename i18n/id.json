@@ -15,6 +15,19 @@
     "ogImageAlt": "ScanPDF: foto dokumen kertas yang diluruskan menjadi halaman PDF yang bersih",
     "pageSizeLabel": "Ukuran halaman",
     "pageSizeAuto": "Otomatis",
+    "formatGroupIso": "Kertas (ISO)",
+    "formatGroupUs": "Kertas (AS)",
+    "formatGroupCards": "Kartu dan identitas",
+    "formatGroupPhoto": "Foto",
+    "formatGroupOther": "Lainnya",
+    "formatIdCard": "Kartu bank / identitas",
+    "formatPassport": "Paspor",
+    "formatBusinessCard": "Kartu nama",
+    "formatPhoto": "Foto",
+    "formatEnvelopeDl": "Amplop DL",
+    "formatIndexCard": "Kartu indeks",
+    "formatSheetMusic": "Partitur",
+    "formatSquare": "Persegi",
     "targetSizeLabel": "Ukuran file maksimum",
     "targetSizeNone": "Tanpa batas",
     "savePdf": "Simpan PDF",
@@ -91,7 +104,7 @@
   },
   "featureList": [
     "Deteksi otomatis tepi dokumen di dalam foto",
-    "Koreksi perspektif dan skala ke A4, Letter, atau ukuran asli lembaran",
+    "Koreksi perspektif dan skala ke ukuran asli lembaran, A4, Letter, kartu, foto, dan format lainnya",
     "Filter warna, skala abu-abu, dan hitam putih ala pemindai",
     "Ekspor PDF multihalaman dengan pengurutan ulang halaman",
     "Pemrosesan sepenuhnya di sisi klien: tanpa unggah dan tanpa akun"
@@ -154,7 +167,7 @@
                 "**Putar jika perlu.** Foto dari ponsel menyimpan orientasinya di metadata EXIF dan otomatis diputar ke arah yang benar, tetapi tombol putar 90 derajat tetap tersedia untuk halaman yang terpotret menyamping.",
                 "**Pilih filter,** lalu gunakan \"Terapkan ke semua\" jika semua foto diambil dalam pencahayaan yang sama.",
                 "**Urutkan halaman.** Seret gambar mini untuk memindahkan halaman, dan hapus yang hasilnya kurang bagus. Urutan gambar mini adalah urutan halaman di PDF.",
-                "**Pilih ukuran halaman lalu simpan.** A4, Letter, atau Otomatis, lalu \"Simpan PDF\". File disusun di browser dan masuk ke folder unduhan Anda."
+                "**Pilih ukuran halaman lalu simpan.** Otomatis, A4, Letter, kartu bank, foto, atau format lain, lalu \"Simpan PDF\". File disusun di browser dan masuk ke folder unduhan Anda."
               ]
             }
           ]
@@ -176,7 +189,7 @@
         {
           "h": "Ukuran halaman dan kualitas hasil",
           "body": [
-            "**A4** dan **Letter** memaksa setiap halaman ke ukuran persis itu, cocok untuk apa pun yang akan dicetak atau diarsipkan bersama dokumen lain. **Otomatis** menyesuaikan setiap halaman dengan rasio aspek lembaran yang benar-benar Anda foto - pilihan yang tepat untuk struk, tiket, kartu identitas, dan bentuk tak lazim lainnya yang kalau tidak, akan terdampar di tengah halaman A4.",
+            "**A4** dan **Letter** memaksa setiap halaman ke ukuran persis itu, cocok untuk apa pun yang akan dicetak atau diarsipkan bersama dokumen lain. **Otomatis** menyesuaikan setiap halaman dengan rasio aspek lembaran yang benar-benar Anda foto - pilihan yang tepat untuk struk, tiket, kartu identitas, dan bentuk tak lazim lainnya yang kalau tidak, akan terdampar di tengah halaman A4. Otomatis adalah pilihan bawaan. Daftar ini juga memuat format persis untuk kartu bank dan kartu identitas, paspor, kartu nama, cetakan foto, amplop, dan lainnya - pilih salah satunya bila halaman PDF harus sama ukurannya dengan benda aslinya.",
             "Deteksi dijalankan pada salinan yang diperkecil demi kecepatan, tetapi ekspor selalu memproses foto asli beresolusi penuh, dibatasi 3500 px pada sisi panjang dan ditulis pada sekitar 220 DPI untuk A4. Itu lebih dari cukup untuk dibaca, dicetak, dan untuk OCR nanti jika Anda menginginkannya.",
             "Jika file harus di bawah batas tertentu - lampiran email, formulir unggah yang menolak file di atas 2 MB - pilih **ukuran file maksimum** di sebelah ukuran halaman. ScanPDF lebih dulu menurunkan kualitas JPEG, lalu resolusi hanya jika memang perlu, dan berhenti sebelum teks menjadi tak terbaca. Jika batas itu tetap tidak tercapai, versi terkecil yang masih terbaca akan disimpan dan ukuran sebenarnya ditampilkan kepada Anda."
           ]

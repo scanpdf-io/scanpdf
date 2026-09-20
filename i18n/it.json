@@ -15,6 +15,19 @@
     "ogImageAlt": "ScanPDF: la foto di un documento cartaceo raddrizzata fino a diventare una pagina PDF pulita",
     "pageSizeLabel": "Formato pagina",
     "pageSizeAuto": "Auto",
+    "formatGroupIso": "Carta (ISO)",
+    "formatGroupUs": "Carta (USA)",
+    "formatGroupCards": "Tessere e documenti",
+    "formatGroupPhoto": "Foto",
+    "formatGroupOther": "Altro",
+    "formatIdCard": "Carta bancaria / d'identità",
+    "formatPassport": "Passaporto",
+    "formatBusinessCard": "Biglietto da visita",
+    "formatPhoto": "Foto",
+    "formatEnvelopeDl": "Busta DL",
+    "formatIndexCard": "Scheda",
+    "formatSheetMusic": "Spartito",
+    "formatSquare": "Quadrato",
     "targetSizeLabel": "Dimensione massima del file",
     "targetSizeNone": "Nessun limite",
     "savePdf": "Salva PDF",
@@ -91,7 +104,7 @@
   },
   "featureList": [
     "Rilevamento automatico dei bordi del documento nella foto",
-    "Correzione di prospettiva e scala in A4, Letter o nel formato originale del foglio",
+    "Correzione di prospettiva e scala nel formato originale del foglio, A4, Letter, tessera, foto e altri formati",
     "Filtri a colori, in scala di grigi e in bianco e nero effetto scansione",
     "Esportazione in PDF multipagina con riordino delle pagine",
     "Elaborazione interamente lato client: nessun upload e nessun account"
@@ -154,7 +167,7 @@
                 "**Ruota se serve.** Le foto del telefono portano l'orientamento nei metadati EXIF e vengono girate nel verso giusto in automatico, ma i pulsanti da 90 gradi sono lì per le pagine fotografate di traverso.",
                 "**Scegli un filtro,** poi usa \"Applica a tutte\" se l'intero gruppo è stato scattato con la stessa luce.",
                 "**Metti in ordine le pagine.** Trascina una miniatura per spostare una pagina ed elimina quelle venute male. L'ordine delle miniature è l'ordine nel PDF.",
-                "**Scegli il formato della pagina e salva.** A4, Letter o Auto, poi \"Salva PDF\". Il file viene composto nel browser e finisce nella cartella dei download."
+                "**Scegli il formato della pagina e salva.** Auto, A4, Letter, carta bancaria, foto o un altro formato, poi \"Salva PDF\". Il file viene composto nel browser e finisce nella cartella dei download."
               ]
             }
           ]
@@ -176,7 +189,7 @@
         {
           "h": "Formato della pagina e qualità del risultato",
           "body": [
-            "**A4** e **Letter** portano ogni pagina esattamente a quel formato, ed è quello che ti serve per tutto ciò che verrà stampato o archiviato insieme ad altri documenti. **Auto** adatta ogni pagina alle proporzioni del foglio che hai effettivamente fotografato - la scelta giusta per scontrini, biglietti, documenti d'identità e altri formati insoliti, che altrimenti resterebbero persi in mezzo a una pagina A4.",
+            "**A4** e **Letter** portano ogni pagina esattamente a quel formato, ed è quello che ti serve per tutto ciò che verrà stampato o archiviato insieme ad altri documenti. **Auto** adatta ogni pagina alle proporzioni del foglio che hai effettivamente fotografato - la scelta giusta per scontrini, biglietti, documenti d'identità e altri formati insoliti, che altrimenti resterebbero persi in mezzo a una pagina A4. Auto è l'impostazione predefinita. L'elenco comprende anche formati esatti per carte bancarie e d'identità, passaporti, biglietti da visita, stampe fotografiche, buste e altro - scegline uno quando la pagina del PDF deve avere le dimensioni dell'oggetto reale.",
             "Per fare in fretta il rilevamento lavora su una copia ridotta, ma l'esportazione raddrizza sempre l'originale a piena risoluzione, con un tetto di 3500 px sul lato lungo e circa 220 DPI su un A4. È più che sufficiente per leggere, stampare e, se ti serve, passare poi il file a un OCR.",
             "Se il file deve restare sotto un limite - un allegato email, un modulo che rifiuta tutto ciò che supera i 2 MB - scegli una **dimensione massima del file** accanto al formato pagina. ScanPDF riduce prima la qualità JPEG e, solo se necessario, la risoluzione, e si ferma prima che il testo diventi illeggibile. Se nemmeno così si rientra nel limite, viene salvata la versione leggibile più piccola e ti viene indicata la dimensione effettiva."
           ]

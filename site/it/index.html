@@ -82,7 +82,7 @@
       },
       "featureList": [
         "Rilevamento automatico dei bordi del documento nella foto",
-        "Correzione di prospettiva e scala in A4, Letter o nel formato originale del foglio",
+        "Correzione di prospettiva e scala nel formato originale del foglio, A4, Letter, tessera, foto e altri formati",
         "Filtri a colori, in scala di grigi e in bianco e nero effetto scansione",
         "Esportazione in PDF multipagina con riordino delle pagine",
         "Elaborazione interamente lato client: nessun upload e nessun account"
@@ -135,9 +135,36 @@
     <!-- On phones this same group is pinned to the bottom edge as the action bar. -->
     <div class="export-group">
       <select id="page-format" aria-label="Formato pagina" title="Formato pagina">
-        <option value="a4" selected>A4</option>
-        <option value="letter">Letter</option>
-        <option value="auto">Auto</option>
+        <option value="auto" selected>Auto</option>
+        <optgroup label="Carta (ISO)">
+          <option value="a3">A3</option>
+          <option value="a4">A4</option>
+          <option value="a5">A5</option>
+          <option value="a6">A6</option>
+          <option value="b5">B5</option>
+        </optgroup>
+        <optgroup label="Carta (USA)">
+          <option value="letter">Letter</option>
+          <option value="legal">Legal</option>
+          <option value="tabloid">Tabloid</option>
+        </optgroup>
+        <optgroup label="Tessere e documenti">
+          <option value="id-card">Carta bancaria / d&#x27;identità</option>
+          <option value="passport">Passaporto</option>
+          <option value="business-card">Biglietto da visita 85 &times; 55 mm</option>
+          <option value="business-card-us">Biglietto da visita 3.5 &times; 2&Prime;</option>
+        </optgroup>
+        <optgroup label="Foto">
+          <option value="photo-10x15">Foto 10 &times; 15 cm / 4 &times; 6&Prime;</option>
+          <option value="photo-13x18">Foto 13 &times; 18 cm / 5 &times; 7&Prime;</option>
+          <option value="photo-20x25">Foto 20 &times; 25 cm / 8 &times; 10&Prime;</option>
+        </optgroup>
+        <optgroup label="Altro">
+          <option value="envelope-dl">Busta DL</option>
+          <option value="index-card">Scheda 3 &times; 5&Prime;</option>
+          <option value="sheet-music">Spartito 9 &times; 12&Prime;</option>
+          <option value="square">Quadrato</option>
+        </optgroup>
       </select>
       <select id="target-size" aria-label="Dimensione massima del file" title="Dimensione massima del file">
         <option value="0" selected>Nessun limite</option>

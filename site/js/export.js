@@ -7,13 +7,10 @@ import { t } from './i18n.js';
 import { cvReady } from './cv-loader.js';
 import { computeOutputSize, warpToCanvas } from './warp.js';
 import { applyFilter, rotateCanvas } from './filters.js';
+import { formatPoints } from './formats.js';
 
 const EXPORT_MAX_SIDE = 2600;
 const AUTO_DPI = 200;
-const PAGE_PTS = {
-  a4: [595.28, 841.89],
-  letter: [612, 792],
-};
 
 // Fitting a size limit (state.targetBytes). Quality is lowered first, down to
 // Q_MIN; past that the page is downscaled instead, because a smaller sharp
@@ -164,7 +161,7 @@ function scaleCanvas(canvas, factor) {
 
 function pagePoints(width, height) {
   if (state.pageFormat === 'auto') return [(width * 72) / AUTO_DPI, (height * 72) / AUTO_DPI];
-  const [shortPt, longPt] = PAGE_PTS[state.pageFormat];
+  const [shortPt, longPt] = formatPoints(state.pageFormat);
   return height >= width ? [shortPt, longPt] : [longPt, shortPt];
 }
 

@@ -13,6 +13,7 @@ import { toast, announce } from './toast.js';
 
 const MAX_FULL_SIDE = 3500;
 const MAX_PROC_SIDE = 1000;
+const PAGE_FORMAT_KEY = 'scanpdf-page-format';
 const TARGET_SIZE_KEY = 'scanpdf-target-size';
 
 const $ = (id) => document.getElementById(id);
@@ -289,46 +290,53 @@ function setupToolbar() {
     $(id).addEventListener('click', () => removePage(state.selectedId));
   }
 
-  $('page-format').addEventListener('change', (e) => {
-    state.pageFormat = e.target.value;
-    emit();
+  rememberSelect($('page-format'), PAGE_FORMAT_KEY, (value, changed) => {
+    state.pageFormat = value;
+    if (changed) emit();
   });
-
   setupTargetSize();
 
   saveBtn.addEventListener('click', onSave);
 }
 
-// The size limit is the one export setting worth remembering: whoever needs
-// "under 2 MB" for a portal usually needs it every time.
+// The export settings are remembered between visits: whoever needs A5, or
+// "under 2 MB" for a portal, usually needs it every time. The template's
+// default option is never stored, so it can change later without leaving
+// stale choices behind.
+function rememberSelect(select, key, apply) {
+  const fallback = select.value;
+  let saved = null;
+  try {
+    saved = localStorage.getItem(key);
+  } catch (_) {
+    // Storage blocked: start from the default.
+  }
+  if (saved && Array.from(select.options).some((option) => option.value === saved)) {
+    select.value = saved;
+  }
+  apply(select.value, false);
+
+  select.addEventListener('change', () => {
+    apply(select.value, true);
+    try {
+      if (select.value === fallback) localStorage.removeItem(key);
+      else localStorage.setItem(key, select.value);
+    } catch (_) {
+      // Storage blocked: the choice still holds for this page view.
+    }
+  });
+}
+
 function setupTargetSize() {
   const select = $('target-size');
   // The template carries plain "2 MB" labels; redo them in the page's locale.
   for (const option of select.options) {
     if (Number(option.value)) option.textContent = `\u2264 ${formatBytes(Number(option.value))}`;
   }
-
-  let saved = null;
-  try {
-    saved = localStorage.getItem(TARGET_SIZE_KEY);
-  } catch (_) {
-    // Storage blocked: start without a limit.
-  }
-  if (saved && Array.from(select.options).some((option) => option.value === saved)) {
-    select.value = saved;
-  }
-  state.targetBytes = Number(select.value);
-  select.classList.toggle('is-set', state.targetBytes > 0);
-
-  select.addEventListener('change', () => {
-    state.targetBytes = Number(select.value);
+  rememberSelect(select, TARGET_SIZE_KEY, (value) => {
+    state.targetBytes = Number(value);
+    // A remembered limit has to be visible, or it degrades scans silently.
     select.classList.toggle('is-set', state.targetBytes > 0);
-    try {
-      if (state.targetBytes) localStorage.setItem(TARGET_SIZE_KEY, select.value);
-      else localStorage.removeItem(TARGET_SIZE_KEY);
-    } catch (_) {
-      // Storage blocked: the choice still holds for this page view.
-    }
   });
 }
 
