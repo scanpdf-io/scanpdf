@@ -1,0 +1,329 @@
+{
+  "lang": "it",
+  "name": "Italiano",
+  "ogLocale": "it_IT",
+  "slugs": {
+    "guide": "come-scansionare-documenti",
+    "faq": "domande-frequenti",
+    "privacy": "scansionare-senza-caricare"
+  },
+  "app": {
+    "title": "ScanPDF - Scanner documenti online gratis (foto in PDF, senza upload)",
+    "description": "Trasforma le foto dei tuoi documenti cartacei in PDF multipagina puliti e raddrizzati. Rilevamento dei bordi, correzione prospettica e filtri effetto scansione funzionano nel browser: niente upload, niente account, nessun limite.",
+    "ogTitle": "ScanPDF - Scanner di documenti online gratis",
+    "ogDescription": "Dalle foto dei fogli a PDF multipagina puliti, tutto nel tuo browser. Non viene caricato nulla.",
+    "ogImageAlt": "ScanPDF: la foto di un documento cartaceo raddrizzata fino a diventare una pagina PDF pulita",
+    "pageSizeLabel": "Formato pagina",
+    "pageSizeAuto": "Auto",
+    "savePdf": "Salva PDF",
+    "addPhotos": "Aggiungi foto",
+    "takePhoto": "Scatta foto",
+    "viewEditor": "Editor",
+    "viewPreview": "Anteprima",
+    "rotateLeftTitle": "Ruota di 90 gradi a sinistra",
+    "rotateRightTitle": "Ruota di 90 gradi a destra",
+    "filterLabel": "Filtro",
+    "filterColor": "Colore",
+    "filterGray": "Scala di grigi",
+    "filterBw": "Bianco e nero",
+    "applyToAll": "Applica a tutte",
+    "applyToAllTitle": "Applica questo filtro a tutte le pagine",
+    "redetect": "Rileva di nuovo",
+    "redetectTitle": "Ripeti il rilevamento automatico degli angoli",
+    "resetCorners": "Reimposta angoli",
+    "resetCornersTitle": "Riporta gli angoli all'intera inquadratura",
+    "dropTitle": "Trascina qui le foto dei tuoi documenti",
+    "editorHint": "Trascina gli angoli fino ai bordi del foglio",
+    "exporting": "Esportazione...",
+    "heroTitle": "Trasforma le foto dei documenti in un PDF pulito",
+    "heroSub": "I bordi del foglio vengono trovati in automatico. Raddrizza, ripulisci e salva - tutto avviene nel tuo browser.",
+    "heroDropHint": "oppure trascina le foto in un punto qualsiasi della pagina",
+    "privacyChip": "Le foto non lasciano mai il tuo dispositivo",
+    "stepsLabel": "Come funziona",
+    "step1": "Aggiungi le foto delle pagine",
+    "step2": "Controlla gli angoli",
+    "step3": "Salva il PDF",
+    "filterColorShort": "Colore",
+    "filterGrayShort": "Grigi",
+    "filterBwShort": "B/N",
+    "deletePageTitle": "Elimina pagina",
+    "moreActions": "Altre azioni",
+    "movePageEarlier": "Sposta la pagina indietro",
+    "movePageLater": "Sposta la pagina avanti",
+    "toolsLabel": "Strumenti pagina",
+    "pagesLabel": "Pagine"
+  },
+  "ui": {
+    "engineLoading": "Caricamento del motore di scansione...",
+    "engineFailed": "Impossibile caricare il motore",
+    "detecting": "Rilevamento degli angoli...",
+    "adjustCorners": "regola gli angoli",
+    "adjustCornersTitle": "Il rilevamento automatico non è riuscito - trascina gli angoli a mano",
+    "deletePage": "Elimina pagina",
+    "exportingPage": "Esportazione della pagina {i} di {n}...",
+    "exportFailed": "Esportazione non riuscita: {message}",
+    "pdfTitle": "Documento scansionato",
+    "imageLoadFailed": "Impossibile aprire {name}",
+    "filesSkipped": "File ignorati: {n}. Sono supportate solo le immagini",
+    "exportDone": "PDF salvato",
+    "dismiss": "Chiudi",
+    "pageLabel": "Pagina {i} di {n}",
+    "pageMoved": "Pagina spostata alla posizione {i} di {n}"
+  },
+  "nav": {
+    "home": "Scanner",
+    "guide": "Come scansionare",
+    "faq": "FAQ",
+    "privacy": "Privacy",
+    "sectionsLabel": "Sezioni",
+    "projectLabel": "Progetto",
+    "languageLabel": "Lingua",
+    "themeSystem": "Tema: sistema",
+    "themeLight": "Tema: chiaro",
+    "themeDark": "Tema: scuro",
+    "openScanner": "Apri lo scanner",
+    "skipToContent": "Vai al contenuto",
+    "ctaText": "Hai qualcosa da scansionare? ScanPDF funziona nel browser che hai già aperto. Niente da installare, nessun account, nessun file caricato."
+  },
+  "featureList": [
+    "Rilevamento automatico dei bordi del documento nella foto",
+    "Correzione di prospettiva e scala in A4, Letter o nel formato originale del foglio",
+    "Filtri a colori, in scala di grigi e in bianco e nero effetto scansione",
+    "Esportazione in PDF multipagina con riordino delle pagine",
+    "Elaborazione interamente lato client: nessun upload e nessun account"
+  ],
+  "footer": {
+    "source": "Codice sorgente",
+    "license": "Licenza MIT",
+    "issues": "Segnala un problema"
+  },
+  "manifest": {
+    "name": "ScanPDF - Scanner di documenti",
+    "shortName": "ScanPDF",
+    "description": "Trasforma le foto dei documenti cartacei in PDF multipagina puliti, tutto nel tuo browser."
+  },
+  "notFound": {
+    "title": "Pagina non trovata - ScanPDF",
+    "heading": "Pagina non trovata",
+    "body": "Questo indirizzo non esiste. Lo scanner, invece, è sempre a un clic di distanza.",
+    "cta": "Vai allo scanner"
+  },
+  "pages": {
+    "guide": {
+      "title": "Come scansionare un documento con il telefono, senza app | ScanPDF",
+      "description": "Guida pratica per scansionare documenti con la fotocamera del telefono: luce e inquadratura, correzione degli angoli, scelta del filtro ed esportazione gratuita di un PDF multipagina ben raddrizzato.",
+      "ogImageAlt": "Un telefono che fotografa un foglio di carta, accanto al risultato in PDF già raddrizzato",
+      "h1": "Come scansionare un documento con il telefono",
+      "lead": "Non ti serve uno scanner piano e non devi installare nulla. La fotocamera del telefono, con l'aiuto della correzione prospettica, basta per ottenere un PDF che sembra scansionato e non fotografato. In questa pagina trovi come scattare la foto e che cosa farne poi in [ScanPDF](~home).",
+      "sections": [
+        {
+          "h": "Perché una foto non è una scansione",
+          "body": [
+            "La foto di una pagina si scatta sempre un po' di sbieco, quindi il foglio viene fuori come un trapezio invece che come un rettangolo. In più si porta dietro il colore della luce che c'era nella stanza, l'ombra della tua mano o della tua testa e tutto quello che si trovava sul tavolo lì intorno.",
+            "Per farne una scansione servono quattro correzioni distinte: capire dove si trova davvero il foglio, riportarlo a un rettangolo, scalarlo a un formato di carta reale e uniformare la luce in modo che la carta risulti bianca. ScanPDF le fa tutte e quattro, ed è per questo che il risultato somiglia più a quello di uno scanner piano che a una foto ritagliata."
+          ]
+        },
+        {
+          "h": "Scattare una foto facile da raddrizzare",
+          "body": [
+            "Il rilevamento automatico dei bordi cerca una forma a quattro lati che si stacchi da ciò che la circonda. Bastano poche abitudini perché ci riesca quasi sempre:",
+            {
+              "ul": [
+                "**Appoggia il foglio su una superficie a contrasto.** Carta bianca su una scrivania scura è il caso facile. Carta bianca su un tavolo bianco è quello difficile, perché non c'è nessun bordo da trovare.",
+                "**Fai entrare tutti e quattro gli angoli nell'inquadratura,** con un po' di margine intorno al foglio. Un angolo tagliato dal bordo della foto non può essere rilevato, e nemmeno recuperato dopo trascinandolo.",
+                "**Scatta dall'alto, non di lato.** Qualsiasi angolazione si può correggere, ma una molto inclinata allunga la parte più lontana della pagina e lì ti fa perdere nitidezza.",
+                "**Usa una luce uniforme e indiretta.** Spegni il flash. Una finestra di lato è meglio di una lampada sopra di te e alle tue spalle, che proietta la tua ombra sul foglio.",
+                "**Stendi bene il foglio.** Una piega vicino alla rilegatura incurva il bordo, e su un bordo curvo è più difficile far combaciare una linea retta."
+              ]
+            },
+            "Niente di tutto questo deve essere perfetto. Se il rilevamento sbaglia, si sistema in cinque secondi, e la guida qui sotto spiega come."
+          ]
+        },
+        {
+          "h": "Passo dopo passo",
+          "body": [
+            {
+              "ol": [
+                "**Aggiungi le foto.** Trascinale sulla pagina, clicca su \"Aggiungi foto\" oppure, dal telefono, usa \"Scatta foto\" per fotografare direttamente dall'app. Puoi aggiungerne un'intera pila in una volta - ognuna diventa una pagina.",
+                "**Controlla gli angoli rilevati.** Ogni miniatura mostra il riquadro trovato. Le pagine in cui il rilevamento non era sicuro sono segnalate con l'etichetta \"regola gli angoli\", così devi guardare solo quelle che hanno bisogno di te.",
+                "**Trascina gli angoli fino ai bordi del foglio.** Una lente d'ingrandimento segue la maniglia, così puoi fermarti esattamente sull'angolo. \"Rileva di nuovo\" ripete il passaggio automatico, mentre \"Reimposta angoli\" li riporta all'intera inquadratura se vuoi ricominciare da capo.",
+                "**Ruota se serve.** Le foto del telefono portano l'orientamento nei metadati EXIF e vengono girate nel verso giusto in automatico, ma i pulsanti da 90 gradi sono lì per le pagine fotografate di traverso.",
+                "**Scegli un filtro,** poi usa \"Applica a tutte\" se l'intero gruppo è stato scattato con la stessa luce.",
+                "**Metti in ordine le pagine.** Trascina una miniatura per spostare una pagina ed elimina quelle venute male. L'ordine delle miniature è l'ordine nel PDF.",
+                "**Scegli il formato della pagina e salva.** A4, Letter o Auto, poi \"Salva PDF\". Il file viene composto nel browser e finisce nella cartella dei download."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Scegliere il filtro giusto",
+          "body": [
+            "Il filtro decide l'aspetto della pagina finita, e la scelta giusta dipende da che cosa c'è sul foglio.",
+            {
+              "ul": [
+                "**Colore** lascia tutto com'è stato fotografato. Usalo quando il colore ha un significato: testo evidenziato, timbri, firme con inchiostro blu, scontrini, fotografie sulla pagina.",
+                "**Scala di grigi** elimina la dominante di colore della luce della stanza senza toccare il contrasto. È la via di mezzo sicura per le pagine miste e per tutto ciò che contiene una fotografia che vuoi mantenere morbida.",
+                "**Bianco e nero** è quello che fa sembrare un documento scansionato come si deve. Non è una soglia netta - divide l'immagine per una stima dello sfondo, e così appiattisce ombre e luce irregolare, rende la carta davvero bianca e lascia il testo con i bordi morbidi invece che seghettati. Per il semplice testo stampato o scritto a mano dà il file più pulito e più leggero. Evitalo per le fotografie, che ne escono distrutte."
+              ]
+            },
+            "Provare non costa nulla: cambia filtro e guarda l'anteprima dal vivo, perché la scelta viene memorizzata pagina per pagina e applicata solo al momento dell'esportazione."
+          ]
+        },
+        {
+          "h": "Formato della pagina e qualità del risultato",
+          "body": [
+            "**A4** e **Letter** portano ogni pagina esattamente a quel formato, ed è quello che ti serve per tutto ciò che verrà stampato o archiviato insieme ad altri documenti. **Auto** adatta ogni pagina alle proporzioni del foglio che hai effettivamente fotografato - la scelta giusta per scontrini, biglietti, documenti d'identità e altri formati insoliti, che altrimenti resterebbero persi in mezzo a una pagina A4.",
+            "Per fare in fretta il rilevamento lavora su una copia ridotta, ma l'esportazione raddrizza sempre l'originale a piena risoluzione, con un tetto di 3500 px sul lato lungo e circa 220 DPI su un A4. È più che sufficiente per leggere, stampare e, se ti serve, passare poi il file a un OCR."
+          ]
+        },
+        {
+          "h": "Quando il rilevamento non trova la pagina",
+          "body": [
+            "Il rilevamento automatico fallisce quando non c'è un bordo da trovare, e la causa è quasi sempre una di queste tre: il foglio è su una superficie dello stesso colore, un angolo è fuori dall'inquadratura, oppure un'ombra netta attraversa la pagina e viene scambiata per un bordo.",
+            "Nei primi due casi serve una nuova foto. Nel terzo di solito no - trascina a mano i quattro angoli e la correzione prospettica funziona esattamente come avrebbe fatto altrimenti. Il rilevamento è una comodità, non un requisito."
+          ]
+        },
+        {
+          "h": "Non viene caricato nulla",
+          "body": [
+            "Tutti i passaggi descritti sopra avvengono sul tuo dispositivo. Le immagini vengono decodificate, analizzate, raddrizzate e impacchettate in un PDF da codice che gira nella scheda del tuo browser; non esiste un server a cui inviarle. Conta parecchio per contratti, referti medici, estratti conto e documenti d'identità, ed è spiegato più in dettaglio nella [pagina sulla privacy](~privacy).",
+            "[Apri lo scanner](~home) e provalo con quello che hai sulla scrivania."
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "title": "FAQ di ScanPDF - Scansionare foto in PDF nel browser",
+      "description": "Risposte su ScanPDF: formati supportati, limiti di pagine, uso su iPhone e Android, funzionamento offline, risoluzione del risultato, costi e come eseguirlo in proprio.",
+      "ogImageAlt": "Le domande frequenti su ScanPDF",
+      "h1": "Domande frequenti",
+      "lead": "Tutto quello che di solito ci si chiede prima di affidare le proprie carte a uno scanner di documenti.",
+      "faq": [
+        {
+          "q": "ScanPDF è gratis?",
+          "a": [
+            "Sì, e senza condizioni. Niente account, niente registrazione, nessun limite di pagine, nessuna filigrana, nessun piano a pagamento e nessun periodo di prova. È tutto open source con licenza MIT, e non c'è nessun server di cui farti pagare il conto."
+          ]
+        },
+        {
+          "q": "I miei documenti vengono caricati da qualche parte?",
+          "a": [
+            "No. Sia l'elaborazione delle immagini sia la composizione del PDF avvengono nel tuo browser, e l'app non ha un backend a cui inviare qualcosa. Le foto vengono lette dal disco dalla pagina, tenute in memoria e restituite come PDF da scaricare. Nella [pagina sulla privacy](~privacy) trovi come questo viene garantito, e non soltanto promesso."
+          ]
+        },
+        {
+          "q": "Quali formati di immagine posso usare?",
+          "a": [
+            "Tutto ciò che il tuo browser riesce a decodificare come immagine: JPEG e HEIC dalla fotocamera del telefono, PNG, WebP, AVIF, GIF, BMP. Le foto appena scattate con un iPhone o un dispositivo Android funzionano senza conversione, e il loro orientamento EXIF viene gestito in automatico."
+          ]
+        },
+        {
+          "q": "C'è un limite di pagine?",
+          "a": [
+            "Nessuno prefissato. Le pagine vengono esportate una dopo l'altra e non tutte insieme, quindi l'uso della memoria resta costante e i documenti lunghi non sono un problema. Il limite pratico è la RAM del tuo dispositivo quando le foto di partenza sono molto grandi, non una regola dell'app."
+          ]
+        },
+        {
+          "q": "Funziona su iPhone e Android?",
+          "a": [
+            "Sì, in qualsiasi browser mobile recente. Sul telefono il layout passa a un pannello unico con un selettore tra editor e anteprima, e il pulsante \"Scatta foto\" apre direttamente la fotocamera posteriore, così puoi fotografare e scansionare un documento senza prima salvarlo nel rullino."
+          ]
+        },
+        {
+          "q": "Funziona offline?",
+          "a": [
+            "Una volta caricati la pagina e il motore di scansione, tutta l'elaborazione è locale, quindi la rete non entra in gioco nella gestione dei tuoi documenti. Se vuoi una configurazione davvero isolata dalla rete, esegui il container descritto più sotto - serve l'intera app, build di OpenCV compresa, dalla tua macchina."
+          ]
+        },
+        {
+          "q": "Com'è la qualità del risultato?",
+          "a": [
+            "L'esportazione raddrizza l'originale a piena risoluzione, non la copia ridotta usata per il rilevamento, con un tetto di 3500 px sul lato lungo e circa 220 DPI su una pagina A4. Basta per stampare o per passarci sopra un OCR. Il filtro bianco e nero usa la divisione per lo sfondo invece di una soglia netta, quindi le ombre si appiattiscono e il testo conserva i bordi morbidi invece di diventare seghettato."
+          ]
+        },
+        {
+          "q": "Posso riordinare o eliminare le pagine?",
+          "a": [
+            "Sì. Trascina le miniature per riordinarle ed elimina quelle che non ti servono; l'ordine che vedi lì è quello del PDF esportato. Rotazione, regolazione degli angoli e filtro valgono pagina per pagina, quindi una foto venuta male in mezzo a un gruppo non ti costringe mai a rifare il resto."
+          ]
+        },
+        {
+          "q": "Perché il rilevamento automatico degli angoli ha sbagliato?",
+          "a": [
+            "Quasi sempre perché non c'era un bordo da trovare: carta bianca su un tavolo bianco, un angolo fuori dall'inquadratura, oppure un'ombra netta sulla pagina scambiata per un bordo. Trascina gli angoli a mano e tutto il resto funziona allo stesso identico modo - il rilevamento è una comodità, non un requisito. La [guida alla scansione](~guide) spiega come evitarlo."
+          ]
+        },
+        {
+          "q": "Posso eseguirlo sulla mia macchina?",
+          "a": [
+            "Sì. Un'immagine container già pronta viene pubblicata su GitHub Container Registry, e ogni release include anche un semplice zip di file statici adatto a qualsiasi server web. Ospitandolo in proprio ottieni in più la Content-Security-Policy rigorosa, grazie alla quale è il browser stesso a bloccare le richieste verso l'esterno. Le istruzioni sono nel [README](https://github.com/scanpdf-io/scanpdf#running-it-yourself)."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Scansiona documenti in PDF senza caricarli da nessuna parte | ScanPDF",
+      "description": "Quasi tutti gli scanner PDF online caricano i tuoi documenti su un server. ScanPDF no: rilevamento, correzione prospettica e creazione del PDF avvengono nel browser, e una CSP rigorosa può garantirlo.",
+      "ogImageAlt": "Un documento scansionato in locale, senza alcuna connessione a un server",
+      "h1": "Scansiona i documenti senza caricarli",
+      "lead": "Passaporti, contratti, buste paga, referti medici. I documenti che più vale la pena scansionare sono proprio quelli che meno vale la pena affidare al server di uno sconosciuto. ScanPDF è nato perché consegnarli a qualcuno non faccia parte del patto.",
+      "sections": [
+        {
+          "h": "Che cosa fa un tipico convertitore online",
+          "body": [
+            "Il classico sito \"da foto a PDF\" è un modulo web davanti a un server. Il tuo file viene caricato, convertito in un posto che non puoi vedere e restituito come download. Da qualche parte nelle condizioni d'uso c'è la promessa di cancellarlo dopo un'ora o un giorno.",
+            "Può anche darsi che la promessa venga mantenuta. Ma resta una promessa, non un meccanismo, e non copre ciò che nessuno ti ha mai detto: da quante macchine è passato il file, che cosa è finito nei log, quale subfornitore ne ha conservato il backup, o che cosa verrà esposto da una futura violazione. Per un documento d'identità o un contratto firmato, la valutazione onesta del rischio è che, una volta completato il caricamento, l'esito non dipende più da te."
+          ]
+        },
+        {
+          "h": "Che cosa fa invece ScanPDF",
+          "body": [
+            "Non c'è una fase di caricamento, perché non c'è niente su cui caricare. ScanPDF è una pagina statica. Il browser legge la foto dal disco, e tutto quello che segue avviene nella scheda:",
+            {
+              "ul": [
+                "**Il rilevamento dei bordi** usa una build WebAssembly di OpenCV, eseguita sulla tua CPU.",
+                "**Correzione prospettica e filtri** vengono applicati in memoria all'immagine a piena risoluzione.",
+                "**Il PDF viene composto in locale** con pdf-lib e consegnato al browser come un normale download."
+              ]
+            },
+            "Nessuna richiesta trasporta i dati delle tue immagini, perché nel codice una richiesta del genere non esiste. Una volta caricata la pagina, funziona tutto anche con il cavo di rete staccato."
+          ]
+        },
+        {
+          "h": "Verificabile, non solo dichiarato",
+          "body": [
+            "Una promessa sulla privacy che non puoi controllare vale ben poco, quindi questa è fatta in modo da poter essere verificata in tre modi.",
+            {
+              "ul": [
+                "**Guardalo con i tuoi occhi.** Apri gli strumenti per sviluppatori del browser, passa alla scheda Rete e scansiona un documento. Dopo il caricamento dei file dell'app non viene inviato nient'altro.",
+                "**Leggi il codice.** L'intera app ha licenza MIT e si trova su [GitHub](https://github.com/scanpdf-io/scanpdf) - poche centinaia di righe di semplici moduli JavaScript, senza una fase di build che li renda illeggibili, e due dipendenze fissate tramite URL e SHA-256.",
+                "**Lascia che sia il browser a farlo rispettare.** Il container self-hosted include una `Content-Security-Policy` rigorosa che limita le connessioni alla propria origine. Con questa policy, una richiesta accidentale verso un host esterno viene bloccata dal browser, e non è soltanto assente dal codice."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "La demo online e l'installazione in proprio",
+          "body": [
+            "Vale la pena essere precisi sulla differenza, perché la maggior parte dei siti non lo è.",
+            "La demo su scanpdf.io è lo stesso codice, servito da GitHub Pages. Anche lì l'elaborazione avviene interamente lato client e i tuoi documenti non lasciano comunque il dispositivo. Cambia chi controlla le intestazioni di risposta: su GitHub Pages è GitHub, quindi la CSP rigorosa prevista dalla configurazione nginx del progetto non viene applicata. GitHub vede inoltre la normale richiesta al server web per la pagina stessa, come succederebbe con qualsiasi hosting.",
+            "Se vuoi che la garanzia sia imposta dal browser, invece di fidarti del fatto che il codice sia davvero quello che dichiara di essere, eseguilo in proprio. Basta un comando per avviare il container, che in esecuzione non ha bisogno di alcun accesso alla rete."
+          ]
+        },
+        {
+          "h": "Nessun account, nessuna telemetria, nessun cookie",
+          "body": [
+            "Non c'è nulla a cui registrarsi, quindi non c'è nessun indirizzo email in archivio. Non ci sono script di analytics, pixel di tracciamento, servizi di segnalazione degli errori né framework per i test A/B. L'app non imposta cookie e non scrive nulla nel local storage; ricarica la pagina e ogni traccia della sessione sparisce.",
+            "Più che una policy, è un'architettura. Una pagina statica senza backend non ha un posto dove mettere i dati di cui avrebbe bisogno per farne un uso scorretto."
+          ]
+        },
+        {
+          "h": "Provalo",
+          "body": [
+            "[Apri lo scanner](~home) e trascinaci dentro un documento che non avresti mai caricato da nessuna parte. Il senso è proprio questo. Se fotografare fogli di carta è una novità per te, la [guida alla scansione](~guide) spiega come ottenere un risultato pulito al primo colpo."
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -38,6 +38,8 @@ test: run
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/faq/                   && echo "OK  /faq/"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/es/                    && echo "OK  /es/"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/fr/questions-frequentes/ && echo "OK  /fr/questions-frequentes/"
+	@curl -fsS -o /dev/null http://localhost:$(PORT)/hi/                    && echo "OK  /hi/"
+	@curl -fsS -o /dev/null http://localhost:$(PORT)/tr/sik-sorulan-sorular/ && echo "OK  /tr/sik-sorulan-sorular/"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/sitemap.xml            && echo "OK  /sitemap.xml"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/robots.txt             && echo "OK  /robots.txt"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/manifest.webmanifest   && echo "OK  /manifest.webmanifest"

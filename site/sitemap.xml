@@ -8,6 +8,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
     <priority>1.0</priority>
   </url>
@@ -18,6 +22,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
     <priority>1.0</priority>
   </url>
@@ -28,6 +36,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
     <priority>1.0</priority>
   </url>
@@ -38,6 +50,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
     <priority>1.0</priority>
   </url>
@@ -48,6 +64,66 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/it/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/tr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/id/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/hi/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/"/>
     <priority>1.0</priority>
   </url>
@@ -58,6 +134,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/come-scansionare-documenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/belge-nasil-taranir/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/cara-memindai-dokumen/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/dastavez-scan-kaise-karen/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
     <priority>0.8</priority>
   </url>
@@ -68,6 +148,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/come-scansionare-documenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/belge-nasil-taranir/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/cara-memindai-dokumen/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/dastavez-scan-kaise-karen/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
     <priority>0.8</priority>
   </url>
@@ -78,6 +162,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/come-scansionare-documenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/belge-nasil-taranir/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/cara-memindai-dokumen/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/dastavez-scan-kaise-karen/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
     <priority>0.8</priority>
   </url>
@@ -88,6 +176,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/come-scansionare-documenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/belge-nasil-taranir/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/cara-memindai-dokumen/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/dastavez-scan-kaise-karen/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
     <priority>0.8</priority>
   </url>
@@ -98,6 +190,66 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/come-scansionare-documenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/belge-nasil-taranir/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/cara-memindai-dokumen/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/dastavez-scan-kaise-karen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/it/come-scansionare-documenti/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/como-escanear-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/come-scansionare-documenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/belge-nasil-taranir/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/cara-memindai-dokumen/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/dastavez-scan-kaise-karen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/tr/belge-nasil-taranir/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/como-escanear-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/come-scansionare-documenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/belge-nasil-taranir/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/cara-memindai-dokumen/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/dastavez-scan-kaise-karen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/id/cara-memindai-dokumen/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/como-escanear-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/come-scansionare-documenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/belge-nasil-taranir/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/cara-memindai-dokumen/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/dastavez-scan-kaise-karen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/hi/dastavez-scan-kaise-karen/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/how-to-scan-documents/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/como-escanear-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/dokumente-scannen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/como-digitalizar-documentos/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/comment-numeriser-un-document/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/come-scansionare-documenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/belge-nasil-taranir/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/cara-memindai-dokumen/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/dastavez-scan-kaise-karen/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/how-to-scan-documents/"/>
     <priority>0.8</priority>
   </url>
@@ -108,6 +260,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/domande-frequenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/sik-sorulan-sorular/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pertanyaan-umum/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/aksar-puche-jane-wale-sawal/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
     <priority>0.8</priority>
   </url>
@@ -118,6 +274,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/domande-frequenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/sik-sorulan-sorular/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pertanyaan-umum/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/aksar-puche-jane-wale-sawal/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
     <priority>0.8</priority>
   </url>
@@ -128,6 +288,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/domande-frequenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/sik-sorulan-sorular/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pertanyaan-umum/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/aksar-puche-jane-wale-sawal/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
     <priority>0.8</priority>
   </url>
@@ -138,6 +302,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/domande-frequenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/sik-sorulan-sorular/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pertanyaan-umum/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/aksar-puche-jane-wale-sawal/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
     <priority>0.8</priority>
   </url>
@@ -148,6 +316,66 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/domande-frequenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/sik-sorulan-sorular/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pertanyaan-umum/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/aksar-puche-jane-wale-sawal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/it/domande-frequenti/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/preguntas-frecuentes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/domande-frequenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/sik-sorulan-sorular/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pertanyaan-umum/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/aksar-puche-jane-wale-sawal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/tr/sik-sorulan-sorular/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/preguntas-frecuentes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/domande-frequenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/sik-sorulan-sorular/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pertanyaan-umum/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/aksar-puche-jane-wale-sawal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/id/pertanyaan-umum/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/preguntas-frecuentes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/domande-frequenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/sik-sorulan-sorular/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pertanyaan-umum/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/aksar-puche-jane-wale-sawal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/hi/aksar-puche-jane-wale-sawal/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/faq/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/preguntas-frecuentes/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/haeufige-fragen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/perguntas-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/questions-frequentes/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/domande-frequenti/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/sik-sorulan-sorular/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pertanyaan-umum/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/aksar-puche-jane-wale-sawal/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/faq/"/>
     <priority>0.8</priority>
   </url>
@@ -158,6 +386,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/scansionare-senza-caricare/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/yuklemeden-tarama/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pindai-tanpa-mengunggah/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/bina-upload-scan/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
     <priority>0.8</priority>
   </url>
@@ -168,6 +400,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/scansionare-senza-caricare/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/yuklemeden-tarama/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pindai-tanpa-mengunggah/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/bina-upload-scan/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
     <priority>0.8</priority>
   </url>
@@ -178,6 +414,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/scansionare-senza-caricare/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/yuklemeden-tarama/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pindai-tanpa-mengunggah/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/bina-upload-scan/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
     <priority>0.8</priority>
   </url>
@@ -188,6 +428,10 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/scansionare-senza-caricare/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/yuklemeden-tarama/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pindai-tanpa-mengunggah/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/bina-upload-scan/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
     <priority>0.8</priority>
   </url>
@@ -198,6 +442,66 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/scansionare-senza-caricare/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/yuklemeden-tarama/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pindai-tanpa-mengunggah/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/bina-upload-scan/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/it/scansionare-senza-caricare/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/scan-without-uploading/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/escanear-sin-subir-archivos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/scansionare-senza-caricare/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/yuklemeden-tarama/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pindai-tanpa-mengunggah/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/bina-upload-scan/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/tr/yuklemeden-tarama/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/scan-without-uploading/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/escanear-sin-subir-archivos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/scansionare-senza-caricare/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/yuklemeden-tarama/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pindai-tanpa-mengunggah/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/bina-upload-scan/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/id/pindai-tanpa-mengunggah/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/scan-without-uploading/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/escanear-sin-subir-archivos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/scansionare-senza-caricare/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/yuklemeden-tarama/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pindai-tanpa-mengunggah/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/bina-upload-scan/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scanpdf.io/hi/bina-upload-scan/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scanpdf.io/scan-without-uploading/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://scanpdf.io/es/escanear-sin-subir-archivos/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scanpdf.io/de/scannen-ohne-hochladen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://scanpdf.io/pt/digitalizar-sem-enviar/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://scanpdf.io/fr/numeriser-sans-envoi/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scanpdf.io/it/scansionare-senza-caricare/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://scanpdf.io/tr/yuklemeden-tarama/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://scanpdf.io/id/pindai-tanpa-mengunggah/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://scanpdf.io/hi/bina-upload-scan/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://scanpdf.io/scan-without-uploading/"/>
     <priority>0.8</priority>
   </url>

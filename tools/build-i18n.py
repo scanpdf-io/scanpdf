@@ -25,8 +25,9 @@ SITE = ROOT / "site"
 
 ORIGIN = "https://scanpdf.io"
 
-# English first: it is the default locale and lives at the site root.
-LANGS = ["en", "es", "de", "pt", "fr"]
+# Order of the hreflang cluster and the sitemap; the language menu sorts itself
+# by native name (see menu_order). English is the default locale, at the root.
+LANGS = ["en", "es", "de", "pt", "fr", "it", "tr", "id", "hi"]
 DEFAULT_LANG = "en"
 
 # Page ids in navigation order. "home" is the scanner app itself.
@@ -108,11 +109,32 @@ def render_body(items, lang, page, indent="      "):
 
 
 def slugify(text):
-    """Stable ASCII id for a section heading, used as its anchor."""
+    """Stable ASCII id for a section heading, used as its anchor.
+
+    Empty when the heading is in a script that does not fold to ASCII: the
+    odd Latin word left over ("scanpdf") would make a misleading anchor.
+    """
     folded = unicodedata.normalize("NFKD", str(text).lower())
-    folded = folded.replace("ß", "ss").replace("ł", "l")
+    folded = folded.replace("ß", "ss").replace("ł", "l").replace("ı", "i")
+    if any(ch.isalpha() and not ch.isascii() for ch in folded):
+        return ""
     ascii_only = folded.encode("ascii", "ignore").decode("ascii")
-    return re.sub(r"[^a-z0-9]+", "-", ascii_only).strip("-") or "section"
+    return re.sub(r"[^a-z0-9]+", "-", ascii_only).strip("-")
+
+
+def unique_anchor(text, used):
+    """Anchor for a heading that is unique within its page.
+
+    Headings in a non-Latin script fold to nothing (or to a stray "pdf"), so
+    fall back to the section's position and de-duplicate what is left.
+    """
+    base = slugify(text) or f"section-{len(used) + 1}"
+    anchor, n = base, 1
+    while anchor in used:
+        n += 1
+        anchor = f"{base}-{n}"
+    used.add(anchor)
+    return anchor
 
 
 # --------------------------------------------------------------------------
@@ -198,9 +220,23 @@ def nav_links(lang, current, href_for):
     return "".join(links)
 
 
+def menu_order(lang):
+    """Sort key for the language menu: alphabetical by the native name.
+
+    The order is the same on every page, so a visitor who cannot read the
+    current locale still finds their own language in a familiar place. Accents
+    are folded for collation, and names in a non-Latin script follow the
+    Latin ones rather than being interleaved by code point.
+    """
+    name = LOCALES[lang]["name"]
+    folded = unicodedata.normalize("NFKD", name).casefold()
+    key = "".join(ch for ch in folded if not unicodedata.combining(ch))
+    return (not key[:1].isascii(), key)
+
+
 def lang_links(lang, page, href_for):
     links = []
-    for other in LANGS:
+    for other in sorted(LANGS, key=menu_order):
         label = LOCALES[other]["name"]
         href = href_for(other, page)
         current = ' aria-current="true" class="current"' if other == lang else ""
@@ -449,9 +485,10 @@ def build_content_page(lang, page):
     ctx["breadcrumb"] = breadcrumb_html(lang, page)
 
     blocks = []
+    used = set()
     if page == "faq":
         for item in data["faq"]:
-            anchor = slugify(strip_markup(item["q"]))
+            anchor = unique_anchor(strip_markup(item["q"]), used)
             blocks.append(
                 f'    <section class="faq-item" id="{anchor}">\n'
                 f'      <h2>{inline(item["q"], lang, page)}</h2>\n'
@@ -460,7 +497,7 @@ def build_content_page(lang, page):
             )
     else:
         for section in data["sections"]:
-            anchor = slugify(strip_markup(section["h"]))
+            anchor = unique_anchor(strip_markup(section["h"]), used)
             blocks.append(
                 f'    <section id="{anchor}">\n'
                 f'      <h2>{inline(section["h"], lang, page)}</h2>\n'
@@ -581,6 +618,35 @@ def write(path, text):
 
 LOCALES = {}
 
+PLACEHOLDER_RE = re.compile(r"\{\w+\}")
+
+
+def check_parity(ref, other, path, errors):
+    """Collect every place a locale's shape differs from the default one.
+
+    Templates fail loudly on a missing key, but the run-time "ui" strings,
+    "featureList" and "slugs" are read by iteration and would go out silently.
+    """
+    if isinstance(ref, dict) and isinstance(other, dict):
+        for key in ref.keys() - other.keys():
+            errors.append(f"{path}.{key}: missing")
+        for key in other.keys() - ref.keys():
+            errors.append(f"{path}.{key}: unexpected")
+        for key in ref.keys() & other.keys():
+            check_parity(ref[key], other[key], f"{path}.{key}", errors)
+    elif isinstance(ref, list) and isinstance(other, list):
+        if len(ref) != len(other):
+            errors.append(f"{path}: {len(other)} items, expected {len(ref)}")
+        for i, (a, b) in enumerate(zip(ref, other)):
+            check_parity(a, b, f"{path}[{i}]", errors)
+    elif type(ref) is not type(other):
+        errors.append(f"{path}: expected {type(ref).__name__}")
+    elif isinstance(ref, str):
+        if not other.strip():
+            errors.append(f"{path}: empty")
+        if set(PLACEHOLDER_RE.findall(ref)) != set(PLACEHOLDER_RE.findall(other)):
+            errors.append(f"{path}: placeholders differ from {DEFAULT_LANG}")
+
 
 def main():
     for lang in LANGS:
@@ -588,6 +654,14 @@ def main():
         if not source.exists():
             sys.exit(f"missing locale file: {source.relative_to(ROOT)}")
         LOCALES[lang] = json.loads(read(source))
+
+    errors = []
+    for lang in LANGS:
+        if LOCALES[lang].get("lang") != lang:
+            errors.append(f"{lang}.lang: expected {lang!r}")
+        check_parity(LOCALES[DEFAULT_LANG], LOCALES[lang], lang, errors)
+    if errors:
+        sys.exit("locale files out of sync:\n  " + "\n  ".join(sorted(errors)))
 
     print("Rendering site/ from templates/ + i18n/")
     for lang in LANGS:
