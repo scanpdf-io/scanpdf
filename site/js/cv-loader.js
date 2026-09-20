@@ -13,7 +13,9 @@ export function cvReady() {
   if (promise) return promise;
   promise = new Promise((resolve, reject) => {
     const s = document.createElement('script');
-    s.src = 'vendor/opencv.js';
+    // Relative to this module, not to the page: the localized pages live one
+    // or two directories below the site root.
+    s.src = new URL('../vendor/opencv.js', import.meta.url).href;
     s.async = true;
     s.onerror = () => reject(new Error('Failed to load vendor/opencv.js'));
     // Promise resolution adopts thenables, so resolving with the module

@@ -13,9 +13,8 @@
     "ogTitle": "ScanPDF - Escáner de documentos online y gratis",
     "ogDescription": "Fotos de papel convertidas en PDF limpios de varias páginas, dentro de tu navegador. No se sube nada.",
     "ogImageAlt": "ScanPDF: la foto de un documento en papel enderezada hasta convertirse en una página PDF limpia",
-    "tagline": "Escáner local de documentos: nada sale de tu ordenador",
     "pageSizeLabel": "Tamaño de página",
-    "pageSizeAuto": "Automático (ajustar a la hoja)",
+    "pageSizeAuto": "Auto",
     "savePdf": "Guardar PDF",
     "addPhotos": "Añadir fotos",
     "takePhoto": "Hacer foto",
@@ -34,27 +33,42 @@
     "resetCorners": "Restablecer esquinas",
     "resetCornersTitle": "Devolver las esquinas al encuadre completo",
     "dropTitle": "Arrastra aquí las fotos de tus documentos",
-    "dropSub": "o pulsa «Añadir fotos». Los bordes de la hoja se detectan automáticamente; arrastra las esquinas para ajustarlos. Todo se procesa localmente en tu navegador.",
-    "editorHint": "Arrastra los tiradores de las esquinas hasta los bordes de la hoja: una lupa te ayuda a afinar.",
-    "previewTitle": "Vista previa del escaneo",
-    "previewHint": "Resultado en directo de la página seleccionada",
-    "exporting": "Exportando..."
+    "editorHint": "Arrastra las esquinas hasta los bordes de la hoja",
+    "exporting": "Exportando...",
+    "heroTitle": "Convierte fotos de documentos en un PDF limpio",
+    "heroSub": "Los bordes de la hoja se detectan automáticamente. Endereza, limpia y guarda: todo ocurre en tu navegador.",
+    "heroDropHint": "o suelta las fotos en cualquier parte de esta página",
+    "privacyChip": "Las fotos no salen de tu dispositivo",
+    "stepsLabel": "Cómo funciona",
+    "step1": "Añade fotos de las páginas",
+    "step2": "Revisa las esquinas",
+    "step3": "Guarda el PDF",
+    "filterColorShort": "Color",
+    "filterGrayShort": "Gris",
+    "filterBwShort": "B/N",
+    "deletePageTitle": "Eliminar página",
+    "moreActions": "Más acciones",
+    "movePageEarlier": "Mover página antes",
+    "movePageLater": "Mover página después",
+    "toolsLabel": "Herramientas de página",
+    "pagesLabel": "Páginas"
   },
   "ui": {
     "engineLoading": "Cargando el motor de escaneo...",
-    "engineReady": "Motor listo",
     "engineFailed": "No se pudo cargar el motor",
     "detecting": "Detectando esquinas...",
     "adjustCorners": "ajustar esquinas",
     "adjustCornersTitle": "La detección automática ha fallado: arrastra las esquinas a mano",
-    "moveUp": "Mover arriba",
-    "moveDown": "Mover abajo",
-    "moveLeft": "Mover a la izquierda",
-    "moveRight": "Mover a la derecha",
     "deletePage": "Eliminar página",
     "exportingPage": "Exportando la página {i} de {n}...",
     "exportFailed": "Error al exportar: {message}",
-    "pdfTitle": "Documento escaneado"
+    "pdfTitle": "Documento escaneado",
+    "imageLoadFailed": "No se pudo abrir {name}",
+    "filesSkipped": "Archivos omitidos: {n}. Solo se admiten imágenes",
+    "exportDone": "PDF guardado",
+    "dismiss": "Cerrar",
+    "pageLabel": "Página {i} de {n}",
+    "pageMoved": "Página movida a la posición {i} de {n}"
   },
   "nav": {
     "home": "Escáner",
@@ -135,7 +149,7 @@
                 "**Arrastra las esquinas hasta los bordes de la hoja.** Una lupa acompaña al tirador para que puedas colocarlo con precisión. «Detectar de nuevo» repite el intento automático y «Restablecer esquinas» las devuelve al encuadre completo si prefieres empezar de cero.",
                 "**Gira si hace falta.** Las fotos del móvil llevan su orientación en los metadatos EXIF y se colocan bien automáticamente, pero los botones de 90 grados están ahí para las páginas fotografiadas de lado.",
                 "**Elige un filtro** y usa «Aplicar a todas» si disparaste todo el lote con la misma luz.",
-                "**Ordena las páginas.** La tira lateral sube y baja páginas y borra las que no hayan salido bien. El orden de la tira es el orden del PDF.",
+                "**Ordena las páginas.** Arrastra una miniatura para mover la página y borra las que no hayan salido bien. El orden de las miniaturas es el orden del PDF.",
                 "**Elige el tamaño de página y guarda.** A4, Carta o automático, y después «Guardar PDF». El archivo se monta en el navegador y aparece en tu carpeta de descargas."
               ]
             }
@@ -230,7 +244,7 @@
         {
           "q": "¿Puedo reordenar o eliminar páginas?",
           "a": [
-            "Sí. La tira de páginas las sube, las baja y las elimina, y ese orden es el del PDF exportado. La rotación, el ajuste de esquinas y el filtro son independientes en cada página, así que una foto mala dentro de un lote nunca te obliga a repetir el resto."
+            "Sí. Arrastra las miniaturas para reordenar las páginas y elimina las que no necesites; ese orden es el del PDF exportado. La rotación, el ajuste de esquinas y el filtro son independientes en cada página, así que una foto mala dentro de un lote nunca te obliga a repetir el resto."
           ]
         },
         {

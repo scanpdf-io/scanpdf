@@ -1,522 +1,709 @@
-/* Colour tokens live in tokens.css, which every page loads first. */
+/* The scanner. Tokens come from tokens.css, shared components (buttons,
+   menus, footer, brand) from base.css.
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+   Two states, switched by main.js with a class on <body>:
+     .is-empty   no photos yet: a scrolling landing with the hero;
+     otherwise   the workspace, locked to the viewport. */
 
 html, body { height: 100%; }
 
-/* Mobile browser chrome (address bar) makes 100% unreliable; dvh tracks it. */
-@supports (height: 100dvh) {
-  body { height: 100dvh; }
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font: 14px/1.45 var(--font);
+body.app {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.45;
   overscroll-behavior: none;
 }
+body.app:not(.is-empty) { overflow: hidden; }
+/* Mobile browser chrome (address bar) makes 100% unreliable; dvh tracks it. */
+@supports (height: 100dvh) {
+  body.app:not(.is-empty) { height: 100dvh; }
+}
+body.app.is-empty { height: auto; min-height: 100%; }
 
 /* ---------- Top bar ---------- */
 
+/* No filter/transform/backdrop-filter here: on phones .export-group is
+   position:fixed and must stay relative to the viewport. */
 .topbar {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 10px 18px;
-  background: var(--bg-panel);
-  border-bottom: 1px solid var(--border);
-  flex: 0 0 auto;
+  gap: var(--sp-4);
+  padding: var(--sp-3) max(var(--sp-5), env(safe-area-inset-right)) var(--sp-2) max(var(--sp-5), env(safe-area-inset-left));
 }
+h1.brand { font-size: inherit; font-weight: inherit; }
+.topbar-controls { display: flex; align-items: center; gap: var(--sp-1); }
 
-.brand { display: flex; align-items: center; gap: 12px; }
-
-.brand h1 { font-size: 17px; letter-spacing: 0.2px; }
-.tagline { font-size: 12px; color: var(--text-dim); }
-
-.topbar-controls { display: flex; align-items: center; gap: 14px; }
-
-.engine-status {
-  font-size: 12px;
-  color: var(--warn);
-}
-.engine-status.ready { color: var(--ok); }
-
-/* Language switcher: a <details> so it opens without JS; lang-menu.js only
-   adds close-on-outside-click and Escape. */
-.lang-menu { position: relative; flex: 0 0 auto; }
-.lang-menu summary { list-style: none; }
-.lang-menu summary::-webkit-details-marker { display: none; }
-.lang-menu[open] summary { border-color: var(--accent); color: var(--accent); }
-.lang-menu-list {
-  position: absolute;
-  top: calc(100% + 6px);
-  right: 0;
-  z-index: 60;
-  display: flex;
-  flex-direction: column;
-  min-width: 150px;
-  padding: 6px;
-  background: var(--bg-raised);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: 0 8px 28px var(--shadow);
-}
-.lang-menu-list a {
-  padding: 7px 10px;
-  font-size: 13px;
-  color: var(--text-dim);
-  text-decoration: none;
-  border-radius: 6px;
-}
-.lang-menu-list a:hover { background: var(--bg-panel); color: var(--text); }
-.lang-menu-list a.current { color: var(--accent); }
-
-/* Theme switcher: one button cycling system -> light -> dark (theme.js). The
-   icon shown is the current mode; no data-theme on <html> means "system". */
-.theme-toggle { flex: 0 0 auto; }
-.btn.icon.theme-toggle svg { display: none; }
-:root:not([data-theme]) .theme-toggle .icon-system,
-:root[data-theme="light"] .theme-toggle .icon-light,
-:root[data-theme="dark"] .theme-toggle .icon-dark { display: block; }
-
-/* ---------- Controls ---------- */
-
-.btn {
-  background: var(--bg-raised);
+/* Page size + Save read as one split button. */
+.export-group { display: flex; align-items: stretch; gap: 2px; margin-left: var(--sp-2); }
+.is-empty .export-group { display: none; }
+.export-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: var(--ctl);
+  padding: 0 30px 0 14px;
+  border: 0;
+  border-radius: var(--radius-pill) 6px 6px var(--radius-pill);
+  background: var(--bg-raised) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a94a3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 10px center / 14px;
   color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 7px 13px;
-  font-size: 13px;
+  font: inherit;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
+  transition: background-color var(--dur-1);
 }
-.btn:hover:not(:disabled) { background: var(--btn-hover-bg); border-color: var(--btn-hover-border); }
-.btn:disabled { opacity: 0.45; cursor: default; }
-
-.btn.primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--on-accent);
-  font-weight: 600;
-}
-.btn.primary:hover:not(:disabled) { background: var(--accent-hover); border-color: var(--accent-hover); }
-
-.btn.icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 9px;
-}
-.btn.icon svg { display: block; }
-
-.field { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: var(--text-dim); }
-
-select {
-  background: var(--bg-raised);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 6px 8px;
-  font-size: 13px;
-}
+.export-group select:hover { background-color: var(--btn-hover-bg); }
+.export-group .btn { border-radius: 6px var(--radius-pill) var(--radius-pill) 6px; padding: 0 18px 0 14px; }
+.export-group .btn .ico { width: 18px; height: 18px; }
 
 /* ---------- Layout ---------- */
 
 .layout {
   flex: 1 1 auto;
+  min-height: 0;
   display: grid;
-  grid-template-columns: 196px 1fr 300px;
-  min-height: 0;
+  grid-template-columns: var(--rail-w) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  gap: var(--sp-5);
+  padding: var(--sp-2) max(var(--sp-5), env(safe-area-inset-right)) 0 max(var(--sp-5), env(safe-area-inset-left));
 }
 
-/* Mobile-only editor/preview segmented control. */
-.view-toggle { display: none; }
-
-/* ---------- Sidebar (pages) ---------- */
-
-.sidebar {
-  background: var(--bg-panel);
-  border-right: 1px solid var(--border);
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-height: 0;
-}
-
-.add-buttons { display: flex; flex-direction: column; gap: 8px; }
-.add-btn {
-  width: 100%;
-  padding: 10px;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-}
-.add-btn .btn-icon { display: inline-flex; }
-/* Camera capture is only meaningful on touch devices; shown via (pointer: coarse). */
-.camera-btn { display: none; }
-
-.pages-list {
-  flex: 1 1 auto;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.page-item {
+/* Every track that holds a canvas is minmax(0, ...) and every wrapper has
+   min-*: 0, so editor.js sizing the canvas can never resize its own container. */
+.stage {
   position: relative;
-  border: 2px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  cursor: pointer;
-  background: var(--bg-raised);
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) var(--dock-h);
+  column-gap: var(--sp-5);
 }
-.page-item.selected { border-color: var(--accent); }
-.page-item .thumb { display: block; width: 100%; height: auto; }
+.editor-pane { grid-area: 1 / 1; }
+.preview-pane { grid-area: 1 / 2; }
+.dock { grid-area: 2 / 1; }
 
-.page-item .page-meta {
+.pane {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
   display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 7px;
-  font-size: 11px;
+  flex-direction: column;
+}
+.cap {
+  flex: 0 0 auto;
+  text-align: center;
+  font-size: var(--fs-sm);
+  font-weight: 500;
   color: var(--text-dim);
 }
-.page-item .page-num { font-weight: 700; color: var(--text); }
-.page-item .page-name {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  flex: 1 1 auto;
+
+.editor-wrap, .preview-wrap {
+  position: relative;
+  flex: 1 1 0;
   min-width: 0;
-}
-.page-item .badge {
-  color: var(--on-warn);
-  background: var(--warn);
-  border-radius: 5px;
-  padding: 1px 5px;
-  font-weight: 600;
-}
-.page-item .spinner {
-  width: 11px; height: 11px;
-  border: 2px solid var(--border);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: spin 0.9s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.page-item .page-actions {
-  position: absolute;
-  top: 5px; right: 5px;
-  display: flex;
-  gap: 4px;
-  opacity: 0;
-  transition: opacity 0.15s;
-}
-.page-item:hover .page-actions { opacity: 1; }
-.page-actions button {
-  width: 24px; height: 24px;
-  display: grid; place-items: center;
-  font-size: 12px;
-  /* Sits on top of the photo thumbnail, so it stays dark in both themes. */
-  color: #e8ecf1;
-  background: rgba(10, 13, 18, 0.75);
-  border: 1px solid #2e3745;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.page-actions button:hover { background: rgba(30, 38, 50, 0.95); }
-.page-actions button:disabled { opacity: 0.35; cursor: default; }
-.page-actions .del:hover { border-color: #c05050; color: #ff8f8f; }
-
-/* ---------- Editor ---------- */
-
-.editor-pane {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  min-height: 0;
-}
-
-.toolbar {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 9px 14px;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-panel);
-  flex-wrap: wrap;
-}
-.toolbar .sep { width: 1px; height: 22px; background: var(--border); }
-
-.editor-wrap {
-  flex: 1 1 auto;
   min-height: 0;
   display: grid;
+  /* A definite 1x1 grid: the preview canvas's max-height: 100% needs a
+     containing block whose height does not depend on the canvas itself. */
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
   place-items: center;
-  padding: 16px;
+  padding: 20px;     /* room for the canvas shadow; editor.js reads this */
   overflow: hidden;
 }
+.editor-wrap > *, .preview-wrap > *, .preview-wrap::before { grid-area: 1 / 1; }
 
+/* The "cards" are the canvases themselves. The radius stays small: corner
+   handles sit right at the photo's edge after "Reset corners". */
 #editor-canvas {
   touch-action: none;
   border-radius: 6px;
-  box-shadow: 0 6px 30px var(--shadow);
+  box-shadow: var(--shadow-2);
   cursor: crosshair;
-}
-
-.editor-hint {
-  flex: 0 0 auto;
-  text-align: center;
-  font-size: 12px;
-  color: var(--text-dim);
-  padding: 0 14px 10px;
-}
-
-/* ---------- Dropzone ---------- */
-
-.dropzone {
-  cursor: pointer;
-  width: min(560px, 90%);
-  border: 2px dashed var(--border);
-  border-radius: 14px;
-  padding: 56px 32px;
-  text-align: center;
-  transition: border-color 0.15s, background 0.15s;
-}
-.dropzone.dragover { border-color: var(--accent); background: var(--accent-soft); }
-.dz-icon { font-size: 34px; color: var(--accent); margin-bottom: 12px; }
-.dz-title { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
-.dz-sub { font-size: 13px; color: var(--text-dim); max-width: 400px; margin: 0 auto; }
-
-/* ---------- Preview pane ---------- */
-
-.preview-pane {
-  background: var(--bg-panel);
-  border-left: 1px solid var(--border);
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-height: 0;
-}
-.preview-pane h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-dim); }
-
-.preview-wrap {
-  flex: 1 1 auto;
-  min-height: 0;
-  display: grid;
-  place-items: center;
-  padding: 10px;
-  overflow: hidden;
 }
 #preview-canvas {
   max-width: 100%;
   max-height: 100%;
   border-radius: 3px;
-  box-shadow: 0 3px 16px var(--shadow);
+  box-shadow: var(--shadow-2);
 }
-.preview-hint { font-size: 11px; color: var(--text-dim); text-align: center; }
+
+/* Until the scan engine has produced the first preview. */
+.preview-wrap.is-loading::before {
+  content: "";
+  width: 26px; height: 26px;
+  border: 3px solid var(--bg-raised);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+.preview-wrap.is-loading #preview-canvas { display: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* One-time tip, gone after the first corner drag (editor.js). */
+.editor-hint {
+  flex: 0 0 auto;
+  align-self: center;
+  max-width: 100%;
+  padding: 0 var(--sp-3);
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+}
+
+/* ---------- Dock (tools for the selected page) ---------- */
+
+.dock {
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  max-width: 100%;
+  padding: 5px;
+  background: var(--bg-panel);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-2), 0 0 0 1px var(--border);
+}
+.dock .btn.icon { color: var(--text); }
+.dock-sep { flex: 0 0 auto; width: 1px; height: 20px; margin: 0 6px; background: var(--border); }
+/* Delete sits in the dock; phones move it into the menu (see below). */
+.menu-list .menu-delete { display: none; }
+
+/* Segmented filter switch: real radio inputs, so arrow keys work for free. */
+.seg {
+  display: flex;
+  min-width: 0;
+  padding: 3px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--bg-raised);
+}
+.seg label { display: block; cursor: pointer; touch-action: manipulation; }
+.seg input {
+  position: absolute;
+  opacity: 0;
+  width: 1px; height: 1px;
+  pointer-events: none;
+}
+.seg span {
+  display: grid;
+  place-items: center;
+  min-width: 52px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-dim);
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background var(--dur-1), color var(--dur-1);
+}
+.seg label:hover span { color: var(--text); }
+.seg input:checked + span {
+  background: var(--bg-panel);
+  color: var(--text);
+  box-shadow: var(--shadow-1);
+}
+.seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* ---------- Rail (page thumbnails) ---------- */
+
+.rail {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding-bottom: var(--sp-3);
+}
+.pages-list {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  /* Padding so the selection ring and focus outline are not clipped. */
+  padding: 5px;
+  margin: -5px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.pages-list:empty { display: none; }
+
+.page-item {
+  position: relative;
+  flex: 0 0 auto;
+  border-radius: var(--radius-sm);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.page-select {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-1);
+  cursor: pointer;
+  touch-action: pan-y;
+  transition: box-shadow var(--dur-1);
+}
+.page-item.selected .page-select { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+.page-select:focus-visible { outline-offset: 5px; }
+.page-item .thumb { display: block; width: 100%; height: auto; pointer-events: none; }
+
+.page-meta {
+  position: absolute;
+  left: 6px; bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+}
+.page-num, .page-flag {
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: var(--radius-pill);
+  background: var(--overlay-chip-bg);
+  color: var(--overlay-chip-text);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+.page-flag { padding: 0; width: 22px; background: var(--warn); color: var(--on-warn); pointer-events: auto; }
+.page-flag .ico { width: 13px; height: 13px; stroke-width: 2.5; }
+.page-meta .spinner {
+  width: 14px; height: 14px;
+  border: 2px solid var(--overlay-chip-bg);
+  border-top-color: var(--overlay-chip-text);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+.page-del {
+  position: absolute;
+  top: 5px; right: 5px;
+  display: grid;
+  place-items: center;
+  width: 26px; height: 26px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--overlay-chip-bg);
+  color: var(--overlay-chip-text);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-1), background var(--dur-1);
+}
+.page-del .ico { width: 14px; height: 14px; stroke-width: 2.5; }
+.page-del:hover { background: var(--danger); color: #1a0b0a; }
+.page-item.selected .page-del,
+.page-del:focus-visible { opacity: 1; pointer-events: auto; }
+@media (hover: hover) {
+  .page-item:hover .page-del { opacity: 1; pointer-events: auto; }
+}
+
+/* Drag to reorder (reorder.js moves items with transforms). */
+.page-item.dragging { z-index: 5; cursor: grabbing; }
+.page-item.dragging .page-select { box-shadow: var(--shadow-3); cursor: grabbing; }
+.page-item.dragging .page-del { opacity: 0; }
+.reordering .page-item:not(.dragging) { transition: transform var(--dur-2) var(--ease); }
+
+.add-buttons { flex: 0 0 auto; display: flex; flex-direction: column; gap: var(--sp-2); }
+.add-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  width: 100%;
+  min-height: var(--tap);
+  padding: 6px 10px;
+  border: 1.5px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text-dim);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: color var(--dur-1), border-color var(--dur-1), background var(--dur-1);
+}
+.add-tile:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+.add-tile .ico { width: 18px; height: 18px; }
+/* Camera capture is only meaningful on touch devices. */
+.camera-btn { display: none; }
+@media (pointer: coarse) {
+  .camera-btn { display: inline-flex; }
+  .add-tile.camera-btn { display: flex; }
+}
+
+/* ---------- Empty state: the landing ---------- */
+
+.is-empty .layout { display: block; padding-bottom: var(--sp-6); }
+.is-empty .rail,
+.is-empty .preview-pane,
+.is-empty .cap,
+.is-empty .view-toggle { display: none; }
+.is-empty .stage { display: block; }
+.is-empty .editor-wrap { display: block; overflow: visible; padding: 0; }
+
+.hero {
+  width: min(680px, 100%);
+  margin: clamp(var(--sp-5), 7vh, 80px) auto 0;
+  padding: clamp(28px, 5vw, 56px) clamp(20px, 4vw, 48px);
+  text-align: center;
+  background: var(--bg-panel);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
+}
+.hero-title {
+  margin-top: var(--sp-4);
+  font-size: clamp(26px, 4.2vw, 38px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+.hero-sub {
+  max-width: 34em;
+  margin: var(--sp-3) auto 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text-dim);
+  text-wrap: pretty;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-5);
+}
+.hero-drop { margin-top: var(--sp-3); font-size: var(--fs-sm); color: var(--text-dim); }
+@media (hover: none) { .hero-drop { display: none; } }
+
+.steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-3);
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--border);
+  counter-reset: step;
+}
+.steps li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+  line-height: 1.35;
+  color: var(--text-dim);
+}
+.step-icon {
+  display: grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--bg-raised);
+  color: var(--text);
+}
+
+/* Shown over everything while files are dragged across the window. */
+.drop-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: none;
+  padding: var(--sp-4);
+  background: var(--bg-glass);
+  pointer-events: none;
+}
+.dragover .drop-overlay { display: grid; }
+.drop-overlay-inner {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--sp-3);
+  border: 2px dashed var(--accent);
+  border-radius: var(--radius-lg);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  text-align: center;
+}
+.drop-overlay-inner .ico { width: 40px; height: 40px; stroke-width: 1.6; }
 
 /* ---------- Footer ---------- */
 
-.footer {
+.app .footer {
   flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  padding: 8px 18px;
-  background: var(--bg-panel);
-  border-top: 1px solid var(--border);
-  font-size: 12px;
-  color: var(--text-dim);
+  padding: var(--sp-2) max(var(--sp-5), env(safe-area-inset-right)) calc(var(--sp-3) + env(safe-area-inset-bottom)) max(var(--sp-5), env(safe-area-inset-left));
 }
-
-.footer nav { display: flex; gap: 14px; flex-wrap: wrap; }
-.footer a {
-  color: var(--text-dim);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.footer a:hover { color: var(--accent); }
-.footer-nav a[aria-current="page"] { color: var(--text); }
 
 /* ---------- Export overlay ---------- */
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: var(--scrim);
+  z-index: 70;
   display: grid;
   place-items: center;
-  z-index: 50;
+  padding: var(--sp-4);
+  background: var(--scrim);
 }
 .overlay-card {
-  background: var(--bg-panel);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 26px 34px;
-  min-width: 300px;
-  text-align: center;
+  width: min(340px, 100%);
+  padding: var(--sp-5) var(--sp-6);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: var(--sp-4);
+  text-align: center;
+  font-size: var(--fs-md);
+  background: var(--bg-panel);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-3);
 }
-.progress {
-  height: 8px;
-  background: var(--bg-raised);
-  border-radius: 5px;
-  overflow: hidden;
-}
+.progress { height: 6px; background: var(--bg-raised); border-radius: var(--radius-pill); overflow: hidden; }
 .progress-bar {
   height: 100%;
   width: 0;
   background: var(--accent);
-  border-radius: 5px;
-  transition: width 0.2s;
+  border-radius: var(--radius-pill);
+  transition: width var(--dur-2);
 }
+
+/* ---------- Toasts (toast.js) ---------- */
+
+.toasts {
+  position: fixed;
+  top: calc(60px + env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  width: max-content;
+  max-width: calc(100vw - 2 * var(--sp-4));
+  pointer-events: none;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  padding: 8px 8px 8px 14px;
+  border-radius: var(--radius);
+  background: var(--bg-panel);
+  color: var(--text);
+  font-size: 14px;
+  box-shadow: var(--shadow-3), 0 0 0 1px var(--border);
+  pointer-events: auto;
+  animation: toast-in var(--dur-2) var(--ease);
+}
+.toast.leaving { opacity: 0; transform: translateY(-6px); transition: opacity var(--dur-2), transform var(--dur-2); }
+@keyframes toast-in { from { opacity: 0; transform: translateY(-8px); } }
+.toast-msg { min-width: 0; padding: 4px 6px 4px 0; overflow-wrap: anywhere; }
+.toast > .ico { width: 18px; height: 18px; }
+.toast.error > .ico { color: var(--danger); }
+.toast.ok > .ico { color: var(--ok); }
+.toast .spinner {
+  flex: 0 0 auto;
+  width: 16px; height: 16px;
+  border: 2px solid var(--bg-raised);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+.toast-close {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 28px; height: 28px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+.toast-close:hover { background: var(--bg-raised); color: var(--text); }
+.toast-close .ico { width: 15px; height: 15px; }
+
+/* ---------- Phone-only pieces, off by default ---------- */
+
+.view-toggle { display: none; }
 
 /* ---------- Touch devices (phones and tablets, any width) ---------- */
 
 @media (hover: none) {
-  /* Hover-revealed page actions are unreachable on touch — keep them visible. */
-  .page-item .page-actions { opacity: 1; }
-  .page-actions button { width: 30px; height: 30px; font-size: 13px; }
   /* iOS Safari zooms into focused controls with font-size < 16px. */
-  select { font-size: 16px; }
-  .btn, select, .page-item { touch-action: manipulation; }
+  .export-group select { min-height: var(--tap); font-size: 16px; }
+  .seg span { height: 38px; }
+  .toast-close { width: var(--tap); height: var(--tap); }
+  /* A 44px hit area around the small round delete button. */
+  .page-del::after { content: ""; position: absolute; inset: -9px; }
 }
 
-@media (pointer: coarse) {
-  .camera-btn { display: inline-flex; }
+/* ---------- Portrait tablets: photo above, result below ---------- */
+
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  .stage {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1.25fr) var(--dock-h) minmax(0, 1fr);
+  }
+  .preview-pane { grid-area: 3 / 1; }
 }
 
-/* ---------- Mobile layout (single-panel with editor/preview toggle) ---------- */
+/* ---------- Phones: one pane at a time, actions in the thumb zone ---------- */
 
 @media (max-width: 767px) {
-  /* Top bar: compact enough for 320px-wide screens. */
-  .topbar { padding: calc(8px + env(safe-area-inset-top)) 10px 8px; gap: 10px; }
-  .tagline { display: none; }
-  .brand { gap: 8px; }
-  .brand h1 { font-size: 15px; }
-  .topbar-controls { gap: 8px; }
-  .topbar .btn.primary { padding: 7px 10px; }
-  .engine-status { display: none; }
-  .topbar .field > span { display: none; }
-  /* The select sizes itself to the longest option ("Auto (fit sheet)"). */
-  .topbar select { max-width: 68px; }
-
-  /* One compact line: the links to the content pages have to stay reachable
-     (and crawlable) on phones, but they may not eat editor height. */
-  .footer {
-    padding: 4px 10px calc(4px + env(safe-area-inset-bottom));
-    gap: 12px;
-    font-size: 11px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
+  .topbar {
+    padding: calc(6px + env(safe-area-inset-top)) max(var(--sp-3), env(safe-area-inset-right)) 6px max(var(--sp-4), env(safe-area-inset-left));
   }
-  .footer::-webkit-scrollbar { display: none; }
-  .footer nav { flex-wrap: nowrap; white-space: nowrap; }
 
-  .layout { display: flex; flex-direction: column; }
+  /* The export group leaves the header and becomes the bottom action bar. */
+  .export-group {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 30;
+    margin: 0;
+    gap: var(--sp-2);
+    padding: var(--sp-2) max(var(--sp-3), env(safe-area-inset-right)) calc(var(--sp-2) + env(safe-area-inset-bottom)) max(var(--sp-3), env(safe-area-inset-left));
+    background: var(--bg);
+  }
+  .export-group select { flex: 0 0 auto; border-radius: var(--radius-pill); min-height: var(--tap); font-size: 16px; }
+  .export-group .btn { flex: 1 1 auto; border-radius: var(--radius-pill); min-height: var(--tap); font-size: 16px; }
 
-  /* Sidebar becomes a horizontal thumbnail strip with add/camera tiles. */
-  .sidebar {
+  body.app:not(.is-empty) .layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0 0 calc(var(--actionbar-h) + env(safe-area-inset-bottom));
+  }
+  /* The content-page links stay in the DOM for crawlers, but the workspace
+     needs the height. They are visible on the landing. */
+  body.app:not(.is-empty) .footer { display: none; }
+
+  .stage {
+    flex: 1 1 auto;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .preview-pane { grid-area: 1 / 1; display: none; }
+  .show-preview .editor-pane { display: none; }
+  .show-preview .preview-pane { display: flex; }
+  .cap { display: none; }
+  .editor-wrap, .preview-wrap { padding: 12px; }
+
+  /* Editor/preview switch: floats over the top of the image, so it costs no
+     height. It steps aside while a corner is dragged (the loupe goes there). */
+  .view-toggle {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    padding: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-glass);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-1), 0 0 0 1px var(--border);
+    transition: opacity var(--dur-1);
+  }
+  .corner-dragging .view-toggle { opacity: 0; pointer-events: none; }
+  .seg-btn {
+    min-width: 84px;
+    min-height: 38px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: none;
+    color: var(--text-dim);
+    font: inherit;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  .seg-btn.active { background: var(--accent); color: var(--on-accent); }
+  /* Leave the top of the image clear of the switch. */
+  body.app:not(.is-empty) .editor-wrap,
+  body.app:not(.is-empty) .preview-wrap { padding-top: 54px; }
+
+  /* The dock must fit 320px without scrolling (a scroll container would clip
+     its pop-up menu), so Delete lives in the menu here. */
+  .dock-delete { display: none; }
+  .menu-list .menu-delete { display: flex; }
+  .dock .dock-sep { margin: 0 2px; }
+  .seg span { min-width: 46px; padding: 0 8px; }
+
+  /* Rail becomes a horizontal strip under the dock. */
+  .rail {
     flex: 0 0 auto;
     flex-direction: row;
-    gap: 8px;
-    padding: 8px;
-    border-right: 0;
-    border-bottom: 1px solid var(--border);
+    align-items: stretch;
+    gap: var(--sp-2);
+    padding: var(--sp-1) max(var(--sp-3), env(safe-area-inset-right)) var(--sp-2) max(var(--sp-3), env(safe-area-inset-left));
+    order: 2;
   }
-  .add-buttons { gap: 6px; flex: 0 0 auto; }
-  .add-buttons .btn { flex: 1 1 auto; width: 52px; padding: 0; font-size: 20px; }
-  .add-buttons .btn-label { display: none; }
+  .add-buttons { order: -1; flex-direction: row; }
+  .add-tile { width: var(--tap); min-height: 64px; padding: 0; }
+  .tile-label { display: none; }
   .pages-list {
+    flex: 1 1 auto;
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    gap: 8px;
+    gap: var(--sp-2);
+    scrollbar-width: none;
   }
-  .page-item { flex: 0 0 100px; }
-  .page-item .thumb { width: 100%; height: 64px; object-fit: cover; }
-  .page-item .page-name { display: none; }
-  .page-item .page-meta { padding: 4px 6px; }
+  .pages-list::-webkit-scrollbar { display: none; }
+  .page-select { width: auto; touch-action: pan-x; }
+  .page-item .thumb { width: auto; height: 64px; min-width: 44px; object-fit: cover; }
+  .page-meta { left: 4px; bottom: 4px; }
+  .page-num, .page-flag { min-width: 20px; height: 20px; }
+  .page-flag { width: 20px; }
+  /* No room for a safe delete target on a 64px thumbnail: it is in the menu. */
+  .page-del { display: none; }
 
-  /* Editor/preview segmented control. */
-  .view-toggle {
-    display: flex;
-    justify-content: center;
-    padding: 8px;
-    background: var(--bg-panel);
-    border-bottom: 1px solid var(--border);
-  }
-  .view-toggle .seg {
-    flex: 0 1 140px;
-    padding: 8px 0;
-    font-size: 13px;
-    background: var(--bg-raised);
-    color: var(--text-dim);
-    border: 1px solid var(--border);
-    cursor: pointer;
-  }
-  .view-toggle .seg:first-child { border-radius: 8px 0 0 8px; }
-  .view-toggle .seg:last-child { border-radius: 0 8px 8px 0; border-left: 0; }
-  .view-toggle .seg.active {
-    background: var(--accent-soft);
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-
-  /* Editor fills the screen; toolbar moves to the bottom, above the home bar. */
-  .editor-pane { flex: 1 1 auto; min-height: 0; }
-  .editor-wrap { order: 1; padding: 8px; }
-  .toolbar {
-    order: 2;
-    border-bottom: 0;
-    border-top: 1px solid var(--border);
-    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
-    justify-content: center;
-    gap: 8px;
-  }
-  .toolbar .btn { min-height: 44px; }
-  .editor-hint { display: none; }
-  .dropzone { padding: 32px 16px; }
-
-  /* Preview replaces the editor when toggled. */
-  .preview-pane {
-    display: none;
-    border-left: 0;
-    padding-bottom: calc(14px + env(safe-area-inset-bottom));
-  }
-  .layout.show-preview .editor-pane { display: none; }
-  .layout.show-preview .preview-pane { display: flex; flex: 1 1 auto; }
+  .hero { margin-top: var(--sp-3); }
+  .is-empty .layout { padding-left: var(--sp-3); padding-right: var(--sp-3); }
+  .steps { gap: var(--sp-2); }
+  /* Over the header: below it float the view switch and the photo's corners. */
+  .toasts { top: calc(6px + env(safe-area-inset-top)); }
 }
 
 @media (max-width: 359px) {
-  .topbar, .topbar-controls { gap: 6px; }
-  .topbar select { max-width: 60px; }
+  .seg span { min-width: 42px; padding: 0 6px; }
+  .dock { gap: 0; }
 }
 
-/* Landscape phones: reclaim vertical space. */
-@media (max-width: 900px) and (max-height: 500px) and (orientation: landscape) {
+/* Short viewports (landscape phones): reclaim vertical space. */
+@media (max-height: 500px) {
+  body.app:not(.is-empty) .footer { display: none; }
+  .cap { display: none; }
+  .topbar { padding-top: calc(6px + env(safe-area-inset-top)); padding-bottom: 4px; }
+  .editor-wrap, .preview-wrap { padding: 10px; }
+  .editor-hint { display: none; }
+  :root { --dock-h: 54px; }
+}
+@media (max-width: 767px) and (max-height: 500px) {
   .page-item .thumb { height: 44px; }
-  .page-item .page-meta { display: none; }
-  .view-toggle { padding: 4px 8px; }
-  .view-toggle .seg { padding: 5px 0; }
+  .add-tile { min-height: 44px; }
 }
-
-[hidden] { display: none !important; }

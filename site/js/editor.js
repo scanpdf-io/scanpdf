@@ -5,6 +5,7 @@ import { state, selectedPage, subscribe, emit } from './state.js';
 import { cvReady } from './cv-loader.js';
 import { computeOutputSize, warpToCanvas } from './warp.js';
 import { applyFilter, rotateCanvas } from './filters.js';
+import { overlayColors } from './icons.js';
 
 // Finger-friendly sizes on touch devices; the loupe sits further from the
 // corner so the dragging finger does not cover it.
@@ -23,7 +24,15 @@ const PREVIEW_MAX_SIDE = 900;
 const DRAG_GAIN_TOUCH = 0.45;
 const DRAG_GAIN_MOUSE = 0.8;
 
-let canvas, ctx, wrap, dropzone, hint, previewCanvas;
+// The "drag the corners" tip is shown until the first corner drag, once per
+// browser. Storage can be unavailable (private mode); then it is per visit.
+const HINT_KEY = 'scanpdf-hint-seen';
+let hintSeen = false;
+try {
+  hintSeen = localStorage.getItem(HINT_KEY) === '1';
+} catch (_) { /* ignore */ }
+
+let canvas, ctx, wrap, stage, dropzone, hint, previewCanvas, previewWrap;
 let viewScale = 1; // fullBitmap px -> CSS px
 let viewW = 0;
 let viewH = 0;
@@ -35,6 +44,8 @@ export function initEditor() {
   canvas = document.getElementById('editor-canvas');
   ctx = canvas.getContext('2d');
   wrap = document.getElementById('editor-wrap');
+  stage = document.getElementById('stage');
+  previewWrap = document.getElementById('preview-wrap');
   dropzone = document.getElementById('dropzone');
   hint = document.getElementById('editor-hint');
   previewCanvas = document.getElementById('preview-canvas');
@@ -57,7 +68,7 @@ function onState() {
   const id = page ? page.id : null;
   dropzone.hidden = !!page;
   canvas.hidden = !page;
-  hint.hidden = !page;
+  hint.hidden = !page || hintSeen;
   if (id !== lastPageId) {
     lastPageId = id;
     drag = null;
@@ -74,8 +85,11 @@ function fit() {
   // ResizeObserver fires again with real sizes once the pane reappears.
   if (wrap.clientWidth === 0 || wrap.clientHeight === 0) return;
   const bmp = page.fullBitmap;
-  const availW = Math.max(50, wrap.clientWidth - 32);
-  const availH = Math.max(50, wrap.clientHeight - 32);
+  const pad = getComputedStyle(wrap);
+  const padX = parseFloat(pad.paddingLeft) + parseFloat(pad.paddingRight);
+  const padY = parseFloat(pad.paddingTop) + parseFloat(pad.paddingBottom);
+  const availW = Math.max(50, wrap.clientWidth - padX);
+  const availH = Math.max(50, wrap.clientHeight - padY);
   viewScale = Math.min(availW / bmp.width, availH / bmp.height);
   viewW = Math.round(bmp.width * viewScale);
   viewH = Math.round(bmp.height * viewScale);
@@ -95,6 +109,7 @@ function render() {
   ctx.clearRect(0, 0, viewW, viewH);
   ctx.drawImage(page.fullBitmap, 0, 0, viewW, viewH);
 
+  const colors = overlayColors();
   const pts = page.corners.map(toView);
 
   // Dim everything outside the quad.
@@ -104,7 +119,7 @@ function render() {
   ctx.moveTo(pts[0].x, pts[0].y);
   for (let i = 1; i < 4; i++) ctx.lineTo(pts[i].x, pts[i].y);
   ctx.closePath();
-  ctx.fillStyle = 'rgba(10, 13, 18, 0.5)';
+  ctx.fillStyle = colors.dim;
   ctx.fill('evenodd');
   ctx.restore();
 
@@ -113,7 +128,7 @@ function render() {
   ctx.moveTo(pts[0].x, pts[0].y);
   for (let i = 1; i < 4; i++) ctx.lineTo(pts[i].x, pts[i].y);
   ctx.closePath();
-  ctx.strokeStyle = '#4da3ff';
+  ctx.strokeStyle = colors.accent;
   ctx.lineWidth = 2;
   ctx.stroke();
 
@@ -121,9 +136,9 @@ function render() {
   for (let i = 0; i < 4; i++) {
     ctx.beginPath();
     ctx.arc(pts[i].x, pts[i].y, HANDLE_R, 0, Math.PI * 2);
-    ctx.fillStyle = drag && drag.index === i ? '#4da3ff' : 'rgba(20, 26, 34, 0.85)';
+    ctx.fillStyle = drag && drag.index === i ? colors.accent : colors.handle;
     ctx.fill();
-    ctx.strokeStyle = '#4da3ff';
+    ctx.strokeStyle = colors.accent;
     ctx.lineWidth = 2.5;
     ctx.stroke();
   }
@@ -132,6 +147,7 @@ function render() {
 }
 
 function drawLoupe(page, viewPt, fullPt) {
+  const colors = overlayColors();
   const zoom = Math.min(3, Math.max(1.5, viewScale * 4)); // source px -> CSS px
   const cx = Math.min(Math.max(viewPt.x, LOUPE_R + 4), viewW - LOUPE_R - 4);
   let cy = viewPt.y - LOUPE_OFFSET - LOUPE_R;
@@ -161,7 +177,7 @@ function drawLoupe(page, viewPt, fullPt) {
     else ctx.lineTo(lx, ly);
   });
   ctx.closePath();
-  ctx.strokeStyle = 'rgba(77, 163, 255, 0.9)';
+  ctx.strokeStyle = colors.accentSoft;
   ctx.lineWidth = 1.5;
   ctx.stroke();
 
@@ -178,7 +194,7 @@ function drawLoupe(page, viewPt, fullPt) {
 
   ctx.beginPath();
   ctx.arc(cx, cy, LOUPE_R, 0, Math.PI * 2);
-  ctx.strokeStyle = '#4da3ff';
+  ctx.strokeStyle = colors.accent;
   ctx.lineWidth = 2;
   ctx.stroke();
 }
@@ -208,6 +224,7 @@ function onPointerDown(e) {
     origViewY: pts[index].y,
   };
   canvas.setPointerCapture(e.pointerId);
+  stage.classList.add('corner-dragging'); // the phone view switch steps aside for the loupe
   render(); // highlight the handle and show the loupe immediately
 }
 
@@ -220,6 +237,16 @@ function onPointerMove(e) {
 function onPointerUp() {
   if (!drag) return;
   drag = null;
+  stage.classList.remove('corner-dragging');
+  // Retire the tip only now: hiding it resizes the canvas, which must not
+  // happen under a finger that is still dragging.
+  if (!hintSeen) {
+    hintSeen = true;
+    hint.hidden = true;
+    try {
+      localStorage.setItem(HINT_KEY, '1');
+    } catch (_) { /* ignore */ }
+  }
   render();
   emit(); // refresh thumbnail overlay
 }
@@ -239,7 +266,10 @@ function moveCorner(page, e) {
 export function schedulePreview() {
   clearTimeout(previewTimer);
   previewTimer = setTimeout(() => {
-    renderPreview().catch((err) => console.error('preview failed', err));
+    renderPreview().catch((err) => {
+      previewWrap.classList.remove('is-loading');
+      console.error('preview failed', err);
+    });
   }, 100);
 }
 
@@ -247,8 +277,11 @@ async function renderPreview() {
   const page = selectedPage();
   if (!page) {
     previewCanvas.width = previewCanvas.height = 0;
+    previewWrap.classList.remove('is-loading');
     return;
   }
+  // Spinner until the engine (a ~10MB download) has drawn the first result.
+  if (previewCanvas.width === 0) previewWrap.classList.add('is-loading');
   const cv = await cvReady();
   if (selectedPage() !== page) return; // selection changed while loading
   const procCorners = page.corners.map((c) => ({ x: c.x / page.scale, y: c.y / page.scale }));
@@ -259,4 +292,5 @@ async function renderPreview() {
   previewCanvas.width = out.width;
   previewCanvas.height = out.height;
   previewCanvas.getContext('2d').drawImage(out, 0, 0);
+  previewWrap.classList.remove('is-loading');
 }

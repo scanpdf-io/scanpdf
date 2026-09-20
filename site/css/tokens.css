@@ -1,33 +1,93 @@
-/* Design tokens shared by the scanner app (app.css) and the content pages
-   (content.css). Kept in one file so the two stay visually identical.
+/* Design tokens, shared by the scanner (app.css) and the content pages
+   (content.css); base.css builds the shared components on top of them.
 
-   Theme: dark is the base. Light applies when the OS asks for it and the user
-   has not forced dark, or when the user forced light; theme.js records a forced
-   choice as data-theme on <html>. Plain CSS cannot share one declaration block
-   between a media query and a selector, so the light palette appears twice:
-   keep the two blocks identical. */
+   The default palette is dark. Light applies when the OS prefers it, unless the
+   visitor forced dark; the theme switcher (theme.js) forces a theme with
+   data-theme on <html>. The light values are therefore written twice below --
+   keep the two blocks identical.
+
+   --bg is also read by theme.js (browser chrome colour) and mirrored in
+   _head.html and the web manifest: change it in all of those together. */
 
 :root {
   color-scheme: dark;
+
+  /* Surfaces */
   --bg: #12151b;
-  --bg-panel: #1a1f27;
-  --bg-raised: #232a35;
-  --border: #2e3745;
-  --text: #e8ecf1;
-  --text-dim: #93a0b0;
-  --accent: #4da3ff;
-  --accent-hover: #6cb4ff;
-  --accent-soft: rgba(77, 163, 255, 0.18);
-  --on-accent: #0b1622;
-  --warn: #ffaa3c;
+  --bg-panel: #1a1d23;
+  --bg-raised: #23272f;
+  --bg-glass: rgba(18, 21, 27, 0.8);
+  --border: #2c313a;
+  --border-strong: #707a88;
+
+  /* Text */
+  --text: #eceef2;
+  --text-dim: #a3abb8;
+
+  /* Accent and status */
+  --accent: #6ea8fe;
+  --accent-hover: #8bbaff;
+  --accent-soft: rgba(110, 168, 254, 0.16);
+  --on-accent: #0b1524;
+  --warn: #f0a94a;
   --on-warn: #1d1405;
-  --ok: #62c98a;
-  --btn-hover-bg: #2b3442;
-  --btn-hover-border: #3c4757;
-  --shadow: rgba(0, 0, 0, 0.45);
+  --ok: #5fc98b;
+  --danger: #ff8a80;
+
+  --btn-hover-bg: #2a2f38;
+  --btn-hover-border: #3a414c;
+  --shadow: rgba(0, 0, 0, 0.5);
   --scrim: rgba(8, 10, 14, 0.72);
-  --radius: 10px;
+
+  /* Drawn on top of photographs, so identical in both themes. editor.js and
+     pages-ui.js read these for their canvas drawing. */
+  --overlay-accent: #4da3ff;
+  --overlay-accent-soft: rgba(77, 163, 255, 0.9);
+  --overlay-warn: rgba(255, 170, 60, 0.95);
+  --overlay-dim: rgba(10, 13, 18, 0.5);
+  --overlay-handle: rgba(20, 26, 34, 0.85);
+  --overlay-chip-bg: rgba(10, 13, 18, 0.72);
+  --overlay-chip-text: #e8ecf1;
+
+  /* Elevation */
+  --shadow-1: 0 1px 2px var(--shadow);
+  --shadow-2: 0 6px 24px -6px var(--shadow);
+  --shadow-3: 0 18px 48px -12px var(--shadow);
+
+  /* Spacing */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  /* Type */
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-md: 15px;
+  --fs-lg: 18px;
+  --fs-xl: 24px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --dur-1: 0.12s;
+  --dur-2: 0.2s;
+
+  /* Layout */
+  --tap: 44px;
+  --ctl: 36px;
+  --dock-h: 60px;
+  --actionbar-h: 60px;
+  --rail-w: 148px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -35,20 +95,23 @@
     color-scheme: light;
     --bg: #f4f6f9;
     --bg-panel: #ffffff;
-    --bg-raised: #eef1f5;
-    --border: #d3d9e2;
-    --text: #1a2029;
-    --text-dim: #5b6878;
-    --accent: #1a6fd6;
-    --accent-hover: #155db5;
-    --accent-soft: rgba(26, 111, 214, 0.14);
+    --bg-raised: #e9ecf0;
+    --bg-glass: rgba(244, 246, 249, 0.82);
+    --border: #dde1e7;
+    --border-strong: #77818e;
+    --text: #1b1f26;
+    --text-dim: #566070;
+    --accent: #2060c8;
+    --accent-hover: #1a51ab;
+    --accent-soft: rgba(32, 96, 200, 0.12);
     --on-accent: #ffffff;
-    --warn: #b86a00;
+    --warn: #965700;
     --on-warn: #ffffff;
-    --ok: #1f8f4e;
-    --btn-hover-bg: #e3e8ef;
-    --btn-hover-border: #b9c2cf;
-    --shadow: rgba(20, 30, 50, 0.18);
+    --ok: #1a7a43;
+    --danger: #c0342b;
+    --btn-hover-bg: #e0e4ea;
+    --btn-hover-border: #c3cad4;
+    --shadow: rgba(20, 30, 50, 0.16);
     --scrim: rgba(20, 26, 36, 0.45);
   }
 }
@@ -57,19 +120,22 @@
   color-scheme: light;
   --bg: #f4f6f9;
   --bg-panel: #ffffff;
-  --bg-raised: #eef1f5;
-  --border: #d3d9e2;
-  --text: #1a2029;
-  --text-dim: #5b6878;
-  --accent: #1a6fd6;
-  --accent-hover: #155db5;
-  --accent-soft: rgba(26, 111, 214, 0.14);
+  --bg-raised: #e9ecf0;
+  --bg-glass: rgba(244, 246, 249, 0.82);
+  --border: #dde1e7;
+  --border-strong: #77818e;
+  --text: #1b1f26;
+  --text-dim: #566070;
+  --accent: #2060c8;
+  --accent-hover: #1a51ab;
+  --accent-soft: rgba(32, 96, 200, 0.12);
   --on-accent: #ffffff;
-  --warn: #b86a00;
+  --warn: #965700;
   --on-warn: #ffffff;
-  --ok: #1f8f4e;
-  --btn-hover-bg: #e3e8ef;
-  --btn-hover-border: #b9c2cf;
-  --shadow: rgba(20, 30, 50, 0.18);
+  --ok: #1a7a43;
+  --danger: #c0342b;
+  --btn-hover-bg: #e0e4ea;
+  --btn-hover-border: #c3cad4;
+  --shadow: rgba(20, 30, 50, 0.16);
   --scrim: rgba(20, 26, 36, 0.45);
 }

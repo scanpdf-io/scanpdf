@@ -40,6 +40,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-180.png">
 <link rel="manifest" href="../es/manifest.webmanifest">
 <link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/app.css">
 <script type="application/ld+json">
 {
@@ -83,92 +84,128 @@
 }
 </script>
 </head>
-<body>
+<!-- is-empty is the state before any photo is added; main.js toggles it. -->
+<body class="app is-empty">
+<!-- Icon sprite: referenced with <use href="#i-..."> here and from the JS. -->
+<svg class="sprite" aria-hidden="true">
+  <symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></symbol>
+  <symbol id="i-rotate-ccw" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></symbol>
+  <symbol id="i-rotate-cw" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.13-9.36L23 10"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2"/><path d="M16 4h2a2 2 0 0 1 2 2v2"/><path d="M20 16v2a2 2 0 0 1-2 2h-2"/><path d="M8 20H6a2 2 0 0 1-2-2v-2"/><line x1="7" y1="12" x2="17" y2="12"/></symbol>
+  <symbol id="i-maximize" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+</svg>
+
 <header class="topbar">
-  <div class="brand">
-    <div class="brand-text">
-      <h1>ScanPDF</h1>
-      <p class="tagline">Escáner local de documentos: nada sale de tu ordenador</p>
-    </div>
-  </div>
+  <h1 class="brand">
+<svg class="brand-mark" viewBox="4 4 24 24" aria-hidden="true"><path class="mark-doc" d="M11 5.5h7.5L24 11v14a1.5 1.5 0 0 1-1.5 1.5H11A1.5 1.5 0 0 1 9.5 25V7A1.5 1.5 0 0 1 11 5.5z"/><path class="mark-doc" d="M18.5 5.5V11H24"/><line class="mark-line" x1="6" y1="17" x2="26" y2="17"/></svg>
+    <span class="brand-name">ScanPDF</span>
+  </h1>
   <div class="topbar-controls">
-    <span id="engine-status" class="engine-status" hidden></span>
-    <label class="field">
-      <span>Tamaño de página</span>
-      <select id="page-format">
-        <option value="a4" selected>A4</option>
-        <option value="letter">Letter</option>
-        <option value="auto">Automático (ajustar a la hoja)</option>
-      </select>
-    </label>
-    <button id="save-btn" class="btn primary" disabled>Guardar PDF</button>
-<button class="btn icon theme-toggle" type="button" hidden data-label-system="Tema: sistema" data-label-light="Tema: claro" data-label-dark="Tema: oscuro">
+<button class="btn icon ghost theme-toggle" type="button" hidden data-label-system="Tema: sistema" data-label-light="Tema: claro" data-label-dark="Tema: oscuro">
   <svg class="icon-system" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
   <svg class="icon-light" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
   <svg class="icon-dark" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
 </button>
-<details class="lang-menu">
-  <summary class="btn icon" aria-label="Idioma" title="Idioma">
+<details class="menu lang-menu">
+  <summary class="btn icon ghost" aria-label="Idioma" title="Idioma">
     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
   </summary>
-  <nav class="lang-menu-list" aria-label="Idioma"><a href="../" hreflang="en" lang="en">English</a><a href="../es/" hreflang="es" lang="es" aria-current="true" class="current">Español</a><a href="../de/" hreflang="de" lang="de">Deutsch</a><a href="../pt/" hreflang="pt" lang="pt">Português</a><a href="../fr/" hreflang="fr" lang="fr">Français</a></nav>
+  <nav class="menu-list" aria-label="Idioma"><a href="../" hreflang="en" lang="en">English</a><a href="../es/" hreflang="es" lang="es" aria-current="true" class="current">Español</a><a href="../de/" hreflang="de" lang="de">Deutsch</a><a href="../pt/" hreflang="pt" lang="pt">Português</a><a href="../fr/" hreflang="fr" lang="fr">Français</a></nav>
 </details>
+    <!-- On phones this same group is pinned to the bottom edge as the action bar. -->
+    <div class="export-group">
+      <select id="page-format" aria-label="Tamaño de página" title="Tamaño de página">
+        <option value="a4" selected>A4</option>
+        <option value="letter">Letter</option>
+        <option value="auto">Auto</option>
+      </select>
+      <button id="save-btn" class="btn primary" type="button" disabled><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span>Guardar PDF</span></button>
+    </div>
   </div>
 </header>
 
 <main class="layout">
-  <aside class="sidebar">
-    <div class="add-buttons">
-      <button id="add-btn" class="btn add-btn"><span class="btn-icon" aria-hidden="true">&#65291;</span><span class="btn-label">Añadir fotos</span></button>
-      <button id="camera-btn" class="btn add-btn camera-btn">
-        <span class="btn-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
-        <span class="btn-label">Hacer foto</span>
-      </button>
-    </div>
+  <aside class="rail" aria-label="Páginas">
     <div id="pages-list" class="pages-list"></div>
+    <div class="add-buttons">
+      <button id="add-btn" class="add-tile" type="button" aria-label="Añadir fotos"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg><span class="tile-label">Añadir fotos</span></button>
+      <button id="camera-btn" class="add-tile camera-btn" type="button" aria-label="Hacer foto"><svg class="ico" aria-hidden="true"><use href="#i-camera"/></svg><span class="tile-label">Hacer foto</span></button>
+    </div>
   </aside>
 
-  <div id="view-toggle" class="view-toggle" hidden>
-    <button id="view-editor-btn" class="seg active" type="button">Editor</button>
-    <button id="view-preview-btn" class="seg" type="button">Vista previa</button>
-  </div>
-
-  <section class="editor-pane">
-    <div class="toolbar" id="page-toolbar" hidden>
-      <button id="rotate-ccw" class="btn icon" title="Girar 90 grados a la izquierda" aria-label="Girar 90 grados a la izquierda"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
-      <button id="rotate-cw" class="btn icon" title="Girar 90 grados a la derecha" aria-label="Girar 90 grados a la derecha"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.13-9.36L23 10"/></svg></button>
-      <span class="sep"></span>
-      <label class="field">
-        <span>Filtro</span>
-        <select id="filter-select">
-          <option value="color">Color</option>
-          <option value="gray">Escala de grises</option>
-          <option value="bw">Blanco y negro</option>
-        </select>
-      </label>
-      <button id="filter-all" class="btn" title="Aplicar este filtro a todas las páginas">Aplicar a todas</button>
-      <span class="sep"></span>
-      <button id="redetect-btn" class="btn" title="Volver a ejecutar la detección automática de esquinas">Detectar de nuevo</button>
-      <button id="reset-corners-btn" class="btn" title="Devolver las esquinas al encuadre completo">Restablecer esquinas</button>
+  <div class="stage" id="stage">
+    <!-- Phones show one pane at a time; this switch floats over the image. -->
+    <div id="view-toggle" class="view-toggle" hidden>
+      <button id="view-editor-btn" class="seg-btn active" type="button">Editor</button>
+      <button id="view-preview-btn" class="seg-btn" type="button">Vista previa</button>
     </div>
-    <div class="editor-wrap" id="editor-wrap">
-      <div id="dropzone" class="dropzone">
-        <div class="dropzone-inner">
-          <div class="dz-icon" aria-hidden="true">&#10515;</div>
-          <p class="dz-title">Arrastra aquí las fotos de tus documentos</p>
-          <p class="dz-sub">o pulsa «Añadir fotos». Los bordes de la hoja se detectan automáticamente; arrastra las esquinas para ajustarlos. Todo se procesa localmente en tu navegador.</p>
+
+    <section class="pane editor-pane">
+      <h2 class="cap">Editor</h2>
+      <div class="editor-wrap" id="editor-wrap">
+        <div id="dropzone" class="hero">
+          <p class="chip"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>Las fotos no salen de tu dispositivo</p>
+          <h2 class="hero-title">Convierte fotos de documentos en un PDF limpio</h2>
+          <p class="hero-sub">Los bordes de la hoja se detectan automáticamente. Endereza, limpia y guarda: todo ocurre en tu navegador.</p>
+          <div class="hero-actions">
+            <button id="hero-add-btn" class="btn primary lg" type="button"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>Añadir fotos</button>
+            <button id="hero-camera-btn" class="btn lg camera-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-camera"/></svg>Hacer foto</button>
+          </div>
+          <p class="hero-drop">o suelta las fotos en cualquier parte de esta página</p>
+          <ol class="steps" aria-label="Cómo funciona">
+            <li><span class="step-icon"><svg class="ico" aria-hidden="true"><use href="#i-image"/></svg></span><span>Añade fotos de las páginas</span></li>
+            <li><span class="step-icon"><svg class="ico" aria-hidden="true"><use href="#i-scan"/></svg></span><span>Revisa las esquinas</span></li>
+            <li><span class="step-icon"><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg></span><span>Guarda el PDF</span></li>
+          </ol>
         </div>
+        <canvas id="editor-canvas" hidden></canvas>
       </div>
-      <canvas id="editor-canvas" hidden></canvas>
-    </div>
-    <p class="editor-hint" id="editor-hint" hidden>Arrastra los tiradores de las esquinas hasta los bordes de la hoja: una lupa te ayuda a afinar.</p>
-  </section>
+      <p class="editor-hint" id="editor-hint" hidden>Arrastra las esquinas hasta los bordes de la hoja</p>
+    </section>
 
-  <aside class="preview-pane">
-    <h2>Vista previa del escaneo</h2>
-    <div class="preview-wrap"><canvas id="preview-canvas"></canvas></div>
-    <p class="preview-hint">Resultado en directo de la página seleccionada</p>
-  </aside>
+    <section class="pane preview-pane">
+      <h2 class="cap">Vista previa</h2>
+      <div class="preview-wrap" id="preview-wrap"><canvas id="preview-canvas"></canvas></div>
+    </section>
+
+    <div class="dock" id="page-toolbar" role="toolbar" aria-label="Herramientas de página" hidden>
+      <button id="rotate-ccw" class="btn icon ghost" type="button" title="Girar 90 grados a la izquierda" aria-label="Girar 90 grados a la izquierda"><svg class="ico" aria-hidden="true"><use href="#i-rotate-ccw"/></svg></button>
+      <button id="rotate-cw" class="btn icon ghost" type="button" title="Girar 90 grados a la derecha" aria-label="Girar 90 grados a la derecha"><svg class="ico" aria-hidden="true"><use href="#i-rotate-cw"/></svg></button>
+      <span class="dock-sep" aria-hidden="true"></span>
+      <fieldset class="seg" id="filter-group">
+        <legend class="sr-only">Filtro</legend>
+        <label title="Color"><input type="radio" name="filter" value="color" aria-label="Color" checked><span>Color</span></label>
+        <label title="Escala de grises"><input type="radio" name="filter" value="gray" aria-label="Escala de grises"><span>Gris</span></label>
+        <label title="Blanco y negro"><input type="radio" name="filter" value="bw" aria-label="Blanco y negro"><span>B/N</span></label>
+      </fieldset>
+      <span class="dock-sep" aria-hidden="true"></span>
+      <button id="delete-btn" class="btn icon ghost dock-delete" type="button" title="Eliminar página" aria-label="Eliminar página"><svg class="ico" aria-hidden="true"><use href="#i-trash"/></svg></button>
+      <details class="menu up" id="more-menu">
+        <summary class="btn icon ghost" title="Más acciones" aria-label="Más acciones"><svg class="ico" aria-hidden="true"><use href="#i-more"/></svg></summary>
+        <div class="menu-list">
+          <button id="filter-all" type="button" title="Aplicar este filtro a todas las páginas"><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg>Aplicar a todas</button>
+          <button id="redetect-btn" type="button" title="Volver a ejecutar la detección automática de esquinas"><svg class="ico" aria-hidden="true"><use href="#i-scan"/></svg>Detectar de nuevo</button>
+          <button id="reset-corners-btn" type="button" title="Devolver las esquinas al encuadre completo"><svg class="ico" aria-hidden="true"><use href="#i-maximize"/></svg>Restablecer esquinas</button>
+          <div class="menu-sep"></div>
+          <button id="move-earlier-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg>Mover página antes</button>
+          <button id="move-later-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-arrow-down"/></svg>Mover página después</button>
+          <button id="menu-delete-btn" class="danger menu-delete" type="button"><svg class="ico" aria-hidden="true"><use href="#i-trash"/></svg>Eliminar página</button>
+        </div>
+      </details>
+    </div>
+  </div>
 </main>
 
 <footer class="footer">
@@ -180,22 +217,30 @@
   </nav>
 </footer>
 
+<div id="drop-overlay" class="drop-overlay" aria-hidden="true">
+  <div class="drop-overlay-inner"><svg class="ico" aria-hidden="true"><use href="#i-image"/></svg><p>Arrastra aquí las fotos de tus documentos</p></div>
+</div>
+
 <div id="export-overlay" class="overlay" hidden>
-  <div class="overlay-card">
+  <div class="overlay-card" role="status">
     <p id="export-status">Exportando...</p>
     <div class="progress"><div id="export-bar" class="progress-bar"></div></div>
   </div>
 </div>
+
+<!-- Toasts (toast.js) and the screen-reader announcer for page reordering. -->
+<div id="toasts" class="toasts"></div>
+<div id="announcer" class="sr-only" aria-live="polite"></div>
 
 <input type="file" id="file-input" accept="image/*" multiple hidden>
 <input type="file" id="camera-input" accept="image/*" capture="environment" hidden>
 
 <!-- Strings needed by the JS modules. An inline <script> would be blocked by
      the container's script-src 'self' CSP, so they travel as data attributes. -->
-<div id="i18n" hidden data-engine-loading="Cargando el motor de escaneo..." data-engine-ready="Motor listo" data-engine-failed="No se pudo cargar el motor" data-detecting="Detectando esquinas..." data-adjust-corners="ajustar esquinas" data-adjust-corners-title="La detección automática ha fallado: arrastra las esquinas a mano" data-move-up="Mover arriba" data-move-down="Mover abajo" data-move-left="Mover a la izquierda" data-move-right="Mover a la derecha" data-delete-page="Eliminar página" data-exporting-page="Exportando la página {i} de {n}..." data-export-failed="Error al exportar: {message}" data-pdf-title="Documento escaneado"></div>
+<div id="i18n" hidden data-engine-loading="Cargando el motor de escaneo..." data-engine-failed="No se pudo cargar el motor" data-detecting="Detectando esquinas..." data-adjust-corners="ajustar esquinas" data-adjust-corners-title="La detección automática ha fallado: arrastra las esquinas a mano" data-delete-page="Eliminar página" data-exporting-page="Exportando la página {i} de {n}..." data-export-failed="Error al exportar: {message}" data-pdf-title="Documento escaneado" data-image-load-failed="No se pudo abrir {name}" data-files-skipped="Archivos omitidos: {n}. Solo se admiten imágenes" data-export-done="PDF guardado" data-dismiss="Cerrar" data-page-label="Página {i} de {n}" data-page-moved="Página movida a la posición {i} de {n}"></div>
 
 <script src="../vendor/pdf-lib.min.js" defer></script>
-<script type="module" src="../js/lang-menu.js"></script>
+<script type="module" src="../js/menus.js"></script>
 <script type="module" src="../js/main.js"></script>
 </body>
 </html>

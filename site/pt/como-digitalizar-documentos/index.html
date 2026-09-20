@@ -40,6 +40,7 @@
 <link rel="apple-touch-icon" href="../../icons/icon-180.png">
 <link rel="manifest" href="../../pt/manifest.webmanifest">
 <link rel="stylesheet" href="../../css/tokens.css">
+<link rel="stylesheet" href="../../css/base.css">
 <link rel="stylesheet" href="../../css/content.css">
 <script type="application/ld+json">
 {
@@ -92,21 +93,24 @@
 
 <header class="site-header">
   <a class="brand" href="../../pt/">
+<svg class="brand-mark" viewBox="4 4 24 24" aria-hidden="true"><path class="mark-doc" d="M11 5.5h7.5L24 11v14a1.5 1.5 0 0 1-1.5 1.5H11A1.5 1.5 0 0 1 9.5 25V7A1.5 1.5 0 0 1 11 5.5z"/><path class="mark-doc" d="M18.5 5.5V11H24"/><line class="mark-line" x1="6" y1="17" x2="26" y2="17"/></svg>
     <span class="brand-name">ScanPDF</span>
   </a>
   <nav class="site-nav" aria-label="Seções"><a href="../../pt/">Scanner</a><a href="../../pt/como-digitalizar-documentos/" aria-current="page">Como digitalizar</a><a href="../../pt/perguntas-frequentes/">Perguntas frequentes</a><a href="../../pt/digitalizar-sem-enviar/">Privacidade</a></nav>
-  <a class="btn primary header-cta" href="../../pt/">Abrir o scanner</a>
-<button class="btn icon theme-toggle" type="button" hidden data-label-system="Tema: sistema" data-label-light="Tema: claro" data-label-dark="Tema: escuro">
+  <div class="header-tools">
+<button class="btn icon ghost theme-toggle" type="button" hidden data-label-system="Tema: sistema" data-label-light="Tema: claro" data-label-dark="Tema: escuro">
   <svg class="icon-system" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
   <svg class="icon-light" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
   <svg class="icon-dark" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
 </button>
-<details class="lang-menu">
-  <summary class="btn icon" aria-label="Idioma" title="Idioma">
+<details class="menu lang-menu">
+  <summary class="btn icon ghost" aria-label="Idioma" title="Idioma">
     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
   </summary>
-  <nav class="lang-menu-list" aria-label="Idioma"><a href="../../how-to-scan-documents/" hreflang="en" lang="en">English</a><a href="../../es/como-escanear-documentos/" hreflang="es" lang="es">Español</a><a href="../../de/dokumente-scannen/" hreflang="de" lang="de">Deutsch</a><a href="../../pt/como-digitalizar-documentos/" hreflang="pt" lang="pt" aria-current="true" class="current">Português</a><a href="../../fr/comment-numeriser-un-document/" hreflang="fr" lang="fr">Français</a></nav>
+  <nav class="menu-list" aria-label="Idioma"><a href="../../how-to-scan-documents/" hreflang="en" lang="en">English</a><a href="../../es/como-escanear-documentos/" hreflang="es" lang="es">Español</a><a href="../../de/dokumente-scannen/" hreflang="de" lang="de">Deutsch</a><a href="../../pt/como-digitalizar-documentos/" hreflang="pt" lang="pt" aria-current="true" class="current">Português</a><a href="../../fr/comment-numeriser-un-document/" hreflang="fr" lang="fr">Français</a></nav>
 </details>
+    <a class="btn primary header-cta" href="../../pt/">Abrir o scanner</a>
+  </div>
 </header>
 
 <main id="content" class="doc-main">
@@ -139,7 +143,7 @@
         <li><strong>Arraste os cantos até as bordas da folha.</strong> Uma lupa acompanha a alça para você acertar o ponto com precisão. “Detectar de novo” repete a tentativa automática e “Redefinir cantos” devolve o enquadramento completo se preferir recomeçar.</li>
         <li><strong>Gire se precisar.</strong> As fotos do celular trazem a orientação nos metadados EXIF e são viradas corretamente de forma automática, mas os botões de 90 graus estão ali para as páginas fotografadas de lado.</li>
         <li><strong>Escolha um filtro</strong> e use “Aplicar a todas” se o lote inteiro foi fotografado sob a mesma luz.</li>
-        <li><strong>Ordene as páginas.</strong> A faixa lateral sobe e desce páginas e apaga as que não ficaram boas. A ordem da faixa é a ordem do PDF.</li>
+        <li><strong>Ordene as páginas.</strong> Arraste uma miniatura para mover a página e apague as que não ficaram boas. A ordem das miniaturas é a ordem do PDF.</li>
         <li><strong>Escolha o tamanho da página e salve.</strong> A4, Carta ou automático, e depois “Salvar PDF”. O arquivo é montado no navegador e cai na sua pasta de downloads.</li>
       </ol>
     </section>
@@ -184,6 +188,6 @@
   </nav>
 </footer>
 
-<script type="module" src="../../js/lang-menu.js"></script>
+<script type="module" src="../../js/menus.js"></script>
 </body>
 </html>

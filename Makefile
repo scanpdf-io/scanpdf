@@ -28,8 +28,9 @@ logs:
 
 ## test: start the container and run smoke checks
 test: run
-	@sleep 1
+	@for i in 1 2 3 4 5 6 7 8 9 10; do curl -fsS -o /dev/null http://localhost:$(PORT)/ 2>/dev/null && break; sleep 1; done
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/                      && echo "OK  /"
+	@curl -fsS -o /dev/null http://localhost:$(PORT)/css/base.css          && echo "OK  /css/base.css"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/css/app.css           && echo "OK  /css/app.css"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/js/main.js            && echo "OK  /js/main.js"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/vendor/opencv.js      && echo "OK  /vendor/opencv.js"

@@ -390,6 +390,7 @@ def base_ctx(lang, page, title, description, og_title, og_description, og_alt, o
             "footer": render(read(TEMPLATES / "_footer.html"), footer_ctx).strip(),
             "langMenu": render(read(TEMPLATES / "_langmenu.html"), lang_menu_ctx).strip(),
             "themeToggle": render(read(TEMPLATES / "_thememenu.html"), theme_ctx).strip(),
+            "brandMark": read(TEMPLATES / "_brandmark.html").strip(),
             "base": prefix,
             "homeHref": href_for(lang, "home"),
             "navSkipToContent": loc["nav"]["skipToContent"],

@@ -13,9 +13,8 @@
     "ogTitle": "ScanPDF - Kostenloser Dokumentenscanner online",
     "ogDescription": "Papierfotos werden im Browser zu sauberen, mehrseitigen PDFs. Nichts wird hochgeladen.",
     "ogImageAlt": "ScanPDF: das Foto eines Papierdokuments wird zu einer sauberen, geraden PDF-Seite",
-    "tagline": "Lokaler Dokumentenscanner - nichts verlässt Ihren Rechner",
     "pageSizeLabel": "Seitenformat",
-    "pageSizeAuto": "Automatisch (an Blatt anpassen)",
+    "pageSizeAuto": "Auto",
     "savePdf": "PDF speichern",
     "addPhotos": "Fotos hinzufügen",
     "takePhoto": "Foto aufnehmen",
@@ -34,27 +33,42 @@
     "resetCorners": "Ecken zurücksetzen",
     "resetCornersTitle": "Die Ecken auf den vollen Bildausschnitt zurücksetzen",
     "dropTitle": "Fotos von Papierdokumenten hier ablegen",
-    "dropSub": "oder auf „Fotos hinzufügen“ klicken. Die Blattkanten werden automatisch gefunden; ziehen Sie die Ecken zum Nachjustieren. Alles wird lokal in Ihrem Browser verarbeitet.",
-    "editorHint": "Ziehen Sie die Eckpunkte auf die Blattkanten - eine Lupe hilft beim genauen Treffen.",
-    "previewTitle": "Scan-Vorschau",
-    "previewHint": "Live-Ergebnis der ausgewählten Seite",
-    "exporting": "Wird exportiert..."
+    "editorHint": "Ziehen Sie die Ecken auf die Blattkanten",
+    "exporting": "Wird exportiert...",
+    "heroTitle": "Aus Fotos von Dokumenten wird ein sauberes PDF",
+    "heroSub": "Die Blattkanten werden automatisch gefunden. Begradigen, aufbereiten und speichern - alles passiert in Ihrem Browser.",
+    "heroDropHint": "oder Fotos irgendwo auf dieser Seite ablegen",
+    "privacyChip": "Fotos verlassen Ihr Gerät nicht",
+    "stepsLabel": "So funktioniert es",
+    "step1": "Fotos der Seiten hinzufügen",
+    "step2": "Ecken prüfen",
+    "step3": "PDF speichern",
+    "filterColorShort": "Farbe",
+    "filterGrayShort": "Grau",
+    "filterBwShort": "S/W",
+    "deletePageTitle": "Seite löschen",
+    "moreActions": "Weitere Aktionen",
+    "movePageEarlier": "Seite nach vorn verschieben",
+    "movePageLater": "Seite nach hinten verschieben",
+    "toolsLabel": "Seitenwerkzeuge",
+    "pagesLabel": "Seiten"
   },
   "ui": {
     "engineLoading": "Scan-Engine wird geladen...",
-    "engineReady": "Engine bereit",
     "engineFailed": "Engine konnte nicht geladen werden",
     "detecting": "Ecken werden erkannt...",
     "adjustCorners": "Ecken anpassen",
     "adjustCornersTitle": "Automatische Erkennung fehlgeschlagen - Ecken bitte von Hand ziehen",
-    "moveUp": "Nach oben",
-    "moveDown": "Nach unten",
-    "moveLeft": "Nach links",
-    "moveRight": "Nach rechts",
     "deletePage": "Seite löschen",
     "exportingPage": "Seite {i} von {n} wird exportiert...",
     "exportFailed": "Export fehlgeschlagen: {message}",
-    "pdfTitle": "Gescanntes Dokument"
+    "pdfTitle": "Gescanntes Dokument",
+    "imageLoadFailed": "{name} konnte nicht geöffnet werden",
+    "filesSkipped": "Übersprungene Dateien: {n}. Nur Bilder werden unterstützt",
+    "exportDone": "PDF gespeichert",
+    "dismiss": "Schließen",
+    "pageLabel": "Seite {i} von {n}",
+    "pageMoved": "Seite an Position {i} von {n} verschoben"
   },
   "nav": {
     "home": "Scanner",
@@ -135,7 +149,7 @@
                 "**Ecken auf die Blattkanten ziehen.** Eine Lupe folgt dem Griffpunkt, damit Sie die Ecke genau treffen. „Neu erkennen“ startet den automatischen Durchlauf noch einmal, „Ecken zurücksetzen“ stellt den vollen Bildausschnitt wieder her.",
                 "**Bei Bedarf drehen.** Handyfotos tragen ihre Ausrichtung in den EXIF-Metadaten und werden automatisch richtig gedreht; die 90-Grad-Schaltflächen gibt es für quer fotografierte Seiten.",
                 "**Filter wählen** und anschließend „Auf alle anwenden“ nutzen, wenn der ganze Stapel im gleichen Licht entstanden ist.",
-                "**Seiten sortieren.** Die Leiste an der Seite verschiebt Seiten nach oben und unten und löscht die misslungenen. Die Reihenfolge in der Leiste ist die Reihenfolge im PDF.",
+                "**Seiten sortieren.** Ziehen Sie eine Miniatur, um die Seite zu verschieben, und löschen Sie die misslungenen. Die Reihenfolge der Miniaturen ist die Reihenfolge im PDF.",
                 "**Seitenformat wählen und speichern.** A4, Letter oder Automatisch, dann „PDF speichern“. Die Datei wird im Browser zusammengesetzt und landet in Ihrem Download-Ordner."
               ]
             }
@@ -230,7 +244,7 @@
         {
           "q": "Kann ich Seiten umsortieren oder löschen?",
           "a": [
-            "Ja. Die Seitenleiste verschiebt Seiten nach oben und unten und löscht sie, und diese Reihenfolge ist die des exportierten PDFs. Drehung, Eckenkorrektur und Filter gelten jeweils pro Seite, ein misslungenes Foto in einem Stapel zwingt Sie also nie dazu, den Rest zu wiederholen."
+            "Ja. Ziehen Sie die Miniaturen, um Seiten umzusortieren, und löschen Sie nicht benötigte; diese Reihenfolge ist die des exportierten PDFs. Drehung, Eckenkorrektur und Filter gelten jeweils pro Seite, ein misslungenes Foto in einem Stapel zwingt Sie also nie dazu, den Rest zu wiederholen."
           ]
         },
         {

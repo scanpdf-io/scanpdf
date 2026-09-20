@@ -13,9 +13,8 @@
     "ogTitle": "ScanPDF - Scanner de documentos online e gratuito",
     "ogDescription": "Fotos de papel viram PDFs limpos de várias páginas, dentro do seu navegador. Nada é enviado.",
     "ogImageAlt": "ScanPDF: a foto de um documento em papel sendo alinhada até virar uma página PDF limpa",
-    "tagline": "Scanner local de documentos - nada sai do seu computador",
     "pageSizeLabel": "Tamanho da página",
-    "pageSizeAuto": "Automático (ajustar à folha)",
+    "pageSizeAuto": "Auto",
     "savePdf": "Salvar PDF",
     "addPhotos": "Adicionar fotos",
     "takePhoto": "Tirar foto",
@@ -34,27 +33,42 @@
     "resetCorners": "Redefinir cantos",
     "resetCornersTitle": "Devolver os cantos ao enquadramento completo",
     "dropTitle": "Arraste aqui as fotos dos seus documentos",
-    "dropSub": "ou clique em “Adicionar fotos”. As bordas da folha são encontradas automaticamente; arraste os cantos para ajustar. Tudo é processado localmente no seu navegador.",
-    "editorHint": "Arraste as alças dos cantos até as bordas da folha - uma lupa ajuda na precisão.",
-    "previewTitle": "Prévia da digitalização",
-    "previewHint": "Resultado ao vivo da página selecionada",
-    "exporting": "Exportando..."
+    "editorHint": "Arraste os cantos até as bordas da folha",
+    "exporting": "Exportando...",
+    "heroTitle": "Transforme fotos de documentos em um PDF limpo",
+    "heroSub": "As bordas da folha são encontradas automaticamente. Endireite, limpe e salve - tudo acontece no seu navegador.",
+    "heroDropHint": "ou solte as fotos em qualquer lugar desta página",
+    "privacyChip": "As fotos não saem do seu dispositivo",
+    "stepsLabel": "Como funciona",
+    "step1": "Adicione fotos das páginas",
+    "step2": "Confira os cantos",
+    "step3": "Salve o PDF",
+    "filterColorShort": "Cor",
+    "filterGrayShort": "Cinza",
+    "filterBwShort": "P&B",
+    "deletePageTitle": "Excluir página",
+    "moreActions": "Mais ações",
+    "movePageEarlier": "Mover página para antes",
+    "movePageLater": "Mover página para depois",
+    "toolsLabel": "Ferramentas da página",
+    "pagesLabel": "Páginas"
   },
   "ui": {
     "engineLoading": "Carregando o motor de digitalização...",
-    "engineReady": "Motor pronto",
     "engineFailed": "Falha ao carregar o motor",
     "detecting": "Detectando os cantos...",
     "adjustCorners": "ajustar cantos",
     "adjustCornersTitle": "A detecção automática falhou - arraste os cantos manualmente",
-    "moveUp": "Mover para cima",
-    "moveDown": "Mover para baixo",
-    "moveLeft": "Mover para a esquerda",
-    "moveRight": "Mover para a direita",
     "deletePage": "Excluir página",
     "exportingPage": "Exportando a página {i} de {n}...",
     "exportFailed": "Falha na exportação: {message}",
-    "pdfTitle": "Documento digitalizado"
+    "pdfTitle": "Documento digitalizado",
+    "imageLoadFailed": "Não foi possível abrir {name}",
+    "filesSkipped": "Arquivos ignorados: {n}. Apenas imagens são aceitas",
+    "exportDone": "PDF salvo",
+    "dismiss": "Fechar",
+    "pageLabel": "Página {i} de {n}",
+    "pageMoved": "Página movida para a posição {i} de {n}"
   },
   "nav": {
     "home": "Scanner",
@@ -135,7 +149,7 @@
                 "**Arraste os cantos até as bordas da folha.** Uma lupa acompanha a alça para você acertar o ponto com precisão. “Detectar de novo” repete a tentativa automática e “Redefinir cantos” devolve o enquadramento completo se preferir recomeçar.",
                 "**Gire se precisar.** As fotos do celular trazem a orientação nos metadados EXIF e são viradas corretamente de forma automática, mas os botões de 90 graus estão ali para as páginas fotografadas de lado.",
                 "**Escolha um filtro** e use “Aplicar a todas” se o lote inteiro foi fotografado sob a mesma luz.",
-                "**Ordene as páginas.** A faixa lateral sobe e desce páginas e apaga as que não ficaram boas. A ordem da faixa é a ordem do PDF.",
+                "**Ordene as páginas.** Arraste uma miniatura para mover a página e apague as que não ficaram boas. A ordem das miniaturas é a ordem do PDF.",
                 "**Escolha o tamanho da página e salve.** A4, Carta ou automático, e depois “Salvar PDF”. O arquivo é montado no navegador e cai na sua pasta de downloads."
               ]
             }
@@ -230,7 +244,7 @@
         {
           "q": "Posso reordenar ou excluir páginas?",
           "a": [
-            "Pode. A faixa de páginas move as páginas para cima e para baixo e as exclui, e essa ordem é a do PDF exportado. Rotação, ajuste de cantos e filtro são independentes em cada página, então uma foto ruim no meio de um lote nunca obriga a refazer o resto."
+            "Pode. Arraste as miniaturas para reordenar as páginas e exclua as que não precisar; essa ordem é a do PDF exportado. Rotação, ajuste de cantos e filtro são independentes em cada página, então uma foto ruim no meio de um lote nunca obriga a refazer o resto."
           ]
         },
         {

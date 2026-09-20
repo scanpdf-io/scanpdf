@@ -13,9 +13,8 @@
     "ogTitle": "ScanPDF - Free Online Document Scanner",
     "ogDescription": "Photos of paper into clean multi-page PDFs, entirely in your browser. Nothing is uploaded.",
     "ogImageAlt": "ScanPDF: a photo of a paper document being straightened into a clean PDF page",
-    "tagline": "Local document scanner - nothing leaves your computer",
     "pageSizeLabel": "Page size",
-    "pageSizeAuto": "Auto (fit sheet)",
+    "pageSizeAuto": "Auto",
     "savePdf": "Save PDF",
     "addPhotos": "Add photos",
     "takePhoto": "Take photo",
@@ -34,27 +33,42 @@
     "resetCorners": "Reset corners",
     "resetCornersTitle": "Reset the corners to the full frame",
     "dropTitle": "Drop photos of paper documents here",
-    "dropSub": "or click \"Add photos\". The edges of the sheet are found automatically; drag the corners to adjust. Everything is processed locally in your browser.",
-    "editorHint": "Drag the corner handles to match the edges of the sheet - a loupe helps with precision.",
-    "previewTitle": "Scan preview",
-    "previewHint": "Live result for the selected page",
-    "exporting": "Exporting..."
+    "editorHint": "Drag the corners to the edges of the sheet",
+    "exporting": "Exporting...",
+    "heroTitle": "Turn photos of documents into a clean PDF",
+    "heroSub": "The edges of the sheet are found automatically. Straighten, clean up and save - everything happens in your browser.",
+    "heroDropHint": "or drop photos anywhere on this page",
+    "privacyChip": "Photos never leave your device",
+    "stepsLabel": "How it works",
+    "step1": "Add photos of the pages",
+    "step2": "Check the corners",
+    "step3": "Save the PDF",
+    "filterColorShort": "Color",
+    "filterGrayShort": "Gray",
+    "filterBwShort": "B&W",
+    "deletePageTitle": "Delete page",
+    "moreActions": "More actions",
+    "movePageEarlier": "Move page earlier",
+    "movePageLater": "Move page later",
+    "toolsLabel": "Page tools",
+    "pagesLabel": "Pages"
   },
   "ui": {
     "engineLoading": "Loading scan engine...",
-    "engineReady": "Engine ready",
     "engineFailed": "Engine failed to load",
     "detecting": "Detecting corners...",
     "adjustCorners": "adjust corners",
     "adjustCornersTitle": "Automatic detection failed - drag the corners manually",
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "moveLeft": "Move left",
-    "moveRight": "Move right",
     "deletePage": "Delete page",
     "exportingPage": "Exporting page {i} of {n}...",
     "exportFailed": "Export failed: {message}",
-    "pdfTitle": "Scanned document"
+    "pdfTitle": "Scanned document",
+    "imageLoadFailed": "Could not open {name}",
+    "filesSkipped": "Files skipped: {n}. Only images are supported",
+    "exportDone": "PDF saved",
+    "dismiss": "Dismiss",
+    "pageLabel": "Page {i} of {n}",
+    "pageMoved": "Page moved to position {i} of {n}"
   },
   "nav": {
     "home": "Scanner",
@@ -135,7 +149,7 @@
                 "**Drag the corners to the edges of the sheet.** A magnifying loupe follows the handle so you can land precisely on the corner. \"Re-detect\" runs the automatic pass again, and \"Reset corners\" puts them back at the full frame if you want to start over.",
                 "**Rotate if needed.** Phone photos carry their orientation in EXIF metadata and are turned the right way up automatically, but the 90-degree buttons are there for pages photographed sideways.",
                 "**Pick a filter,** then use \"Apply to all\" if the whole batch was shot in the same light.",
-                "**Order the pages.** The strip on the left moves pages up and down and deletes the ones that did not work out. The order in the strip is the order in the PDF.",
+                "**Order the pages.** Drag a thumbnail to move a page, and delete the ones that did not work out. The order of the thumbnails is the order in the PDF.",
                 "**Choose a page size and save.** A4, Letter, or Auto, then \"Save PDF\". The file is assembled in the browser and lands in your downloads folder."
               ]
             }
@@ -230,7 +244,7 @@
         {
           "q": "Can I reorder or delete pages?",
           "a": [
-            "Yes. The page strip moves pages up and down and deletes them, and the order there is the order in the exported PDF. Rotation, corner adjustments and the filter are all per-page, so one bad photo in a batch never forces you to redo the rest."
+            "Yes. Drag the page thumbnails to reorder them and delete the ones you do not need; the order there is the order in the exported PDF. Rotation, corner adjustments and the filter are all per-page, so one bad photo in a batch never forces you to redo the rest."
           ]
         },
         {

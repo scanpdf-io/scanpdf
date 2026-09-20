@@ -1,17 +1,12 @@
-/* Styles for the reading pages (guide, FAQ, privacy, 404). Unlike the
-   scanner itself these are ordinary scrolling documents, so nothing here
-   locks the viewport. Colour tokens come from tokens.css. */
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* The reading pages (guide, FAQ, privacy, 404). Unlike the scanner these are
+   ordinary scrolling documents, so nothing here locks the viewport. Tokens
+   come from tokens.css, shared components (buttons, menus, footer, brand)
+   from base.css. */
 
 body.doc {
-  background: var(--bg);
-  color: var(--text);
-  font: 16px/1.65 var(--font);
-  -webkit-text-size-adjust: 100%;
+  font-size: 17px;
+  line-height: 1.7;
 }
-
-::selection { background: var(--accent-soft); }
 
 /* ---------- Skip link ---------- */
 
@@ -21,223 +16,188 @@ body.doc {
   top: 0;
   z-index: 100;
   padding: 10px 16px;
-  background: var(--bg-raised);
+  background: var(--bg-panel);
   color: var(--text);
   border-radius: 0 0 var(--radius) 0;
+  box-shadow: var(--shadow-2);
 }
 .skip-link:focus { left: 0; }
 
 /* ---------- Header ---------- */
 
 .site-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  padding: 10px max(18px, env(safe-area-inset-left)) 10px;
-  background: var(--bg-panel);
-  border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 10;
-}
-
-.site-header .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: var(--text);
-}
-.brand-name { font-size: 17px; font-weight: 600; letter-spacing: 0.2px; }
-
-.site-nav {
-  display: flex;
-  gap: 18px;
-  flex: 1 1 auto;
-  flex-wrap: wrap;
-  font-size: 14px;
-}
-.site-nav a {
-  color: var(--text-dim);
-  text-decoration: none;
-  padding: 4px 0;
-  border-bottom: 2px solid transparent;
-  transition: color 0.15s, border-color 0.15s;
-}
-.site-nav a:hover { color: var(--text); }
-.site-nav a[aria-current="page"] { color: var(--text); border-bottom-color: var(--accent); }
-
-/* ---------- Buttons ---------- */
-
-.btn {
-  display: inline-block;
-  padding: 9px 18px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-raised);
-  color: var(--text);
-  font: inherit;
-  font-size: 15px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
-}
-.btn:hover { border-color: var(--accent); }
-.btn.primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--on-accent);
-  font-weight: 600;
-}
-.btn.primary:hover { filter: brightness(1.08); }
-.header-cta { flex: 0 0 auto; padding: 7px 14px; font-size: 14px; }
-
-.btn.icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 9px;
-}
-.btn.icon svg { display: block; }
-
-/* ---------- Language menu (same component as in app.css) ---------- */
-
-.lang-menu { position: relative; flex: 0 0 auto; }
-.lang-menu summary { list-style: none; }
-.lang-menu summary::-webkit-details-marker { display: none; }
-.lang-menu[open] summary { border-color: var(--accent); color: var(--accent); }
-.lang-menu-list {
-  position: absolute;
-  top: calc(100% + 6px);
-  right: 0;
-  z-index: 60;
-  display: flex;
-  flex-direction: column;
-  min-width: 150px;
-  padding: 6px;
-  background: var(--bg-raised);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: 0 8px 28px var(--shadow);
-}
-.lang-menu-list a {
-  padding: 7px 10px;
+  gap: var(--sp-2) var(--sp-5);
+  padding: calc(10px + env(safe-area-inset-top)) max(var(--sp-5), env(safe-area-inset-right)) 10px max(var(--sp-5), env(safe-area-inset-left));
+  background: var(--bg-glass);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  backdrop-filter: saturate(1.4) blur(14px);
   font-size: 14px;
   line-height: 1.45;
-  color: var(--text-dim);
-  text-decoration: none;
-  border-radius: 6px;
 }
-.lang-menu-list a:hover { background: var(--bg-panel); color: var(--text); }
-.lang-menu-list a.current { color: var(--accent); }
 
-/* Theme switcher (same component as in app.css). */
-.theme-toggle { flex: 0 0 auto; }
-.btn.icon.theme-toggle svg { display: none; }
-:root:not([data-theme]) .theme-toggle .icon-system,
-:root[data-theme="light"] .theme-toggle .icon-light,
-:root[data-theme="dark"] .theme-toggle .icon-dark { display: block; }
+.site-nav {
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--ctl);
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  color: var(--text-dim);
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--dur-1), color var(--dur-1);
+}
+.site-nav a:hover { color: var(--text); background: var(--bg-raised); }
+.site-nav a[aria-current="page"] { color: var(--text); background: var(--bg-raised); }
+
+.header-tools { flex: 0 0 auto; display: flex; align-items: center; gap: var(--sp-1); }
+.header-cta { margin-left: var(--sp-2); }
 
 /* ---------- Document ---------- */
 
 .doc-main {
-  max-width: 44rem;
+  max-width: 45rem;
   margin: 0 auto;
-  padding: 28px max(18px, env(safe-area-inset-left)) 56px;
+  padding: var(--sp-6) max(var(--sp-5), env(safe-area-inset-right)) 72px max(var(--sp-5), env(safe-area-inset-left));
 }
 
 .breadcrumb {
   display: flex;
-  gap: 8px;
-  font-size: 13px;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-5);
+  font-size: var(--fs-sm);
   color: var(--text-dim);
-  margin-bottom: 22px;
 }
-.breadcrumb a { color: var(--text-dim); }
+.breadcrumb a { color: var(--text-dim); text-decoration: none; }
+.breadcrumb a:hover { color: var(--text); text-decoration: underline; }
 
 .prose h1 {
-  font-size: clamp(28px, 5vw, 38px);
-  line-height: 1.2;
-  letter-spacing: -0.4px;
-  margin-bottom: 18px;
+  font-size: clamp(30px, 5.2vw, 42px);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  margin-bottom: var(--sp-4);
+  text-wrap: balance;
 }
 .prose .lead {
-  font-size: 18px;
+  font-size: 19px;
+  line-height: 1.6;
   color: var(--text-dim);
-  margin-bottom: 34px;
+  margin-bottom: var(--sp-7);
+  text-wrap: pretty;
 }
 .prose h2 {
-  font-size: 23px;
-  line-height: 1.3;
-  letter-spacing: -0.2px;
-  margin: 42px 0 14px;
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  font-weight: 650;
+  margin: var(--sp-7) 0 var(--sp-3);
+  scroll-margin-top: 80px;
 }
-.prose p { margin-bottom: 16px; }
-.prose ul, .prose ol { margin: 0 0 18px 1.35em; }
-.prose li { margin-bottom: 10px; }
-.prose li::marker { color: var(--text-dim); }
-.prose strong { color: var(--text); font-weight: 600; }
+.prose section { scroll-margin-top: 80px; }
+.prose p { margin-bottom: var(--sp-4); }
+.prose ul, .prose ol { margin: 0 0 var(--sp-4) 1.3em; }
+.prose li { margin-bottom: 10px; padding-left: 4px; }
+.prose li::marker { color: var(--text-dim); font-weight: 600; }
+.prose strong { color: var(--text); font-weight: 650; }
 
-.prose a {
+.prose a:not(.btn) {
   color: var(--accent);
   text-decoration: underline;
-  text-underline-offset: 2px;
-  text-decoration-thickness: 1px;
+  text-decoration-color: var(--accent-soft);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  border-radius: 3px;
+  transition: text-decoration-color var(--dur-1);
 }
-.prose a:hover { text-decoration-thickness: 2px; }
+.prose a:not(.btn):hover { text-decoration-color: currentColor; }
 
 .prose code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.88em;
-  padding: 1px 5px;
-  border-radius: 5px;
+  font-size: 0.86em;
+  padding: 2px 6px;
+  border-radius: 6px;
   background: var(--bg-raised);
-  border: 1px solid var(--border);
 }
 
-.faq-item { border-top: 1px solid var(--border); padding-top: 6px; }
-.faq-item h2 { font-size: 20px; margin-top: 26px; }
+/* FAQ: each question is its own quiet card. */
+.faq-item {
+  margin-top: var(--sp-3);
+  padding: var(--sp-5);
+  background: var(--bg-panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+}
+.faq-item h2 { font-size: 19px; line-height: 1.35; letter-spacing: -0.01em; margin: 0 0 var(--sp-2); }
+.faq-item > :last-child { margin-bottom: 0; }
 
 .cta-card {
-  margin-top: 48px;
-  padding: 24px;
-  background: var(--bg-panel);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  margin-top: 64px;
+  padding: var(--sp-5) var(--sp-6);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: var(--sp-4) var(--sp-5);
+  background: var(--bg-panel);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
 }
-.cta-card p { margin: 0; color: var(--text-dim); flex: 1 1 16rem; }
+.cta-card p { flex: 1 1 16rem; margin: 0; font-size: 16px; line-height: 1.55; color: var(--text-dim); }
 
 /* ---------- Footer ---------- */
 
 body.doc .footer {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 14px 18px;
-  padding: 18px max(18px, env(safe-area-inset-left)) calc(18px + env(safe-area-inset-bottom));
-  background: var(--bg-panel);
+  padding: var(--sp-5) max(var(--sp-5), env(safe-area-inset-right)) calc(var(--sp-5) + env(safe-area-inset-bottom)) max(var(--sp-5), env(safe-area-inset-left));
   border-top: 1px solid var(--border);
-  font-size: 13px;
-  color: var(--text-dim);
-}
-body.doc .footer nav { display: flex; gap: 14px; flex-wrap: wrap; }
-body.doc .footer a { color: var(--text-dim); text-decoration: none; }
-body.doc .footer a:hover { color: var(--accent); }
-body.doc .footer-nav a[aria-current="page"] { color: var(--text); }
-body.doc .footer-meta { margin-left: auto; }
-
-@media (max-width: 640px) {
-  .site-header { gap: 10px 14px; padding-top: calc(10px + env(safe-area-inset-top)); }
-  .site-nav { order: 3; flex-basis: 100%; gap: 14px; font-size: 13px; }
-  .header-cta { margin-left: auto; }
-  .doc-main { padding-top: 22px; }
-  .prose .lead { font-size: 17px; }
+  font-size: 14px;
+  line-height: 1.45;
 }
 
-[hidden] { display: none !important; }
+@media (hover: none) {
+  .site-nav a { min-height: var(--tap); }
+}
+
+/* ---------- Phones (same breakpoint as the scanner) ---------- */
+
+@media (max-width: 767px) {
+  body.doc { font-size: 16px; line-height: 1.65; }
+  .site-header {
+    flex-wrap: wrap;
+    padding-left: max(var(--sp-4), env(safe-area-inset-left));
+    padding-right: max(var(--sp-3), env(safe-area-inset-right));
+  }
+  .header-tools { margin-left: auto; }
+  /* The nav's first link already leads to the scanner. */
+  .header-cta { display: none; }
+  /* Section links drop to their own swipeable row. */
+  .site-nav {
+    order: 3;
+    flex: 1 0 100%;
+    flex-wrap: nowrap;
+    margin: 0 -6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .site-nav::-webkit-scrollbar { display: none; }
+  .doc-main { padding: var(--sp-5) max(var(--sp-4), env(safe-area-inset-right)) 56px max(var(--sp-4), env(safe-area-inset-left)); }
+  .prose .lead { font-size: 17px; margin-bottom: var(--sp-6); }
+  .prose h2 { font-size: 21px; margin-top: var(--sp-6); }
+  .prose h2, .prose section { scroll-margin-top: 120px; }
+  .faq-item { padding: var(--sp-4); }
+  .faq-item h2 { font-size: 17px; margin-top: 0; }
+  .cta-card { padding: var(--sp-5); }
+  .cta-card .btn { flex: 1 1 auto; }
+}

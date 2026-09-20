@@ -36,9 +36,10 @@ processing: your documents never leave your machine.
 
 1. Drop photos of documents onto the page (or click **Add photos**).
 2. Corners of each sheet are detected automatically; pages where detection
-   failed are marked **adjust corners**.
+   failed get a warning badge on their thumbnail.
 3. In the editor, drag the corner handles (a loupe appears for precision),
-   rotate pages, pick a filter, and reorder or delete pages in the left strip.
+   rotate pages and pick a filter. Drag the thumbnails to reorder pages
+   (or Alt + arrow keys), and delete the ones you do not need.
 4. Choose the page size (A4 / Letter / Auto) and click **Save PDF**.
 
 ## Running it yourself
@@ -157,7 +158,8 @@ site/                 The whole site (static files, served as-is)
 ├── es/ de/ pt/ fr/   The same set per locale   ) from templates/ + i18n/
 ├── sitemap.xml, robots.txt, 404.html, manifest.webmanifest
 ├── css/
-│   ├── tokens.css    Colour tokens shared by both stylesheets
+│   ├── tokens.css    Design tokens: colours, spacing, radii, shadows, type
+│   ├── base.css      Shared components: buttons, menus, brand, footer
 │   ├── app.css       The scanner
 │   └── content.css   The reading pages
 ├── js/
@@ -167,10 +169,13 @@ site/                 The whole site (static files, served as-is)
 │   ├── warp.js       Perspective warp and page sizing
 │   ├── filters.js    Color / grayscale / B&W filters, rotation
 │   ├── export.js     Multi-page PDF assembly
-│   ├── pages-ui.js   Thumbnail strip
+│   ├── pages-ui.js   Page thumbnails: select, delete, keyboard reorder
+│   ├── reorder.js    Drag-to-reorder for the thumbnails (pointer events)
+│   ├── toast.js      Non-blocking notifications
+│   ├── icons.js      SVG sprite icons, colours for canvas overlays
 │   ├── state.js      App state and pub/sub
 │   ├── i18n.js       UI strings, read from the page
-│   ├── lang-menu.js  Closes the header language menu on outside click / Esc
+│   ├── menus.js      Closes pop-up menus on outside click / Esc / choice
 │   └── cv-loader.js  Lazy OpenCV.js loader
 ├── icons/ og/        App icons and the social preview image
 └── vendor/           OpenCV.js + pdf-lib (fetched at build, not committed)

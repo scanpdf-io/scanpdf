@@ -1,0 +1,209 @@
+/* Components shared by the scanner (app.css) and the reading pages
+   (content.css). Loaded after tokens.css and before either of those. */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection { background: var(--accent-soft); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Icons come from the <symbol> sprite in app.html or are inlined. */
+.ico {
+  width: 20px; height: 20px;
+  flex: 0 0 auto;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ---------- Brand ---------- */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+}
+.brand-mark { width: 26px; height: 26px; flex: 0 0 auto; fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.brand-mark .mark-doc { stroke: var(--accent); }
+.brand-mark .mark-line { stroke: var(--ok); }
+.brand-name { font-size: 17px; font-weight: 650; letter-spacing: -0.01em; }
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: var(--ctl);
+  padding: 0 14px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--bg-raised);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: background var(--dur-1), color var(--dur-1), transform var(--dur-1);
+}
+.btn:hover:not(:disabled) { background: var(--btn-hover-bg); }
+.btn:active:not(:disabled) { transform: scale(0.97); }
+.btn:disabled { opacity: 0.45; cursor: default; }
+
+.btn.primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+}
+.btn.primary:hover:not(:disabled) { background: var(--accent-hover); }
+
+.btn.ghost { background: transparent; color: var(--text-dim); }
+.btn.ghost:hover:not(:disabled) { background: var(--bg-raised); color: var(--text); }
+
+.btn.icon { width: var(--ctl); padding: 0; }
+
+.btn.lg { min-height: 48px; padding: 0 22px; font-size: 16px; }
+
+/* ---------- Popover menus (language switcher, "more" menu) ----------
+   A <details>, so it opens without JS; menus.js adds outside-click, Escape
+   and close-on-choose. */
+
+.menu { position: relative; flex: 0 0 auto; }
+.menu > summary { list-style: none; }
+.menu > summary::-webkit-details-marker { display: none; }
+.menu[open] > summary { background: var(--accent-soft); color: var(--accent); }
+.menu-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  padding: 6px;
+  background: var(--bg-panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-3), 0 0 0 1px var(--border);
+}
+.menu.up .menu-list { top: auto; bottom: calc(100% + 10px); }
+.menu-list a,
+.menu-list button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.menu-list a:hover,
+.menu-list button:hover:not(:disabled) { background: var(--bg-raised); }
+.menu-list button:disabled { opacity: 0.4; cursor: default; }
+.menu-list .ico { width: 18px; height: 18px; color: var(--text-dim); }
+.menu-list a.current { color: var(--accent); font-weight: 600; }
+.menu-list .danger, .menu-list .danger .ico { color: var(--danger); }
+.menu-sep { height: 1px; margin: 6px 4px; background: var(--border); }
+
+/* Theme switcher: one button cycling system -> light -> dark (theme.js). The
+   icon shown is the current mode; no data-theme on <html> means "system". */
+.theme-toggle svg { display: none; }
+:root:not([data-theme]) .theme-toggle .icon-system,
+:root[data-theme="light"] .theme-toggle .icon-light,
+:root[data-theme="dark"] .theme-toggle .icon-dark { display: block; }
+
+/* ---------- Chip ---------- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px 5px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+.chip .ico { width: 15px; height: 15px; }
+
+/* ---------- Footer ---------- */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-5);
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+}
+.footer nav { display: flex; flex-wrap: wrap; gap: var(--sp-1) var(--sp-4); }
+.footer a {
+  color: var(--text-dim);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: color var(--dur-1);
+}
+.footer a:hover { color: var(--text); }
+.footer-nav a[aria-current="page"] { color: var(--text); font-weight: 600; }
+
+/* ---------- Touch ---------- */
+
+@media (hover: none) {
+  .btn { min-height: var(--tap); }
+  .btn.icon { width: var(--tap); }
+  .menu-list a, .menu-list button { min-height: var(--tap); }
+  .footer a { padding: 6px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+[hidden] { display: none !important; }

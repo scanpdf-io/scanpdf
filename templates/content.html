@@ -3,6 +3,7 @@
 <head>
 {{{head}}}
 <link rel="stylesheet" href="{{base}}css/tokens.css">
+<link rel="stylesheet" href="{{base}}css/base.css">
 <link rel="stylesheet" href="{{base}}css/content.css">
 {{{jsonld}}}
 </head>
@@ -11,12 +12,15 @@
 
 <header class="site-header">
   <a class="brand" href="{{homeHref}}">
+{{{brandMark}}}
     <span class="brand-name">ScanPDF</span>
   </a>
   <nav class="site-nav" aria-label="{{navSectionsLabel}}">{{{navLinks}}}</nav>
-  <a class="btn primary header-cta" href="{{homeHref}}">{{navOpenScanner}}</a>
+  <div class="header-tools">
 {{{themeToggle}}}
 {{{langMenu}}}
+    <a class="btn primary header-cta" href="{{homeHref}}">{{navOpenScanner}}</a>
+  </div>
 </header>
 
 <main id="content" class="doc-main">
@@ -34,6 +38,6 @@
 
 {{{footer}}}
 
-<script type="module" src="{{base}}js/lang-menu.js"></script>
+<script type="module" src="{{base}}js/menus.js"></script>
 </body>
 </html>

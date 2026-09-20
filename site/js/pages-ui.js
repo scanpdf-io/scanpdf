@@ -1,33 +1,79 @@
-// Thumbnail strip: select, reorder (▲/▼), delete, detection status badges.
+// Page thumbnails: select, delete, detection status, and reordering (drag in
+// reorder.js, Alt+arrows here).
 
-import { state, subscribe, emit } from './state.js';
+import { state, subscribe, emit, indexOfPage, movePage, removePage } from './state.js';
 import { t } from './i18n.js';
+import { icon, overlayColors } from './icons.js';
+import { announce } from './toast.js';
+import { initReorder, isReordering } from './reorder.js';
 
 const THUMB_W = 164;
 
-// On mobile the strip is horizontal, so reorder arrows point left/right.
-const mqMobile = window.matchMedia('(max-width: 767px)');
-
 let list;
+let dirty = false; // state changed while a drag was in progress
+let lastSelectedId = null;
 
 export function initPagesUI() {
   list = document.getElementById('pages-list');
-  mqMobile.addEventListener('change', render);
+  list.addEventListener('keydown', onKeyDown);
+  initReorder(list, () => {
+    if (dirty) render();
+  });
   subscribe(render);
   render();
 }
 
 function render() {
+  // Rebuilding the list would destroy the element being dragged (corner
+  // detection finishing mid-drag emits too), so wait for the drop.
+  if (isReordering()) {
+    dirty = true;
+    return;
+  }
+  dirty = false;
+
+  const active = document.activeElement;
+  const hadFocus = !!active && list.contains(active);
+  const focusedId = hadFocus ? active.closest('.page-item')?.dataset.id ?? null : null;
+  const scrollLeft = list.scrollLeft;
+  const scrollTop = list.scrollTop;
+
   list.textContent = '';
   state.pages.forEach((page, i) => {
     list.appendChild(buildItem(page, i));
   });
+  list.scrollLeft = scrollLeft;
+  list.scrollTop = scrollTop;
+
+  // Keep keyboard focus on the same page (or, if it was deleted, the selection).
+  if (hadFocus) {
+    const id = indexOfPage(focusedId) >= 0 ? focusedId : state.selectedId;
+    const btn = id && itemFor(id)?.querySelector('.page-select');
+    if (btn) btn.focus({ preventScroll: true });
+  }
+  if (state.selectedId !== lastSelectedId) {
+    lastSelectedId = state.selectedId;
+    itemFor(state.selectedId)?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+}
+
+function itemFor(id) {
+  return Array.from(list.children).find((el) => el.dataset.id === id) || null;
 }
 
 function buildItem(page, i) {
+  const selected = page.id === state.selectedId;
   const item = document.createElement('div');
-  item.className = 'page-item' + (page.id === state.selectedId ? ' selected' : '');
-  item.addEventListener('click', () => {
+  item.className = 'page-item' + (selected ? ' selected' : '');
+  item.dataset.id = page.id;
+
+  const select = document.createElement('button');
+  select.type = 'button';
+  select.className = 'page-select';
+  select.title = page.name;
+  select.setAttribute('aria-label', t('pageLabel', { i: i + 1, n: state.pages.length }));
+  select.setAttribute('aria-pressed', String(selected));
+  select.addEventListener('click', () => {
     state.selectedId = page.id;
     emit();
   });
@@ -40,6 +86,7 @@ function buildItem(page, i) {
   const tctx = thumb.getContext('2d');
   tctx.drawImage(page.procCanvas, 0, 0, thumb.width, thumb.height);
   if (!page.detecting) {
+    const colors = overlayColors();
     const pts = page.corners.map((c) => ({
       x: (c.x / page.scale) * s,
       y: (c.y / page.scale) * s,
@@ -47,11 +94,12 @@ function buildItem(page, i) {
     tctx.beginPath();
     pts.forEach((p, j) => (j === 0 ? tctx.moveTo(p.x, p.y) : tctx.lineTo(p.x, p.y)));
     tctx.closePath();
-    tctx.strokeStyle = page.detectOk ? 'rgba(77, 163, 255, 0.95)' : 'rgba(255, 170, 60, 0.95)';
+    tctx.strokeStyle = page.detectOk ? colors.accentSoft : colors.warn;
     tctx.lineWidth = 2;
     tctx.stroke();
   }
-  item.appendChild(thumb);
+  select.appendChild(thumb);
+  item.appendChild(select);
 
   const meta = document.createElement('div');
   meta.className = 'page-meta';
@@ -65,59 +113,50 @@ function buildItem(page, i) {
     spin.title = t('detecting');
     meta.appendChild(spin);
   } else if (!page.detectOk) {
-    const badge = document.createElement('span');
-    badge.className = 'badge';
-    badge.textContent = t('adjustCorners');
-    badge.title = t('adjustCornersTitle');
-    meta.appendChild(badge);
+    const flag = document.createElement('span');
+    flag.className = 'page-flag';
+    flag.title = t('adjustCornersTitle');
+    flag.setAttribute('role', 'img');
+    flag.setAttribute('aria-label', t('adjustCorners'));
+    flag.appendChild(icon('alert'));
+    meta.appendChild(flag);
   }
-  const name = document.createElement('span');
-  name.className = 'page-name';
-  name.textContent = page.name;
-  meta.appendChild(name);
   item.appendChild(meta);
 
-  const actions = document.createElement('div');
-  actions.className = 'page-actions';
-  const horiz = mqMobile.matches;
-  actions.appendChild(actionBtn(horiz ? '◀' : '▲', t(horiz ? 'moveLeft' : 'moveUp'), i === 0, () => move(i, -1)));
-  actions.appendChild(actionBtn(horiz ? '▶' : '▼', t(horiz ? 'moveRight' : 'moveDown'), i === state.pages.length - 1, () => move(i, 1)));
-  const del = actionBtn('✕', t('deletePage'), false, () => remove(i));
-  del.classList.add('del');
-  actions.appendChild(del);
-  item.appendChild(actions);
+  const del = document.createElement('button');
+  del.type = 'button';
+  del.className = 'page-del';
+  del.title = t('deletePage');
+  del.setAttribute('aria-label', t('deletePage'));
+  del.appendChild(icon('x'));
+  del.addEventListener('click', () => removePage(page.id));
+  item.appendChild(del);
 
   return item;
 }
 
-function actionBtn(label, title, disabled, onClick) {
-  const b = document.createElement('button');
-  b.type = 'button';
-  b.textContent = label;
-  b.title = title;
-  b.disabled = disabled;
-  b.addEventListener('click', (e) => {
-    e.stopPropagation();
-    onClick();
-  });
-  return b;
-}
+// On a focused thumbnail: arrows walk the pages, Alt+arrows move the page,
+// Delete removes it. Both arrow axes work, whichever way the list is laid out.
+function onKeyDown(e) {
+  const item = e.target.closest('.page-select') && e.target.closest('.page-item');
+  if (!item) return;
+  const i = indexOfPage(item.dataset.id);
+  if (i < 0) return;
 
-function move(i, dir) {
-  const j = i + dir;
-  if (j < 0 || j >= state.pages.length) return;
-  const tmp = state.pages[i];
-  state.pages[i] = state.pages[j];
-  state.pages[j] = tmp;
-  emit();
-}
-
-function remove(i) {
-  const [page] = state.pages.splice(i, 1);
-  if (page.fullBitmap && page.fullBitmap.close) page.fullBitmap.close();
-  if (state.selectedId === page.id) {
-    const next = state.pages[Math.min(i, state.pages.length - 1)];
-    state.selectedId = next ? next.id : null;
+  const dir = { ArrowUp: -1, ArrowLeft: -1, ArrowDown: 1, ArrowRight: 1 }[e.key];
+  if (dir) {
+    e.preventDefault();
+    const j = i + dir;
+    if (j < 0 || j >= state.pages.length) return;
+    if (e.altKey) {
+      if (movePage(i, j)) announce(t('pageMoved', { i: j + 1, n: state.pages.length }));
+    } else {
+      state.selectedId = state.pages[j].id;
+      emit();
+      itemFor(state.selectedId)?.querySelector('.page-select').focus();
+    }
+  } else if (e.key === 'Delete' || e.key === 'Backspace') {
+    e.preventDefault();
+    removePage(item.dataset.id);
   }
-  emit();
 }

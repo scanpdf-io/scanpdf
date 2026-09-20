@@ -1,13 +1,14 @@
 // Bootstrap: file intake (picker + drag&drop), EXIF-corrected decoding,
 // downscaling, the sequential detection queue, and toolbar wiring.
 
-import { state, subscribe, emit, getPage, selectedPage } from './state.js';
+import { state, subscribe, emit, getPage, selectedPage, indexOfPage, movePage, removePage } from './state.js';
 import { cvReady } from './cv-loader.js';
 import { detectCorners, fallbackCorners } from './detect.js';
 import { initEditor, schedulePreview } from './editor.js';
 import { initPagesUI } from './pages-ui.js';
 import { exportPdf } from './export.js';
 import { t } from './i18n.js';
+import { toast, announce } from './toast.js';
 
 const MAX_FULL_SIDE = 3500;
 const MAX_PROC_SIDE = 1000;
@@ -16,34 +17,39 @@ const $ = (id) => document.getElementById(id);
 
 const fileInput = $('file-input');
 const cameraInput = $('camera-input');
-const engineStatus = $('engine-status');
 const saveBtn = $('save-btn');
 const toolbar = $('page-toolbar');
-const filterSelect = $('filter-select');
+const filterInputs = Array.from(document.querySelectorAll('input[name="filter"]'));
 const exportOverlay = $('export-overlay');
 const exportStatus = $('export-status');
 const exportBar = $('export-bar');
+
+// The landing (hero) and the workspace (rail) each have their own pair.
+const ADD_BUTTONS = ['add-btn', 'hero-add-btn'];
+const CAMERA_BUTTONS = ['camera-btn', 'hero-camera-btn'];
 
 let layoutEl, viewToggle, viewEditorBtn, viewPreviewBtn;
 
 init();
 
 function init() {
+  // First subscriber on purpose: the workspace layout has to be in place
+  // before the editor measures its container for the first page.
+  subscribe(syncEmptyState);
   initEditor();
   initPagesUI();
   setupEngineWarmUp();
 
-  $('add-btn').addEventListener('click', () => fileInput.click());
+  for (const id of ADD_BUTTONS) $(id).addEventListener('click', () => fileInput.click());
   fileInput.addEventListener('change', () => {
     addFiles(fileInput.files);
     fileInput.value = '';
   });
-  $('camera-btn').addEventListener('click', () => cameraInput.click());
+  for (const id of CAMERA_BUTTONS) $(id).addEventListener('click', () => cameraInput.click());
   cameraInput.addEventListener('change', () => {
     addFiles(cameraInput.files);
     cameraInput.value = '';
   });
-  $('dropzone').addEventListener('click', () => fileInput.click());
 
   setupDragAndDrop();
   setupToolbar();
@@ -65,22 +71,17 @@ function setupEngineWarmUp() {
   const warmUp = () => {
     if (started) return;
     started = true;
-    engineStatus.hidden = false;
-    engineStatus.textContent = t('engineLoading');
+    const status = toast(t('engineLoading'), { type: 'busy' });
     cvReady().then(
-      () => {
-        engineStatus.textContent = t('engineReady');
-        engineStatus.classList.add('ready');
-        setTimeout(() => (engineStatus.hidden = true), 2500);
-      },
+      () => status.close(),
       (err) => {
-        engineStatus.textContent = t('engineFailed');
+        status.update(t('engineFailed'), { type: 'error' });
         console.error(err);
       },
     );
   };
 
-  for (const id of ['add-btn', 'camera-btn', 'dropzone']) {
+  for (const id of [...ADD_BUTTONS, ...CAMERA_BUTTONS]) {
     const el = $(id);
     el.addEventListener('pointerenter', warmUp, { once: true });
     el.addEventListener('pointerdown', warmUp, { once: true });
@@ -94,24 +95,42 @@ function setupEngineWarmUp() {
 
 /* ---------- File intake ---------- */
 
+// Files can be dropped anywhere on the window; body.dragover shows the
+// full-window drop overlay. dragenter/dragleave fire for every element the
+// pointer crosses, hence the depth counter.
 function setupDragAndDrop() {
-  const dropzone = $('dropzone');
-  window.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    dropzone.classList.add('dragover');
+  let depth = 0;
+  const hasFiles = (e) => !!e.dataTransfer && Array.from(e.dataTransfer.types).includes('Files');
+  const end = () => {
+    depth = 0;
+    document.body.classList.remove('dragover');
+  };
+  window.addEventListener('dragenter', (e) => {
+    if (!hasFiles(e)) return;
+    depth++;
+    document.body.classList.add('dragover');
   });
   window.addEventListener('dragleave', (e) => {
-    if (!e.relatedTarget) dropzone.classList.remove('dragover');
+    if (!hasFiles(e)) return;
+    if (--depth <= 0) end();
+  });
+  window.addEventListener('dragover', (e) => {
+    if (hasFiles(e)) e.preventDefault();
   });
   window.addEventListener('drop', (e) => {
+    if (!hasFiles(e)) return;
     e.preventDefault();
-    dropzone.classList.remove('dragover');
-    if (e.dataTransfer && e.dataTransfer.files.length) addFiles(e.dataTransfer.files);
+    end();
+    addFiles(e.dataTransfer.files);
   });
 }
 
 async function addFiles(fileList) {
-  const files = Array.from(fileList).filter((f) => f.type.startsWith('image/'));
+  const all = Array.from(fileList);
+  const files = all.filter((f) => f.type.startsWith('image/'));
+  if (files.length < all.length) {
+    toast(t('filesSkipped', { n: all.length - files.length }), { type: 'error' });
+  }
   for (const file of files) {
     try {
       const page = await createPage(file);
@@ -121,6 +140,7 @@ async function addFiles(fileList) {
       queueDetect(page.id);
     } catch (err) {
       console.error(`Could not load ${file.name}`, err);
+      toast(t('imageLoadFailed', { name: file.name }), { type: 'error' });
     }
   }
 }
@@ -223,15 +243,19 @@ function setupToolbar() {
   $('rotate-ccw').addEventListener('click', () => rotate(-90));
   $('rotate-cw').addEventListener('click', () => rotate(90));
 
-  filterSelect.addEventListener('change', () => {
-    const page = selectedPage();
-    if (!page) return;
-    page.filter = filterSelect.value;
-    emit();
-  });
+  for (const input of filterInputs) {
+    input.addEventListener('change', () => {
+      const page = selectedPage();
+      if (!page || !input.checked) return;
+      page.filter = input.value;
+      emit();
+    });
+  }
 
   $('filter-all').addEventListener('click', () => {
-    for (const page of state.pages) page.filter = filterSelect.value;
+    const current = selectedPage();
+    if (!current) return;
+    for (const page of state.pages) page.filter = current.filter;
     emit();
   });
 
@@ -250,6 +274,18 @@ function setupToolbar() {
     page.detectOk = true;
     emit();
   });
+
+  const moveSelected = (dir) => {
+    const i = indexOfPage(state.selectedId);
+    if (movePage(i, i + dir)) {
+      announce(t('pageMoved', { i: i + dir + 1, n: state.pages.length }));
+    }
+  };
+  $('move-earlier-btn').addEventListener('click', () => moveSelected(-1));
+  $('move-later-btn').addEventListener('click', () => moveSelected(1));
+  for (const id of ['delete-btn', 'menu-delete-btn']) {
+    $(id).addEventListener('click', () => removePage(state.selectedId));
+  }
 
   $('page-format').addEventListener('change', (e) => {
     state.pageFormat = e.target.value;
@@ -284,10 +320,19 @@ function setPreviewMode(on) {
   if (on) schedulePreview();
 }
 
+function syncEmptyState() {
+  document.body.classList.toggle('is-empty', state.pages.length === 0);
+}
+
 function syncControls() {
   const page = selectedPage();
   toolbar.hidden = !page;
-  if (page) filterSelect.value = page.filter;
+  if (page) {
+    for (const input of filterInputs) input.checked = input.value === page.filter;
+    const i = indexOfPage(page.id);
+    $('move-earlier-btn').disabled = i === 0;
+    $('move-later-btn').disabled = i === state.pages.length - 1;
+  }
   saveBtn.disabled = state.pages.length === 0;
   viewToggle.hidden = state.pages.length === 0;
   if (state.pages.length === 0) setPreviewMode(false);
@@ -306,9 +351,10 @@ async function onSave() {
       exportBar.style.width = `${Math.round(((i - 1) / n) * 100)}%`;
     });
     exportBar.style.width = '100%';
+    toast(t('exportDone'), { type: 'ok' });
   } catch (err) {
     console.error('Export failed', err);
-    alert(t('exportFailed', { message: err.message }));
+    toast(t('exportFailed', { message: err.message }), { type: 'error' });
   } finally {
     exportOverlay.hidden = true;
   }

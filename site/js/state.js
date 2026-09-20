@@ -37,3 +37,32 @@ export function getPage(id) {
 export function selectedPage() {
   return getPage(state.selectedId);
 }
+
+export function indexOfPage(id) {
+  return state.pages.findIndex((p) => p.id === id);
+}
+
+/** Move a page to a new position in the document. Returns false if nothing moved. */
+export function movePage(from, to) {
+  const last = state.pages.length - 1;
+  if (from < 0 || from > last) return false;
+  to = Math.min(Math.max(to, 0), last);
+  if (to === from) return false;
+  const [page] = state.pages.splice(from, 1);
+  state.pages.splice(to, 0, page);
+  emit();
+  return true;
+}
+
+/** Delete a page; the selection moves to its neighbour. */
+export function removePage(id) {
+  const i = indexOfPage(id);
+  if (i < 0) return;
+  const [page] = state.pages.splice(i, 1);
+  if (page.fullBitmap && page.fullBitmap.close) page.fullBitmap.close();
+  if (state.selectedId === id) {
+    const next = state.pages[Math.min(i, state.pages.length - 1)];
+    state.selectedId = next ? next.id : null;
+  }
+  emit();
+}

@@ -13,9 +13,8 @@
     "ogTitle": "ScanPDF - Scanner de documents en ligne et gratuit",
     "ogDescription": "Vos photos de papier deviennent des PDF multipages propres, dans votre navigateur. Rien n'est envoyé.",
     "ogImageAlt": "ScanPDF : la photo d'un document papier redressée jusqu'à devenir une page PDF propre",
-    "tagline": "Scanner de documents local - rien ne quitte votre ordinateur",
     "pageSizeLabel": "Format de page",
-    "pageSizeAuto": "Automatique (ajuster à la feuille)",
+    "pageSizeAuto": "Auto",
     "savePdf": "Enregistrer le PDF",
     "addPhotos": "Ajouter des photos",
     "takePhoto": "Prendre une photo",
@@ -34,27 +33,42 @@
     "resetCorners": "Réinitialiser les coins",
     "resetCornersTitle": "Ramener les coins au cadre complet",
     "dropTitle": "Déposez ici les photos de vos documents papier",
-    "dropSub": "ou cliquez sur « Ajouter des photos ». Les bords de la feuille sont trouvés automatiquement ; faites glisser les coins pour ajuster. Tout est traité localement dans votre navigateur.",
-    "editorHint": "Faites glisser les poignées jusqu'aux bords de la feuille - une loupe vous aide à viser juste.",
-    "previewTitle": "Aperçu de la numérisation",
-    "previewHint": "Résultat en direct de la page sélectionnée",
-    "exporting": "Exportation..."
+    "editorHint": "Faites glisser les coins jusqu'aux bords de la feuille",
+    "exporting": "Exportation...",
+    "heroTitle": "Transformez des photos de documents en un PDF net",
+    "heroSub": "Les bords de la feuille sont trouvés automatiquement. Redressez, nettoyez et enregistrez - tout se passe dans votre navigateur.",
+    "heroDropHint": "ou déposez des photos n'importe où sur cette page",
+    "privacyChip": "Les photos ne quittent pas votre appareil",
+    "stepsLabel": "Comment ça marche",
+    "step1": "Ajoutez des photos des pages",
+    "step2": "Vérifiez les coins",
+    "step3": "Enregistrez le PDF",
+    "filterColorShort": "Coul.",
+    "filterGrayShort": "Gris",
+    "filterBwShort": "N&B",
+    "deletePageTitle": "Supprimer la page",
+    "moreActions": "Plus d'actions",
+    "movePageEarlier": "Déplacer la page vers le début",
+    "movePageLater": "Déplacer la page vers la fin",
+    "toolsLabel": "Outils de page",
+    "pagesLabel": "Pages"
   },
   "ui": {
     "engineLoading": "Chargement du moteur de numérisation...",
-    "engineReady": "Moteur prêt",
     "engineFailed": "Le moteur n'a pas pu être chargé",
     "detecting": "Détection des coins...",
     "adjustCorners": "ajuster les coins",
     "adjustCornersTitle": "La détection automatique a échoué - faites glisser les coins à la main",
-    "moveUp": "Monter",
-    "moveDown": "Descendre",
-    "moveLeft": "Déplacer à gauche",
-    "moveRight": "Déplacer à droite",
     "deletePage": "Supprimer la page",
     "exportingPage": "Exportation de la page {i} sur {n}...",
     "exportFailed": "Échec de l'exportation : {message}",
-    "pdfTitle": "Document numérisé"
+    "pdfTitle": "Document numérisé",
+    "imageLoadFailed": "Impossible d'ouvrir {name}",
+    "filesSkipped": "Fichiers ignorés : {n}. Seules les images sont prises en charge",
+    "exportDone": "PDF enregistré",
+    "dismiss": "Fermer",
+    "pageLabel": "Page {i} sur {n}",
+    "pageMoved": "Page déplacée en position {i} sur {n}"
   },
   "nav": {
     "home": "Scanner",
@@ -135,7 +149,7 @@
                 "**Faites glisser les coins jusqu'aux bords de la feuille.** Une loupe suit la poignée pour vous permettre de viser précisément. « Détecter à nouveau » relance la passe automatique, et « Réinitialiser les coins » les replace sur le cadre complet si vous préférez repartir de zéro.",
                 "**Pivotez si nécessaire.** Les photos de téléphone portent leur orientation dans les métadonnées EXIF et sont remises à l'endroit automatiquement, mais les boutons à 90 degrés sont là pour les pages photographiées de travers.",
                 "**Choisissez un filtre,** puis utilisez « Appliquer à tout » si toute la série a été prise sous la même lumière.",
-                "**Ordonnez les pages.** La bande latérale monte et descend les pages et supprime celles qui n'ont rien donné. L'ordre de la bande est l'ordre du PDF.",
+                "**Ordonnez les pages.** Faites glisser une vignette pour déplacer la page et supprimez celles qui n'ont rien donné. L'ordre des vignettes est l'ordre du PDF.",
                 "**Choisissez un format de page et enregistrez.** A4, Letter ou automatique, puis « Enregistrer le PDF ». Le fichier est assemblé dans le navigateur et atterrit dans votre dossier de téléchargements."
               ]
             }
@@ -230,7 +244,7 @@
         {
           "q": "Puis-je réorganiser ou supprimer des pages ?",
           "a": [
-            "Oui. La bande de pages les monte, les descend et les supprime, et cet ordre est celui du PDF exporté. La rotation, l'ajustement des coins et le filtre valent page par page : une mauvaise photo dans une série ne vous oblige donc jamais à refaire le reste."
+            "Oui. Faites glisser les vignettes pour réordonner les pages et supprimez celles dont vous n'avez pas besoin ; cet ordre est celui du PDF exporté. La rotation, l'ajustement des coins et le filtre valent page par page : une mauvaise photo dans une série ne vous oblige donc jamais à refaire le reste."
           ]
         },
         {
