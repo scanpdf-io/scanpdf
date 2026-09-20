@@ -139,6 +139,15 @@
         <option value="letter">Letter</option>
         <option value="auto">Auto</option>
       </select>
+      <select id="target-size" aria-label="Maximum file size" title="Maximum file size">
+        <option value="0" selected>No limit</option>
+        <option value="10000000">&le; 10 MB</option>
+        <option value="5000000">&le; 5 MB</option>
+        <option value="2000000">&le; 2 MB</option>
+        <option value="1000000">&le; 1 MB</option>
+        <option value="500000">&le; 500 kB</option>
+        <option value="200000">&le; 200 kB</option>
+      </select>
       <button id="save-btn" class="btn primary" type="button" disabled><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span>Save PDF</span></button>
     </div>
   </div>
@@ -245,7 +254,7 @@
 
 <!-- Strings needed by the JS modules. An inline <script> would be blocked by
      the container's script-src 'self' CSP, so they travel as data attributes. -->
-<div id="i18n" hidden data-engine-loading="Loading scan engine..." data-engine-failed="Engine failed to load" data-detecting="Detecting corners..." data-adjust-corners="adjust corners" data-adjust-corners-title="Automatic detection failed - drag the corners manually" data-delete-page="Delete page" data-exporting-page="Exporting page {i} of {n}..." data-export-failed="Export failed: {message}" data-pdf-title="Scanned document" data-image-load-failed="Could not open {name}" data-files-skipped="Files skipped: {n}. Only images are supported" data-export-done="PDF saved" data-dismiss="Dismiss" data-page-label="Page {i} of {n}" data-page-moved="Page moved to position {i} of {n}"></div>
+<div id="i18n" hidden data-engine-loading="Loading scan engine..." data-engine-failed="Engine failed to load" data-detecting="Detecting corners..." data-adjust-corners="adjust corners" data-adjust-corners-title="Automatic detection failed - drag the corners manually" data-delete-page="Delete page" data-exporting-page="Exporting page {i} of {n}..." data-compressing-page="Compressing page {i} of {n}..." data-export-failed="Export failed: {message}" data-pdf-title="Scanned document" data-image-load-failed="Could not open {name}" data-files-skipped="Files skipped: {n}. Only images are supported" data-export-done="PDF saved - {size}" data-export-over-target="Saved at {size} - could not get down to {target} without making the pages unreadable" data-dismiss="Dismiss" data-page-label="Page {i} of {n}" data-page-moved="Page moved to position {i} of {n}"></div>
 
 <script src="vendor/pdf-lib.min.js" defer></script>
 <script type="module" src="js/menus.js"></script>

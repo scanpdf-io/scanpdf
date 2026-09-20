@@ -17,6 +17,7 @@ export const state = {
   selectedId: null,
   pageFormat: 'a4', // 'a4' | 'letter' | 'auto'
   jpegQuality: 0.85,
+  targetBytes: 0, // maximum PDF size in bytes; 0 = no limit
 };
 
 const listeners = new Set();

@@ -139,6 +139,15 @@
         <option value="letter">Letter</option>
         <option value="auto">Auto</option>
       </select>
+      <select id="target-size" aria-label="Maximale Dateigröße" title="Maximale Dateigröße">
+        <option value="0" selected>Kein Limit</option>
+        <option value="10000000">&le; 10 MB</option>
+        <option value="5000000">&le; 5 MB</option>
+        <option value="2000000">&le; 2 MB</option>
+        <option value="1000000">&le; 1 MB</option>
+        <option value="500000">&le; 500 kB</option>
+        <option value="200000">&le; 200 kB</option>
+      </select>
       <button id="save-btn" class="btn primary" type="button" disabled><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span>PDF speichern</span></button>
     </div>
   </div>
@@ -245,7 +254,7 @@
 
 <!-- Strings needed by the JS modules. An inline <script> would be blocked by
      the container's script-src 'self' CSP, so they travel as data attributes. -->
-<div id="i18n" hidden data-engine-loading="Scan-Engine wird geladen..." data-engine-failed="Engine konnte nicht geladen werden" data-detecting="Ecken werden erkannt..." data-adjust-corners="Ecken anpassen" data-adjust-corners-title="Automatische Erkennung fehlgeschlagen - Ecken bitte von Hand ziehen" data-delete-page="Seite löschen" data-exporting-page="Seite {i} von {n} wird exportiert..." data-export-failed="Export fehlgeschlagen: {message}" data-pdf-title="Gescanntes Dokument" data-image-load-failed="{name} konnte nicht geöffnet werden" data-files-skipped="Übersprungene Dateien: {n}. Nur Bilder werden unterstützt" data-export-done="PDF gespeichert" data-dismiss="Schließen" data-page-label="Seite {i} von {n}" data-page-moved="Seite an Position {i} von {n} verschoben"></div>
+<div id="i18n" hidden data-engine-loading="Scan-Engine wird geladen..." data-engine-failed="Engine konnte nicht geladen werden" data-detecting="Ecken werden erkannt..." data-adjust-corners="Ecken anpassen" data-adjust-corners-title="Automatische Erkennung fehlgeschlagen - Ecken bitte von Hand ziehen" data-delete-page="Seite löschen" data-exporting-page="Seite {i} von {n} wird exportiert..." data-compressing-page="Seite {i} von {n} wird komprimiert..." data-export-failed="Export fehlgeschlagen: {message}" data-pdf-title="Gescanntes Dokument" data-image-load-failed="{name} konnte nicht geöffnet werden" data-files-skipped="Übersprungene Dateien: {n}. Nur Bilder werden unterstützt" data-export-done="PDF gespeichert - {size}" data-export-over-target="Mit {size} gespeichert - {target} war nicht erreichbar, ohne dass die Seiten unleserlich werden" data-dismiss="Schließen" data-page-label="Seite {i} von {n}" data-page-moved="Seite an Position {i} von {n} verschoben"></div>
 
 <script src="../vendor/pdf-lib.min.js" defer></script>
 <script type="module" src="../js/menus.js"></script>

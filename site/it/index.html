@@ -139,6 +139,15 @@
         <option value="letter">Letter</option>
         <option value="auto">Auto</option>
       </select>
+      <select id="target-size" aria-label="Dimensione massima del file" title="Dimensione massima del file">
+        <option value="0" selected>Nessun limite</option>
+        <option value="10000000">&le; 10 MB</option>
+        <option value="5000000">&le; 5 MB</option>
+        <option value="2000000">&le; 2 MB</option>
+        <option value="1000000">&le; 1 MB</option>
+        <option value="500000">&le; 500 kB</option>
+        <option value="200000">&le; 200 kB</option>
+      </select>
       <button id="save-btn" class="btn primary" type="button" disabled><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span>Salva PDF</span></button>
     </div>
   </div>
@@ -245,7 +254,7 @@
 
 <!-- Strings needed by the JS modules. An inline <script> would be blocked by
      the container's script-src 'self' CSP, so they travel as data attributes. -->
-<div id="i18n" hidden data-engine-loading="Caricamento del motore di scansione..." data-engine-failed="Impossibile caricare il motore" data-detecting="Rilevamento degli angoli..." data-adjust-corners="regola gli angoli" data-adjust-corners-title="Il rilevamento automatico non è riuscito - trascina gli angoli a mano" data-delete-page="Elimina pagina" data-exporting-page="Esportazione della pagina {i} di {n}..." data-export-failed="Esportazione non riuscita: {message}" data-pdf-title="Documento scansionato" data-image-load-failed="Impossibile aprire {name}" data-files-skipped="File ignorati: {n}. Sono supportate solo le immagini" data-export-done="PDF salvato" data-dismiss="Chiudi" data-page-label="Pagina {i} di {n}" data-page-moved="Pagina spostata alla posizione {i} di {n}"></div>
+<div id="i18n" hidden data-engine-loading="Caricamento del motore di scansione..." data-engine-failed="Impossibile caricare il motore" data-detecting="Rilevamento degli angoli..." data-adjust-corners="regola gli angoli" data-adjust-corners-title="Il rilevamento automatico non è riuscito - trascina gli angoli a mano" data-delete-page="Elimina pagina" data-exporting-page="Esportazione della pagina {i} di {n}..." data-compressing-page="Compressione della pagina {i} di {n}..." data-export-failed="Esportazione non riuscita: {message}" data-pdf-title="Documento scansionato" data-image-load-failed="Impossibile aprire {name}" data-files-skipped="File ignorati: {n}. Sono supportate solo le immagini" data-export-done="PDF salvato - {size}" data-export-over-target="Salvato a {size} - impossibile scendere a {target} senza rendere illeggibili le pagine" data-dismiss="Chiudi" data-page-label="Pagina {i} di {n}" data-page-moved="Pagina spostata alla posizione {i} di {n}"></div>
 
 <script src="../vendor/pdf-lib.min.js" defer></script>
 <script type="module" src="../js/menus.js"></script>

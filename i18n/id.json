@@ -15,6 +15,8 @@
     "ogImageAlt": "ScanPDF: foto dokumen kertas yang diluruskan menjadi halaman PDF yang bersih",
     "pageSizeLabel": "Ukuran halaman",
     "pageSizeAuto": "Otomatis",
+    "targetSizeLabel": "Ukuran file maksimum",
+    "targetSizeNone": "Tanpa batas",
     "savePdf": "Simpan PDF",
     "addPhotos": "Tambah foto",
     "takePhoto": "Ambil foto",
@@ -61,11 +63,13 @@
     "adjustCornersTitle": "Deteksi otomatis gagal - seret sudut secara manual",
     "deletePage": "Hapus halaman",
     "exportingPage": "Mengekspor halaman {i} dari {n}...",
+    "compressingPage": "Mengompres halaman {i} dari {n}...",
     "exportFailed": "Ekspor gagal: {message}",
     "pdfTitle": "Dokumen hasil pindai",
     "imageLoadFailed": "Tidak dapat membuka {name}",
     "filesSkipped": "File dilewati: {n}. Hanya gambar yang didukung",
-    "exportDone": "PDF tersimpan",
+    "exportDone": "PDF tersimpan - {size}",
+    "exportOverTarget": "Tersimpan {size} - tidak bisa dikecilkan hingga {target} tanpa membuat halaman tak terbaca",
     "dismiss": "Tutup",
     "pageLabel": "Halaman {i} dari {n}",
     "pageMoved": "Halaman dipindahkan ke posisi {i} dari {n}"
@@ -173,7 +177,8 @@
           "h": "Ukuran halaman dan kualitas hasil",
           "body": [
             "**A4** dan **Letter** memaksa setiap halaman ke ukuran persis itu, cocok untuk apa pun yang akan dicetak atau diarsipkan bersama dokumen lain. **Otomatis** menyesuaikan setiap halaman dengan rasio aspek lembaran yang benar-benar Anda foto - pilihan yang tepat untuk struk, tiket, kartu identitas, dan bentuk tak lazim lainnya yang kalau tidak, akan terdampar di tengah halaman A4.",
-            "Deteksi dijalankan pada salinan yang diperkecil demi kecepatan, tetapi ekspor selalu memproses foto asli beresolusi penuh, dibatasi 3500 px pada sisi panjang dan ditulis pada sekitar 220 DPI untuk A4. Itu lebih dari cukup untuk dibaca, dicetak, dan untuk OCR nanti jika Anda menginginkannya."
+            "Deteksi dijalankan pada salinan yang diperkecil demi kecepatan, tetapi ekspor selalu memproses foto asli beresolusi penuh, dibatasi 3500 px pada sisi panjang dan ditulis pada sekitar 220 DPI untuk A4. Itu lebih dari cukup untuk dibaca, dicetak, dan untuk OCR nanti jika Anda menginginkannya.",
+            "Jika file harus di bawah batas tertentu - lampiran email, formulir unggah yang menolak file di atas 2 MB - pilih **ukuran file maksimum** di sebelah ukuran halaman. ScanPDF lebih dulu menurunkan kualitas JPEG, lalu resolusi hanya jika memang perlu, dan berhenti sebelum teks menjadi tak terbaca. Jika batas itu tetap tidak tercapai, versi terkecil yang masih terbaca akan disimpan dan ukuran sebenarnya ditampilkan kepada Anda."
           ]
         },
         {

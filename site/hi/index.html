@@ -139,6 +139,15 @@
         <option value="letter">Letter</option>
         <option value="auto">ऑटो</option>
       </select>
+      <select id="target-size" aria-label="फ़ाइल का अधिकतम साइज़" title="फ़ाइल का अधिकतम साइज़">
+        <option value="0" selected>कोई सीमा नहीं</option>
+        <option value="10000000">&le; 10 MB</option>
+        <option value="5000000">&le; 5 MB</option>
+        <option value="2000000">&le; 2 MB</option>
+        <option value="1000000">&le; 1 MB</option>
+        <option value="500000">&le; 500 kB</option>
+        <option value="200000">&le; 200 kB</option>
+      </select>
       <button id="save-btn" class="btn primary" type="button" disabled><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span>PDF सेव करें</span></button>
     </div>
   </div>
@@ -245,7 +254,7 @@
 
 <!-- Strings needed by the JS modules. An inline <script> would be blocked by
      the container's script-src 'self' CSP, so they travel as data attributes. -->
-<div id="i18n" hidden data-engine-loading="स्कैन इंजन लोड हो रहा है..." data-engine-failed="इंजन लोड नहीं हो सका" data-detecting="कोने पहचाने जा रहे हैं..." data-adjust-corners="कोने ठीक करें" data-adjust-corners-title="ऑटोमैटिक पहचान नहीं हो पाई - कोनों को हाथ से खींचकर ठीक करें" data-delete-page="पेज डिलीट करें" data-exporting-page="{n} में से पेज {i} एक्सपोर्ट हो रहा है..." data-export-failed="एक्सपोर्ट नहीं हो सका: {message}" data-pdf-title="स्कैन किया गया दस्तावेज़" data-image-load-failed="{name} को खोला नहीं जा सका" data-files-skipped="छोड़ी गई फ़ाइलें: {n}। सिर्फ़ इमेज फ़ाइलें चलती हैं" data-export-done="PDF सेव हो गई" data-dismiss="बंद करें" data-page-label="{n} में से पेज {i}" data-page-moved="पेज अब {n} में से {i} नंबर पर है"></div>
+<div id="i18n" hidden data-engine-loading="स्कैन इंजन लोड हो रहा है..." data-engine-failed="इंजन लोड नहीं हो सका" data-detecting="कोने पहचाने जा रहे हैं..." data-adjust-corners="कोने ठीक करें" data-adjust-corners-title="ऑटोमैटिक पहचान नहीं हो पाई - कोनों को हाथ से खींचकर ठीक करें" data-delete-page="पेज डिलीट करें" data-exporting-page="{n} में से पेज {i} एक्सपोर्ट हो रहा है..." data-compressing-page="{n} में से पेज {i} कंप्रेस हो रहा है..." data-export-failed="एक्सपोर्ट नहीं हो सका: {message}" data-pdf-title="स्कैन किया गया दस्तावेज़" data-image-load-failed="{name} को खोला नहीं जा सका" data-files-skipped="छोड़ी गई फ़ाइलें: {n}। सिर्फ़ इमेज फ़ाइलें चलती हैं" data-export-done="PDF सेव हो गई - {size}" data-export-over-target="{size} में सेव हुई - पेजों को अपठनीय किए बिना {target} तक छोटा नहीं किया जा सका" data-dismiss="बंद करें" data-page-label="{n} में से पेज {i}" data-page-moved="पेज अब {n} में से {i} नंबर पर है"></div>
 
 <script src="../vendor/pdf-lib.min.js" defer></script>
 <script type="module" src="../js/menus.js"></script>

@@ -36,25 +36,47 @@ body.app.is-empty { height: auto; min-height: 100%; }
 h1.brand { font-size: inherit; font-weight: inherit; }
 .topbar-controls { display: flex; align-items: center; gap: var(--sp-1); }
 
-/* Page size + Save read as one split button. */
-.export-group { display: flex; align-items: stretch; gap: 2px; margin-left: var(--sp-2); }
+/* The export settings - page size | size limit - are one pill with a hairline
+   between the halves; Save stands next to it as the action. */
+.export-group { display: flex; align-items: stretch; margin-left: var(--sp-2); }
 .is-empty .export-group { display: none; }
 .export-group select {
   appearance: none;
   -webkit-appearance: none;
+  /* As wide as the current value rather than the longest option; without
+     support the select just stays a little wider. */
+  field-sizing: content;
   min-height: var(--ctl);
-  padding: 0 30px 0 14px;
+  padding: 0 28px 0 16px;
   border: 0;
-  border-radius: var(--radius-pill) 6px 6px var(--radius-pill);
-  background: var(--bg-raised) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a94a3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 10px center / 14px;
+  border-radius: var(--radius-pill) 0 0 var(--radius-pill);
+  background-color: var(--bg-raised);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a94a3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
   color: var(--text);
   font: inherit;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color var(--dur-1);
+  transition: background-color var(--dur-1), color var(--dur-1);
 }
 .export-group select:hover { background-color: var(--btn-hover-bg); }
-.export-group .btn { border-radius: 6px var(--radius-pill) var(--radius-pill) 6px; padding: 0 18px 0 14px; }
+/* Inset, so the ring is not cut off by the other half of the pill. */
+.export-group select:focus-visible { outline-offset: -2px; }
+/* The size limit carries a "compress" glyph: "No limit" alone says nothing
+   about what is being limited. */
+.export-group select + select {
+  padding: 0 30px 0 34px;
+  border-left: 1px solid var(--border);
+  border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a94a3' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a94a3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='4 14 10 14 10 20'/%3E%3Cpolyline points='20 10 14 10 14 4'/%3E%3Cline x1='14' y1='10' x2='21' y2='3'/%3E%3Cline x1='3' y1='21' x2='10' y2='14'/%3E%3C/svg%3E");
+  background-position: right 12px center, left 12px center;
+  background-size: 14px, 15px;
+}
+/* A limit is remembered between visits, so an active one has to be visible. */
+.export-group select.is-set { color: var(--accent); }
+.export-group .btn { margin-left: var(--sp-2); padding: 0 18px 0 14px; }
 .export-group .btn .ico { width: 18px; height: 18px; }
 
 /* ---------- Layout ---------- */
@@ -582,12 +604,22 @@ h1.brand { font-size: inherit; font-weight: inherit; }
     inset: auto 0 0 0;
     z-index: 30;
     margin: 0;
-    gap: var(--sp-2);
     padding: var(--sp-2) max(var(--sp-3), env(safe-area-inset-right)) calc(var(--sp-2) + env(safe-area-inset-bottom)) max(var(--sp-3), env(safe-area-inset-left));
     background: var(--bg);
   }
-  .export-group select { flex: 0 0 auto; border-radius: var(--radius-pill); min-height: var(--tap); font-size: 16px; }
-  .export-group .btn { flex: 1 1 auto; border-radius: var(--radius-pill); min-height: var(--tap); font-size: 16px; }
+  /* The pill and Save share a narrow bar: without field-sizing support the
+     selects are as wide as their longest option and give way with an
+     ellipsis. The button never shrinks. */
+  .export-group select { flex: 0 1 auto; min-width: 0; padding: 0 26px 0 16px; background-position: right 8px center; text-overflow: ellipsis; min-height: var(--tap); font-size: 16px; }
+  .export-group select + select { padding: 0 28px 0 32px; background-position: right 10px center, left 10px center; }
+  .export-group .btn { flex: 1 0 auto; min-height: var(--tap); font-size: 16px; }
+  @media (max-width: 379px) {
+    /* Longer locales ("PDF olarak kaydet") need the room: drop both glyphs. */
+    .export-group select { padding-left: 14px; }
+    .export-group select + select { padding: 0 26px 0 12px; background-size: 14px, 0; }
+    .export-group .btn { padding: 0 12px; font-size: 15px; }
+    .export-group .btn .ico { display: none; }
+  }
 
   body.app:not(.is-empty) .layout {
     display: flex;

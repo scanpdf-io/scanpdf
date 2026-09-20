@@ -139,6 +139,15 @@
         <option value="letter">Letter</option>
         <option value="auto">Otomatik</option>
       </select>
+      <select id="target-size" aria-label="En büyük dosya boyutu" title="En büyük dosya boyutu">
+        <option value="0" selected>Sınırsız</option>
+        <option value="10000000">&le; 10 MB</option>
+        <option value="5000000">&le; 5 MB</option>
+        <option value="2000000">&le; 2 MB</option>
+        <option value="1000000">&le; 1 MB</option>
+        <option value="500000">&le; 500 kB</option>
+        <option value="200000">&le; 200 kB</option>
+      </select>
       <button id="save-btn" class="btn primary" type="button" disabled><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span>PDF olarak kaydet</span></button>
     </div>
   </div>
@@ -245,7 +254,7 @@
 
 <!-- Strings needed by the JS modules. An inline <script> would be blocked by
      the container's script-src 'self' CSP, so they travel as data attributes. -->
-<div id="i18n" hidden data-engine-loading="Tarama motoru yükleniyor..." data-engine-failed="Tarama motoru yüklenemedi" data-detecting="Köşeler algılanıyor..." data-adjust-corners="köşeleri ayarla" data-adjust-corners-title="Otomatik algılama başarısız oldu - köşeleri elle sürükleyin" data-delete-page="Sayfayı sil" data-exporting-page="Sayfa {i} / {n} dışa aktarılıyor..." data-export-failed="Dışa aktarma başarısız: {message}" data-pdf-title="Taranmış belge" data-image-load-failed="Dosya açılamadı: {name}" data-files-skipped="Atlanan dosya sayısı: {n}. Yalnızca görseller desteklenir" data-export-done="PDF kaydedildi" data-dismiss="Kapat" data-page-label="Sayfa {i} / {n}" data-page-moved="Sayfa taşındı, yeni konum: {i} / {n}"></div>
+<div id="i18n" hidden data-engine-loading="Tarama motoru yükleniyor..." data-engine-failed="Tarama motoru yüklenemedi" data-detecting="Köşeler algılanıyor..." data-adjust-corners="köşeleri ayarla" data-adjust-corners-title="Otomatik algılama başarısız oldu - köşeleri elle sürükleyin" data-delete-page="Sayfayı sil" data-exporting-page="Sayfa {i} / {n} dışa aktarılıyor..." data-compressing-page="Sayfa {i} / {n} sıkıştırılıyor..." data-export-failed="Dışa aktarma başarısız: {message}" data-pdf-title="Taranmış belge" data-image-load-failed="Dosya açılamadı: {name}" data-files-skipped="Atlanan dosya sayısı: {n}. Yalnızca görseller desteklenir" data-export-done="PDF kaydedildi - {size}" data-export-over-target="{size} olarak kaydedildi - sayfalar okunaksız hale gelmeden {target} boyutuna inilemedi" data-dismiss="Kapat" data-page-label="Sayfa {i} / {n}" data-page-moved="Sayfa taşındı, yeni konum: {i} / {n}"></div>
 
 <script src="../vendor/pdf-lib.min.js" defer></script>
 <script type="module" src="../js/menus.js"></script>

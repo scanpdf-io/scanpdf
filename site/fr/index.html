@@ -139,6 +139,15 @@
         <option value="letter">Letter</option>
         <option value="auto">Auto</option>
       </select>
+      <select id="target-size" aria-label="Taille maximale du fichier" title="Taille maximale du fichier">
+        <option value="0" selected>Sans limite</option>
+        <option value="10000000">&le; 10 MB</option>
+        <option value="5000000">&le; 5 MB</option>
+        <option value="2000000">&le; 2 MB</option>
+        <option value="1000000">&le; 1 MB</option>
+        <option value="500000">&le; 500 kB</option>
+        <option value="200000">&le; 200 kB</option>
+      </select>
       <button id="save-btn" class="btn primary" type="button" disabled><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span>Enregistrer le PDF</span></button>
     </div>
   </div>
@@ -245,7 +254,7 @@
 
 <!-- Strings needed by the JS modules. An inline <script> would be blocked by
      the container's script-src 'self' CSP, so they travel as data attributes. -->
-<div id="i18n" hidden data-engine-loading="Chargement du moteur de numérisation..." data-engine-failed="Le moteur n&#x27;a pas pu être chargé" data-detecting="Détection des coins..." data-adjust-corners="ajuster les coins" data-adjust-corners-title="La détection automatique a échoué - faites glisser les coins à la main" data-delete-page="Supprimer la page" data-exporting-page="Exportation de la page {i} sur {n}..." data-export-failed="Échec de l&#x27;exportation : {message}" data-pdf-title="Document numérisé" data-image-load-failed="Impossible d&#x27;ouvrir {name}" data-files-skipped="Fichiers ignorés : {n}. Seules les images sont prises en charge" data-export-done="PDF enregistré" data-dismiss="Fermer" data-page-label="Page {i} sur {n}" data-page-moved="Page déplacée en position {i} sur {n}"></div>
+<div id="i18n" hidden data-engine-loading="Chargement du moteur de numérisation..." data-engine-failed="Le moteur n&#x27;a pas pu être chargé" data-detecting="Détection des coins..." data-adjust-corners="ajuster les coins" data-adjust-corners-title="La détection automatique a échoué - faites glisser les coins à la main" data-delete-page="Supprimer la page" data-exporting-page="Exportation de la page {i} sur {n}..." data-compressing-page="Compression de la page {i} sur {n}..." data-export-failed="Échec de l&#x27;exportation : {message}" data-pdf-title="Document numérisé" data-image-load-failed="Impossible d&#x27;ouvrir {name}" data-files-skipped="Fichiers ignorés : {n}. Seules les images sont prises en charge" data-export-done="PDF enregistré - {size}" data-export-over-target="Enregistré à {size} - impossible de descendre à {target} sans rendre les pages illisibles" data-dismiss="Fermer" data-page-label="Page {i} sur {n}" data-page-moved="Page déplacée en position {i} sur {n}"></div>
 
 <script src="../vendor/pdf-lib.min.js" defer></script>
 <script type="module" src="../js/menus.js"></script>

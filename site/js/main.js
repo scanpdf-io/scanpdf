@@ -8,10 +8,12 @@ import { initEditor, schedulePreview } from './editor.js';
 import { initPagesUI } from './pages-ui.js';
 import { exportPdf } from './export.js';
 import { t } from './i18n.js';
+import { formatBytes } from './format.js';
 import { toast, announce } from './toast.js';
 
 const MAX_FULL_SIDE = 3500;
 const MAX_PROC_SIDE = 1000;
+const TARGET_SIZE_KEY = 'scanpdf-target-size';
 
 const $ = (id) => document.getElementById(id);
 
@@ -292,7 +294,42 @@ function setupToolbar() {
     emit();
   });
 
+  setupTargetSize();
+
   saveBtn.addEventListener('click', onSave);
+}
+
+// The size limit is the one export setting worth remembering: whoever needs
+// "under 2 MB" for a portal usually needs it every time.
+function setupTargetSize() {
+  const select = $('target-size');
+  // The template carries plain "2 MB" labels; redo them in the page's locale.
+  for (const option of select.options) {
+    if (Number(option.value)) option.textContent = `\u2264 ${formatBytes(Number(option.value))}`;
+  }
+
+  let saved = null;
+  try {
+    saved = localStorage.getItem(TARGET_SIZE_KEY);
+  } catch (_) {
+    // Storage blocked: start without a limit.
+  }
+  if (saved && Array.from(select.options).some((option) => option.value === saved)) {
+    select.value = saved;
+  }
+  state.targetBytes = Number(select.value);
+  select.classList.toggle('is-set', state.targetBytes > 0);
+
+  select.addEventListener('change', () => {
+    state.targetBytes = Number(select.value);
+    select.classList.toggle('is-set', state.targetBytes > 0);
+    try {
+      if (state.targetBytes) localStorage.setItem(TARGET_SIZE_KEY, select.value);
+      else localStorage.removeItem(TARGET_SIZE_KEY);
+    } catch (_) {
+      // Storage blocked: the choice still holds for this page view.
+    }
+  });
 }
 
 function rotate(delta) {
@@ -346,12 +383,14 @@ async function onSave() {
   exportOverlay.hidden = false;
   exportBar.style.width = '0%';
   try {
-    await exportPdf((i, n) => {
-      exportStatus.textContent = t('exportingPage', { i, n });
-      exportBar.style.width = `${Math.round(((i - 1) / n) * 100)}%`;
+    const result = await exportPdf(({ i, n, compressing, fraction }) => {
+      exportStatus.textContent = t(compressing ? 'compressingPage' : 'exportingPage', { i, n });
+      exportBar.style.width = `${Math.round(fraction * 100)}%`;
     });
     exportBar.style.width = '100%';
-    toast(t('exportDone'), { type: 'ok' });
+    const size = formatBytes(result.bytes);
+    if (result.fits) toast(t('exportDone', { size }), { type: 'ok' });
+    else toast(t('exportOverTarget', { size, target: formatBytes(result.target) }), { type: 'info', sticky: true });
   } catch (err) {
     console.error('Export failed', err);
     toast(t('exportFailed', { message: err.message }), { type: 'error' });

@@ -15,6 +15,8 @@
     "ogImageAlt": "ScanPDF: la foto de un documento en papel enderezada hasta convertirse en una página PDF limpia",
     "pageSizeLabel": "Tamaño de página",
     "pageSizeAuto": "Auto",
+    "targetSizeLabel": "Tamaño máximo del archivo",
+    "targetSizeNone": "Sin límite",
     "savePdf": "Guardar PDF",
     "addPhotos": "Añadir fotos",
     "takePhoto": "Hacer foto",
@@ -61,11 +63,13 @@
     "adjustCornersTitle": "La detección automática ha fallado: arrastra las esquinas a mano",
     "deletePage": "Eliminar página",
     "exportingPage": "Exportando la página {i} de {n}...",
+    "compressingPage": "Comprimiendo la página {i} de {n}...",
     "exportFailed": "Error al exportar: {message}",
     "pdfTitle": "Documento escaneado",
     "imageLoadFailed": "No se pudo abrir {name}",
     "filesSkipped": "Archivos omitidos: {n}. Solo se admiten imágenes",
-    "exportDone": "PDF guardado",
+    "exportDone": "PDF guardado - {size}",
+    "exportOverTarget": "Guardado con {size} - no se pudo bajar a {target} sin dejar las páginas ilegibles",
     "dismiss": "Cerrar",
     "pageLabel": "Página {i} de {n}",
     "pageMoved": "Página movida a la posición {i} de {n}"
@@ -173,7 +177,8 @@
           "h": "Tamaño de página y calidad de salida",
           "body": [
             "**A4** y **Carta** fuerzan todas las páginas a ese tamaño exacto, que es lo que quieres para cualquier cosa que vaya a imprimirse o a archivarse junto a otros documentos. **Automático** ajusta cada página a la proporción de la hoja que fotografiaste: la opción correcta para tickets, entradas, carnés y demás formatos raros que si no quedarían perdidos en medio de un A4.",
-            "La detección se ejecuta sobre una copia reducida por rapidez, pero la exportación siempre deforma el original a resolución completa, con un tope de 3500 px en el lado largo y una salida de unos 220 ppp en A4. Es de sobra suficiente para leer, imprimir y pasar un OCR después si te hace falta."
+            "La detección se ejecuta sobre una copia reducida por rapidez, pero la exportación siempre deforma el original a resolución completa, con un tope de 3500 px en el lado largo y una salida de unos 220 ppp en A4. Es de sobra suficiente para leer, imprimir y pasar un OCR después si te hace falta.",
+            "Si el archivo no puede superar un límite (un adjunto de correo, un formulario que rechaza todo lo que pase de 2 MB), elige un **tamaño máximo del archivo** junto al tamaño de página. ScanPDF reduce primero la calidad JPEG y, solo si hace falta, la resolución, y se detiene antes de que el texto deje de leerse. Si así no se alcanza el límite, se guarda la versión legible más pequeña y se te indica su tamaño real."
           ]
         },
         {

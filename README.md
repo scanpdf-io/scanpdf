@@ -25,6 +25,9 @@ processing: your documents never leave your machine.
   paper turns white, and text stays anti-aliased.
 - **Multi-page PDF export** — reorder and delete pages, then save a single
   PDF assembled locally with pdf-lib.
+- **Fit a file size limit** — pick a maximum (10 MB down to 200 KB) and the
+  pages are recompressed to fit it: JPEG quality first, resolution only if
+  needed, never past the point where text stops being readable.
 - **EXIF-aware** — phone photo orientation is handled automatically.
 - **Nine languages** — English, Spanish, German, Portuguese, French,
   Italian, Turkish, Indonesian and Hindi, each on its own URL with the
@@ -41,7 +44,8 @@ processing: your documents never leave your machine.
 3. In the editor, drag the corner handles (a loupe appears for precision),
    rotate pages and pick a filter. Drag the thumbnails to reorder pages
    (or Alt + arrow keys), and delete the ones you do not need.
-4. Choose the page size (A4 / Letter / Auto) and click **Save PDF**.
+4. Choose the page size (A4 / Letter / Auto) and, if the file has to stay
+   under a limit, a maximum file size, then click **Save PDF**.
 
 ## Running it yourself
 
@@ -153,6 +157,11 @@ backend at all.
   inward-refinement pass that handles curled paper edges.
 - Export renders pages sequentially, embeds them as JPEG into the PDF, and
   sizes pages to the selected format.
+- With a maximum file size set and the first pass over it, a second pass
+  re-renders each page into its share of the budget (proportional to its
+  first-pass size): a binary search over JPEG quality down to 0.45, then
+  downscaling, with a floor of 1000 px / quality 0.3. If even that is too
+  big, the smallest version is saved and the app says so.
 - Dependencies are pinned by URL and SHA-256 in
   [vendor-checksums.txt](vendor-checksums.txt): OpenCV.js 4.9.0 and
   pdf-lib 1.17.1. They are fetched at build/deploy time and never committed.
@@ -180,6 +189,7 @@ site/                 The whole site (static files, served as-is)
 │   ├── pages-ui.js   Page thumbnails: select, delete, keyboard reorder
 │   ├── reorder.js    Drag-to-reorder for the thumbnails (pointer events)
 │   ├── toast.js      Non-blocking notifications
+│   ├── format.js     Localized file sizes
 │   ├── icons.js      SVG sprite icons, colours for canvas overlays
 │   ├── state.js      App state and pub/sub
 │   ├── i18n.js       UI strings, read from the page

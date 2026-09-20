@@ -15,6 +15,8 @@
     "ogImageAlt": "ScanPDF: la foto di un documento cartaceo raddrizzata fino a diventare una pagina PDF pulita",
     "pageSizeLabel": "Formato pagina",
     "pageSizeAuto": "Auto",
+    "targetSizeLabel": "Dimensione massima del file",
+    "targetSizeNone": "Nessun limite",
     "savePdf": "Salva PDF",
     "addPhotos": "Aggiungi foto",
     "takePhoto": "Scatta foto",
@@ -61,11 +63,13 @@
     "adjustCornersTitle": "Il rilevamento automatico non è riuscito - trascina gli angoli a mano",
     "deletePage": "Elimina pagina",
     "exportingPage": "Esportazione della pagina {i} di {n}...",
+    "compressingPage": "Compressione della pagina {i} di {n}...",
     "exportFailed": "Esportazione non riuscita: {message}",
     "pdfTitle": "Documento scansionato",
     "imageLoadFailed": "Impossibile aprire {name}",
     "filesSkipped": "File ignorati: {n}. Sono supportate solo le immagini",
-    "exportDone": "PDF salvato",
+    "exportDone": "PDF salvato - {size}",
+    "exportOverTarget": "Salvato a {size} - impossibile scendere a {target} senza rendere illeggibili le pagine",
     "dismiss": "Chiudi",
     "pageLabel": "Pagina {i} di {n}",
     "pageMoved": "Pagina spostata alla posizione {i} di {n}"
@@ -173,7 +177,8 @@
           "h": "Formato della pagina e qualità del risultato",
           "body": [
             "**A4** e **Letter** portano ogni pagina esattamente a quel formato, ed è quello che ti serve per tutto ciò che verrà stampato o archiviato insieme ad altri documenti. **Auto** adatta ogni pagina alle proporzioni del foglio che hai effettivamente fotografato - la scelta giusta per scontrini, biglietti, documenti d'identità e altri formati insoliti, che altrimenti resterebbero persi in mezzo a una pagina A4.",
-            "Per fare in fretta il rilevamento lavora su una copia ridotta, ma l'esportazione raddrizza sempre l'originale a piena risoluzione, con un tetto di 3500 px sul lato lungo e circa 220 DPI su un A4. È più che sufficiente per leggere, stampare e, se ti serve, passare poi il file a un OCR."
+            "Per fare in fretta il rilevamento lavora su una copia ridotta, ma l'esportazione raddrizza sempre l'originale a piena risoluzione, con un tetto di 3500 px sul lato lungo e circa 220 DPI su un A4. È più che sufficiente per leggere, stampare e, se ti serve, passare poi il file a un OCR.",
+            "Se il file deve restare sotto un limite - un allegato email, un modulo che rifiuta tutto ciò che supera i 2 MB - scegli una **dimensione massima del file** accanto al formato pagina. ScanPDF riduce prima la qualità JPEG e, solo se necessario, la risoluzione, e si ferma prima che il testo diventi illeggibile. Se nemmeno così si rientra nel limite, viene salvata la versione leggibile più piccola e ti viene indicata la dimensione effettiva."
           ]
         },
         {

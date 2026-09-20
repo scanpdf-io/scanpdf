@@ -139,6 +139,15 @@
         <option value="letter">Letter</option>
         <option value="auto">Auto</option>
       </select>
+      <select id="target-size" aria-label="Tamanho máximo do arquivo" title="Tamanho máximo do arquivo">
+        <option value="0" selected>Sem limite</option>
+        <option value="10000000">&le; 10 MB</option>
+        <option value="5000000">&le; 5 MB</option>
+        <option value="2000000">&le; 2 MB</option>
+        <option value="1000000">&le; 1 MB</option>
+        <option value="500000">&le; 500 kB</option>
+        <option value="200000">&le; 200 kB</option>
+      </select>
       <button id="save-btn" class="btn primary" type="button" disabled><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span>Salvar PDF</span></button>
     </div>
   </div>
@@ -245,7 +254,7 @@
 
 <!-- Strings needed by the JS modules. An inline <script> would be blocked by
      the container's script-src 'self' CSP, so they travel as data attributes. -->
-<div id="i18n" hidden data-engine-loading="Carregando o motor de digitalização..." data-engine-failed="Falha ao carregar o motor" data-detecting="Detectando os cantos..." data-adjust-corners="ajustar cantos" data-adjust-corners-title="A detecção automática falhou - arraste os cantos manualmente" data-delete-page="Excluir página" data-exporting-page="Exportando a página {i} de {n}..." data-export-failed="Falha na exportação: {message}" data-pdf-title="Documento digitalizado" data-image-load-failed="Não foi possível abrir {name}" data-files-skipped="Arquivos ignorados: {n}. Apenas imagens são aceitas" data-export-done="PDF salvo" data-dismiss="Fechar" data-page-label="Página {i} de {n}" data-page-moved="Página movida para a posição {i} de {n}"></div>
+<div id="i18n" hidden data-engine-loading="Carregando o motor de digitalização..." data-engine-failed="Falha ao carregar o motor" data-detecting="Detectando os cantos..." data-adjust-corners="ajustar cantos" data-adjust-corners-title="A detecção automática falhou - arraste os cantos manualmente" data-delete-page="Excluir página" data-exporting-page="Exportando a página {i} de {n}..." data-compressing-page="Comprimindo a página {i} de {n}..." data-export-failed="Falha na exportação: {message}" data-pdf-title="Documento digitalizado" data-image-load-failed="Não foi possível abrir {name}" data-files-skipped="Arquivos ignorados: {n}. Apenas imagens são aceitas" data-export-done="PDF salvo - {size}" data-export-over-target="Salvo com {size} - não foi possível chegar a {target} sem deixar as páginas ilegíveis" data-dismiss="Fechar" data-page-label="Página {i} de {n}" data-page-moved="Página movida para a posição {i} de {n}"></div>
 
 <script src="../vendor/pdf-lib.min.js" defer></script>
 <script type="module" src="../js/menus.js"></script>

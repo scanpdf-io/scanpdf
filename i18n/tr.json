@@ -15,6 +15,8 @@
     "ogImageAlt": "ScanPDF: bir kâğıt belgenin fotoğrafı düzeltilerek temiz bir PDF sayfasına dönüşüyor",
     "pageSizeLabel": "Sayfa boyutu",
     "pageSizeAuto": "Otomatik",
+    "targetSizeLabel": "En büyük dosya boyutu",
+    "targetSizeNone": "Sınırsız",
     "savePdf": "PDF olarak kaydet",
     "addPhotos": "Fotoğraf ekle",
     "takePhoto": "Fotoğraf çek",
@@ -61,11 +63,13 @@
     "adjustCornersTitle": "Otomatik algılama başarısız oldu - köşeleri elle sürükleyin",
     "deletePage": "Sayfayı sil",
     "exportingPage": "Sayfa {i} / {n} dışa aktarılıyor...",
+    "compressingPage": "Sayfa {i} / {n} sıkıştırılıyor...",
     "exportFailed": "Dışa aktarma başarısız: {message}",
     "pdfTitle": "Taranmış belge",
     "imageLoadFailed": "Dosya açılamadı: {name}",
     "filesSkipped": "Atlanan dosya sayısı: {n}. Yalnızca görseller desteklenir",
-    "exportDone": "PDF kaydedildi",
+    "exportDone": "PDF kaydedildi - {size}",
+    "exportOverTarget": "{size} olarak kaydedildi - sayfalar okunaksız hale gelmeden {target} boyutuna inilemedi",
     "dismiss": "Kapat",
     "pageLabel": "Sayfa {i} / {n}",
     "pageMoved": "Sayfa taşındı, yeni konum: {i} / {n}"
@@ -173,7 +177,8 @@
           "h": "Sayfa boyutu ve çıktı kalitesi",
           "body": [
             "**A4** ve **Letter** her sayfayı tam o boyuta getirir; yazdırılacak ya da başka belgelerle birlikte dosyalanacak her şey için istediğiniz budur. **Otomatik** ise her sayfayı, fotoğrafını çektiğiniz kâğıdın en boy oranına göre boyutlandırır - fişler, biletler, kimlik kartları ve aksi halde A4 sayfanın ortasında kaybolup kalacak diğer alışılmadık biçimler için doğru seçimdir.",
-            "Algılama, hız için küçültülmüş bir kopya üzerinde çalışır; dışa aktarma ise her zaman tam çözünürlüklü orijinali işler. Uzun kenar 3500 px ile sınırlanır ve A4'te yaklaşık 220 DPI ile yazılır. Bu, okumak, yazdırmak ve isterseniz sonradan OCR uygulamak için fazlasıyla yeterlidir."
+            "Algılama, hız için küçültülmüş bir kopya üzerinde çalışır; dışa aktarma ise her zaman tam çözünürlüklü orijinali işler. Uzun kenar 3500 px ile sınırlanır ve A4'te yaklaşık 220 DPI ile yazılır. Bu, okumak, yazdırmak ve isterseniz sonradan OCR uygulamak için fazlasıyla yeterlidir.",
+            "Dosyanın bir sınırın altında kalması gerekiyorsa - bir e-posta eki ya da 2 MB üzerini reddeden bir yükleme formu - sayfa boyutunun yanından bir **en büyük dosya boyutu** seçin. ScanPDF önce JPEG kalitesini, yalnızca gerekirse çözünürlüğü düşürür ve metin okunmaz hale gelmeden durur. Sınıra bu şekilde ulaşılamıyorsa okunabilir en küçük sürüm kaydedilir ve gerçek boyutu size bildirilir."
           ]
         },
         {

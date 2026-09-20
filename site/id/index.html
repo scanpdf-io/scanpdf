@@ -139,6 +139,15 @@
         <option value="letter">Letter</option>
         <option value="auto">Otomatis</option>
       </select>
+      <select id="target-size" aria-label="Ukuran file maksimum" title="Ukuran file maksimum">
+        <option value="0" selected>Tanpa batas</option>
+        <option value="10000000">&le; 10 MB</option>
+        <option value="5000000">&le; 5 MB</option>
+        <option value="2000000">&le; 2 MB</option>
+        <option value="1000000">&le; 1 MB</option>
+        <option value="500000">&le; 500 kB</option>
+        <option value="200000">&le; 200 kB</option>
+      </select>
       <button id="save-btn" class="btn primary" type="button" disabled><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span>Simpan PDF</span></button>
     </div>
   </div>
@@ -245,7 +254,7 @@
 
 <!-- Strings needed by the JS modules. An inline <script> would be blocked by
      the container's script-src 'self' CSP, so they travel as data attributes. -->
-<div id="i18n" hidden data-engine-loading="Memuat mesin pemindai..." data-engine-failed="Mesin pemindai gagal dimuat" data-detecting="Mendeteksi sudut..." data-adjust-corners="sesuaikan sudut" data-adjust-corners-title="Deteksi otomatis gagal - seret sudut secara manual" data-delete-page="Hapus halaman" data-exporting-page="Mengekspor halaman {i} dari {n}..." data-export-failed="Ekspor gagal: {message}" data-pdf-title="Dokumen hasil pindai" data-image-load-failed="Tidak dapat membuka {name}" data-files-skipped="File dilewati: {n}. Hanya gambar yang didukung" data-export-done="PDF tersimpan" data-dismiss="Tutup" data-page-label="Halaman {i} dari {n}" data-page-moved="Halaman dipindahkan ke posisi {i} dari {n}"></div>
+<div id="i18n" hidden data-engine-loading="Memuat mesin pemindai..." data-engine-failed="Mesin pemindai gagal dimuat" data-detecting="Mendeteksi sudut..." data-adjust-corners="sesuaikan sudut" data-adjust-corners-title="Deteksi otomatis gagal - seret sudut secara manual" data-delete-page="Hapus halaman" data-exporting-page="Mengekspor halaman {i} dari {n}..." data-compressing-page="Mengompres halaman {i} dari {n}..." data-export-failed="Ekspor gagal: {message}" data-pdf-title="Dokumen hasil pindai" data-image-load-failed="Tidak dapat membuka {name}" data-files-skipped="File dilewati: {n}. Hanya gambar yang didukung" data-export-done="PDF tersimpan - {size}" data-export-over-target="Tersimpan {size} - tidak bisa dikecilkan hingga {target} tanpa membuat halaman tak terbaca" data-dismiss="Tutup" data-page-label="Halaman {i} dari {n}" data-page-moved="Halaman dipindahkan ke posisi {i} dari {n}"></div>
 
 <script src="../vendor/pdf-lib.min.js" defer></script>
 <script type="module" src="../js/menus.js"></script>

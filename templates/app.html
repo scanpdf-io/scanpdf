@@ -45,6 +45,15 @@
         <option value="letter">Letter</option>
         <option value="auto">{{appPageSizeAuto}}</option>
       </select>
+      <select id="target-size" aria-label="{{appTargetSizeLabel}}" title="{{appTargetSizeLabel}}">
+        <option value="0" selected>{{appTargetSizeNone}}</option>
+        <option value="10000000">&le; 10 MB</option>
+        <option value="5000000">&le; 5 MB</option>
+        <option value="2000000">&le; 2 MB</option>
+        <option value="1000000">&le; 1 MB</option>
+        <option value="500000">&le; 500 kB</option>
+        <option value="200000">&le; 200 kB</option>
+      </select>
       <button id="save-btn" class="btn primary" type="button" disabled><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg><span>{{appSavePdf}}</span></button>
     </div>
   </div>
