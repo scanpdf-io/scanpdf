@@ -33,6 +33,8 @@ test: run
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/css/base.css          && echo "OK  /css/base.css"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/css/app.css           && echo "OK  /css/app.css"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/js/main.js            && echo "OK  /js/main.js"
+	@curl -fsS -o /dev/null http://localhost:$(PORT)/js/pwa.js             && echo "OK  /js/pwa.js"
+	@curl -fsS -o /dev/null http://localhost:$(PORT)/js/share-target.js    && echo "OK  /js/share-target.js"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/vendor/opencv.js      && echo "OK  /vendor/opencv.js"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/vendor/pdf-lib.min.js && echo "OK  /vendor/pdf-lib.min.js"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/faq/                   && echo "OK  /faq/"
@@ -45,6 +47,8 @@ test: run
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/manifest.webmanifest   && echo "OK  /manifest.webmanifest"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/og/social-preview.png  && echo "OK  /og/social-preview.png"
 	@curl -fsSI http://localhost:$(PORT)/ | grep -qi 'content-security-policy' && echo "OK  CSP header present"
+	@curl -fsSI http://localhost:$(PORT)/sw.js | grep -qi 'content-security-policy' && echo "OK  /sw.js keeps the CSP header"
+	@curl -fsSI http://localhost:$(PORT)/sw.js | grep -qi 'cache-control: no-cache' && echo "OK  /sw.js is never cached"
 	@echo "Smoke tests passed. Open http://localhost:$(PORT) in a browser."
 
 ## vendor: download libraries into site/vendor for no-docker development

@@ -106,7 +106,7 @@
           "name": "¿Funciona sin conexión?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Una vez cargada la página y el motor de escaneo, todo el procesamiento es local, así que la red no interviene en el tratamiento de tus documentos. Si quieres un montaje realmente aislado, ejecuta el contenedor que se describe más abajo: sirve la aplicación entera, incluida la compilación de OpenCV, desde tu propia máquina."
+            "text": "Sí. Tras la primera visita, el navegador guarda una copia de la aplicación en tu dispositivo, así que se abre sin red. El motor de escaneo, una descarga de unos 10 MB, también se conserva en cuanto escaneas una página o instalas la aplicación, y a partir de ahí todo funciona sin conexión. Si quieres un montaje realmente aislado, ejecuta el contenedor que se describe más abajo: sirve la aplicación entera, incluida la compilación de OpenCV, desde tu propia máquina. También puedes instalar ScanPDF en la pantalla de inicio. En Android aparece entonces en el menú de compartir: selecciona fotos en la galería, toca Compartir y elige ScanPDF. En iPhone y iPad, usa Añadir a pantalla de inicio en el menú de compartir de Safari; iOS no permite que las aplicaciones web reciban fotos compartidas, así que allí añádelas desde dentro de la aplicación."
           }
         },
         {
@@ -216,7 +216,8 @@
     </section>
     <section class="faq-item" id="funciona-sin-conexion">
       <h2>¿Funciona sin conexión?</h2>
-      <p>Una vez cargada la página y el motor de escaneo, todo el procesamiento es local, así que la red no interviene en el tratamiento de tus documentos. Si quieres un montaje realmente aislado, ejecuta el contenedor que se describe más abajo: sirve la aplicación entera, incluida la compilación de OpenCV, desde tu propia máquina.</p>
+      <p>Sí. Tras la primera visita, el navegador guarda una copia de la aplicación en tu dispositivo, así que se abre sin red. El motor de escaneo, una descarga de unos 10 MB, también se conserva en cuanto escaneas una página o instalas la aplicación, y a partir de ahí todo funciona sin conexión. Si quieres un montaje realmente aislado, ejecuta el contenedor que se describe más abajo: sirve la aplicación entera, incluida la compilación de OpenCV, desde tu propia máquina.</p>
+      <p>También puedes instalar ScanPDF en la pantalla de inicio. En Android aparece entonces en el menú de compartir: selecciona fotos en la galería, toca Compartir y elige ScanPDF. En iPhone y iPad, usa Añadir a pantalla de inicio en el menú de compartir de Safari; iOS no permite que las aplicaciones web reciban fotos compartidas, así que allí añádelas desde dentro de la aplicación.</p>
     </section>
     <section class="faq-item" id="que-calidad-tiene-el-resultado">
       <h2>¿Qué calidad tiene el resultado?</h2>
@@ -251,5 +252,6 @@
 </footer>
 
 <script type="module" src="../../js/menus.js"></script>
+<script type="module" src="../../js/pwa.js"></script>
 </body>
 </html>

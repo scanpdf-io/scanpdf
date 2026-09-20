@@ -139,7 +139,7 @@
         <li><strong>Perspektivkorrektur und Filter</strong> werden im Arbeitsspeicher auf das Bild in voller Auflösung angewendet.</li>
         <li><strong>Das PDF entsteht lokal</strong> mit pdf-lib und wird dem Browser als ganz normaler Download übergeben.</li>
       </ul>
-      <p>Keine Anfrage transportiert Ihre Bilddaten, weil es eine solche Anfrage im Code nicht gibt. Das Ganze funktioniert mit gezogenem Netzwerkkabel, sobald die Seite geladen ist.</p>
+      <p>Keine Anfrage transportiert Ihre Bilddaten, weil es eine solche Anfrage im Code nicht gibt. Das Ganze funktioniert mit gezogenem Netzwerkkabel, sobald die Anwendung geladen ist. Auch Fotos, die Sie aus einer anderen App über Teilen und dann ScanPDF schicken, werden auf dem Gerät übergeben: Der Service Worker der Anwendung beantwortet diese Anfrage selbst, übertragen wird nichts. Einen Grenzfall sollten Sie kennen: Wenn Sie die Websitedaten löschen, während die App unter Android noch installiert ist, gibt es auf dem Gerät nichts mehr, was das nächste Teilen entgegennimmt; der Browser schickt diese Fotos dann an den Webhost, der sie nicht annimmt. Öffnen Sie die App nach dem Löschen der Daten einmal, und das Teilen bleibt wieder auf dem Gerät.</p>
     </section>
     <section id="uberprufbar-nicht-nur-behauptet">
       <h2>Überprüfbar, nicht nur behauptet</h2>
@@ -158,7 +158,7 @@
     </section>
     <section id="kein-konto-keine-telemetrie-keine-cookies">
       <h2>Kein Konto, keine Telemetrie, keine Cookies</h2>
-      <p>Es gibt nichts, wofür man sich anmelden müsste, also liegt auch keine E-Mail-Adresse vor. Es gibt kein Analyse-Skript, kein Tracking-Pixel, keinen Fehlerberichtsdienst und kein A/B-Test-Framework. Die Anwendung setzt keine Cookies und schreibt nichts in den lokalen Speicher; laden Sie die Seite neu, und von der Sitzung ist keine Spur mehr da.</p>
+      <p>Es gibt nichts, wofür man sich anmelden müsste, also liegt auch keine E-Mail-Adresse vor. Es gibt kein Analyse-Skript, kein Tracking-Pixel, keinen Fehlerberichtsdienst und kein A/B-Test-Framework. Die Anwendung setzt keine Cookies. Auf Ihrem Gerät behält sie nur Ihre Oberflächeneinstellungen wie Farbschema und Seitenformat, eine Kopie ihrer eigenen Dateien, damit sie sich offline öffnet, und für einen Moment Fotos, die aus einer anderen App geteilt wurden; diese werden gelöscht, sobald sich der Scanner öffnet. Ihre Seiten existieren nur im Arbeitsspeicher; laden Sie die Seite neu, und von der Sitzung ist keine Spur mehr da.</p>
       <p>Das ist weniger eine Richtlinie als eine Architektur. Eine statische Seite ohne Backend hat schlicht keinen Ort, an dem sie die Daten ablegen könnte, die sie zum Missbrauch bräuchte.</p>
     </section>
     <section id="ausprobieren">
@@ -182,5 +182,6 @@
 </footer>
 
 <script type="module" src="../../js/menus.js"></script>
+<script type="module" src="../../js/pwa.js"></script>
 </body>
 </html>

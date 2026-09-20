@@ -139,7 +139,7 @@
         <li><strong>A correção de perspectiva e os filtros</strong> são aplicados em memória sobre a imagem em resolução completa.</li>
         <li><strong>O PDF é montado localmente</strong> com a pdf-lib e entregue ao navegador como um download comum.</li>
       </ul>
-      <p>Nenhuma requisição carrega os dados das suas imagens, porque essa requisição não existe no código. Tudo funciona com o cabo de rede desligado, depois que a página carregou.</p>
+      <p>Nenhuma requisição carrega os dados das suas imagens, porque essa requisição não existe no código. Tudo funciona com o cabo de rede desligado, depois que o aplicativo carregou. As fotos que você envia de outro aplicativo por Compartilhar e depois ScanPDF também são entregues dentro do dispositivo: o service worker do aplicativo responde ele mesmo a essa requisição, e nada é transmitido. Vale conhecer um caso extremo: se você limpar os dados do site enquanto o aplicativo continua instalado no Android, não sobra nada no dispositivo para receber o próximo compartilhamento, e o navegador envia essas fotos ao servidor web, que não as aceita. Abra o aplicativo uma vez depois de limpar os dados e o compartilhamento volta a ficar no dispositivo.</p>
     </section>
     <section id="verificavel-nao-apenas-declarado">
       <h2>Verificável, não apenas declarado</h2>
@@ -158,7 +158,7 @@
     </section>
     <section id="sem-conta-sem-telemetria-e-sem-cookies">
       <h2>Sem conta, sem telemetria e sem cookies</h2>
-      <p>Não há nada em que se cadastrar, então não existe endereço de e-mail arquivado. Não há script de analytics, nem pixel de rastreamento, nem serviço de relatório de erros, nem framework de teste A/B. O aplicativo não define cookies e não escreve nada no armazenamento local; recarregue a página e não sobra vestígio algum da sessão.</p>
+      <p>Não há nada em que se cadastrar, então não existe endereço de e-mail arquivado. Não há script de analytics, nem pixel de rastreamento, nem serviço de relatório de erros, nem framework de teste A/B. O aplicativo não define cookies. O que ele guarda no seu dispositivo se limita às suas preferências de interface, como o tema e o tamanho da página, a uma cópia dos arquivos do próprio aplicativo, para que ele abra offline, e, por um instante, às fotos compartilhadas de outro aplicativo, que são apagadas assim que o scanner abre. Suas páginas existem só na memória; recarregue a página e não sobra vestígio algum da sessão.</p>
       <p>Isso é menos uma política do que uma arquitetura. Uma página estática sem backend não tem onde guardar os dados de que precisaria para fazer mau uso deles.</p>
     </section>
     <section id="experimente">
@@ -182,5 +182,6 @@
 </footer>
 
 <script type="module" src="../../js/menus.js"></script>
+<script type="module" src="../../js/pwa.js"></script>
 </body>
 </html>

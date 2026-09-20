@@ -106,7 +106,7 @@
           "name": "Funciona offline?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Depois que a página e o motor de digitalização carregam, todo o processamento é local, ou seja, a rede não participa do tratamento dos seus documentos. Se você quer um arranjo realmente isolado, rode o contêiner descrito mais abaixo: ele serve o aplicativo inteiro, incluindo a compilação do OpenCV, a partir da sua própria máquina."
+            "text": "Sim. Depois da primeira visita, o navegador guarda uma cópia do aplicativo no seu dispositivo, então ele abre sem rede. O motor de digitalização, um download de cerca de 10 MB, também fica guardado assim que você digitaliza uma página ou instala o aplicativo, e daí em diante tudo funciona offline. Se você quer um arranjo realmente isolado, rode o contêiner descrito mais abaixo: ele serve o aplicativo inteiro, incluindo a compilação do OpenCV, a partir da sua própria máquina. Você também pode instalar o ScanPDF na tela inicial. No Android ele passa a aparecer no menu de compartilhamento: selecione fotos na galeria, toque em Compartilhar e escolha ScanPDF. No iPhone e no iPad, use Adicionar à Tela de Início no menu de compartilhamento do Safari; o iOS não permite que aplicativos web recebam fotos compartilhadas, então lá adicione as fotos por dentro do aplicativo."
           }
         },
         {
@@ -216,7 +216,8 @@
     </section>
     <section class="faq-item" id="funciona-offline">
       <h2>Funciona offline?</h2>
-      <p>Depois que a página e o motor de digitalização carregam, todo o processamento é local, ou seja, a rede não participa do tratamento dos seus documentos. Se você quer um arranjo realmente isolado, rode o contêiner descrito mais abaixo: ele serve o aplicativo inteiro, incluindo a compilação do OpenCV, a partir da sua própria máquina.</p>
+      <p>Sim. Depois da primeira visita, o navegador guarda uma cópia do aplicativo no seu dispositivo, então ele abre sem rede. O motor de digitalização, um download de cerca de 10 MB, também fica guardado assim que você digitaliza uma página ou instala o aplicativo, e daí em diante tudo funciona offline. Se você quer um arranjo realmente isolado, rode o contêiner descrito mais abaixo: ele serve o aplicativo inteiro, incluindo a compilação do OpenCV, a partir da sua própria máquina.</p>
+      <p>Você também pode instalar o ScanPDF na tela inicial. No Android ele passa a aparecer no menu de compartilhamento: selecione fotos na galeria, toque em Compartilhar e escolha ScanPDF. No iPhone e no iPad, use Adicionar à Tela de Início no menu de compartilhamento do Safari; o iOS não permite que aplicativos web recebam fotos compartilhadas, então lá adicione as fotos por dentro do aplicativo.</p>
     </section>
     <section class="faq-item" id="qual-e-a-qualidade-do-resultado">
       <h2>Qual é a qualidade do resultado?</h2>
@@ -251,5 +252,6 @@
 </footer>
 
 <script type="module" src="../../js/menus.js"></script>
+<script type="module" src="../../js/pwa.js"></script>
 </body>
 </html>

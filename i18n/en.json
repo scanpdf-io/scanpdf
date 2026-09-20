@@ -66,7 +66,8 @@
     "movePageEarlier": "Move page earlier",
     "movePageLater": "Move page later",
     "toolsLabel": "Page tools",
-    "pagesLabel": "Pages"
+    "pagesLabel": "Pages",
+    "install": "Install app"
   },
   "ui": {
     "engineLoading": "Loading scan engine...",
@@ -85,7 +86,9 @@
     "exportOverTarget": "Saved at {size} - could not get down to {target} without making the pages unreadable",
     "dismiss": "Dismiss",
     "pageLabel": "Page {i} of {n}",
-    "pageMoved": "Page moved to position {i} of {n}"
+    "pageMoved": "Page moved to position {i} of {n}",
+    "offlineReady": "Ready to work offline",
+    "shareFailed": "Could not receive the shared photos"
   },
   "nav": {
     "home": "Scanner",
@@ -250,7 +253,8 @@
         {
           "q": "Does it work offline?",
           "a": [
-            "Once the page and the scan engine have loaded, all processing is local, so the network is not involved in handling your documents. If you want a genuinely airgapped setup, run the container described below - it serves the whole app, including the OpenCV build, from your own machine."
+            "Yes. After your first visit the browser keeps a copy of the app on your device, so it opens without a network. The scan engine, a download of about 10 MB, is kept as well once you have scanned a page or installed the app, and from then on everything works offline. If you want a genuinely airgapped setup, run the container described below - it serves the whole app, including the OpenCV build, from your own machine.",
+            "You can also install ScanPDF to your home screen. On Android it then appears in the share sheet: select photos in the gallery, tap Share and pick ScanPDF. On iPhone and iPad, use Add to Home Screen in Safari's share menu; iOS does not let web apps receive shared photos, so add them from inside the app there."
           ]
         },
         {
@@ -304,7 +308,7 @@
                 "**The PDF is assembled locally** with pdf-lib and handed to the browser as a normal download."
               ]
             },
-            "No request carries your image data, because no such request exists in the code. The whole thing works with the network cable pulled out once the page has loaded."
+            "No request carries your image data, because no such request exists in the code. The whole thing works with the network cable pulled out once the app has loaded. Photos you send from another app through Share and then ScanPDF are handed over on the device as well: the app's service worker answers that request itself, and nothing is transmitted. One edge case is worth knowing about: if you clear the site's data while the app is still installed on Android, there is nothing left on the device to receive the next share, so the browser sends those photos to the web host, which does not accept them. Open the app once after clearing its data and sharing stays on the device again."
           ]
         },
         {
@@ -331,7 +335,7 @@
         {
           "h": "No account, no telemetry, no cookies",
           "body": [
-            "There is nothing to sign up for, so there is no email address on file. There is no analytics script, no tracking pixel, no error reporting service and no A/B testing framework. The app sets no cookies and writes nothing to local storage; reload the page and every trace of the session is gone.",
+            "There is nothing to sign up for, so there is no email address on file. There is no analytics script, no tracking pixel, no error reporting service and no A/B testing framework. The app sets no cookies. What it keeps on your device is limited to your interface preferences, such as the theme and the page size, a copy of the app's own files so that it opens offline, and, briefly, photos shared from another app, which are deleted as soon as the scanner opens. Your pages exist in memory only; reload the page and every trace of the session is gone.",
             "This is less a policy than an architecture. A static page with no backend has nowhere to put the data it would need to misuse."
           ]
         },

@@ -106,7 +106,7 @@
           "name": "Cela fonctionne-t-il hors ligne ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Une fois la page et le moteur de numérisation chargés, tout le traitement est local : le réseau n'intervient pas dans la manipulation de vos documents. Pour une installation réellement isolée, faites tourner le conteneur décrit ci-dessous : il sert l'application entière, y compris la compilation d'OpenCV, depuis votre propre machine."
+            "text": "Oui. Après votre première visite, le navigateur conserve une copie de l'application sur votre appareil : elle s'ouvre donc sans réseau. Le moteur de numérisation, un téléchargement d'environ 10 Mo, est conservé lui aussi dès que vous avez numérisé une page ou installé l'application, et tout fonctionne alors hors ligne. Pour une installation réellement isolée, faites tourner le conteneur décrit ci-dessous : il sert l'application entière, y compris la compilation d'OpenCV, depuis votre propre machine. Vous pouvez aussi installer ScanPDF sur votre écran d'accueil. Sur Android, il apparaît alors dans le menu de partage : sélectionnez des photos dans la galerie, touchez Partager puis choisissez ScanPDF. Sur iPhone et iPad, utilisez Sur l'écran d'accueil dans le menu de partage de Safari ; iOS ne permet pas aux applications web de recevoir des photos partagées, ajoutez-les donc depuis l'application."
           }
         },
         {
@@ -216,7 +216,8 @@
     </section>
     <section class="faq-item" id="cela-fonctionne-t-il-hors-ligne">
       <h2>Cela fonctionne-t-il hors ligne ?</h2>
-      <p>Une fois la page et le moteur de numérisation chargés, tout le traitement est local : le réseau n&#x27;intervient pas dans la manipulation de vos documents. Pour une installation réellement isolée, faites tourner le conteneur décrit ci-dessous : il sert l&#x27;application entière, y compris la compilation d&#x27;OpenCV, depuis votre propre machine.</p>
+      <p>Oui. Après votre première visite, le navigateur conserve une copie de l&#x27;application sur votre appareil : elle s&#x27;ouvre donc sans réseau. Le moteur de numérisation, un téléchargement d&#x27;environ 10 Mo, est conservé lui aussi dès que vous avez numérisé une page ou installé l&#x27;application, et tout fonctionne alors hors ligne. Pour une installation réellement isolée, faites tourner le conteneur décrit ci-dessous : il sert l&#x27;application entière, y compris la compilation d&#x27;OpenCV, depuis votre propre machine.</p>
+      <p>Vous pouvez aussi installer ScanPDF sur votre écran d&#x27;accueil. Sur Android, il apparaît alors dans le menu de partage : sélectionnez des photos dans la galerie, touchez Partager puis choisissez ScanPDF. Sur iPhone et iPad, utilisez Sur l&#x27;écran d&#x27;accueil dans le menu de partage de Safari ; iOS ne permet pas aux applications web de recevoir des photos partagées, ajoutez-les donc depuis l&#x27;application.</p>
     </section>
     <section class="faq-item" id="quelle-est-la-qualite-du-resultat">
       <h2>Quelle est la qualité du résultat ?</h2>
@@ -251,5 +252,6 @@
 </footer>
 
 <script type="module" src="../../js/menus.js"></script>
+<script type="module" src="../../js/pwa.js"></script>
 </body>
 </html>

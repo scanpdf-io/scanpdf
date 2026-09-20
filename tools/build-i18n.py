@@ -3,14 +3,17 @@
 
 The output is committed to the repository, so nothing downstream (Docker,
 nginx, the GitHub Pages workflow) needs a build step: they all just copy
-site/. Run `make i18n` after editing anything under templates/ or i18n/;
-CI fails if the committed output is stale.
+site/. Run `make i18n` after editing anything under templates/ or i18n/ --
+and after editing site/js/ or site/css/ by hand, because the service worker
+(site/sw.js) carries a hash of every file it precaches. CI fails if the
+committed output is stale.
 
 Templating is deliberately minimal: {{key}} is HTML-escaped substitution,
 {{{key}}} is raw. There are no loops -- repeated markup (sections, lists,
 hreflang tags, navigation) is assembled here in Python.
 """
 
+import hashlib
 import html
 import json
 import pathlib
@@ -559,6 +562,14 @@ def build_manifest(lang):
                     "purpose": "any maskable",
                 },
             ],
+            # "Share -> ScanPDF" from an Android gallery. Nothing is uploaded:
+            # the service worker answers this POST on the device (sw.js).
+            "share_target": {
+                "action": "./share-target",
+                "method": "POST",
+                "enctype": "multipart/form-data",
+                "params": {"files": [{"name": "images", "accept": ["image/*"]}]},
+            },
         },
         ensure_ascii=False,
         indent=2,
@@ -602,6 +613,65 @@ def build_robots():
 
 
 # --------------------------------------------------------------------------
+# Service worker
+# --------------------------------------------------------------------------
+
+
+def precache_urls():
+    """Scope-relative URLs of the offline app shell, in a stable order.
+
+    Pages are listed as directories ("es/faq/"), the way they are linked.
+    vendor/ is left out on purpose: see ENGINE in templates/sw.js.
+    """
+    urls = {"404.html", "favicon.svg"}
+    for lang in LANGS:
+        for page in PAGES:
+            urls.add(url_path(lang, page).lstrip("/") or "./")
+        urls.add("manifest.webmanifest" if lang == DEFAULT_LANG
+                 else f"{lang}/manifest.webmanifest")
+    for folder, pattern in (("css", "*.css"), ("js", "*.js"), ("icons", "*.png")):
+        urls.update(f"{folder}/{path.name}" for path in (SITE / folder).glob(pattern))
+    return sorted(urls)
+
+
+def precache_file(url):
+    if url == "./":
+        return SITE / "index.html"
+    return SITE / url / "index.html" if url.endswith("/") else SITE / url
+
+
+def build_service_worker():
+    """Fill templates/sw.js with the precache list and the cache versions.
+
+    Nothing in site/ is fingerprinted, so VERSION -- a hash of every precached
+    file plus the worker itself -- is what makes browsers pick up a release.
+    It has to run after everything else has been written.
+    """
+    template = read(TEMPLATES / "sw.js")
+    urls = precache_urls()
+    digest = hashlib.sha256(template.encode("utf-8"))
+    for url in urls:
+        path = precache_file(url)
+        data = path.read_bytes()
+        if path.suffix != ".png":
+            data = data.replace(b"\r\n", b"\n")  # same hash on a CRLF checkout
+        digest.update(url.encode("utf-8") + b"\0" + data + b"\0")
+    engine = hashlib.sha256(read(ROOT / "vendor-checksums.txt").encode("utf-8"))
+    out = template
+    for token, value in (
+        ("__VERSION__", digest.hexdigest()[:12]),
+        ("__ENGINE_VERSION__", engine.hexdigest()[:12]),
+        ("/*__PRECACHE__*/", ",\n  ".join(json.dumps(url) for url in urls)),
+    ):
+        # Plain replace, not render(): JS may contain braces, and render()
+        # HTML-escapes.
+        if out.count(token) != 1:
+            sys.exit(f"templates/sw.js: expected exactly one {token}")
+        out = out.replace(token, value)
+    return out
+
+
+# --------------------------------------------------------------------------
 
 
 def read(path):
@@ -612,7 +682,8 @@ def write(path, text):
     path.parent.mkdir(parents=True, exist_ok=True)
     if not text.endswith("\n"):
         text += "\n"
-    path.write_text(text, encoding="utf-8")
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(text)
     print(f"  {path.relative_to(ROOT)}")
 
 
@@ -674,6 +745,7 @@ def main():
     write(SITE / "404.html", build_not_found())
     write(SITE / "sitemap.xml", build_sitemap())
     write(SITE / "robots.txt", build_robots())
+    write(SITE / "sw.js", build_service_worker())  # last: it hashes the rest
     print("Done.")
 
 

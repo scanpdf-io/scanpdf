@@ -139,7 +139,7 @@
         <li><strong>Perspektif düzeltme ve filtreleme</strong>, bellekteki tam çözünürlüklü görüntüye uygulanır.</li>
         <li><strong>PDF yerel olarak oluşturulur;</strong> bunun için pdf-lib kullanılır ve dosya tarayıcıya sıradan bir indirme olarak teslim edilir.</li>
       </ul>
-      <p>Hiçbir istek görüntü verinizi taşımaz, çünkü kodda böyle bir istek yoktur. Sayfa yüklendikten sonra ağ kablosunu çekseniz bile her şey çalışmaya devam eder.</p>
+      <p>Hiçbir istek görüntü verinizi taşımaz, çünkü kodda böyle bir istek yoktur. Uygulama yüklendikten sonra ağ kablosunu çekseniz bile her şey çalışmaya devam eder. Başka bir uygulamadan Paylaş ve ardından ScanPDF ile gönderdiğiniz fotoğraflar da cihazın içinde teslim edilir: bu isteği uygulamanın service worker&#x27;ı kendisi yanıtlar ve hiçbir şey iletilmez. Bilinmesi gereken bir uç durum var: uygulama Android&#x27;de hâlâ yüklüyken site verilerini temizlerseniz, cihazda bir sonraki paylaşımı karşılayacak bir şey kalmaz ve tarayıcı bu fotoğrafları web sunucusuna gönderir; sunucu onları kabul etmez. Verileri temizledikten sonra uygulamayı bir kez açın, paylaşım yeniden cihazda kalır.</p>
     </section>
     <section id="yalnizca-soylenmiyor-dogrulanabiliyor">
       <h2>Yalnızca söylenmiyor, doğrulanabiliyor</h2>
@@ -158,7 +158,7 @@
     </section>
     <section id="hesap-yok-telemetri-yok-cerez-yok">
       <h2>Hesap yok, telemetri yok, çerez yok</h2>
-      <p>Kayıt olunacak bir şey olmadığı için elimizde bir e-posta adresi de yok. Analitik betiği, izleme pikseli, hata raporlama servisi ya da A/B testi altyapısı yok. Uygulama çerez oluşturmaz, yerel depolamaya hiçbir şey yazmaz; sayfayı yenilediğinizde oturumun bütün izleri silinir.</p>
+      <p>Kayıt olunacak bir şey olmadığı için elimizde bir e-posta adresi de yok. Analitik betiği, izleme pikseli, hata raporlama servisi ya da A/B testi altyapısı yok. Uygulama çerez oluşturmaz. Cihazınızda sakladıkları şunlarla sınırlıdır: tema ve sayfa boyutu gibi arayüz tercihleriniz, çevrimdışı açılabilmesi için uygulamanın kendi dosyalarının bir kopyası ve kısa bir süreliğine başka bir uygulamadan paylaşılan fotoğraflar; bunlar tarama aracı açılır açılmaz silinir. Sayfalarınız yalnızca bellekte durur; sayfayı yenilediğinizde oturumun bütün izleri silinir.</p>
       <p>Bu, bir politikadan çok bir mimaridir. Arka ucu olmayan statik bir sayfanın, kötüye kullanabileceği veriyi koyacak bir yeri yoktur.</p>
     </section>
     <section id="deneyin">
@@ -182,5 +182,6 @@
 </footer>
 
 <script type="module" src="../../js/menus.js"></script>
+<script type="module" src="../../js/pwa.js"></script>
 </body>
 </html>

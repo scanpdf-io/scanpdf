@@ -66,7 +66,8 @@
     "movePageEarlier": "Mover página para antes",
     "movePageLater": "Mover página para depois",
     "toolsLabel": "Ferramentas da página",
-    "pagesLabel": "Páginas"
+    "pagesLabel": "Páginas",
+    "install": "Instalar o aplicativo"
   },
   "ui": {
     "engineLoading": "Carregando o motor de digitalização...",
@@ -85,7 +86,9 @@
     "exportOverTarget": "Salvo com {size} - não foi possível chegar a {target} sem deixar as páginas ilegíveis",
     "dismiss": "Fechar",
     "pageLabel": "Página {i} de {n}",
-    "pageMoved": "Página movida para a posição {i} de {n}"
+    "pageMoved": "Página movida para a posição {i} de {n}",
+    "offlineReady": "Pronto para funcionar offline",
+    "shareFailed": "Não foi possível receber as fotos compartilhadas"
   },
   "nav": {
     "home": "Scanner",
@@ -250,7 +253,8 @@
         {
           "q": "Funciona offline?",
           "a": [
-            "Depois que a página e o motor de digitalização carregam, todo o processamento é local, ou seja, a rede não participa do tratamento dos seus documentos. Se você quer um arranjo realmente isolado, rode o contêiner descrito mais abaixo: ele serve o aplicativo inteiro, incluindo a compilação do OpenCV, a partir da sua própria máquina."
+            "Sim. Depois da primeira visita, o navegador guarda uma cópia do aplicativo no seu dispositivo, então ele abre sem rede. O motor de digitalização, um download de cerca de 10 MB, também fica guardado assim que você digitaliza uma página ou instala o aplicativo, e daí em diante tudo funciona offline. Se você quer um arranjo realmente isolado, rode o contêiner descrito mais abaixo: ele serve o aplicativo inteiro, incluindo a compilação do OpenCV, a partir da sua própria máquina.",
+            "Você também pode instalar o ScanPDF na tela inicial. No Android ele passa a aparecer no menu de compartilhamento: selecione fotos na galeria, toque em Compartilhar e escolha ScanPDF. No iPhone e no iPad, use Adicionar à Tela de Início no menu de compartilhamento do Safari; o iOS não permite que aplicativos web recebam fotos compartilhadas, então lá adicione as fotos por dentro do aplicativo."
           ]
         },
         {
@@ -304,7 +308,7 @@
                 "**O PDF é montado localmente** com a pdf-lib e entregue ao navegador como um download comum."
               ]
             },
-            "Nenhuma requisição carrega os dados das suas imagens, porque essa requisição não existe no código. Tudo funciona com o cabo de rede desligado, depois que a página carregou."
+            "Nenhuma requisição carrega os dados das suas imagens, porque essa requisição não existe no código. Tudo funciona com o cabo de rede desligado, depois que o aplicativo carregou. As fotos que você envia de outro aplicativo por Compartilhar e depois ScanPDF também são entregues dentro do dispositivo: o service worker do aplicativo responde ele mesmo a essa requisição, e nada é transmitido. Vale conhecer um caso extremo: se você limpar os dados do site enquanto o aplicativo continua instalado no Android, não sobra nada no dispositivo para receber o próximo compartilhamento, e o navegador envia essas fotos ao servidor web, que não as aceita. Abra o aplicativo uma vez depois de limpar os dados e o compartilhamento volta a ficar no dispositivo."
           ]
         },
         {
@@ -331,7 +335,7 @@
         {
           "h": "Sem conta, sem telemetria e sem cookies",
           "body": [
-            "Não há nada em que se cadastrar, então não existe endereço de e-mail arquivado. Não há script de analytics, nem pixel de rastreamento, nem serviço de relatório de erros, nem framework de teste A/B. O aplicativo não define cookies e não escreve nada no armazenamento local; recarregue a página e não sobra vestígio algum da sessão.",
+            "Não há nada em que se cadastrar, então não existe endereço de e-mail arquivado. Não há script de analytics, nem pixel de rastreamento, nem serviço de relatório de erros, nem framework de teste A/B. O aplicativo não define cookies. O que ele guarda no seu dispositivo se limita às suas preferências de interface, como o tema e o tamanho da página, a uma cópia dos arquivos do próprio aplicativo, para que ele abra offline, e, por um instante, às fotos compartilhadas de outro aplicativo, que são apagadas assim que o scanner abre. Suas páginas existem só na memória; recarregue a página e não sobra vestígio algum da sessão.",
             "Isso é menos uma política do que uma arquitetura. Uma página estática sem backend não tem onde guardar os dados de que precisaria para fazer mau uso deles."
           ]
         },

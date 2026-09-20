@@ -106,7 +106,7 @@
           "name": "Does it work offline?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Once the page and the scan engine have loaded, all processing is local, so the network is not involved in handling your documents. If you want a genuinely airgapped setup, run the container described below - it serves the whole app, including the OpenCV build, from your own machine."
+            "text": "Yes. After your first visit the browser keeps a copy of the app on your device, so it opens without a network. The scan engine, a download of about 10 MB, is kept as well once you have scanned a page or installed the app, and from then on everything works offline. If you want a genuinely airgapped setup, run the container described below - it serves the whole app, including the OpenCV build, from your own machine. You can also install ScanPDF to your home screen. On Android it then appears in the share sheet: select photos in the gallery, tap Share and pick ScanPDF. On iPhone and iPad, use Add to Home Screen in Safari's share menu; iOS does not let web apps receive shared photos, so add them from inside the app there."
           }
         },
         {
@@ -216,7 +216,8 @@
     </section>
     <section class="faq-item" id="does-it-work-offline">
       <h2>Does it work offline?</h2>
-      <p>Once the page and the scan engine have loaded, all processing is local, so the network is not involved in handling your documents. If you want a genuinely airgapped setup, run the container described below - it serves the whole app, including the OpenCV build, from your own machine.</p>
+      <p>Yes. After your first visit the browser keeps a copy of the app on your device, so it opens without a network. The scan engine, a download of about 10 MB, is kept as well once you have scanned a page or installed the app, and from then on everything works offline. If you want a genuinely airgapped setup, run the container described below - it serves the whole app, including the OpenCV build, from your own machine.</p>
+      <p>You can also install ScanPDF to your home screen. On Android it then appears in the share sheet: select photos in the gallery, tap Share and pick ScanPDF. On iPhone and iPad, use Add to Home Screen in Safari&#x27;s share menu; iOS does not let web apps receive shared photos, so add them from inside the app there.</p>
     </section>
     <section class="faq-item" id="how-good-is-the-output">
       <h2>How good is the output?</h2>
@@ -251,5 +252,6 @@
 </footer>
 
 <script type="module" src="../js/menus.js"></script>
+<script type="module" src="../js/pwa.js"></script>
 </body>
 </html>

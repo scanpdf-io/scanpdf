@@ -139,7 +139,7 @@
         <li><strong>Koreksi perspektif dan filter</strong> diterapkan pada gambar beresolusi penuh di memori.</li>
         <li><strong>PDF disusun secara lokal</strong> dengan pdf-lib dan diserahkan ke browser sebagai unduhan biasa.</li>
       </ul>
-      <p>Tidak ada permintaan yang membawa data gambar Anda, karena permintaan semacam itu memang tidak ada di dalam kode. Semuanya tetap berfungsi dengan kabel jaringan dicabut setelah halaman selesai dimuat.</p>
+      <p>Tidak ada permintaan yang membawa data gambar Anda, karena permintaan semacam itu memang tidak ada di dalam kode. Semuanya tetap berfungsi dengan kabel jaringan dicabut setelah aplikasi selesai dimuat. Foto yang Anda kirim dari aplikasi lain melalui Bagikan lalu ScanPDF juga diserahkan di dalam perangkat: service worker aplikasi menjawab sendiri permintaan itu, dan tidak ada yang dikirim keluar. Ada satu kasus khusus yang perlu diketahui: jika Anda menghapus data situs saat aplikasi masih terinstal di Android, tidak ada lagi yang tersisa di perangkat untuk menerima pembagian berikutnya, sehingga browser mengirim foto itu ke host web, yang tidak menerimanya. Buka aplikasi satu kali setelah menghapus datanya, dan proses berbagi kembali berlangsung di perangkat.</p>
     </section>
     <section id="bisa-diverifikasi-bukan-sekadar-klaim">
       <h2>Bisa diverifikasi, bukan sekadar klaim</h2>
@@ -158,7 +158,7 @@
     </section>
     <section id="tanpa-akun-tanpa-telemetri-tanpa-cookie">
       <h2>Tanpa akun, tanpa telemetri, tanpa cookie</h2>
-      <p>Tidak ada yang perlu didaftarkan, jadi tidak ada alamat email yang tersimpan. Tidak ada skrip analitik, piksel pelacak, layanan pelaporan error, maupun kerangka kerja pengujian A/B. Aplikasi ini tidak memasang cookie dan tidak menulis apa pun ke penyimpanan lokal; muat ulang halaman, dan semua jejak sesi hilang.</p>
+      <p>Tidak ada yang perlu didaftarkan, jadi tidak ada alamat email yang tersimpan. Tidak ada skrip analitik, piksel pelacak, layanan pelaporan error, maupun kerangka kerja pengujian A/B. Aplikasi ini tidak memasang cookie. Yang disimpannya di perangkat Anda terbatas pada preferensi antarmuka, seperti tema dan ukuran halaman, salinan berkas aplikasi itu sendiri agar bisa dibuka secara offline, dan, untuk sesaat, foto yang dibagikan dari aplikasi lain, yang dihapus begitu pemindai terbuka. Halaman Anda hanya ada di memori; muat ulang halaman, dan semua jejak sesi hilang.</p>
       <p>Ini lebih merupakan arsitektur daripada kebijakan. Halaman statis tanpa backend tidak punya tempat untuk menyimpan data yang bisa disalahgunakannya.</p>
     </section>
     <section id="coba-sekarang">
@@ -182,5 +182,6 @@
 </footer>
 
 <script type="module" src="../../js/menus.js"></script>
+<script type="module" src="../../js/pwa.js"></script>
 </body>
 </html>

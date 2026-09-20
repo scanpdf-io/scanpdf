@@ -66,7 +66,8 @@
     "movePageEarlier": "Seite nach vorn verschieben",
     "movePageLater": "Seite nach hinten verschieben",
     "toolsLabel": "Seitenwerkzeuge",
-    "pagesLabel": "Seiten"
+    "pagesLabel": "Seiten",
+    "install": "App installieren"
   },
   "ui": {
     "engineLoading": "Scan-Engine wird geladen...",
@@ -85,7 +86,9 @@
     "exportOverTarget": "Mit {size} gespeichert - {target} war nicht erreichbar, ohne dass die Seiten unleserlich werden",
     "dismiss": "Schließen",
     "pageLabel": "Seite {i} von {n}",
-    "pageMoved": "Seite an Position {i} von {n} verschoben"
+    "pageMoved": "Seite an Position {i} von {n} verschoben",
+    "offlineReady": "Bereit für die Offline-Nutzung",
+    "shareFailed": "Die geteilten Fotos konnten nicht empfangen werden"
   },
   "nav": {
     "home": "Scanner",
@@ -250,7 +253,8 @@
         {
           "q": "Funktioniert es offline?",
           "a": [
-            "Sobald Seite und Scan-Engine geladen sind, ist die gesamte Verarbeitung lokal, das Netz ist an der Behandlung Ihrer Dokumente also nicht beteiligt. Wer einen wirklich abgeschotteten Aufbau möchte, betreibt den unten beschriebenen Container: Er liefert die komplette Anwendung samt OpenCV-Build vom eigenen Rechner aus."
+            "Ja. Nach dem ersten Besuch behält der Browser eine Kopie der Anwendung auf Ihrem Gerät, sie öffnet sich also auch ohne Netz. Die Scan-Engine, ein Download von rund 10 MB, wird ebenfalls aufbewahrt, sobald Sie eine Seite gescannt oder die App installiert haben; von da an funktioniert alles offline. Wer einen wirklich abgeschotteten Aufbau möchte, betreibt den unten beschriebenen Container: Er liefert die komplette Anwendung samt OpenCV-Build vom eigenen Rechner aus.",
+            "Sie können ScanPDF auch auf dem Startbildschirm installieren. Unter Android erscheint es dann im Teilen-Menü: Fotos in der Galerie auswählen, auf Teilen tippen und ScanPDF wählen. Auf iPhone und iPad nutzen Sie Zum Home-Bildschirm im Teilen-Menü von Safari; iOS erlaubt Web-Apps nicht, geteilte Fotos zu empfangen, fügen Sie sie dort also in der App selbst hinzu."
           ]
         },
         {
@@ -304,7 +308,7 @@
                 "**Das PDF entsteht lokal** mit pdf-lib und wird dem Browser als ganz normaler Download übergeben."
               ]
             },
-            "Keine Anfrage transportiert Ihre Bilddaten, weil es eine solche Anfrage im Code nicht gibt. Das Ganze funktioniert mit gezogenem Netzwerkkabel, sobald die Seite geladen ist."
+            "Keine Anfrage transportiert Ihre Bilddaten, weil es eine solche Anfrage im Code nicht gibt. Das Ganze funktioniert mit gezogenem Netzwerkkabel, sobald die Anwendung geladen ist. Auch Fotos, die Sie aus einer anderen App über Teilen und dann ScanPDF schicken, werden auf dem Gerät übergeben: Der Service Worker der Anwendung beantwortet diese Anfrage selbst, übertragen wird nichts. Einen Grenzfall sollten Sie kennen: Wenn Sie die Websitedaten löschen, während die App unter Android noch installiert ist, gibt es auf dem Gerät nichts mehr, was das nächste Teilen entgegennimmt; der Browser schickt diese Fotos dann an den Webhost, der sie nicht annimmt. Öffnen Sie die App nach dem Löschen der Daten einmal, und das Teilen bleibt wieder auf dem Gerät."
           ]
         },
         {
@@ -331,7 +335,7 @@
         {
           "h": "Kein Konto, keine Telemetrie, keine Cookies",
           "body": [
-            "Es gibt nichts, wofür man sich anmelden müsste, also liegt auch keine E-Mail-Adresse vor. Es gibt kein Analyse-Skript, kein Tracking-Pixel, keinen Fehlerberichtsdienst und kein A/B-Test-Framework. Die Anwendung setzt keine Cookies und schreibt nichts in den lokalen Speicher; laden Sie die Seite neu, und von der Sitzung ist keine Spur mehr da.",
+            "Es gibt nichts, wofür man sich anmelden müsste, also liegt auch keine E-Mail-Adresse vor. Es gibt kein Analyse-Skript, kein Tracking-Pixel, keinen Fehlerberichtsdienst und kein A/B-Test-Framework. Die Anwendung setzt keine Cookies. Auf Ihrem Gerät behält sie nur Ihre Oberflächeneinstellungen wie Farbschema und Seitenformat, eine Kopie ihrer eigenen Dateien, damit sie sich offline öffnet, und für einen Moment Fotos, die aus einer anderen App geteilt wurden; diese werden gelöscht, sobald sich der Scanner öffnet. Ihre Seiten existieren nur im Arbeitsspeicher; laden Sie die Seite neu, und von der Sitzung ist keine Spur mehr da.",
             "Das ist weniger eine Richtlinie als eine Architektur. Eine statische Seite ohne Backend hat schlicht keinen Ort, an dem sie die Daten ablegen könnte, die sie zum Missbrauch bräuchte."
           ]
         },

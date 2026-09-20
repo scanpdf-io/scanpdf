@@ -106,7 +106,7 @@
           "name": "Funziona offline?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Una volta caricati la pagina e il motore di scansione, tutta l'elaborazione è locale, quindi la rete non entra in gioco nella gestione dei tuoi documenti. Se vuoi una configurazione davvero isolata dalla rete, esegui il container descritto più sotto - serve l'intera app, build di OpenCV compresa, dalla tua macchina."
+            "text": "Sì. Dopo la prima visita il browser conserva una copia dell'app sul tuo dispositivo, quindi si apre anche senza rete. Anche il motore di scansione, un download di circa 10 MB, viene conservato non appena scansioni una pagina o installi l'app, e da quel momento funziona tutto offline. Se vuoi una configurazione davvero isolata dalla rete, esegui il container descritto più sotto - serve l'intera app, build di OpenCV compresa, dalla tua macchina. Puoi anche installare ScanPDF nella schermata Home. Su Android compare allora nel menu di condivisione: seleziona le foto nella galleria, tocca Condividi e scegli ScanPDF. Su iPhone e iPad usa Aggiungi alla schermata Home nel menu di condivisione di Safari; iOS non consente alle app web di ricevere foto condivise, quindi lì aggiungile dall'interno dell'app."
           }
         },
         {
@@ -216,7 +216,8 @@
     </section>
     <section class="faq-item" id="funziona-offline">
       <h2>Funziona offline?</h2>
-      <p>Una volta caricati la pagina e il motore di scansione, tutta l&#x27;elaborazione è locale, quindi la rete non entra in gioco nella gestione dei tuoi documenti. Se vuoi una configurazione davvero isolata dalla rete, esegui il container descritto più sotto - serve l&#x27;intera app, build di OpenCV compresa, dalla tua macchina.</p>
+      <p>Sì. Dopo la prima visita il browser conserva una copia dell&#x27;app sul tuo dispositivo, quindi si apre anche senza rete. Anche il motore di scansione, un download di circa 10 MB, viene conservato non appena scansioni una pagina o installi l&#x27;app, e da quel momento funziona tutto offline. Se vuoi una configurazione davvero isolata dalla rete, esegui il container descritto più sotto - serve l&#x27;intera app, build di OpenCV compresa, dalla tua macchina.</p>
+      <p>Puoi anche installare ScanPDF nella schermata Home. Su Android compare allora nel menu di condivisione: seleziona le foto nella galleria, tocca Condividi e scegli ScanPDF. Su iPhone e iPad usa Aggiungi alla schermata Home nel menu di condivisione di Safari; iOS non consente alle app web di ricevere foto condivise, quindi lì aggiungile dall&#x27;interno dell&#x27;app.</p>
     </section>
     <section class="faq-item" id="com-e-la-qualita-del-risultato">
       <h2>Com&#x27;è la qualità del risultato?</h2>
@@ -251,5 +252,6 @@
 </footer>
 
 <script type="module" src="../../js/menus.js"></script>
+<script type="module" src="../../js/pwa.js"></script>
 </body>
 </html>

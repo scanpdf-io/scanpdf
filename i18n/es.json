@@ -66,7 +66,8 @@
     "movePageEarlier": "Mover página antes",
     "movePageLater": "Mover página después",
     "toolsLabel": "Herramientas de página",
-    "pagesLabel": "Páginas"
+    "pagesLabel": "Páginas",
+    "install": "Instalar la aplicación"
   },
   "ui": {
     "engineLoading": "Cargando el motor de escaneo...",
@@ -85,7 +86,9 @@
     "exportOverTarget": "Guardado con {size} - no se pudo bajar a {target} sin dejar las páginas ilegibles",
     "dismiss": "Cerrar",
     "pageLabel": "Página {i} de {n}",
-    "pageMoved": "Página movida a la posición {i} de {n}"
+    "pageMoved": "Página movida a la posición {i} de {n}",
+    "offlineReady": "Lista para funcionar sin conexión",
+    "shareFailed": "No se pudieron recibir las fotos compartidas"
   },
   "nav": {
     "home": "Escáner",
@@ -250,7 +253,8 @@
         {
           "q": "¿Funciona sin conexión?",
           "a": [
-            "Una vez cargada la página y el motor de escaneo, todo el procesamiento es local, así que la red no interviene en el tratamiento de tus documentos. Si quieres un montaje realmente aislado, ejecuta el contenedor que se describe más abajo: sirve la aplicación entera, incluida la compilación de OpenCV, desde tu propia máquina."
+            "Sí. Tras la primera visita, el navegador guarda una copia de la aplicación en tu dispositivo, así que se abre sin red. El motor de escaneo, una descarga de unos 10 MB, también se conserva en cuanto escaneas una página o instalas la aplicación, y a partir de ahí todo funciona sin conexión. Si quieres un montaje realmente aislado, ejecuta el contenedor que se describe más abajo: sirve la aplicación entera, incluida la compilación de OpenCV, desde tu propia máquina.",
+            "También puedes instalar ScanPDF en la pantalla de inicio. En Android aparece entonces en el menú de compartir: selecciona fotos en la galería, toca Compartir y elige ScanPDF. En iPhone y iPad, usa Añadir a pantalla de inicio en el menú de compartir de Safari; iOS no permite que las aplicaciones web reciban fotos compartidas, así que allí añádelas desde dentro de la aplicación."
           ]
         },
         {
@@ -304,7 +308,7 @@
                 "**El PDF se monta localmente** con pdf-lib y se entrega al navegador como una descarga normal."
               ]
             },
-            "Ninguna petición transporta los datos de tus imágenes, porque esa petición no existe en el código. Todo el proceso funciona con el cable de red desenchufado una vez cargada la página."
+            "Ninguna petición transporta los datos de tus imágenes, porque esa petición no existe en el código. Todo el proceso funciona con el cable de red desenchufado una vez cargada la aplicación. Las fotos que envías desde otra aplicación con Compartir y luego ScanPDF también se entregan dentro del dispositivo: el service worker de la aplicación responde él mismo a esa petición y no se transmite nada. Conviene conocer un caso límite: si borras los datos del sitio mientras la aplicación sigue instalada en Android, no queda nada en el dispositivo que reciba el siguiente envío, de modo que el navegador manda esas fotos al servidor web, que no las acepta. Abre la aplicación una vez después de borrar sus datos y compartir vuelve a quedarse en el dispositivo."
           ]
         },
         {
@@ -331,7 +335,7 @@
         {
           "h": "Sin cuenta, sin telemetría y sin cookies",
           "body": [
-            "No hay nada a lo que registrarse, así que no hay ninguna dirección de correo archivada. No hay script de analítica, ni píxel de seguimiento, ni servicio de informes de errores, ni framework de pruebas A/B. La aplicación no pone cookies ni escribe nada en el almacenamiento local: recarga la página y no queda ni rastro de la sesión.",
+            "No hay nada a lo que registrarse, así que no hay ninguna dirección de correo archivada. No hay script de analítica, ni píxel de seguimiento, ni servicio de informes de errores, ni framework de pruebas A/B. La aplicación no pone cookies. Lo que guarda en tu dispositivo se limita a tus preferencias de interfaz, como el tema y el tamaño de página, una copia de los archivos de la propia aplicación para que se abra sin conexión y, por un momento, las fotos compartidas desde otra aplicación, que se borran en cuanto se abre el escáner. Tus páginas solo existen en memoria: recarga la página y no queda ni rastro de la sesión.",
             "Más que una política, esto es una arquitectura. Una página estática sin servidor no tiene dónde guardar los datos que necesitaría para hacer un mal uso de ellos."
           ]
         },

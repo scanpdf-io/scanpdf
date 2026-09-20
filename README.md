@@ -31,6 +31,10 @@ processing: your documents never leave your machine.
   pages are recompressed to fit it: JPEG quality first, resolution only if
   needed, never past the point where text stops being readable.
 - **EXIF-aware** — phone photo orientation is handled automatically.
+- **Installable, works offline** — a service worker keeps the app on the
+  device after the first visit; the 10 MB scan engine joins it once you scan
+  or install. On Android the installed app is a share target: pick photos in
+  the gallery, then *Share → ScanPDF*.
 - **Nine languages** — English, Spanish, German, Portuguese, French,
   Italian, Turkish, Indonesian and Hindi, each on its own URL with the
   interface and the documentation translated.
@@ -143,6 +147,14 @@ All image processing (OpenCV.js WASM) and PDF assembly (pdf-lib) happen in
 your browser. The app makes no network requests with your data — there is no
 backend at all.
 
+Photos shared into the installed app (*Share → ScanPDF*) never reach a
+server either: the service worker answers that POST on the device, parks the
+files in Cache Storage and the scanner deletes them as it opens. The one
+exception is documented on the privacy page: if the site's data is cleared
+while the Android app stays installed, the next share finds no service worker
+and the browser sends it to the host (which rejects it) until the app has been
+opened once.
+
 - **Self-hosted container**: the offline guarantee is enforced by the
   browser itself via the nginx-served CSP (`default-src 'self'`).
 - **Hosted demo ([scanpdf.io](https://scanpdf.io))**: the same code served
@@ -177,6 +189,7 @@ site/                 The whole site (static files, served as-is)
 ├── faq/ …            Content pages, English    ) tools/build-i18n.py
 ├── es/ de/ … hi/     The same set per locale   ) from templates/ + i18n/
 ├── sitemap.xml, robots.txt, 404.html, manifest.webmanifest
+├── sw.js             Service worker (generated from templates/sw.js)
 ├── css/
 │   ├── tokens.css    Design tokens: colours, spacing, radii, shadows, type
 │   ├── base.css      Shared components: buttons, menus, brand, footer
@@ -184,6 +197,8 @@ site/                 The whole site (static files, served as-is)
 │   └── content.css   The reading pages
 ├── js/
 │   ├── main.js       Bootstrap, file intake, detection queue
+│   ├── pwa.js        Service worker registration, updates, install button
+│   ├── share-target.js  Picks up photos shared from another app
 │   ├── detect.js     Multi-strategy corner detection
 │   ├── editor.js     Corner editor with loupe and live preview
 │   ├── warp.js       Perspective warp and page sizing
@@ -202,7 +217,7 @@ site/                 The whole site (static files, served as-is)
 ├── icons/ og/        App icons and the social preview image
 └── vendor/           OpenCV.js + pdf-lib (fetched at build, not committed)
 
-templates/            Page shells with {{placeholders}}
+templates/            Page shells with {{placeholders}}, plus sw.js
 i18n/<lang>.json      Every string and every word of page copy, per locale
 tools/build-i18n.py   Renders templates + i18n into site/ (stdlib only)
 tools/vendor.sh       Fetch libs locally for no-Docker development
@@ -223,6 +238,23 @@ a broken build can never reach the live site.
 
 Self-hosted deployments are unaffected by the domain: every asset reference in
 the app is relative, so it works from any origin and any sub-path.
+
+### PWA notes
+
+- `site/sw.js` precaches the app shell (every page, CSS, JS, icons) as one
+  snapshot named after a hash of those files, because nothing is
+  fingerprinted. **Run `make i18n` after editing `site/js/` or `site/css/`**,
+  not only templates and locales — otherwise the hash, and with it CI, is
+  stale and browsers never see the change.
+- An update is installed in the background and takes over when the page has
+  nothing to lose (a reading page, or a scanner with no pages) or when every
+  tab is closed; two releases are never mixed in one page.
+- The install button needs `beforeinstallprompt`, and the share target needs
+  Web Share Target: both are Chromium-only. Safari on iOS gets offline use and
+  *Add to Home Screen*, but cannot receive shared photos.
+- Pages live in memory only, so sharing into an already open app replaces the
+  session in progress.
+- Service workers need a secure context: HTTPS or `localhost`.
 
 Pushing a `v*` tag triggers the
 [Release workflow](.github/workflows/release.yml): it attaches the offline

@@ -112,6 +112,7 @@
   <symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
   <symbol id="i-arrow-down" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-install" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="7" x2="12" y2="15"/><polyline points="8.5 11.5 12 15 15.5 11.5"/></symbol>
   <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
 </svg>
 
@@ -121,6 +122,8 @@
     <span class="brand-name">ScanPDF</span>
   </h1>
   <div class="topbar-controls">
+    <!-- Shown by pwa.js once the browser offers installation (Chromium only). -->
+    <button id="install-btn" class="btn icon ghost" type="button" hidden aria-label="Instalar la aplicación" title="Instalar la aplicación"><svg class="ico" aria-hidden="true"><use href="#i-install"/></svg></button>
 <button class="btn icon ghost theme-toggle" type="button" hidden data-label-system="Tema: sistema" data-label-light="Tema: claro" data-label-dark="Tema: oscuro">
   <svg class="icon-system" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
   <svg class="icon-light" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -281,10 +284,12 @@
 
 <!-- Strings needed by the JS modules. An inline <script> would be blocked by
      the container's script-src 'self' CSP, so they travel as data attributes. -->
-<div id="i18n" hidden data-engine-loading="Cargando el motor de escaneo..." data-engine-failed="No se pudo cargar el motor" data-detecting="Detectando esquinas..." data-adjust-corners="ajustar esquinas" data-adjust-corners-title="La detección automática ha fallado: arrastra las esquinas a mano" data-delete-page="Eliminar página" data-exporting-page="Exportando la página {i} de {n}..." data-compressing-page="Comprimiendo la página {i} de {n}..." data-export-failed="Error al exportar: {message}" data-pdf-title="Documento escaneado" data-image-load-failed="No se pudo abrir {name}" data-files-skipped="Archivos omitidos: {n}. Solo se admiten imágenes" data-export-done="PDF guardado - {size}" data-export-over-target="Guardado con {size} - no se pudo bajar a {target} sin dejar las páginas ilegibles" data-dismiss="Cerrar" data-page-label="Página {i} de {n}" data-page-moved="Página movida a la posición {i} de {n}"></div>
+<div id="i18n" hidden data-engine-loading="Cargando el motor de escaneo..." data-engine-failed="No se pudo cargar el motor" data-detecting="Detectando esquinas..." data-adjust-corners="ajustar esquinas" data-adjust-corners-title="La detección automática ha fallado: arrastra las esquinas a mano" data-delete-page="Eliminar página" data-exporting-page="Exportando la página {i} de {n}..." data-compressing-page="Comprimiendo la página {i} de {n}..." data-export-failed="Error al exportar: {message}" data-pdf-title="Documento escaneado" data-image-load-failed="No se pudo abrir {name}" data-files-skipped="Archivos omitidos: {n}. Solo se admiten imágenes" data-export-done="PDF guardado - {size}" data-export-over-target="Guardado con {size} - no se pudo bajar a {target} sin dejar las páginas ilegibles" data-dismiss="Cerrar" data-page-label="Página {i} de {n}" data-page-moved="Página movida a la posición {i} de {n}" data-offline-ready="Lista para funcionar sin conexión" data-share-failed="No se pudieron recibir las fotos compartidas"></div>
 
 <script src="../vendor/pdf-lib.min.js" defer></script>
 <script type="module" src="../js/menus.js"></script>
+<!-- pwa.js before main.js: it has to see ?share-target before main.js cleans the URL. -->
+<script type="module" src="../js/pwa.js"></script>
 <script type="module" src="../js/main.js"></script>
 </body>
 </html>

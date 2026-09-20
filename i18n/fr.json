@@ -66,7 +66,8 @@
     "movePageEarlier": "Déplacer la page vers le début",
     "movePageLater": "Déplacer la page vers la fin",
     "toolsLabel": "Outils de page",
-    "pagesLabel": "Pages"
+    "pagesLabel": "Pages",
+    "install": "Installer l'application"
   },
   "ui": {
     "engineLoading": "Chargement du moteur de numérisation...",
@@ -85,7 +86,9 @@
     "exportOverTarget": "Enregistré à {size} - impossible de descendre à {target} sans rendre les pages illisibles",
     "dismiss": "Fermer",
     "pageLabel": "Page {i} sur {n}",
-    "pageMoved": "Page déplacée en position {i} sur {n}"
+    "pageMoved": "Page déplacée en position {i} sur {n}",
+    "offlineReady": "Prêt à fonctionner hors ligne",
+    "shareFailed": "Impossible de recevoir les photos partagées"
   },
   "nav": {
     "home": "Scanner",
@@ -250,7 +253,8 @@
         {
           "q": "Cela fonctionne-t-il hors ligne ?",
           "a": [
-            "Une fois la page et le moteur de numérisation chargés, tout le traitement est local : le réseau n'intervient pas dans la manipulation de vos documents. Pour une installation réellement isolée, faites tourner le conteneur décrit ci-dessous : il sert l'application entière, y compris la compilation d'OpenCV, depuis votre propre machine."
+            "Oui. Après votre première visite, le navigateur conserve une copie de l'application sur votre appareil : elle s'ouvre donc sans réseau. Le moteur de numérisation, un téléchargement d'environ 10 Mo, est conservé lui aussi dès que vous avez numérisé une page ou installé l'application, et tout fonctionne alors hors ligne. Pour une installation réellement isolée, faites tourner le conteneur décrit ci-dessous : il sert l'application entière, y compris la compilation d'OpenCV, depuis votre propre machine.",
+            "Vous pouvez aussi installer ScanPDF sur votre écran d'accueil. Sur Android, il apparaît alors dans le menu de partage : sélectionnez des photos dans la galerie, touchez Partager puis choisissez ScanPDF. Sur iPhone et iPad, utilisez Sur l'écran d'accueil dans le menu de partage de Safari ; iOS ne permet pas aux applications web de recevoir des photos partagées, ajoutez-les donc depuis l'application."
           ]
         },
         {
@@ -304,7 +308,7 @@
                 "**Le PDF est assemblé localement** avec pdf-lib puis remis au navigateur comme un téléchargement ordinaire."
               ]
             },
-            "Aucune requête ne transporte les données de vos images, parce qu'une telle requête n'existe pas dans le code. L'ensemble fonctionne câble réseau débranché, une fois la page chargée."
+            "Aucune requête ne transporte les données de vos images, parce qu'une telle requête n'existe pas dans le code. L'ensemble fonctionne câble réseau débranché, une fois l'application chargée. Les photos que vous envoyez depuis une autre application via Partager puis ScanPDF sont elles aussi remises sur l'appareil : le service worker de l'application répond lui-même à cette requête, et rien n'est transmis. Un cas limite mérite d'être connu : si vous effacez les données du site alors que l'application est encore installée sur Android, il ne reste rien sur l'appareil pour recevoir le partage suivant, et le navigateur envoie alors ces photos à l'hébergeur, qui ne les accepte pas. Ouvrez l'application une fois après avoir effacé ses données, et le partage reste de nouveau sur l'appareil."
           ]
         },
         {
@@ -331,7 +335,7 @@
         {
           "h": "Aucun compte, aucune télémétrie, aucun cookie",
           "body": [
-            "Il n'y a rien à quoi s'inscrire, donc aucune adresse e-mail n'est conservée. Il n'y a pas de script d'analyse d'audience, pas de pixel de suivi, pas de service de remontée d'erreurs et pas de dispositif de test A/B. L'application ne pose aucun cookie et n'écrit rien dans le stockage local ; rechargez la page et il ne reste aucune trace de la session.",
+            "Il n'y a rien à quoi s'inscrire, donc aucune adresse e-mail n'est conservée. Il n'y a pas de script d'analyse d'audience, pas de pixel de suivi, pas de service de remontée d'erreurs et pas de dispositif de test A/B. L'application ne pose aucun cookie. Ce qu'elle conserve sur votre appareil se limite à vos préférences d'interface, comme le thème et le format de page, à une copie de ses propres fichiers pour s'ouvrir hors ligne et, brièvement, aux photos partagées depuis une autre application, supprimées dès que le scanner s'ouvre. Vos pages n'existent qu'en mémoire ; rechargez la page et il ne reste aucune trace de la session.",
             "C'est moins une politique qu'une architecture. Une page statique sans serveur n'a nulle part où ranger les données dont elle aurait besoin pour en faire mauvais usage."
           ]
         },

@@ -139,7 +139,7 @@
         <li><strong>Correzione prospettica e filtri</strong> vengono applicati in memoria all&#x27;immagine a piena risoluzione.</li>
         <li><strong>Il PDF viene composto in locale</strong> con pdf-lib e consegnato al browser come un normale download.</li>
       </ul>
-      <p>Nessuna richiesta trasporta i dati delle tue immagini, perché nel codice una richiesta del genere non esiste. Una volta caricata la pagina, funziona tutto anche con il cavo di rete staccato.</p>
+      <p>Nessuna richiesta trasporta i dati delle tue immagini, perché nel codice una richiesta del genere non esiste. Una volta caricata l&#x27;app, funziona tutto anche con il cavo di rete staccato. Anche le foto che invii da un&#x27;altra app con Condividi e poi ScanPDF vengono consegnate sul dispositivo: il service worker dell&#x27;app risponde da sé a quella richiesta e non viene trasmesso nulla. C&#x27;è un caso limite che è bene conoscere: se cancelli i dati del sito mentre l&#x27;app è ancora installata su Android, sul dispositivo non resta nulla che possa ricevere la condivisione successiva, e il browser invia quelle foto all&#x27;host web, che non le accetta. Apri l&#x27;app una volta dopo aver cancellato i dati e la condivisione torna a restare sul dispositivo.</p>
     </section>
     <section id="verificabile-non-solo-dichiarato">
       <h2>Verificabile, non solo dichiarato</h2>
@@ -158,7 +158,7 @@
     </section>
     <section id="nessun-account-nessuna-telemetria-nessun-cookie">
       <h2>Nessun account, nessuna telemetria, nessun cookie</h2>
-      <p>Non c&#x27;è nulla a cui registrarsi, quindi non c&#x27;è nessun indirizzo email in archivio. Non ci sono script di analytics, pixel di tracciamento, servizi di segnalazione degli errori né framework per i test A/B. L&#x27;app non imposta cookie e non scrive nulla nel local storage; ricarica la pagina e ogni traccia della sessione sparisce.</p>
+      <p>Non c&#x27;è nulla a cui registrarsi, quindi non c&#x27;è nessun indirizzo email in archivio. Non ci sono script di analytics, pixel di tracciamento, servizi di segnalazione degli errori né framework per i test A/B. L&#x27;app non imposta cookie. Ciò che conserva sul tuo dispositivo si limita alle preferenze dell&#x27;interfaccia, come il tema e il formato della pagina, a una copia dei file dell&#x27;app stessa, perché si apra offline, e, per un momento, alle foto condivise da un&#x27;altra app, che vengono eliminate non appena si apre lo scanner. Le tue pagine esistono solo in memoria; ricarica la pagina e ogni traccia della sessione sparisce.</p>
       <p>Più che una policy, è un&#x27;architettura. Una pagina statica senza backend non ha un posto dove mettere i dati di cui avrebbe bisogno per farne un uso scorretto.</p>
     </section>
     <section id="provalo">
@@ -182,5 +182,6 @@
 </footer>
 
 <script type="module" src="../../js/menus.js"></script>
+<script type="module" src="../../js/pwa.js"></script>
 </body>
 </html>

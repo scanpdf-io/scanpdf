@@ -139,7 +139,7 @@
         <li><strong>Perspective correction and filtering</strong> are applied to the full-resolution image in memory.</li>
         <li><strong>The PDF is assembled locally</strong> with pdf-lib and handed to the browser as a normal download.</li>
       </ul>
-      <p>No request carries your image data, because no such request exists in the code. The whole thing works with the network cable pulled out once the page has loaded.</p>
+      <p>No request carries your image data, because no such request exists in the code. The whole thing works with the network cable pulled out once the app has loaded. Photos you send from another app through Share and then ScanPDF are handed over on the device as well: the app&#x27;s service worker answers that request itself, and nothing is transmitted. One edge case is worth knowing about: if you clear the site&#x27;s data while the app is still installed on Android, there is nothing left on the device to receive the next share, so the browser sends those photos to the web host, which does not accept them. Open the app once after clearing its data and sharing stays on the device again.</p>
     </section>
     <section id="verifiable-not-just-stated">
       <h2>Verifiable, not just stated</h2>
@@ -158,7 +158,7 @@
     </section>
     <section id="no-account-no-telemetry-no-cookies">
       <h2>No account, no telemetry, no cookies</h2>
-      <p>There is nothing to sign up for, so there is no email address on file. There is no analytics script, no tracking pixel, no error reporting service and no A/B testing framework. The app sets no cookies and writes nothing to local storage; reload the page and every trace of the session is gone.</p>
+      <p>There is nothing to sign up for, so there is no email address on file. There is no analytics script, no tracking pixel, no error reporting service and no A/B testing framework. The app sets no cookies. What it keeps on your device is limited to your interface preferences, such as the theme and the page size, a copy of the app&#x27;s own files so that it opens offline, and, briefly, photos shared from another app, which are deleted as soon as the scanner opens. Your pages exist in memory only; reload the page and every trace of the session is gone.</p>
       <p>This is less a policy than an architecture. A static page with no backend has nowhere to put the data it would need to misuse.</p>
     </section>
     <section id="try-it">
@@ -182,5 +182,6 @@
 </footer>
 
 <script type="module" src="../js/menus.js"></script>
+<script type="module" src="../js/pwa.js"></script>
 </body>
 </html>

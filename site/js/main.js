@@ -1,5 +1,5 @@
-// Bootstrap: file intake (picker + drag&drop), EXIF-corrected decoding,
-// downscaling, the sequential detection queue, and toolbar wiring.
+// Bootstrap: file intake (picker + drag&drop + share target), EXIF-corrected
+// decoding, downscaling, the sequential detection queue, and toolbar wiring.
 
 import { state, subscribe, emit, getPage, selectedPage, indexOfPage, movePage, removePage } from './state.js';
 import { cvReady } from './cv-loader.js';
@@ -10,6 +10,7 @@ import { exportPdf } from './export.js';
 import { t } from './i18n.js';
 import { formatBytes } from './format.js';
 import { toast, announce } from './toast.js';
+import { takeSharedFiles } from './share-target.js';
 
 const MAX_FULL_SIDE = 3500;
 const MAX_PROC_SIDE = 1000;
@@ -59,6 +60,8 @@ function init() {
   setupViewToggle();
   subscribe(syncControls);
   syncControls();
+  setupOfflineEngine();
+  consumeShare();
 }
 
 /* ---------- Engine warm-up ---------- */
@@ -68,22 +71,27 @@ function init() {
 // The first sign of intent starts it instead. Hovering a button or dragging a
 // file over the window happens seconds before a file is actually chosen, so
 // the download still overlaps the file picker and nothing feels slower.
+let warmUpStarted = false;
+
+function warmUp() {
+  if (warmUpStarted) return;
+  warmUpStarted = true;
+  const status = toast(t('engineLoading'), { type: 'busy' });
+  cvReady().then(
+    () => {
+      status.close();
+      // A first visit loads the engine before the service worker controls
+      // the page, so that download went past its cache.
+      requestEngineCache();
+    },
+    (err) => {
+      status.update(t('engineFailed'), { type: 'error' });
+      console.error(err);
+    },
+  );
+}
+
 function setupEngineWarmUp() {
-  let started = false;
-
-  const warmUp = () => {
-    if (started) return;
-    started = true;
-    const status = toast(t('engineLoading'), { type: 'busy' });
-    cvReady().then(
-      () => status.close(),
-      (err) => {
-        status.update(t('engineFailed'), { type: 'error' });
-        console.error(err);
-      },
-    );
-  };
-
   for (const id of [...ADD_BUTTONS, ...CAMERA_BUTTONS]) {
     const el = $(id);
     el.addEventListener('pointerenter', warmUp, { once: true });
@@ -94,6 +102,31 @@ function setupEngineWarmUp() {
   window.addEventListener('paste', warmUp, { once: true });
   fileInput.addEventListener('change', warmUp, { once: true });
   cameraInput.addEventListener('change', warmUp, { once: true });
+}
+
+/* ---------- Offline engine ---------- */
+
+// The service worker keeps the app shell for offline use from the first
+// visit, but not the engine, for the reason above. It is stored once there is
+// intent: a scan (see warmUp), a share, or the app being installed.
+function requestEngineCache() {
+  navigator.serviceWorker?.ready.then((reg) => reg.active?.postMessage({ type: 'cache-engine' }));
+}
+
+function setupOfflineEngine() {
+  if (!('serviceWorker' in navigator)) return;
+
+  // Sent by sw.js at the moment the engine cache becomes complete.
+  navigator.serviceWorker.addEventListener('message', (e) => {
+    if (e.data?.type === 'engine-cached') toast(t('offlineReady'), { type: 'ok' });
+  });
+
+  window.addEventListener('appinstalled', requestEngineCache);
+  // Covers an install made from a reading page, and iOS, which has no
+  // appinstalled event.
+  if (matchMedia('(display-mode: standalone)').matches && !navigator.connection?.saveData) {
+    (window.requestIdleCallback ?? setTimeout)(requestEngineCache);
+  }
 }
 
 /* ---------- File intake ---------- */
@@ -126,6 +159,18 @@ function setupDragAndDrop() {
     end();
     addFiles(e.dataTransfer.files);
   });
+}
+
+// Photos sent from another app through "Share -> ScanPDF" (share-target.js).
+async function consumeShare() {
+  const shared = await takeSharedFiles();
+  if (!shared) return;
+  if (shared.failed || !shared.files.length) {
+    toast(t('shareFailed'), { type: 'error' });
+    return;
+  }
+  warmUp();
+  await addFiles(shared.files);
 }
 
 async function addFiles(fileList) {

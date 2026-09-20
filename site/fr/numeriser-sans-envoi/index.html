@@ -139,7 +139,7 @@
         <li><strong>La correction de perspective et les filtres</strong> sont appliqués en mémoire à l&#x27;image en pleine résolution.</li>
         <li><strong>Le PDF est assemblé localement</strong> avec pdf-lib puis remis au navigateur comme un téléchargement ordinaire.</li>
       </ul>
-      <p>Aucune requête ne transporte les données de vos images, parce qu&#x27;une telle requête n&#x27;existe pas dans le code. L&#x27;ensemble fonctionne câble réseau débranché, une fois la page chargée.</p>
+      <p>Aucune requête ne transporte les données de vos images, parce qu&#x27;une telle requête n&#x27;existe pas dans le code. L&#x27;ensemble fonctionne câble réseau débranché, une fois l&#x27;application chargée. Les photos que vous envoyez depuis une autre application via Partager puis ScanPDF sont elles aussi remises sur l&#x27;appareil : le service worker de l&#x27;application répond lui-même à cette requête, et rien n&#x27;est transmis. Un cas limite mérite d&#x27;être connu : si vous effacez les données du site alors que l&#x27;application est encore installée sur Android, il ne reste rien sur l&#x27;appareil pour recevoir le partage suivant, et le navigateur envoie alors ces photos à l&#x27;hébergeur, qui ne les accepte pas. Ouvrez l&#x27;application une fois après avoir effacé ses données, et le partage reste de nouveau sur l&#x27;appareil.</p>
     </section>
     <section id="verifiable-et-pas-seulement-affirme">
       <h2>Vérifiable, et pas seulement affirmé</h2>
@@ -158,7 +158,7 @@
     </section>
     <section id="aucun-compte-aucune-telemetrie-aucun-cookie">
       <h2>Aucun compte, aucune télémétrie, aucun cookie</h2>
-      <p>Il n&#x27;y a rien à quoi s&#x27;inscrire, donc aucune adresse e-mail n&#x27;est conservée. Il n&#x27;y a pas de script d&#x27;analyse d&#x27;audience, pas de pixel de suivi, pas de service de remontée d&#x27;erreurs et pas de dispositif de test A/B. L&#x27;application ne pose aucun cookie et n&#x27;écrit rien dans le stockage local ; rechargez la page et il ne reste aucune trace de la session.</p>
+      <p>Il n&#x27;y a rien à quoi s&#x27;inscrire, donc aucune adresse e-mail n&#x27;est conservée. Il n&#x27;y a pas de script d&#x27;analyse d&#x27;audience, pas de pixel de suivi, pas de service de remontée d&#x27;erreurs et pas de dispositif de test A/B. L&#x27;application ne pose aucun cookie. Ce qu&#x27;elle conserve sur votre appareil se limite à vos préférences d&#x27;interface, comme le thème et le format de page, à une copie de ses propres fichiers pour s&#x27;ouvrir hors ligne et, brièvement, aux photos partagées depuis une autre application, supprimées dès que le scanner s&#x27;ouvre. Vos pages n&#x27;existent qu&#x27;en mémoire ; rechargez la page et il ne reste aucune trace de la session.</p>
       <p>C&#x27;est moins une politique qu&#x27;une architecture. Une page statique sans serveur n&#x27;a nulle part où ranger les données dont elle aurait besoin pour en faire mauvais usage.</p>
     </section>
     <section id="essayez">
@@ -182,5 +182,6 @@
 </footer>
 
 <script type="module" src="../../js/menus.js"></script>
+<script type="module" src="../../js/pwa.js"></script>
 </body>
 </html>

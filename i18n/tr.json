@@ -66,7 +66,8 @@
     "movePageEarlier": "Sayfayı öne taşı",
     "movePageLater": "Sayfayı arkaya taşı",
     "toolsLabel": "Sayfa araçları",
-    "pagesLabel": "Sayfalar"
+    "pagesLabel": "Sayfalar",
+    "install": "Uygulamayı yükle"
   },
   "ui": {
     "engineLoading": "Tarama motoru yükleniyor...",
@@ -85,7 +86,9 @@
     "exportOverTarget": "{size} olarak kaydedildi - sayfalar okunaksız hale gelmeden {target} boyutuna inilemedi",
     "dismiss": "Kapat",
     "pageLabel": "Sayfa {i} / {n}",
-    "pageMoved": "Sayfa taşındı, yeni konum: {i} / {n}"
+    "pageMoved": "Sayfa taşındı, yeni konum: {i} / {n}",
+    "offlineReady": "Çevrimdışı çalışmaya hazır",
+    "shareFailed": "Paylaşılan fotoğraflar alınamadı"
   },
   "nav": {
     "home": "Tarama",
@@ -250,7 +253,8 @@
         {
           "q": "Çevrimdışı çalışıyor mu?",
           "a": [
-            "Sayfa ve tarama motoru bir kez yüklendikten sonra tüm işlemler yerel olarak yapılır; yani belgelerinizin işlenmesinde ağ hiç devreye girmez. Ağdan tamamen yalıtılmış bir kurulum istiyorsanız aşağıda anlatılan kapsayıcıyı çalıştırın - OpenCV derlemesi dahil uygulamanın tamamını kendi bilgisayarınızdan sunar."
+            "Evet. İlk ziyaretinizden sonra tarayıcı uygulamanın bir kopyasını cihazınızda saklar, bu yüzden uygulama ağ olmadan da açılır. Yaklaşık 10 MB'lık bir indirme olan tarama motoru da bir sayfa taradığınızda veya uygulamayı yüklediğinizde saklanır; o andan itibaren her şey çevrimdışı çalışır. Ağdan tamamen yalıtılmış bir kurulum istiyorsanız aşağıda anlatılan kapsayıcıyı çalıştırın - OpenCV derlemesi dahil uygulamanın tamamını kendi bilgisayarınızdan sunar.",
+            "ScanPDF'i ana ekranınıza da yükleyebilirsiniz. Android'de o zaman paylaşım menüsünde görünür: galeride fotoğrafları seçin, Paylaş'a dokunun ve ScanPDF'i seçin. iPhone ve iPad'de Safari'nin paylaşım menüsündeki Ana Ekrana Ekle seçeneğini kullanın; iOS web uygulamalarının paylaşılan fotoğrafları almasına izin vermez, bu yüzden orada fotoğrafları uygulamanın içinden ekleyin."
           ]
         },
         {
@@ -304,7 +308,7 @@
                 "**PDF yerel olarak oluşturulur;** bunun için pdf-lib kullanılır ve dosya tarayıcıya sıradan bir indirme olarak teslim edilir."
               ]
             },
-            "Hiçbir istek görüntü verinizi taşımaz, çünkü kodda böyle bir istek yoktur. Sayfa yüklendikten sonra ağ kablosunu çekseniz bile her şey çalışmaya devam eder."
+            "Hiçbir istek görüntü verinizi taşımaz, çünkü kodda böyle bir istek yoktur. Uygulama yüklendikten sonra ağ kablosunu çekseniz bile her şey çalışmaya devam eder. Başka bir uygulamadan Paylaş ve ardından ScanPDF ile gönderdiğiniz fotoğraflar da cihazın içinde teslim edilir: bu isteği uygulamanın service worker'ı kendisi yanıtlar ve hiçbir şey iletilmez. Bilinmesi gereken bir uç durum var: uygulama Android'de hâlâ yüklüyken site verilerini temizlerseniz, cihazda bir sonraki paylaşımı karşılayacak bir şey kalmaz ve tarayıcı bu fotoğrafları web sunucusuna gönderir; sunucu onları kabul etmez. Verileri temizledikten sonra uygulamayı bir kez açın, paylaşım yeniden cihazda kalır."
           ]
         },
         {
@@ -331,7 +335,7 @@
         {
           "h": "Hesap yok, telemetri yok, çerez yok",
           "body": [
-            "Kayıt olunacak bir şey olmadığı için elimizde bir e-posta adresi de yok. Analitik betiği, izleme pikseli, hata raporlama servisi ya da A/B testi altyapısı yok. Uygulama çerez oluşturmaz, yerel depolamaya hiçbir şey yazmaz; sayfayı yenilediğinizde oturumun bütün izleri silinir.",
+            "Kayıt olunacak bir şey olmadığı için elimizde bir e-posta adresi de yok. Analitik betiği, izleme pikseli, hata raporlama servisi ya da A/B testi altyapısı yok. Uygulama çerez oluşturmaz. Cihazınızda sakladıkları şunlarla sınırlıdır: tema ve sayfa boyutu gibi arayüz tercihleriniz, çevrimdışı açılabilmesi için uygulamanın kendi dosyalarının bir kopyası ve kısa bir süreliğine başka bir uygulamadan paylaşılan fotoğraflar; bunlar tarama aracı açılır açılmaz silinir. Sayfalarınız yalnızca bellekte durur; sayfayı yenilediğinizde oturumun bütün izleri silinir.",
             "Bu, bir politikadan çok bir mimaridir. Arka ucu olmayan statik bir sayfanın, kötüye kullanabileceği veriyi koyacak bir yeri yoktur."
           ]
         },

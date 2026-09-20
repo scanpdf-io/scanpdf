@@ -16,6 +16,12 @@ make serve
 make run
 ```
 
+The service worker serves the app shell cache-first, which gets in the way
+while editing: tick *Application → Service Workers → Update on reload* (or
+*Bypass for network*) in DevTools. After editing anything in `site/js/` or
+`site/css/`, run `make i18n` and commit the regenerated `site/sw.js` — it
+carries a hash of those files, and CI fails when it is stale.
+
 Run the smoke tests before opening a pull request:
 
 ```sh

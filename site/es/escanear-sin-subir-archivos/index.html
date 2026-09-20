@@ -139,7 +139,7 @@
         <li><strong>La corrección de perspectiva y los filtros</strong> se aplican en memoria sobre la imagen a resolución completa.</li>
         <li><strong>El PDF se monta localmente</strong> con pdf-lib y se entrega al navegador como una descarga normal.</li>
       </ul>
-      <p>Ninguna petición transporta los datos de tus imágenes, porque esa petición no existe en el código. Todo el proceso funciona con el cable de red desenchufado una vez cargada la página.</p>
+      <p>Ninguna petición transporta los datos de tus imágenes, porque esa petición no existe en el código. Todo el proceso funciona con el cable de red desenchufado una vez cargada la aplicación. Las fotos que envías desde otra aplicación con Compartir y luego ScanPDF también se entregan dentro del dispositivo: el service worker de la aplicación responde él mismo a esa petición y no se transmite nada. Conviene conocer un caso límite: si borras los datos del sitio mientras la aplicación sigue instalada en Android, no queda nada en el dispositivo que reciba el siguiente envío, de modo que el navegador manda esas fotos al servidor web, que no las acepta. Abre la aplicación una vez después de borrar sus datos y compartir vuelve a quedarse en el dispositivo.</p>
     </section>
     <section id="verificable-no-solo-declarado">
       <h2>Verificable, no solo declarado</h2>
@@ -158,7 +158,7 @@
     </section>
     <section id="sin-cuenta-sin-telemetria-y-sin-cookies">
       <h2>Sin cuenta, sin telemetría y sin cookies</h2>
-      <p>No hay nada a lo que registrarse, así que no hay ninguna dirección de correo archivada. No hay script de analítica, ni píxel de seguimiento, ni servicio de informes de errores, ni framework de pruebas A/B. La aplicación no pone cookies ni escribe nada en el almacenamiento local: recarga la página y no queda ni rastro de la sesión.</p>
+      <p>No hay nada a lo que registrarse, así que no hay ninguna dirección de correo archivada. No hay script de analítica, ni píxel de seguimiento, ni servicio de informes de errores, ni framework de pruebas A/B. La aplicación no pone cookies. Lo que guarda en tu dispositivo se limita a tus preferencias de interfaz, como el tema y el tamaño de página, una copia de los archivos de la propia aplicación para que se abra sin conexión y, por un momento, las fotos compartidas desde otra aplicación, que se borran en cuanto se abre el escáner. Tus páginas solo existen en memoria: recarga la página y no queda ni rastro de la sesión.</p>
       <p>Más que una política, esto es una arquitectura. Una página estática sin servidor no tiene dónde guardar los datos que necesitaría para hacer un mal uso de ellos.</p>
     </section>
     <section id="pruebalo">
@@ -182,5 +182,6 @@
 </footer>
 
 <script type="module" src="../../js/menus.js"></script>
+<script type="module" src="../../js/pwa.js"></script>
 </body>
 </html>

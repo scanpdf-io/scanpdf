@@ -106,7 +106,7 @@
           "name": "Apakah bisa dipakai secara offline?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Setelah halaman dan mesin pemindai selesai dimuat, semua pemrosesan berlangsung secara lokal, jadi jaringan tidak terlibat dalam penanganan dokumen Anda. Jika Anda menginginkan lingkungan yang benar-benar terisolasi dari jaringan, jalankan kontainer yang dijelaskan di bawah - kontainer itu menyajikan seluruh aplikasi, termasuk build OpenCV, dari perangkat Anda sendiri."
+            "text": "Ya. Setelah kunjungan pertama, browser menyimpan salinan aplikasi di perangkat Anda, sehingga aplikasi tetap terbuka tanpa jaringan. Mesin pemindai, unduhan sekitar 10 MB, ikut disimpan begitu Anda memindai satu halaman atau menginstal aplikasi, dan sejak itu semuanya berfungsi secara offline. Jika Anda menginginkan lingkungan yang benar-benar terisolasi dari jaringan, jalankan kontainer yang dijelaskan di bawah - kontainer itu menyajikan seluruh aplikasi, termasuk build OpenCV, dari perangkat Anda sendiri. Anda juga dapat menginstal ScanPDF ke layar utama. Di Android, aplikasi ini lalu muncul di menu berbagi: pilih foto di galeri, ketuk Bagikan, lalu pilih ScanPDF. Di iPhone dan iPad, gunakan Tambah ke Layar Utama di menu berbagi Safari; iOS tidak mengizinkan aplikasi web menerima foto yang dibagikan, jadi di sana tambahkan foto dari dalam aplikasi."
           }
         },
         {
@@ -216,7 +216,8 @@
     </section>
     <section class="faq-item" id="apakah-bisa-dipakai-secara-offline">
       <h2>Apakah bisa dipakai secara offline?</h2>
-      <p>Setelah halaman dan mesin pemindai selesai dimuat, semua pemrosesan berlangsung secara lokal, jadi jaringan tidak terlibat dalam penanganan dokumen Anda. Jika Anda menginginkan lingkungan yang benar-benar terisolasi dari jaringan, jalankan kontainer yang dijelaskan di bawah - kontainer itu menyajikan seluruh aplikasi, termasuk build OpenCV, dari perangkat Anda sendiri.</p>
+      <p>Ya. Setelah kunjungan pertama, browser menyimpan salinan aplikasi di perangkat Anda, sehingga aplikasi tetap terbuka tanpa jaringan. Mesin pemindai, unduhan sekitar 10 MB, ikut disimpan begitu Anda memindai satu halaman atau menginstal aplikasi, dan sejak itu semuanya berfungsi secara offline. Jika Anda menginginkan lingkungan yang benar-benar terisolasi dari jaringan, jalankan kontainer yang dijelaskan di bawah - kontainer itu menyajikan seluruh aplikasi, termasuk build OpenCV, dari perangkat Anda sendiri.</p>
+      <p>Anda juga dapat menginstal ScanPDF ke layar utama. Di Android, aplikasi ini lalu muncul di menu berbagi: pilih foto di galeri, ketuk Bagikan, lalu pilih ScanPDF. Di iPhone dan iPad, gunakan Tambah ke Layar Utama di menu berbagi Safari; iOS tidak mengizinkan aplikasi web menerima foto yang dibagikan, jadi di sana tambahkan foto dari dalam aplikasi.</p>
     </section>
     <section class="faq-item" id="seberapa-bagus-hasilnya">
       <h2>Seberapa bagus hasilnya?</h2>
@@ -251,5 +252,6 @@
 </footer>
 
 <script type="module" src="../../js/menus.js"></script>
+<script type="module" src="../../js/pwa.js"></script>
 </body>
 </html>
