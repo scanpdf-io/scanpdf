@@ -377,6 +377,11 @@ def base_ctx(lang, page, title, description, og_title, og_description, og_alt, o
         "langLinks": lang_links(lang, page, href_for),
         "navLanguageLabel": loc["nav"]["languageLabel"],
     }
+    theme_ctx = {
+        "navThemeSystem": loc["nav"]["themeSystem"],
+        "navThemeLight": loc["nav"]["themeLight"],
+        "navThemeDark": loc["nav"]["themeDark"],
+    }
     ctx = dict(footer_ctx)
     ctx.update(
         {
@@ -384,6 +389,7 @@ def base_ctx(lang, page, title, description, og_title, og_description, og_alt, o
             "head": render(read(TEMPLATES / "_head.html"), head_ctx).strip(),
             "footer": render(read(TEMPLATES / "_footer.html"), footer_ctx).strip(),
             "langMenu": render(read(TEMPLATES / "_langmenu.html"), lang_menu_ctx).strip(),
+            "themeToggle": render(read(TEMPLATES / "_thememenu.html"), theme_ctx).strip(),
             "base": prefix,
             "homeHref": href_for(lang, "home"),
             "navSkipToContent": loc["nav"]["skipToContent"],

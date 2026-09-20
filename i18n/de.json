@@ -64,6 +64,9 @@
     "sectionsLabel": "Bereiche",
     "projectLabel": "Projekt",
     "languageLabel": "Sprache",
+    "themeSystem": "Design: System",
+    "themeLight": "Design: Hell",
+    "themeDark": "Design: Dunkel",
     "openScanner": "Scanner öffnen",
     "skipToContent": "Zum Inhalt springen",
     "ctaText": "Etwas zu scannen? ScanPDF läuft in dem Browser, den Sie ohnehin schon offen haben. Keine Installation, kein Konto, kein Upload."

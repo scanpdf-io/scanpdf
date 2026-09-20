@@ -64,6 +64,9 @@
     "sectionsLabel": "Sections",
     "projectLabel": "Projet",
     "languageLabel": "Langue",
+    "themeSystem": "Thème : système",
+    "themeLight": "Thème : clair",
+    "themeDark": "Thème : sombre",
     "openScanner": "Ouvrir le scanner",
     "skipToContent": "Aller au contenu",
     "ctaText": "Quelque chose à numériser ? ScanPDF fonctionne dans le navigateur que vous avez déjà ouvert. Aucune installation, aucun compte, aucun envoi."

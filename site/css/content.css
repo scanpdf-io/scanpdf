@@ -87,7 +87,7 @@ body.doc {
 .btn.primary {
   background: var(--accent);
   border-color: var(--accent);
-  color: #08101c;
+  color: var(--on-accent);
   font-weight: 600;
 }
 .btn.primary:hover { filter: brightness(1.08); }
@@ -119,7 +119,7 @@ body.doc {
   background: var(--bg-raised);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 8px 28px var(--shadow);
 }
 .lang-menu-list a {
   padding: 7px 10px;
@@ -131,6 +131,13 @@ body.doc {
 }
 .lang-menu-list a:hover { background: var(--bg-panel); color: var(--text); }
 .lang-menu-list a.current { color: var(--accent); }
+
+/* Theme switcher (same component as in app.css). */
+.theme-toggle { flex: 0 0 auto; }
+.btn.icon.theme-toggle svg { display: none; }
+:root:not([data-theme]) .theme-toggle .icon-system,
+:root[data-theme="light"] .theme-toggle .icon-light,
+:root[data-theme="dark"] .theme-toggle .icon-dark { display: block; }
 
 /* ---------- Document ---------- */
 
@@ -170,7 +177,7 @@ body.doc {
 .prose ul, .prose ol { margin: 0 0 18px 1.35em; }
 .prose li { margin-bottom: 10px; }
 .prose li::marker { color: var(--text-dim); }
-.prose strong { color: #fff; font-weight: 600; }
+.prose strong { color: var(--text); font-weight: 600; }
 
 .prose a {
   color: var(--accent);
@@ -232,3 +239,5 @@ body.doc .footer-meta { margin-left: auto; }
   .doc-main { padding-top: 22px; }
   .prose .lead { font-size: 17px; }
 }
+
+[hidden] { display: none !important; }

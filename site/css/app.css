@@ -43,7 +43,7 @@ body {
   font-size: 12px;
   color: var(--warn);
 }
-.engine-status.ready { color: #62c98a; }
+.engine-status.ready { color: var(--ok); }
 
 /* Language switcher: a <details> so it opens without JS; lang-menu.js only
    adds close-on-outside-click and Escape. */
@@ -63,7 +63,7 @@ body {
   background: var(--bg-raised);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 8px 28px var(--shadow);
 }
 .lang-menu-list a {
   padding: 7px 10px;
@@ -74,6 +74,14 @@ body {
 }
 .lang-menu-list a:hover { background: var(--bg-panel); color: var(--text); }
 .lang-menu-list a.current { color: var(--accent); }
+
+/* Theme switcher: one button cycling system -> light -> dark (theme.js). The
+   icon shown is the current mode; no data-theme on <html> means "system". */
+.theme-toggle { flex: 0 0 auto; }
+.btn.icon.theme-toggle svg { display: none; }
+:root:not([data-theme]) .theme-toggle .icon-system,
+:root[data-theme="light"] .theme-toggle .icon-light,
+:root[data-theme="dark"] .theme-toggle .icon-dark { display: block; }
 
 /* ---------- Controls ---------- */
 
@@ -87,16 +95,16 @@ body {
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
 }
-.btn:hover:not(:disabled) { background: #2b3442; border-color: #3c4757; }
+.btn:hover:not(:disabled) { background: var(--btn-hover-bg); border-color: var(--btn-hover-border); }
 .btn:disabled { opacity: 0.45; cursor: default; }
 
 .btn.primary {
   background: var(--accent);
   border-color: var(--accent);
-  color: #0b1622;
+  color: var(--on-accent);
   font-weight: 600;
 }
-.btn.primary:hover:not(:disabled) { background: #6cb4ff; border-color: #6cb4ff; }
+.btn.primary:hover:not(:disabled) { background: var(--accent-hover); border-color: var(--accent-hover); }
 
 .btn.icon {
   display: inline-flex;
@@ -191,7 +199,7 @@ select {
   min-width: 0;
 }
 .page-item .badge {
-  color: #1d1405;
+  color: var(--on-warn);
   background: var(--warn);
   border-radius: 5px;
   padding: 1px 5px;
@@ -219,9 +227,10 @@ select {
   width: 24px; height: 24px;
   display: grid; place-items: center;
   font-size: 12px;
-  color: var(--text);
+  /* Sits on top of the photo thumbnail, so it stays dark in both themes. */
+  color: #e8ecf1;
   background: rgba(10, 13, 18, 0.75);
-  border: 1px solid var(--border);
+  border: 1px solid #2e3745;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -261,7 +270,7 @@ select {
 #editor-canvas {
   touch-action: none;
   border-radius: 6px;
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 6px 30px var(--shadow);
   cursor: crosshair;
 }
 
@@ -314,7 +323,7 @@ select {
   max-width: 100%;
   max-height: 100%;
   border-radius: 3px;
-  box-shadow: 0 3px 16px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 16px var(--shadow);
 }
 .preview-hint { font-size: 11px; color: var(--text-dim); text-align: center; }
 
@@ -348,7 +357,7 @@ select {
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(8, 10, 14, 0.72);
+  background: var(--scrim);
   display: grid;
   place-items: center;
   z-index: 50;

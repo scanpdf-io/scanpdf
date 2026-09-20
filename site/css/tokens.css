@@ -1,7 +1,14 @@
 /* Design tokens shared by the scanner app (app.css) and the content pages
-   (content.css). Kept in one file so the two stay visually identical. */
+   (content.css). Kept in one file so the two stay visually identical.
+
+   Theme: dark is the base. Light applies when the OS asks for it and the user
+   has not forced dark, or when the user forced light; theme.js records a forced
+   choice as data-theme on <html>. Plain CSS cannot share one declaration block
+   between a media query and a selector, so the light palette appears twice:
+   keep the two blocks identical. */
 
 :root {
+  color-scheme: dark;
   --bg: #12151b;
   --bg-panel: #1a1f27;
   --bg-raised: #232a35;
@@ -9,8 +16,60 @@
   --text: #e8ecf1;
   --text-dim: #93a0b0;
   --accent: #4da3ff;
+  --accent-hover: #6cb4ff;
   --accent-soft: rgba(77, 163, 255, 0.18);
+  --on-accent: #0b1622;
   --warn: #ffaa3c;
+  --on-warn: #1d1405;
+  --ok: #62c98a;
+  --btn-hover-bg: #2b3442;
+  --btn-hover-border: #3c4757;
+  --shadow: rgba(0, 0, 0, 0.45);
+  --scrim: rgba(8, 10, 14, 0.72);
   --radius: 10px;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #f4f6f9;
+    --bg-panel: #ffffff;
+    --bg-raised: #eef1f5;
+    --border: #d3d9e2;
+    --text: #1a2029;
+    --text-dim: #5b6878;
+    --accent: #1a6fd6;
+    --accent-hover: #155db5;
+    --accent-soft: rgba(26, 111, 214, 0.14);
+    --on-accent: #ffffff;
+    --warn: #b86a00;
+    --on-warn: #ffffff;
+    --ok: #1f8f4e;
+    --btn-hover-bg: #e3e8ef;
+    --btn-hover-border: #b9c2cf;
+    --shadow: rgba(20, 30, 50, 0.18);
+    --scrim: rgba(20, 26, 36, 0.45);
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f4f6f9;
+  --bg-panel: #ffffff;
+  --bg-raised: #eef1f5;
+  --border: #d3d9e2;
+  --text: #1a2029;
+  --text-dim: #5b6878;
+  --accent: #1a6fd6;
+  --accent-hover: #155db5;
+  --accent-soft: rgba(26, 111, 214, 0.14);
+  --on-accent: #ffffff;
+  --warn: #b86a00;
+  --on-warn: #ffffff;
+  --ok: #1f8f4e;
+  --btn-hover-bg: #e3e8ef;
+  --btn-hover-border: #b9c2cf;
+  --shadow: rgba(20, 30, 50, 0.18);
+  --scrim: rgba(20, 26, 36, 0.45);
 }
