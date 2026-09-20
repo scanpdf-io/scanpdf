@@ -170,6 +170,7 @@ site/                 The whole site (static files, served as-is)
 │   ├── pages-ui.js   Thumbnail strip
 │   ├── state.js      App state and pub/sub
 │   ├── i18n.js       UI strings, read from the page
+│   ├── lang-menu.js  Closes the header language menu on outside click / Esc
 │   └── cv-loader.js  Lazy OpenCV.js loader
 ├── icons/ og/        App icons and the social preview image
 └── vendor/           OpenCV.js + pdf-lib (fetched at build, not committed)

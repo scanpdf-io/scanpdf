@@ -11,11 +11,11 @@
 
 <header class="site-header">
   <a class="brand" href="{{homeHref}}">
-    <span class="brand-logo" aria-hidden="true">&#9636;</span>
     <span class="brand-name">ScanPDF</span>
   </a>
   <nav class="site-nav" aria-label="{{navSectionsLabel}}">{{{navLinks}}}</nav>
   <a class="btn primary header-cta" href="{{homeHref}}">{{navOpenScanner}}</a>
+{{{langMenu}}}
 </header>
 
 <main id="content" class="doc-main">
@@ -32,5 +32,7 @@
 </main>
 
 {{{footer}}}
+
+<script type="module" src="{{base}}js/lang-menu.js"></script>
 </body>
 </html>

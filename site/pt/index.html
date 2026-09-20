@@ -84,7 +84,6 @@
 <body>
 <header class="topbar">
   <div class="brand">
-    <div class="brand-logo" aria-hidden="true">&#9636;</div>
     <div class="brand-text">
       <h1>ScanPDF</h1>
       <p class="tagline">Scanner local de documentos - nada sai do seu computador</p>
@@ -101,10 +100,12 @@
       </select>
     </label>
     <button id="save-btn" class="btn primary" disabled>Salvar PDF</button>
-    <a class="github-link" href="https://github.com/scanpdf-io/scanpdf" target="_blank" rel="noopener" title="Ver o código-fonte no GitHub">
-      <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-      <span>GitHub</span>
-    </a>
+<details class="lang-menu">
+  <summary class="btn icon" aria-label="Idioma" title="Idioma">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+  </summary>
+  <nav class="lang-menu-list" aria-label="Idioma"><a href="../" hreflang="en" lang="en">English</a><a href="../es/" hreflang="es" lang="es">Español</a><a href="../de/" hreflang="de" lang="de">Deutsch</a><a href="../pt/" hreflang="pt" lang="pt" aria-current="true" class="current">Português</a><a href="../fr/" hreflang="fr" lang="fr">Français</a></nav>
+</details>
   </div>
 </header>
 
@@ -127,8 +128,8 @@
 
   <section class="editor-pane">
     <div class="toolbar" id="page-toolbar" hidden>
-      <button id="rotate-ccw" class="btn icon" title="Girar 90 graus para a esquerda" aria-label="Girar 90 graus para a esquerda">&#10226;</button>
-      <button id="rotate-cw" class="btn icon" title="Girar 90 graus para a direita" aria-label="Girar 90 graus para a direita">&#10227;</button>
+      <button id="rotate-ccw" class="btn icon" title="Girar 90 graus para a esquerda" aria-label="Girar 90 graus para a esquerda"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+      <button id="rotate-cw" class="btn icon" title="Girar 90 graus para a direita" aria-label="Girar 90 graus para a direita"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.13-9.36L23 10"/></svg></button>
       <span class="sep"></span>
       <label class="field">
         <span>Filtro</span>
@@ -165,8 +166,6 @@
 
 <footer class="footer">
   <nav class="footer-nav" aria-label="Seções"><a href="../pt/" aria-current="page">Scanner</a><a href="../pt/como-digitalizar-documentos/">Como digitalizar</a><a href="../pt/perguntas-frequentes/">Perguntas frequentes</a><a href="../pt/digitalizar-sem-enviar/">Privacidade</a></nav>
-  <nav class="footer-langs" aria-label="Idioma"><a href="../" hreflang="en" lang="en">English</a><a href="../es/" hreflang="es" lang="es">Español</a><a href="../de/" hreflang="de" lang="de">Deutsch</a><a href="../pt/" hreflang="pt" lang="pt" aria-current="true" class="current">Português</a><a href="../fr/" hreflang="fr" lang="fr">Français</a></nav>
-  <span class="footer-privacy">Todo o processamento acontece localmente no seu navegador - seus documentos nunca são enviados para lugar nenhum.</span>
   <nav class="footer-meta" aria-label="Projeto">
     <a href="https://github.com/scanpdf-io/scanpdf" target="_blank" rel="noopener">Código-fonte</a>
     <a href="https://github.com/scanpdf-io/scanpdf/blob/main/LICENSE" target="_blank" rel="noopener">Licença MIT</a>
@@ -189,6 +188,7 @@
 <div id="i18n" hidden data-engine-loading="Carregando o motor de digitalização..." data-engine-ready="Motor pronto" data-engine-failed="Falha ao carregar o motor" data-detecting="Detectando os cantos..." data-adjust-corners="ajustar cantos" data-adjust-corners-title="A detecção automática falhou - arraste os cantos manualmente" data-move-up="Mover para cima" data-move-down="Mover para baixo" data-move-left="Mover para a esquerda" data-move-right="Mover para a direita" data-delete-page="Excluir página" data-exporting-page="Exportando a página {i} de {n}..." data-export-failed="Falha na exportação: {message}" data-pdf-title="Documento digitalizado"></div>
 
 <script src="../vendor/pdf-lib.min.js" defer></script>
+<script type="module" src="../js/lang-menu.js"></script>
 <script type="module" src="../js/main.js"></script>
 </body>
 </html>

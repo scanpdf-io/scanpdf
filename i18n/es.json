@@ -17,7 +17,6 @@
     "pageSizeLabel": "Tamaño de página",
     "pageSizeAuto": "Automático (ajustar a la hoja)",
     "savePdf": "Guardar PDF",
-    "githubTitle": "Ver el código fuente en GitHub",
     "addPhotos": "Añadir fotos",
     "takePhoto": "Hacer foto",
     "viewEditor": "Editor",
@@ -77,7 +76,6 @@
     "Procesamiento totalmente local: sin subir archivos ni crear cuenta"
   ],
   "footer": {
-    "privacy": "Todo el procesamiento ocurre localmente en tu navegador: tus documentos nunca se suben a ningún sitio.",
     "source": "Código fuente",
     "license": "Licencia MIT",
     "issues": "Informar de un problema"

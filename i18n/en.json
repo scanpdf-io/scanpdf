@@ -17,7 +17,6 @@
     "pageSizeLabel": "Page size",
     "pageSizeAuto": "Auto (fit sheet)",
     "savePdf": "Save PDF",
-    "githubTitle": "View source on GitHub",
     "addPhotos": "Add photos",
     "takePhoto": "Take photo",
     "viewEditor": "Editor",
@@ -77,7 +76,6 @@
     "Fully client-side processing: no upload and no account"
   ],
   "footer": {
-    "privacy": "All processing happens locally in your browser - your documents are never uploaded.",
     "source": "Source code",
     "license": "MIT License",
     "issues": "Report an issue"

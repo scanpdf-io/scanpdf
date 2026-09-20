@@ -367,14 +367,15 @@ def base_ctx(lang, page, title, description, og_title, og_description, og_alt, o
     }
     footer_ctx = {
         "navLinks": nav_links(lang, page, href_for),
-        "langLinks": lang_links(lang, page, href_for),
         "navSectionsLabel": loc["nav"]["sectionsLabel"],
-        "navLanguageLabel": loc["nav"]["languageLabel"],
         "navProjectLabel": loc["nav"]["projectLabel"],
-        "footerPrivacy": loc["footer"]["privacy"],
         "footerSource": loc["footer"]["source"],
         "footerLicense": loc["footer"]["license"],
         "footerIssues": loc["footer"]["issues"],
+    }
+    lang_menu_ctx = {
+        "langLinks": lang_links(lang, page, href_for),
+        "navLanguageLabel": loc["nav"]["languageLabel"],
     }
     ctx = dict(footer_ctx)
     ctx.update(
@@ -382,7 +383,8 @@ def base_ctx(lang, page, title, description, og_title, og_description, og_alt, o
             "lang": lang,
             "head": render(read(TEMPLATES / "_head.html"), head_ctx).strip(),
             "footer": render(read(TEMPLATES / "_footer.html"), footer_ctx).strip(),
-            "base": base_prefix(lang, page),
+            "langMenu": render(read(TEMPLATES / "_langmenu.html"), lang_menu_ctx).strip(),
+            "base": prefix,
             "homeHref": href_for(lang, "home"),
             "navSkipToContent": loc["nav"]["skipToContent"],
             "navOpenScanner": loc["nav"]["openScanner"],
