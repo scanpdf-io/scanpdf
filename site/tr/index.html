@@ -114,6 +114,9 @@
   <symbol id="i-arrow-down" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
   <symbol id="i-install" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="7" x2="12" y2="15"/><polyline points="8.5 11.5 12 15 15.5 11.5"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="i-split-v" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="12" y1="2" x2="12" y2="22"/></symbol>
+  <symbol id="i-split-h" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="2" y1="12" x2="22" y2="12"/></symbol>
   <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
 </svg>
 
@@ -221,6 +224,7 @@
         <canvas id="editor-canvas" hidden></canvas>
       </div>
       <p class="editor-hint" id="editor-hint" hidden>Köşeleri kâğıdın kenarlarına sürükleyin</p>
+      <p class="editor-hint" id="split-hint" hidden>Çizginin uçlarını sayfaların birleştiği yere sürükleyin</p>
     </section>
 
     <section class="pane preview-pane">
@@ -248,12 +252,26 @@
           <button id="filter-all" type="button" title="Bu filtreyi ve ışık ayarını tüm sayfalara uygula"><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg>Tümüne uygula</button>
           <button id="redetect-btn" type="button" title="Otomatik köşe algılamayı yeniden çalıştır"><svg class="ico" aria-hidden="true"><use href="#i-scan"/></svg>Yeniden algıla</button>
           <button id="reset-corners-btn" type="button" title="Köşeleri fotoğrafın tamamını kaplayacak şekilde sıfırla"><svg class="ico" aria-hidden="true"><use href="#i-maximize"/></svg>Köşeleri sıfırla</button>
+          <button id="split-btn" type="button" title="Fotoğrafı bir çizgi boyunca iki sayfaya böl, örneğin açık bir kitap"><svg class="ico" aria-hidden="true"><use href="#i-split-v"/></svg>İki sayfaya böl</button>
           <div class="menu-sep"></div>
+          <button id="duplicate-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>Sayfayı çoğalt</button>
           <button id="move-earlier-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg>Sayfayı öne taşı</button>
           <button id="move-later-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-arrow-down"/></svg>Sayfayı arkaya taşı</button>
           <button id="menu-delete-btn" class="danger menu-delete" type="button"><svg class="ico" aria-hidden="true"><use href="#i-trash"/></svg>Sayfayı sil</button>
         </div>
       </details>
+    </div>
+
+    <!-- Takes the dock's place while a page is being split (state.split). -->
+    <div class="dock split-bar" id="split-toolbar" role="toolbar" aria-label="İki sayfaya böl" hidden>
+      <fieldset class="seg" id="split-dir-group">
+        <legend class="sr-only">Bölme çizgisinin yönü</legend>
+        <label title="Sol ve sağ olarak böl"><input type="radio" name="split-dir" value="v" aria-label="Sol ve sağ olarak böl" checked><span><svg class="ico" aria-hidden="true"><use href="#i-split-v"/></svg></span></label>
+        <label title="Üst ve alt olarak böl"><input type="radio" name="split-dir" value="h" aria-label="Üst ve alt olarak böl"><span><svg class="ico" aria-hidden="true"><use href="#i-split-h"/></svg></span></label>
+      </fieldset>
+      <span class="dock-sep" aria-hidden="true"></span>
+      <button id="split-cancel-btn" class="btn icon ghost" type="button" title="İptal" aria-label="İptal"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+      <button id="split-apply-btn" class="btn primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>Böl</span></button>
     </div>
   </div>
 </main>
@@ -287,7 +305,7 @@
 
 <!-- Strings needed by the JS modules. An inline <script> would be blocked by
      the container's script-src 'self' CSP, so they travel as data attributes. -->
-<div id="i18n" hidden data-engine-loading="Tarama motoru yükleniyor..." data-engine-failed="Tarama motoru yüklenemedi" data-detecting="Köşeler algılanıyor..." data-adjust-corners="köşeleri ayarla" data-adjust-corners-title="Otomatik algılama başarısız oldu - köşeleri elle sürükleyin" data-delete-page="Sayfayı sil" data-exporting-page="Sayfa {i} / {n} dışa aktarılıyor..." data-compressing-page="Sayfa {i} / {n} sıkıştırılıyor..." data-export-failed="Dışa aktarma başarısız: {message}" data-pdf-title="Taranmış belge" data-image-load-failed="Dosya açılamadı: {name}" data-files-skipped="Atlanan dosya sayısı: {n}. Yalnızca görseller desteklenir" data-export-done="PDF kaydedildi - {size}" data-export-over-target="{size} olarak kaydedildi - sayfalar okunaksız hale gelmeden {target} boyutuna inilemedi" data-dismiss="Kapat" data-page-label="Sayfa {i} / {n}" data-page-moved="Sayfa taşındı, yeni konum: {i} / {n}" data-offline-ready="Çevrimdışı çalışmaya hazır" data-share-failed="Paylaşılan fotoğraflar alınamadı"></div>
+<div id="i18n" hidden data-engine-loading="Tarama motoru yükleniyor..." data-engine-failed="Tarama motoru yüklenemedi" data-detecting="Köşeler algılanıyor..." data-adjust-corners="köşeleri ayarla" data-adjust-corners-title="Otomatik algılama başarısız oldu - köşeleri elle sürükleyin" data-delete-page="Sayfayı sil" data-exporting-page="Sayfa {i} / {n} dışa aktarılıyor..." data-compressing-page="Sayfa {i} / {n} sıkıştırılıyor..." data-export-failed="Dışa aktarma başarısız: {message}" data-pdf-title="Taranmış belge" data-image-load-failed="Dosya açılamadı: {name}" data-files-skipped="Atlanan dosya sayısı: {n}. Yalnızca görseller desteklenir" data-export-done="PDF kaydedildi - {size}" data-export-over-target="{size} olarak kaydedildi - sayfalar okunaksız hale gelmeden {target} boyutuna inilemedi" data-dismiss="Kapat" data-page-label="Sayfa {i} / {n}" data-page-moved="Sayfa taşındı, yeni konum: {i} / {n}" data-page-duplicated="Sayfa çoğaltıldı, kopyanın konumu: {i} / {n}" data-page-split="Sayfa bölündü, yeni sayfalar: {i} ve {j} / {n}" data-offline-ready="Çevrimdışı çalışmaya hazır" data-share-failed="Paylaşılan fotoğraflar alınamadı"></div>
 
 <script src="../vendor/pdf-lib.min.js" defer></script>
 <script type="module" src="../js/menus.js"></script>

@@ -28,6 +28,12 @@ processing: your documents never leave your machine.
 - **Even out lighting** — a per-page switch that removes shadows and the
   shading along a book's spine under any filter, by dividing the page by an
   estimate of the bare paper's brightness.
+- **Split a spread into two pages** — one photo of an open book becomes two
+  pages: place the dividing line (vertical or horizontal, at any angle) and
+  each half is straightened on its own. Nothing is cut, so the corners of both
+  halves stay adjustable.
+- **Duplicate pages** — a copy shares the photo with the original, so it
+  costs no extra memory.
 - **Multi-page PDF export** — reorder and delete pages, then save a single
   PDF assembled locally with pdf-lib.
 - **Fit a file size limit** — pick a maximum (10 MB down to 200 KB) and the
@@ -52,7 +58,8 @@ processing: your documents never leave your machine.
    failed get a warning badge on their thumbnail.
 3. In the editor, drag the corner handles (a loupe appears for precision),
    rotate pages and pick a filter. Drag the thumbnails to reorder pages
-   (or Alt + arrow keys), and delete the ones you do not need.
+   (or Alt + arrow keys), and delete the ones you do not need. The **⋯** menu
+   has **Split into two pages** for book spreads and **Duplicate page**.
 4. Choose the page size (Auto, or an exact format such as A4, Letter or a
    bank card) and, if the file has to stay
    under a limit, a maximum file size, then click **Save PDF**.
@@ -203,7 +210,8 @@ site/                 The whole site (static files, served as-is)
 │   ├── pwa.js        Service worker registration, updates, install button
 │   ├── share-target.js  Picks up photos shared from another app
 │   ├── detect.js     Multi-strategy corner detection
-│   ├── editor.js     Corner editor with loupe and live preview
+│   ├── editor.js     Corner editor with loupe and live preview, split line
+│   ├── split.js      Geometry of splitting a page in two
 │   ├── warp.js       Perspective warp and page sizing
 │   ├── formats.js    Page formats (paper, cards, photos…) in millimetres
 │   ├── filters.js    Color / grayscale / B&W filters, lighting correction, rotation

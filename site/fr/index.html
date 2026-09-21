@@ -114,6 +114,9 @@
   <symbol id="i-arrow-down" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
   <symbol id="i-install" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="7" x2="12" y2="15"/><polyline points="8.5 11.5 12 15 15.5 11.5"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="i-split-v" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="12" y1="2" x2="12" y2="22"/></symbol>
+  <symbol id="i-split-h" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="2" y1="12" x2="22" y2="12"/></symbol>
   <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
 </svg>
 
@@ -221,6 +224,7 @@
         <canvas id="editor-canvas" hidden></canvas>
       </div>
       <p class="editor-hint" id="editor-hint" hidden>Faites glisser les coins jusqu&#x27;aux bords de la feuille</p>
+      <p class="editor-hint" id="split-hint" hidden>Faites glisser les extrémités de la ligne jusqu&#x27;à la jonction des pages</p>
     </section>
 
     <section class="pane preview-pane">
@@ -248,12 +252,26 @@
           <button id="filter-all" type="button" title="Appliquer ce filtre et le réglage d&#x27;éclairage à toutes les pages"><svg class="ico" aria-hidden="true"><use href="#i-layers"/></svg>Appliquer à tout</button>
           <button id="redetect-btn" type="button" title="Relancer la détection automatique des coins"><svg class="ico" aria-hidden="true"><use href="#i-scan"/></svg>Détecter à nouveau</button>
           <button id="reset-corners-btn" type="button" title="Ramener les coins au cadre complet"><svg class="ico" aria-hidden="true"><use href="#i-maximize"/></svg>Réinitialiser les coins</button>
+          <button id="split-btn" type="button" title="Diviser la photo en deux pages le long d&#x27;une ligne, par exemple un livre ouvert"><svg class="ico" aria-hidden="true"><use href="#i-split-v"/></svg>Diviser en deux pages</button>
           <div class="menu-sep"></div>
+          <button id="duplicate-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>Dupliquer la page</button>
           <button id="move-earlier-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg>Déplacer la page vers le début</button>
           <button id="move-later-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-arrow-down"/></svg>Déplacer la page vers la fin</button>
           <button id="menu-delete-btn" class="danger menu-delete" type="button"><svg class="ico" aria-hidden="true"><use href="#i-trash"/></svg>Supprimer la page</button>
         </div>
       </details>
+    </div>
+
+    <!-- Takes the dock's place while a page is being split (state.split). -->
+    <div class="dock split-bar" id="split-toolbar" role="toolbar" aria-label="Diviser en deux pages" hidden>
+      <fieldset class="seg" id="split-dir-group">
+        <legend class="sr-only">Direction de la ligne de séparation</legend>
+        <label title="Diviser en gauche et droite"><input type="radio" name="split-dir" value="v" aria-label="Diviser en gauche et droite" checked><span><svg class="ico" aria-hidden="true"><use href="#i-split-v"/></svg></span></label>
+        <label title="Diviser en haut et bas"><input type="radio" name="split-dir" value="h" aria-label="Diviser en haut et bas"><span><svg class="ico" aria-hidden="true"><use href="#i-split-h"/></svg></span></label>
+      </fieldset>
+      <span class="dock-sep" aria-hidden="true"></span>
+      <button id="split-cancel-btn" class="btn icon ghost" type="button" title="Annuler" aria-label="Annuler"><svg class="ico" aria-hidden="true"><use href="#i-x"/></svg></button>
+      <button id="split-apply-btn" class="btn primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span>Diviser</span></button>
     </div>
   </div>
 </main>
@@ -287,7 +305,7 @@
 
 <!-- Strings needed by the JS modules. An inline <script> would be blocked by
      the container's script-src 'self' CSP, so they travel as data attributes. -->
-<div id="i18n" hidden data-engine-loading="Chargement du moteur de numérisation..." data-engine-failed="Le moteur n&#x27;a pas pu être chargé" data-detecting="Détection des coins..." data-adjust-corners="ajuster les coins" data-adjust-corners-title="La détection automatique a échoué - faites glisser les coins à la main" data-delete-page="Supprimer la page" data-exporting-page="Exportation de la page {i} sur {n}..." data-compressing-page="Compression de la page {i} sur {n}..." data-export-failed="Échec de l&#x27;exportation : {message}" data-pdf-title="Document numérisé" data-image-load-failed="Impossible d&#x27;ouvrir {name}" data-files-skipped="Fichiers ignorés : {n}. Seules les images sont prises en charge" data-export-done="PDF enregistré - {size}" data-export-over-target="Enregistré à {size} - impossible de descendre à {target} sans rendre les pages illisibles" data-dismiss="Fermer" data-page-label="Page {i} sur {n}" data-page-moved="Page déplacée en position {i} sur {n}" data-offline-ready="Prêt à fonctionner hors ligne" data-share-failed="Impossible de recevoir les photos partagées"></div>
+<div id="i18n" hidden data-engine-loading="Chargement du moteur de numérisation..." data-engine-failed="Le moteur n&#x27;a pas pu être chargé" data-detecting="Détection des coins..." data-adjust-corners="ajuster les coins" data-adjust-corners-title="La détection automatique a échoué - faites glisser les coins à la main" data-delete-page="Supprimer la page" data-exporting-page="Exportation de la page {i} sur {n}..." data-compressing-page="Compression de la page {i} sur {n}..." data-export-failed="Échec de l&#x27;exportation : {message}" data-pdf-title="Document numérisé" data-image-load-failed="Impossible d&#x27;ouvrir {name}" data-files-skipped="Fichiers ignorés : {n}. Seules les images sont prises en charge" data-export-done="PDF enregistré - {size}" data-export-over-target="Enregistré à {size} - impossible de descendre à {target} sans rendre les pages illisibles" data-dismiss="Fermer" data-page-label="Page {i} sur {n}" data-page-moved="Page déplacée en position {i} sur {n}" data-page-duplicated="Page dupliquée : désormais page {i} sur {n}" data-page-split="Page divisée en pages {i} et {j} sur {n}" data-offline-ready="Prêt à fonctionner hors ligne" data-share-failed="Impossible de recevoir les photos partagées"></div>
 
 <script src="../vendor/pdf-lib.min.js" defer></script>
 <script type="module" src="../js/menus.js"></script>

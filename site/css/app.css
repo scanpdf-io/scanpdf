@@ -161,6 +161,9 @@ h1.brand { font-size: inherit; font-weight: inherit; }
   animation: spin 0.9s linear infinite;
 }
 .preview-wrap.is-loading #preview-canvas { display: none; }
+/* While a page is being split the canvas holds both halves with a gap
+   between them, so the sheet shadow around the whole canvas would be wrong. */
+.preview-wrap.is-split #preview-canvas { border-radius: 0; box-shadow: none; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* One-time tip, gone after the first corner drag (editor.js). */
@@ -237,6 +240,11 @@ h1.brand { font-size: inherit; font-weight: inherit; }
   box-shadow: var(--shadow-1);
 }
 .seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 1px; }
+.seg .ico { width: 18px; height: 18px; }
+
+/* Split bar: stands in for the dock while a page is being split. */
+.split-bar .btn.primary { margin-left: 4px; padding: 0 16px 0 12px; }
+.split-bar .btn.primary .ico { width: 18px; height: 18px; }
 
 /* ---------- Rail (page thumbnails) ---------- */
 
@@ -696,6 +704,9 @@ h1.brand { font-size: inherit; font-weight: inherit; }
   .menu-list .menu-rotate { display: flex; }
   .dock .dock-sep { margin: 0 2px; }
   .seg span { min-width: 46px; padding: 0 8px; }
+  /* The menu opens upwards from the dock, which sits mid-screen here: keep
+     it below the top of the viewport, scrolling inside if it has to. */
+  .dock .menu-list { max-height: min(55vh, 420px); }
 
   /* Rail becomes a horizontal strip under the dock. */
   .rail {

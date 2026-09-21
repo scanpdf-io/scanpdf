@@ -1,11 +1,14 @@
 // Corner editor: the source photo with a draggable quad overlay and a loupe
-// while dragging, plus the debounced live "scan preview" pane.
+// while dragging, plus the debounced live "scan preview" pane. While a page
+// is being split (state.split) the corners rest and the dividing line is
+// dragged instead: either end along its edge of the quad, or the whole line.
 
 import { state, selectedPage, subscribe, emit } from './state.js';
 import { cvReady } from './cv-loader.js';
 import { computeOutputSize, warpToCanvas } from './warp.js';
 import { applyFilter, rotateCanvas } from './filters.js';
 import { overlayColors } from './icons.js';
+import { splitEdges, splitLine, splitQuads, projectOnEdge } from './split.js';
 
 // Finger-friendly sizes on touch devices; the loupe sits further from the
 // corner so the dragging finger does not cover it.
@@ -16,6 +19,8 @@ const TOUCH_HIT_R = 40;
 const LOUPE_R = COARSE ? 78 : 65;
 const LOUPE_OFFSET = COARSE ? 130 : 90;
 const PREVIEW_MAX_SIDE = 900;
+const LINE_HIT = COARSE ? 18 : 10; // grabbing the dividing line between its handles
+const PREVIEW_GAP = 0.03; // between the halves of a split preview, of the longer side
 
 // Corner dragging is relative to the grab point, scaled down so the corner
 // moves slower than the finger/cursor — the finger no longer has to sit
@@ -32,12 +37,16 @@ try {
   hintSeen = localStorage.getItem(HINT_KEY) === '1';
 } catch (_) { /* ignore */ }
 
-let canvas, ctx, wrap, stage, dropzone, hint, previewCanvas, previewWrap;
+let canvas, ctx, wrap, stage, dropzone, hint, splitHint, previewCanvas, previewWrap;
 let viewScale = 1; // fullBitmap px -> CSS px
 let viewW = 0;
 let viewH = 0;
-let drag = null; // { index, gain, startX, startY, origViewX, origViewY }
+// A corner: { kind: 'corner', index, gain, startX, startY, origViewX, origViewY }
+// The dividing line: { kind: 'split', ends, gain, startX, startY, orig }, where
+// ends lists the ends being moved (0, 1 or both) and orig their view positions.
+let drag = null;
 let lastPageId = null;
+let lastSplit = false;
 let previewTimer = 0;
 
 export function initEditor() {
@@ -48,6 +57,7 @@ export function initEditor() {
   previewWrap = document.getElementById('preview-wrap');
   dropzone = document.getElementById('dropzone');
   hint = document.getElementById('editor-hint');
+  splitHint = document.getElementById('split-hint');
   previewCanvas = document.getElementById('preview-canvas');
 
   canvas.addEventListener('pointerdown', onPointerDown);
@@ -68,11 +78,15 @@ function onState() {
   const id = page ? page.id : null;
   dropzone.hidden = !!page;
   canvas.hidden = !page;
-  hint.hidden = !page || hintSeen;
-  if (id !== lastPageId) {
+  const splitting = !!state.split;
+  hint.hidden = !page || hintSeen || splitting;
+  splitHint.hidden = !page || !splitting;
+  if (id !== lastPageId || splitting !== lastSplit) {
+    const pageChanged = id !== lastPageId;
     lastPageId = id;
-    drag = null;
-    fit();
+    lastSplit = splitting;
+    endDrag();
+    if (pageChanged) fit();
   }
   render();
   schedulePreview();
@@ -132,21 +146,54 @@ function render() {
   ctx.lineWidth = 2;
   ctx.stroke();
 
-  // Corner handles.
-  for (let i = 0; i < 4; i++) {
-    ctx.beginPath();
-    ctx.arc(pts[i].x, pts[i].y, HANDLE_R, 0, Math.PI * 2);
-    ctx.fillStyle = drag && drag.index === i ? colors.accent : colors.handle;
-    ctx.fill();
-    ctx.strokeStyle = colors.accent;
-    ctx.lineWidth = 2.5;
-    ctx.stroke();
+  if (state.split) {
+    renderSplit(page, colors);
+    return;
   }
 
-  if (drag) drawLoupe(page, pts[drag.index], page.corners[drag.index]);
+  // Corner handles.
+  for (let i = 0; i < 4; i++) drawHandle(pts[i], !!drag && drag.index === i, colors);
+
+  if (drag && drag.kind === 'corner') drawLoupe(page, pts[drag.index], page.corners[drag.index]);
 }
 
-function drawLoupe(page, viewPt, fullPt) {
+function drawHandle(p, active, colors) {
+  ctx.beginPath();
+  ctx.arc(p.x, p.y, HANDLE_R, 0, Math.PI * 2);
+  ctx.fillStyle = active ? colors.accent : colors.handle;
+  ctx.fill();
+  ctx.strokeStyle = colors.accent;
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+}
+
+// Split mode: the dividing line and its two handles instead of the corners.
+function renderSplit(page, colors) {
+  const line = splitLine(page.corners, state.split);
+  const ends = line.map(toView);
+
+  // A dark casing keeps the dashes visible on white paper and on dark desks.
+  ctx.beginPath();
+  ctx.moveTo(ends[0].x, ends[0].y);
+  ctx.lineTo(ends[1].x, ends[1].y);
+  ctx.strokeStyle = 'rgba(0, 0, 0, 0.45)';
+  ctx.lineWidth = 4;
+  ctx.stroke();
+  ctx.save();
+  ctx.setLineDash([8, 6]);
+  ctx.strokeStyle = colors.accent;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.restore();
+
+  const moving = drag && drag.kind === 'split' ? drag.ends : [];
+  ends.forEach((p, i) => drawHandle(p, moving.includes(i), colors));
+
+  // The loupe follows a single end; a whole-line drag has no one spot to show.
+  if (moving.length === 1) drawLoupe(page, ends[moving[0]], line[moving[0]], line);
+}
+
+function drawLoupe(page, viewPt, fullPt, extraLine) {
   const colors = overlayColors();
   const zoom = Math.min(3, Math.max(1.5, viewScale * 4)); // source px -> CSS px
   const cx = Math.min(Math.max(viewPt.x, LOUPE_R + 4), viewW - LOUPE_R - 4);
@@ -181,6 +228,20 @@ function drawLoupe(page, viewPt, fullPt) {
   ctx.lineWidth = 1.5;
   ctx.stroke();
 
+  // The dividing line through the loupe.
+  if (extraLine) {
+    ctx.beginPath();
+    extraLine.forEach((c, i) => {
+      const lx = cx + (c.x - fullPt.x) * zoom;
+      const ly = cy + (c.y - fullPt.y) * zoom;
+      if (i === 0) ctx.moveTo(lx, ly);
+      else ctx.lineTo(lx, ly);
+    });
+    ctx.strokeStyle = colors.accent;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+
   // Crosshair.
   ctx.beginPath();
   ctx.moveTo(cx - 12, cy);
@@ -202,6 +263,10 @@ function drawLoupe(page, viewPt, fullPt) {
 function onPointerDown(e) {
   const page = selectedPage();
   if (!page) return;
+  if (state.split) {
+    startSplitDrag(page, e);
+    return;
+  }
   const pts = page.corners.map(toView);
   let index = -1;
   let best = e.pointerType === 'touch' ? TOUCH_HIT_R : HIT_R;
@@ -216,6 +281,7 @@ function onPointerDown(e) {
   // Anchor on the grab point and the corner's current position; the corner
   // does not snap under the finger, it only follows scaled-down movement.
   drag = {
+    kind: 'corner',
     index,
     gain: e.pointerType === 'touch' ? DRAG_GAIN_TOUCH : DRAG_GAIN_MOUSE,
     startX: e.offsetX,
@@ -231,16 +297,22 @@ function onPointerDown(e) {
 function onPointerMove(e) {
   const page = selectedPage();
   if (!drag || !page) return;
-  moveCorner(page, e);
+  if (drag.kind === 'split') moveSplit(page, e);
+  else moveCorner(page, e);
+}
+
+function endDrag() {
+  drag = null;
+  stage.classList.remove('corner-dragging');
 }
 
 function onPointerUp() {
   if (!drag) return;
-  drag = null;
-  stage.classList.remove('corner-dragging');
+  const wasCorner = drag.kind === 'corner';
+  endDrag();
   // Retire the tip only now: hiding it resizes the canvas, which must not
   // happen under a finger that is still dragging.
-  if (!hintSeen) {
+  if (wasCorner && !hintSeen) {
     hintSeen = true;
     hint.hidden = true;
     try {
@@ -259,6 +331,63 @@ function moveCorner(page, e) {
     x: Math.min(Math.max(vx / viewScale, 0), bmp.width),
     y: Math.min(Math.max(vy / viewScale, 0), bmp.height),
   };
+  render();
+  schedulePreview();
+}
+
+// Either handle, or the line between them, which moves both ends at once.
+function startSplitDrag(page, e) {
+  const orig = splitLine(page.corners, state.split).map(toView);
+  const touch = e.pointerType === 'touch';
+  let ends = null;
+  let best = touch ? TOUCH_HIT_R : HIT_R;
+  orig.forEach((p, i) => {
+    const dist = Math.hypot(p.x - e.offsetX, p.y - e.offsetY);
+    if (dist <= best) {
+      best = dist;
+      ends = [i];
+    }
+  });
+  if (!ends) {
+    const t = projectOnSegment({ x: e.offsetX, y: e.offsetY }, orig[0], orig[1]);
+    const nx = orig[0].x + (orig[1].x - orig[0].x) * t;
+    const ny = orig[0].y + (orig[1].y - orig[0].y) * t;
+    if (Math.hypot(nx - e.offsetX, ny - e.offsetY) > (touch ? LINE_HIT * 1.5 : LINE_HIT)) return;
+    ends = [0, 1];
+  }
+  drag = {
+    kind: 'split',
+    ends,
+    gain: touch ? DRAG_GAIN_TOUCH : DRAG_GAIN_MOUSE,
+    startX: e.offsetX,
+    startY: e.offsetY,
+    orig,
+  };
+  canvas.setPointerCapture(e.pointerId);
+  stage.classList.add('corner-dragging');
+  render();
+}
+
+function projectOnSegment(pt, p0, p1) {
+  const dx = p1.x - p0.x;
+  const dy = p1.y - p0.y;
+  const len2 = dx * dx + dy * dy;
+  if (len2 === 0) return 0;
+  return Math.min(Math.max(((pt.x - p0.x) * dx + (pt.y - p0.y) * dy) / len2, 0), 1);
+}
+
+// Same slowed-down relative movement as a corner, then snapped onto the edge
+// of the quad that this end of the line lives on.
+function moveSplit(page, e) {
+  const split = state.split;
+  if (!split) return;
+  const edges = splitEdges(page.corners, split.dir);
+  const dx = (e.offsetX - drag.startX) * drag.gain;
+  const dy = (e.offsetY - drag.startY) * drag.gain;
+  for (const i of drag.ends) {
+    const target = { x: (drag.orig[i].x + dx) / viewScale, y: (drag.orig[i].y + dy) / viewScale };
+    split[i === 0 ? 'a' : 'b'] = projectOnEdge(target, edges[i][0], edges[i][1]);
+  }
   render();
   schedulePreview();
 }
@@ -285,12 +414,42 @@ async function renderPreview() {
   const cv = await cvReady();
   if (selectedPage() !== page) return; // selection changed while loading
   const procCorners = page.corners.map((c) => ({ x: c.x / page.scale, y: c.y / page.scale }));
+  const split = state.split;
+  previewWrap.classList.toggle('is-split', !!split);
+  if (split) {
+    drawSplitPreview(cv, page, splitQuads(procCorners, split, page.rotation), split.dir);
+  } else {
+    const out = renderQuad(cv, page, procCorners);
+    previewCanvas.width = out.width;
+    previewCanvas.height = out.height;
+    previewCanvas.getContext('2d').drawImage(out, 0, 0);
+  }
+  previewWrap.classList.remove('is-loading');
+}
+
+function renderQuad(cv, page, procCorners) {
   const { w, h } = computeOutputSize(procCorners, state.pageFormat, PREVIEW_MAX_SIDE);
   let out = warpToCanvas(cv, page.procCanvas, procCorners, w, h);
   out = applyFilter(cv, out, page.filter, page.deshadow);
-  out = rotateCanvas(out, page.rotation);
-  previewCanvas.width = out.width;
-  previewCanvas.height = out.height;
-  previewCanvas.getContext('2d').drawImage(out, 0, 0);
-  previewWrap.classList.remove('is-loading');
+  return rotateCanvas(out, page.rotation);
+}
+
+// Both future pages in reading order, laid out the way they lie in the photo
+// once it is rotated: side by side, or one above the other.
+function drawSplitPreview(cv, page, quads, dir) {
+  const [a, b] = quads.map((q) => renderQuad(cv, page, q));
+  const sideBySide = (dir === 'v') === (page.rotation % 180 === 0);
+  const gap = Math.round(Math.max(a.width, a.height, b.width, b.height) * PREVIEW_GAP);
+  const pctx = previewCanvas.getContext('2d');
+  if (sideBySide) {
+    previewCanvas.width = a.width + gap + b.width;
+    previewCanvas.height = Math.max(a.height, b.height);
+    pctx.drawImage(a, 0, Math.round((previewCanvas.height - a.height) / 2));
+    pctx.drawImage(b, a.width + gap, Math.round((previewCanvas.height - b.height) / 2));
+  } else {
+    previewCanvas.width = Math.max(a.width, b.width);
+    previewCanvas.height = a.height + gap + b.height;
+    pctx.drawImage(a, Math.round((previewCanvas.width - a.width) / 2), 0);
+    pctx.drawImage(b, Math.round((previewCanvas.width - b.width) / 2), a.height + gap);
+  }
 }

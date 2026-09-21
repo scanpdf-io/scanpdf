@@ -1,11 +1,15 @@
 // Bootstrap: file intake (picker + drag&drop + share target), EXIF-corrected
 // decoding, downscaling, the sequential detection queue, and toolbar wiring.
 
-import { state, subscribe, emit, getPage, selectedPage, indexOfPage, movePage, removePage } from './state.js';
+import {
+  state, subscribe, emit, getPage, selectedPage, indexOfPage, movePage, removePage,
+  duplicatePage, enterSplit, setSplitDir, cancelSplit, applySplit,
+} from './state.js';
 import { cvReady } from './cv-loader.js';
 import { detectCorners, fallbackCorners } from './detect.js';
 import { initEditor, schedulePreview } from './editor.js';
 import { initPagesUI } from './pages-ui.js';
+import { isReordering } from './reorder.js';
 import { exportPdf } from './export.js';
 import { t } from './i18n.js';
 import { formatBytes } from './format.js';
@@ -24,6 +28,8 @@ const fileInput = $('file-input');
 const cameraInput = $('camera-input');
 const saveBtn = $('save-btn');
 const toolbar = $('page-toolbar');
+const splitBar = $('split-toolbar');
+const splitDirInputs = Array.from(document.querySelectorAll('input[name="split-dir"]'));
 const filterInputs = Array.from(document.querySelectorAll('input[name="filter"]'));
 const deshadowBtn = $('deshadow-btn');
 const exportOverlay = $('export-overlay');
@@ -348,6 +354,15 @@ function setupToolbar() {
     $(id).addEventListener('click', () => removePage(state.selectedId));
   }
 
+  // Not while a thumbnail is being dragged: the drop is committed by index,
+  // and a page inserted meanwhile would shift it (same for the split below).
+  $('duplicate-btn').addEventListener('click', () => {
+    if (isReordering()) return;
+    const i = duplicatePage(state.selectedId);
+    if (i >= 0) announce(t('pageDuplicated', { i: i + 1, n: state.pages.length }));
+  });
+  setupSplit();
+
   rememberSelect($('page-format'), PAGE_FORMAT_KEY, (value, changed) => {
     state.pageFormat = value;
     if (changed) emit();
@@ -355,6 +370,44 @@ function setupToolbar() {
   setupTargetSize();
 
   saveBtn.addEventListener('click', onSave);
+}
+
+// Splitting is a mode of the editor (state.split): the split bar replaces the
+// dock until the line is confirmed or dropped.
+function setupSplit() {
+  const moreSummary = document.querySelector('#more-menu > summary');
+
+  $('split-btn').addEventListener('click', () => {
+    if (isReordering() || !enterSplit(state.selectedId)) return;
+    setPreviewMode(false); // phones: the line is drawn in the editor pane
+    $('split-apply-btn').focus(); // Enter confirms
+  });
+  for (const input of splitDirInputs) {
+    input.addEventListener('change', () => {
+      if (input.checked) setSplitDir(input.value);
+    });
+  }
+  const cancel = () => {
+    cancelSplit();
+    moreSummary.focus();
+  };
+  $('split-cancel-btn').addEventListener('click', cancel);
+  $('split-apply-btn').addEventListener('click', () => {
+    if (isReordering()) return;
+    const i = applySplit();
+    if (i < 0) return;
+    announce(t('pageSplit', { i: i + 1, j: i + 2, n: state.pages.length }));
+    moreSummary.focus();
+  });
+
+  // Escape leaves the mode, unless it is already closing a menu (menus.js)
+  // or something else owns the screen.
+  window.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || !state.split) return;
+    if (document.querySelector('details.menu[open]') || isReordering() || !exportOverlay.hidden) return;
+    e.preventDefault();
+    cancel();
+  }, true);
 }
 
 // The export settings are remembered between visits: whoever needs A5, or
@@ -454,8 +507,15 @@ function syncEmptyState() {
 
 function syncControls() {
   const page = selectedPage();
-  toolbar.hidden = !page;
+  toolbar.hidden = !page || !!state.split;
+  splitBar.hidden = !page || !state.split;
+  if (state.split) {
+    for (const input of splitDirInputs) input.checked = input.value === state.split.dir;
+  }
   if (page) {
+    // A page still queued for detection would get its corners overwritten.
+    $('duplicate-btn').disabled = page.detecting;
+    $('split-btn').disabled = page.detecting;
     for (const input of filterInputs) input.checked = input.value === page.filter;
     // B&W evens the light by itself. The page keeps its own choice, so it is
     // back when the filter changes.

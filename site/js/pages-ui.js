@@ -91,9 +91,19 @@ function buildItem(page, i) {
       x: (c.x / page.scale) * s,
       y: (c.y / page.scale) * s,
     }));
+    const quad = () => {
+      pts.forEach((p, j) => (j === 0 ? tctx.moveTo(p.x, p.y) : tctx.lineTo(p.x, p.y)));
+      tctx.closePath();
+    };
+    // Dim what is left out, as the editor does: duplicates and the halves of
+    // a split page show the same photo and differ only in their quad.
     tctx.beginPath();
-    pts.forEach((p, j) => (j === 0 ? tctx.moveTo(p.x, p.y) : tctx.lineTo(p.x, p.y)));
-    tctx.closePath();
+    tctx.rect(0, 0, thumb.width, thumb.height);
+    quad();
+    tctx.fillStyle = colors.dim;
+    tctx.fill('evenodd');
+    tctx.beginPath();
+    quad();
     tctx.strokeStyle = page.detectOk ? colors.accentSoft : colors.warn;
     tctx.lineWidth = 2;
     tctx.stroke();

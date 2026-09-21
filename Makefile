@@ -34,6 +34,7 @@ test: run
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/css/app.css           && echo "OK  /css/app.css"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/js/main.js            && echo "OK  /js/main.js"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/js/pwa.js             && echo "OK  /js/pwa.js"
+	@curl -fsS -o /dev/null http://localhost:$(PORT)/js/split.js           && echo "OK  /js/split.js"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/js/share-target.js    && echo "OK  /js/share-target.js"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/vendor/opencv.js      && echo "OK  /vendor/opencv.js"
 	@curl -fsS -o /dev/null http://localhost:$(PORT)/vendor/pdf-lib.min.js && echo "OK  /vendor/pdf-lib.min.js"
