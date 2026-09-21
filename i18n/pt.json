@@ -41,8 +41,9 @@
     "filterColor": "Cor",
     "filterGray": "Tons de cinza",
     "filterBw": "Preto e branco",
+    "deshadowTitle": "Uniformizar a iluminação (remover sombras)",
     "applyToAll": "Aplicar a todas",
-    "applyToAllTitle": "Aplicar este filtro a todas as páginas",
+    "applyToAllTitle": "Aplicar este filtro e o ajuste de iluminação a todas as páginas",
     "redetect": "Detectar de novo",
     "redetectTitle": "Executar a detecção automática de cantos novamente",
     "resetCorners": "Redefinir cantos",
@@ -186,7 +187,7 @@
                 "**Preto e branco** é o que faz um documento parecer realmente digitalizado. Não é um limiar duro: a imagem é dividida por uma estimativa do fundo, o que achata sombras e iluminação irregular, deixa o papel de fato branco e mantém o texto suavizado em vez de serrilhado. Para texto impresso ou manuscrito, gera o resultado mais limpo e o arquivo menor. Evite em fotografias, que ele esmaga."
               ]
             },
-            "Testar não custa nada: troque de filtro e observe a prévia ao vivo, já que a escolha fica guardada por página e só é aplicada na exportação."
+            "Testar não custa nada: troque de filtro e observe a prévia ao vivo, já que a escolha fica guardada por página e só é aplicada na exportação. Uma sombra sobre a página ou a faixa cinzenta junto à lombada de um livro tem um botão próprio ao lado dos filtros: ele uniformiza a iluminação com qualquer filtro, e é melhor deixá-lo desligado em páginas que são sobretudo fotografias."
           ]
         },
         {

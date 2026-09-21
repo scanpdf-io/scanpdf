@@ -16,6 +16,7 @@ const MAX_FULL_SIDE = 3500;
 const MAX_PROC_SIDE = 1000;
 const PAGE_FORMAT_KEY = 'scanpdf-page-format';
 const TARGET_SIZE_KEY = 'scanpdf-target-size';
+const DESHADOW_KEY = 'scanpdf-deshadow';
 
 const $ = (id) => document.getElementById(id);
 
@@ -24,6 +25,7 @@ const cameraInput = $('camera-input');
 const saveBtn = $('save-btn');
 const toolbar = $('page-toolbar');
 const filterInputs = Array.from(document.querySelectorAll('input[name="filter"]'));
+const deshadowBtn = $('deshadow-btn');
 const exportOverlay = $('export-overlay');
 const exportStatus = $('export-status');
 const exportBar = $('export-bar');
@@ -33,6 +35,8 @@ const ADD_BUTTONS = ['add-btn', 'hero-add-btn'];
 const CAMERA_BUTTONS = ['camera-btn', 'hero-camera-btn'];
 
 let layoutEl, viewToggle, viewEditorBtn, viewPreviewBtn;
+// What new pages start with: the last position of the lighting switch.
+let deshadowDefault = false;
 
 init();
 
@@ -209,6 +213,7 @@ async function createPage(file) {
     corners: fallbackCorners(bmp.width, bmp.height),
     rotation: 0,
     filter: 'color',
+    deshadow: deshadowDefault,
     detectOk: false,
     detecting: true,
   };
@@ -288,7 +293,10 @@ async function runDetectQueue() {
 /* ---------- Toolbar ---------- */
 
 function setupToolbar() {
-  $('rotate-ccw').addEventListener('click', () => rotate(-90));
+  // Phones have no room for both rotations in the dock: one is in the menu.
+  for (const id of ['rotate-ccw', 'menu-rotate-ccw']) {
+    $(id).addEventListener('click', () => rotate(-90));
+  }
   $('rotate-cw').addEventListener('click', () => rotate(90));
 
   for (const input of filterInputs) {
@@ -303,9 +311,14 @@ function setupToolbar() {
   $('filter-all').addEventListener('click', () => {
     const current = selectedPage();
     if (!current) return;
-    for (const page of state.pages) page.filter = current.filter;
+    for (const page of state.pages) {
+      page.filter = current.filter;
+      page.deshadow = current.deshadow;
+    }
     emit();
   });
+
+  setupDeshadow();
 
   $('redetect-btn').addEventListener('click', () => {
     const page = selectedPage();
@@ -372,6 +385,31 @@ function rememberSelect(select, key, apply) {
   });
 }
 
+// Shadows come from where someone scans (the same desk, the same lamp), so
+// the switch is remembered like the export settings: new pages start with its
+// last position. Stored only while on, like every other default.
+function setupDeshadow() {
+  try {
+    deshadowDefault = localStorage.getItem(DESHADOW_KEY) === '1';
+  } catch (_) {
+    // Storage blocked: start from the default.
+  }
+
+  deshadowBtn.addEventListener('click', () => {
+    const page = selectedPage();
+    if (!page) return;
+    page.deshadow = !page.deshadow;
+    deshadowDefault = page.deshadow;
+    try {
+      if (deshadowDefault) localStorage.setItem(DESHADOW_KEY, '1');
+      else localStorage.removeItem(DESHADOW_KEY);
+    } catch (_) {
+      // Storage blocked: the choice still holds for this page view.
+    }
+    emit();
+  });
+}
+
 function setupTargetSize() {
   const select = $('target-size');
   // The template carries plain "2 MB" labels; redo them in the page's locale.
@@ -419,6 +457,11 @@ function syncControls() {
   toolbar.hidden = !page;
   if (page) {
     for (const input of filterInputs) input.checked = input.value === page.filter;
+    // B&W evens the light by itself. The page keeps its own choice, so it is
+    // back when the filter changes.
+    const bw = page.filter === 'bw';
+    deshadowBtn.setAttribute('aria-pressed', String(page.deshadow || bw));
+    deshadowBtn.disabled = bw;
     const i = indexOfPage(page.id);
     $('move-earlier-btn').disabled = i === 0;
     $('move-later-btn').disabled = i === state.pages.length - 1;

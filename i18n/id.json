@@ -41,8 +41,9 @@
     "filterColor": "Warna",
     "filterGray": "Skala abu-abu",
     "filterBw": "Hitam putih",
+    "deshadowTitle": "Ratakan pencahayaan (hilangkan bayangan)",
     "applyToAll": "Terapkan ke semua",
-    "applyToAllTitle": "Terapkan filter ini ke semua halaman",
+    "applyToAllTitle": "Terapkan filter dan pengaturan pencahayaan ini ke semua halaman",
     "redetect": "Deteksi ulang",
     "redetectTitle": "Jalankan kembali deteksi sudut otomatis",
     "resetCorners": "Atur ulang sudut",
@@ -186,7 +187,7 @@
                 "**Hitam putih** adalah filter yang membuat dokumen benar-benar tampak seperti hasil pindaian. Ini bukan ambang batas kasar - gambar dibagi dengan perkiraan latar belakangnya, sehingga bayangan dan pencahayaan yang tidak merata menjadi rata, kertas menjadi benar-benar putih, dan teks tetap halus, tidak bergerigi. Untuk teks cetak atau tulisan tangan biasa, hasilnya paling bersih dan ukuran filenya paling kecil. Hindari untuk foto, karena detailnya akan hancur."
               ]
             },
-            "Mencobanya tidak ada ruginya: ganti filter dan lihat pratinjau langsungnya, karena pilihan disimpan per halaman dan baru diterapkan saat ekspor."
+            "Mencobanya tidak ada ruginya: ganti filter dan lihat pratinjau langsungnya, karena pilihan disimpan per halaman dan baru diterapkan saat ekspor. Bayangan di atas halaman atau pita abu-abu di sepanjang punggung buku punya tombol sendiri di samping filter: tombol itu meratakan pencahayaan pada filter apa pun, dan sebaiknya dibiarkan mati untuk halaman yang sebagian besar berisi foto."
           ]
         },
         {

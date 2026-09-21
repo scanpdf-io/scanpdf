@@ -25,6 +25,9 @@ processing: your documents never leave your machine.
 - **Scan-style filters** — Color, Grayscale, and a Black & White mode that
   uses background division (not hard thresholding), so shadows are flattened,
   paper turns white, and text stays anti-aliased.
+- **Even out lighting** — a per-page switch that removes shadows and the
+  shading along a book's spine under any filter, by dividing the page by an
+  estimate of the bare paper's brightness.
 - **Multi-page PDF export** — reorder and delete pages, then save a single
   PDF assembled locally with pdf-lib.
 - **Fit a file size limit** — pick a maximum (10 MB down to 200 KB) and the
@@ -203,7 +206,7 @@ site/                 The whole site (static files, served as-is)
 │   ├── editor.js     Corner editor with loupe and live preview
 │   ├── warp.js       Perspective warp and page sizing
 │   ├── formats.js    Page formats (paper, cards, photos…) in millimetres
-│   ├── filters.js    Color / grayscale / B&W filters, rotation
+│   ├── filters.js    Color / grayscale / B&W filters, lighting correction, rotation
 │   ├── export.js     Multi-page PDF assembly
 │   ├── pages-ui.js   Page thumbnails: select, delete, keyboard reorder
 │   ├── reorder.js    Drag-to-reorder for the thumbnails (pointer events)

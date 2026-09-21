@@ -190,8 +190,14 @@ h1.brand { font-size: inherit; font-weight: inherit; }
 }
 .dock .btn.icon { color: var(--text); }
 .dock-sep { flex: 0 0 auto; width: 1px; height: 20px; margin: 0 6px; background: var(--border); }
-/* Delete sits in the dock; phones move it into the menu (see below). */
-.menu-list .menu-delete { display: none; }
+/* Pressed toggle (even out lighting). The hover rule is needed too: on touch
+   :hover sticks after a tap and .btn.ghost:hover would repaint it grey. */
+.dock .btn[aria-pressed="true"],
+.dock .btn[aria-pressed="true"]:hover:not(:disabled) { background: var(--accent-soft); color: var(--accent); }
+/* Delete and Rotate left sit in the dock; phones move them into the menu (see
+   below). */
+.menu-list .menu-delete,
+.menu-list .menu-rotate { display: none; }
 
 /* Segmented filter switch: real radio inputs, so arrow keys work for free. */
 .seg {
@@ -683,9 +689,11 @@ h1.brand { font-size: inherit; font-weight: inherit; }
   body.app:not(.is-empty) .preview-wrap { padding-top: 54px; }
 
   /* The dock must fit 320px without scrolling (a scroll container would clip
-     its pop-up menu), so Delete lives in the menu here. */
-  .dock-delete { display: none; }
-  .menu-list .menu-delete { display: flex; }
+     its pop-up menu), so Delete and Rotate left live in the menu here. */
+  .dock-delete,
+  .dock-rotate-ccw { display: none; }
+  .menu-list .menu-delete,
+  .menu-list .menu-rotate { display: flex; }
   .dock .dock-sep { margin: 0 2px; }
   .seg span { min-width: 46px; padding: 0 8px; }
 

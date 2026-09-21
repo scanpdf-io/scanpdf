@@ -8,6 +8,7 @@
 //   corners,      // [TL, TR, BR, BL] as {x, y} in fullBitmap coordinates
 //   rotation,     // 0 | 90 | 180 | 270, applied after warp
 //   filter,       // 'color' | 'gray' | 'bw'
+//   deshadow,     // true => even out the lighting (shadows, book-fold shading)
 //   detectOk,     // false => fallback corners were used
 //   detecting,    // true while queued for auto-detection
 // }

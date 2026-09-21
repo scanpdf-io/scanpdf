@@ -287,7 +287,7 @@ async function renderPreview() {
   const procCorners = page.corners.map((c) => ({ x: c.x / page.scale, y: c.y / page.scale }));
   const { w, h } = computeOutputSize(procCorners, state.pageFormat, PREVIEW_MAX_SIDE);
   let out = warpToCanvas(cv, page.procCanvas, procCorners, w, h);
-  out = applyFilter(cv, out, page.filter);
+  out = applyFilter(cv, out, page.filter, page.deshadow);
   out = rotateCanvas(out, page.rotation);
   previewCanvas.width = out.width;
   previewCanvas.height = out.height;

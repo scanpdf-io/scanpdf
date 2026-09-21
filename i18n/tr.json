@@ -41,8 +41,9 @@
     "filterColor": "Renkli",
     "filterGray": "Gri tonlama",
     "filterBw": "Siyah beyaz",
+    "deshadowTitle": "Işığı dengele (gölgeleri kaldır)",
     "applyToAll": "Tümüne uygula",
-    "applyToAllTitle": "Bu filtreyi tüm sayfalara uygula",
+    "applyToAllTitle": "Bu filtreyi ve ışık ayarını tüm sayfalara uygula",
     "redetect": "Yeniden algıla",
     "redetectTitle": "Otomatik köşe algılamayı yeniden çalıştır",
     "resetCorners": "Köşeleri sıfırla",
@@ -186,7 +187,7 @@
                 "**Siyah beyaz**, belgeyi gerçekten taranmış gibi gösteren filtredir. Sert bir eşikleme değildir - görüntüyü tahmini arka plana böler; bu da gölgeleri ve dengesiz aydınlatmayı düzleştirir, kâğıdı gerçekten beyaz yapar ve metnin kenarlarını tırtıklı değil, yumuşak bırakır. Düz basılı ya da el yazısı metinlerde en temiz ve en küçük dosyayı verir. Fotoğraflarda kullanmayın; ayrıntıları ezer."
               ]
             },
-            "Denemenin hiçbir maliyeti yok: filtreleri değiştirip canlı önizlemeyi izleyin; seçim sayfa bazında saklanır ve yalnızca dışa aktarma sırasında uygulanır."
+            "Denemenin hiçbir maliyeti yok: filtreleri değiştirip canlı önizlemeyi izleyin; seçim sayfa bazında saklanır ve yalnızca dışa aktarma sırasında uygulanır. Sayfaya düşen bir gölge ya da kitap sırtı boyunca uzanan gri şerit için filtrelerin yanında ayrı bir düğme vardır: her filtrede ışığı dengeler; ağırlıklı olarak fotoğraflardan oluşan sayfalarda kapalı bırakmak daha iyidir."
           ]
         },
         {

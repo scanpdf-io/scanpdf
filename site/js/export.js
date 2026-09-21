@@ -102,7 +102,7 @@ function renderPage(cv, page) {
   const { w, h } = computeOutputSize(page.corners, state.pageFormat, EXPORT_MAX_SIDE);
   let out = warpToCanvas(cv, src, page.corners, w, h);
   src.width = src.height = 0;
-  out = applyFilter(cv, out, page.filter);
+  out = applyFilter(cv, out, page.filter, page.deshadow);
   return rotateCanvas(out, page.rotation);
 }
 

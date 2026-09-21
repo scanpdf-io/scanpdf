@@ -41,8 +41,9 @@
     "filterColor": "Couleur",
     "filterGray": "Niveaux de gris",
     "filterBw": "Noir et blanc",
+    "deshadowTitle": "Uniformiser l'éclairage (supprimer les ombres)",
     "applyToAll": "Appliquer à tout",
-    "applyToAllTitle": "Appliquer ce filtre à toutes les pages",
+    "applyToAllTitle": "Appliquer ce filtre et le réglage d'éclairage à toutes les pages",
     "redetect": "Détecter à nouveau",
     "redetectTitle": "Relancer la détection automatique des coins",
     "resetCorners": "Réinitialiser les coins",
@@ -186,7 +187,7 @@
                 "**Noir et blanc** est celui qui donne vraiment l'air numérisé à un document. Ce n'est pas un seuillage brutal : l'image est divisée par une estimation du fond, ce qui aplanit les ombres et l'éclairage inégal, rend le papier réellement blanc et laisse le texte lissé au lieu de crénelé. Pour du texte imprimé ou manuscrit, c'est le résultat le plus propre et le fichier le plus léger. À éviter sur les photographies, qu'il écrase."
               ]
             },
-            "Essayer ne coûte rien : changez de filtre et regardez l'aperçu en direct, puisque le choix est mémorisé page par page et n'est appliqué qu'à l'export."
+            "Essayer ne coûte rien : changez de filtre et regardez l'aperçu en direct, puisque le choix est mémorisé page par page et n'est appliqué qu'à l'export. Une ombre sur la page ou la bande grise le long de la reliure d'un livre a son propre bouton à côté des filtres : il uniformise l'éclairage quel que soit le filtre, et mieux vaut le laisser désactivé pour les pages surtout composées de photographies."
           ]
         },
         {

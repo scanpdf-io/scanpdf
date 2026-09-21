@@ -41,8 +41,9 @@
     "filterColor": "Farbe",
     "filterGray": "Graustufen",
     "filterBw": "Schwarzweiß",
+    "deshadowTitle": "Beleuchtung ausgleichen (Schatten entfernen)",
     "applyToAll": "Auf alle anwenden",
-    "applyToAllTitle": "Diesen Filter auf jede Seite anwenden",
+    "applyToAllTitle": "Diesen Filter und die Beleuchtungseinstellung auf jede Seite anwenden",
     "redetect": "Neu erkennen",
     "redetectTitle": "Automatische Eckenerkennung erneut ausführen",
     "resetCorners": "Ecken zurücksetzen",
@@ -186,7 +187,7 @@
                 "**Schwarzweiß** ist der Filter, der ein Dokument wirklich gescannt aussehen lässt. Es ist kein harter Schwellwert: Das Bild wird durch eine Schätzung des Hintergrunds geteilt, was Schatten und ungleichmäßiges Licht ausgleicht, das Papier echt weiß macht und den Text weichgezeichnet statt ausgefranst lässt. Für gedruckten oder handgeschriebenen Text ergibt das die sauberste und kleinste Datei. Für Fotos ungeeignet, die werden dabei zerdrückt."
               ]
             },
-            "Ausprobieren kostet nichts: Filter umschalten und die Live-Vorschau beobachten - die Wahl wird pro Seite gespeichert und erst beim Export angewendet."
+            "Ausprobieren kostet nichts: Filter umschalten und die Live-Vorschau beobachten - die Wahl wird pro Seite gespeichert und erst beim Export angewendet. Ein Schatten auf der Seite oder der graue Streifen am Buchrücken hat einen eigenen Schalter neben den Filtern: Er gleicht die Beleuchtung bei jedem Filter aus und bleibt bei Seiten, die überwiegend aus Fotos bestehen, besser aus."
           ]
         },
         {

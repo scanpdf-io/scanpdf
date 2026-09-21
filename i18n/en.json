@@ -41,8 +41,9 @@
     "filterColor": "Color",
     "filterGray": "Grayscale",
     "filterBw": "Black & white",
+    "deshadowTitle": "Even out lighting (remove shadows)",
     "applyToAll": "Apply to all",
-    "applyToAllTitle": "Apply this filter to every page",
+    "applyToAllTitle": "Apply this filter and lighting setting to every page",
     "redetect": "Re-detect",
     "redetectTitle": "Run automatic corner detection again",
     "resetCorners": "Reset corners",
@@ -186,7 +187,7 @@
                 "**Black & white** is the one that makes a document look properly scanned. It is not a hard threshold - it divides the image by an estimate of the background, which flattens shadows and uneven lighting, turns the paper genuinely white, and leaves the text anti-aliased instead of jagged. For plain printed or handwritten text it produces the cleanest, smallest file. Avoid it for photographs, which it will crush."
               ]
             },
-            "It costs nothing to try: switch filters and watch the live preview, since the choice is stored per page and only applied at export."
+            "It costs nothing to try: switch filters and watch the live preview, since the choice is stored per page and only applied at export. A shadow across the page or the grey band along a book's spine has its own switch next to the filters: it evens out the lighting under any filter, and is best left off for pages that are mostly photographs."
           ]
         },
         {
