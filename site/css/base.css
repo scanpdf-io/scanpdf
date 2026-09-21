@@ -121,6 +121,8 @@ body {
   box-shadow: var(--shadow-3), 0 0 0 1px var(--border);
 }
 .menu.up .menu-list { top: auto; bottom: calc(100% + 10px); }
+/* For a menu near the left edge of its bar: grow to the right instead. */
+.menu.start .menu-list { left: 0; right: auto; }
 .menu-list a,
 .menu-list button {
   display: flex;
@@ -145,6 +147,11 @@ body {
 .menu-list .ico { width: 18px; height: 18px; color: var(--text-dim); }
 .menu-list a.current { color: var(--accent); font-weight: 600; }
 .menu-list .danger, .menu-list .danger .ico { color: var(--danger); }
+/* Radio items (the filter menu): a check mark on the current one. */
+.menu-list .menu-check { margin-left: auto; padding-left: 6px; box-sizing: content-box; color: var(--accent); visibility: hidden; }
+.menu-list [aria-checked="true"] .menu-check { visibility: visible; }
+/* Their icons are the choice itself (grey must read as grey), so not dimmed. */
+.menu-list [role="menuitemradio"] .ico:first-child { color: var(--text); }
 .menu-sep { height: 1px; margin: 6px 4px; background: var(--border); }
 
 /* Theme switcher: one button cycling system -> light -> dark (theme.js). The

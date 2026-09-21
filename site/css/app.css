@@ -202,7 +202,8 @@ h1.brand { font-size: inherit; font-weight: inherit; }
 .menu-list .menu-delete,
 .menu-list .menu-rotate { display: none; }
 
-/* Segmented filter switch: real radio inputs, so arrow keys work for free. */
+/* Segmented switch (the split direction): real radio inputs, so arrow keys
+   work for free. */
 .seg {
   display: flex;
   min-width: 0;

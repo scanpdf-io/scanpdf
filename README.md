@@ -58,8 +58,8 @@ processing: your documents never leave your machine.
    failed get a warning badge on their thumbnail.
 3. In the editor, drag the corner handles (a loupe appears for precision),
    rotate pages and pick a filter. Drag the thumbnails to reorder pages
-   (or Alt + arrow keys), and delete the ones you do not need. The **⋯** menu
-   has **Split into two pages** for book spreads and **Duplicate page**.
+   (or Alt + arrow keys), and delete the ones you do not need. The toolbar
+   also has **Split into two pages** for book spreads and **Duplicate page**.
 4. Choose the page size (Auto, or an exact format such as A4, Letter or a
    bank card) and, if the file has to stay
    under a limit, a maximum file size, then click **Save PDF**.

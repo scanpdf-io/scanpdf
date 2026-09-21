@@ -7,7 +7,7 @@
 // versioned snapshot: VERSION is a hash over every precached file, and a page
 // is always served HTML, CSS and JS from the same snapshot.
 
-const VERSION = 'ce615449b836';
+const VERSION = 'c6513ec22e46';
 const ENGINE_VERSION = 'f5ebc33a9bb0';
 const PRECACHE = [
   "./",

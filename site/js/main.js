@@ -30,7 +30,9 @@ const saveBtn = $('save-btn');
 const toolbar = $('page-toolbar');
 const splitBar = $('split-toolbar');
 const splitDirInputs = Array.from(document.querySelectorAll('input[name="split-dir"]'));
-const filterInputs = Array.from(document.querySelectorAll('input[name="filter"]'));
+const filterSummary = document.querySelector('#filter-menu > summary');
+const filterIcon = $('filter-icon');
+const filterItems = Array.from(document.querySelectorAll('#filter-menu [data-filter]'));
 const deshadowBtn = $('deshadow-btn');
 const exportOverlay = $('export-overlay');
 const exportStatus = $('export-status');
@@ -305,11 +307,12 @@ function setupToolbar() {
   }
   $('rotate-cw').addEventListener('click', () => rotate(90));
 
-  for (const input of filterInputs) {
-    input.addEventListener('change', () => {
+  // menus.js closes the menu once an item is chosen.
+  for (const item of filterItems) {
+    item.addEventListener('click', () => {
       const page = selectedPage();
-      if (!page || !input.checked) return;
-      page.filter = input.value;
+      if (!page) return;
+      page.filter = item.dataset.filter;
       emit();
     });
   }
@@ -375,8 +378,6 @@ function setupToolbar() {
 // Splitting is a mode of the editor (state.split): the split bar replaces the
 // dock until the line is confirmed or dropped.
 function setupSplit() {
-  const moreSummary = document.querySelector('#more-menu > summary');
-
   $('split-btn').addEventListener('click', () => {
     if (isReordering() || !enterSplit(state.selectedId)) return;
     setPreviewMode(false); // phones: the line is drawn in the editor pane
@@ -389,7 +390,7 @@ function setupSplit() {
   }
   const cancel = () => {
     cancelSplit();
-    moreSummary.focus();
+    $('split-btn').focus();
   };
   $('split-cancel-btn').addEventListener('click', cancel);
   $('split-apply-btn').addEventListener('click', () => {
@@ -397,7 +398,7 @@ function setupSplit() {
     const i = applySplit();
     if (i < 0) return;
     announce(t('pageSplit', { i: i + 1, j: i + 2, n: state.pages.length }));
-    moreSummary.focus();
+    $('split-btn').focus();
   });
 
   // Escape leaves the mode, unless it is already closing a menu (menus.js)
@@ -516,7 +517,16 @@ function syncControls() {
     // A page still queued for detection would get its corners overwritten.
     $('duplicate-btn').disabled = page.detecting;
     $('split-btn').disabled = page.detecting;
-    for (const input of filterInputs) input.checked = input.value === page.filter;
+    // The filter button wears the icon of the current choice and names it.
+    for (const item of filterItems) {
+      const current = item.dataset.filter === page.filter;
+      item.setAttribute('aria-checked', String(current));
+      if (!current) continue;
+      const label = `${filterSummary.dataset.label}: ${item.textContent.trim()}`;
+      filterIcon.setAttribute('href', `#i-filter-${page.filter}`);
+      filterSummary.title = label;
+      filterSummary.setAttribute('aria-label', label);
+    }
     // B&W evens the light by itself. The page keeps its own choice, so it is
     // back when the filter changes.
     const bw = page.filter === 'bw';
